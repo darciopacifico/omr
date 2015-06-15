@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+	<form-beans>
+		<form-bean name="uploadArquivosForm" type="com.msaf.validador.integration.web.form.UploadArquivosForm" />
+		<form-bean name="testeWebServiceForm" type="com.msaf.validador.integration.web.form.TesteWebServiceForm" />
+	</form-beans>
+	
+	<global-exceptions></global-exceptions>
+	<global-forwards>
+		<forward name="login" path="/login.do" />
+		<forward name="cliente" path="/validador/cliente.jsp" />
+	</global-forwards>
+	
+	<action-mappings>
+		<action path="/UploadArquivosAction" 
+            parameter="dispatchMethod"
+			name="uploadArquivosForm"
+			scope="session" 
+			validate="false" 
+			input="/validador/upload.jsp">
+			<forward name="telaUpload" path="/validador/upload.jsp" />
+			<forward name="popup" path="/validador/status.jsp" />
+			<forward name="logoff" path="/index.jsp" />
+			<forward name="notLogin" path="login" />
+		</action>
+		
+		<action path="/TesteWebServiceAction" 
+            parameter="dispatchMethod"
+			name="testeWebServiceForm"
+			scope="session" 
+			validate="false" 
+			input="/validador/validacaoWebService.jsp">
+			<forward name="logoff" path="/Site/index.jsp" />
+			<forward name="init" path="/validador/validacaoWebService.jsp" />
+		</action>
+		
+		
+		<action path="/Popup" 
+			name="uploadArquivosForm"
+			scope="session" 
+			validate="false" 
+			forward="/validador/status.jsp"/>
+		
+		
+        	
+	</action-mappings>
+
+	
+
+	<controller>
+		<set-property property="processorClass" value="org.springframework.web.struts.DelegatingRequestProcessor" />
+	</controller>
+<message-resources parameter="com.msaf.validador.ResourceBundle" />
+<!--
+-->	
+
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation" value="/WEB-INF/action-servlet.xml" />
+	</plug-in>
+
+</struts-config>

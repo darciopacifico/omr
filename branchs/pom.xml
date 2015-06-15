@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>Jazz</groupId>
+   <version>1.0</version>
+   <artifactId>Jazz</artifactId>
+   <packaging>pom</packaging>
+   <name>project</name>
+    
+      <properties>
+      <jsf.version>1.2_13</jsf.version>
+      <richfaces.version>3.3.3.Final</richfaces.version>
+      <portletbridge.version>2.1.0.FINAL</portletbridge.version>
+   </properties>
+
+   	<distributionManagement>
+	    <repository> 
+	        <id>SBR001001-075</id>
+	        <name>SBR001001-075-releases</name>
+	        <url>http://sbr001001-075/artifactory/libs-releases-local</url>
+	    </repository>
+	    <snapshotRepository>
+	        <id>SBR001001-075</id>
+	        <name>SBR001001-075-snapshots</name>
+	        <url>http://sbr001001-075/artifactory/libs-snapshots-local</url>
+	    </snapshotRepository>
+	</distributionManagement>
+   
+     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+		        </configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<wtpmanifest>true</wtpmanifest>
+					<wtpapplicationxml>true</wtpapplicationxml>
+					<wtpversion>2.0</wtpversion>
+					<ajdtVersion>none	</ajdtVersion>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<tagBase>http://subversion.assembla.com/svn/jazzframework/tags/</tagBase>
+				</configuration>
+			</plugin>			
+
+		</plugins>
+     </build>
+
+   
+  <modules>
+	<module>JazzAnnotations</module>
+	<module>SVNRedmineLogTime</module>
+	<module>JazzFramework</module>
+	<module>JazzQA</module>
+
+
+	<!--
+	<module>avPortal</module>
+	<module>JazzWSI</module>
+    	<module>JazzXDoclet</module>
+	-->
+
+
+  </modules>
+
+  <scm>
+		<connection>scm:svn:https://subversion.assembla.com/svn/jazzframework</connection>
+    <developerConnection>scm:svn:https://subversion.assembla.com/svn/jazzframework</developerConnection>
+    <tag>HEAD</tag>
+    <url>https://subversion.assembla.com/svn/jazzframework</url>
+  </scm>
+
+
+</project>

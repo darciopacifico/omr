@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1417.3228"
+   height="1062.9921"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="teste.svg">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="-34.285714 : 74.285714 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="165.71429 : 74.285714 : 1"
+       inkscape:persp3d-origin="65.714286 : 40.952381 : 1"
+       id="perspective2987" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.38"
+     inkscape:cx="883.89549"
+     inkscape:cy="327.49597"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     units="cm"
+     showborder="true"
+     borderlayer="false"
+     inkscape:showpageshadow="true" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,10.631753)">
+    <text
+       xml:space="preserve"
+       style="font-size:272.3081665px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black;-inkscape-font-specification:'Arial Black,'"
+       x="27.790955"
+       y="218.4109"
+       id="text3181"
+       sodipodi:linespacing="125%"
+       transform="scale(0.90151442,1.1092446)"><tspan
+         sodipodi:role="line"
+         x="27.790955"
+         y="218.4109"
+         id="tspan3183"><tspan
+           x="27.790955"
+           y="218.4109"
+           style="font-family:Arial Black;-inkscape-font-specification:'Arial Black,'"
+           id="tspan3185">VENDE-SE</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:99.81638336px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black;-inkscape-font-specification:'Arial Black,'"
+       x="379.93744"
+       y="348.5228"
+       id="text3175"
+       sodipodi:linespacing="125%"
+       transform="scale(0.99877391,1.0012276)"><tspan
+         sodipodi:role="line"
+         x="379.93744"
+         y="348.5228"
+         id="tspan3177">#opcionais#<tspan
+   x="379.93744"
+   y="348.5228"
+   id="tspan3179" /></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:194.2114563px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black;-inkscape-font-specification:'Arial Black,'"
+       x="821.14893"
+       y="860.48706"
+       id="text3169"
+       sodipodi:linespacing="125%"
+       transform="scale(0.86156926,1.1606728)"><tspan
+         sodipodi:role="line"
+         x="821.14886"
+         y="860.48706"
+         id="tspan3171">${anuncio.descricao!&quot;9999-9999&quot;}</tspan></text>
+  </g>
+</svg>

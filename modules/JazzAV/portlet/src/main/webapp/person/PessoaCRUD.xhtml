@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	template="../template/crud/crudTemplate.xhtml">
+
+	<!-- PARAMETROS DO MODULO -->
+	<ui:param name="myMBean" value="#{pessoaJSFBean}" />
+	<ui:param name="tituloModulo" value="#{lblPessoa.pnlPessoa}" />
+	<ui:param name="iconeModulo" value="/img/menu/people_128.png" />
+	<ui:param name="menuUrlPrefix" value="../" />
+	
+	<!-- DEFINICOES GLOBAIS DO MÓDULO -->
+	<ui:define name="repGlobal">
+		<f:loadBundle var="lblPessoa"
+			basename="br.com.dlp.jazzav.person.Pessoa" />
+		<f:loadBundle var="msg" basename="br.com.dlp.jazzav.ResourceBundle" />
+
+	</ui:define>
+
+
+	<!-- DEFINICAO DE PAINEL DE FORMULARIO DE PESQUISA PESQUISA -->
+	<ui:define name="repPesquisa">
+		
+		<h:panelGrid columns="2">
+
+			<h:outputText value="Login" />
+			<h:inputText value="#{pessoaJSFBean.login}" />
+
+			<h:outputText value="#{lblPessoa.email}" />
+			<h:inputText value="#{pessoaJSFBean.email}" />
+
+			<h:outputText value="#{lblPessoa.nome}" />
+			<h:inputText value="#{pessoaJSFBean.nome}" />
+
+			<h:outputText value="#{lblPessoa.telefone}" />
+			<h:inputText value="#{pessoaJSFBean.telefone}" />
+
+			<h:outputText value="#{lblPessoa.dtIncFrom}" />
+			<rich:calendar value="#{pessoaJSFBean.dtIncFrom}" />
+
+			<h:outputText value="#{lblPessoa.dtIncTo}" />
+			<rich:calendar value="#{pessoaJSFBean.dtIncTo}" />
+
+			<h:outputText value="#{lblPessoa.dtAltFrom}" />
+			<rich:calendar value="#{pessoaJSFBean.dtAltFrom}" />
+
+			<h:outputText value="#{lblPessoa.dtAltTo}" />
+			<rich:calendar value="#{pessoaJSFBean.dtAltTo}" />
+
+			<h:outputText value="#{lblPessoa.status}" />
+			<rich:comboBox defaultLabel="Selecione..."
+				value="#{pessoaJSFBean.status}" selectFirstOnUpdate="false">
+				<f:selectItems value="#{pessoaJSFBean.statusList}" />
+			</rich:comboBox>
+
+		</h:panelGrid>
+	</ui:define>
+
+
+
+
+
+	<!-- DEFINICAO DOS CAMPOS PARA PESQUISA INSTANTANEA -->
+	<ui:define name="repInstantSearch">
+
+	</ui:define>
+
+
+	<!--COLUNAS EXIBIDAS NA PESQUISA-->
+	<ui:define name="repCamposResultado">
+
+
+
+
+		<rich:column>
+			<f:facet name="header">
+				<h:outputText value="#{lblPessoa.login}" />
+			</f:facet>
+			<h:outputText value="#{resultado.PK}" />
+		</rich:column>
+
+
+		<rich:column>
+			<f:facet name="header">
+				<h:outputText value="#{lblPessoa.nome}" />
+			</f:facet>
+			<h:outputText value="#{resultado.nome}" />
+		</rich:column>
+
+
+		<rich:column width="90">
+			<f:facet name="header">
+				<h:outputText value="#{lblPessoa.dtInc}" />
+			</f:facet>
+			<h:outputText value="#{resultado.dtInc}"  >
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+			</h:outputText>
+		</rich:column>
+
+
+		<rich:column width="90">
+			<f:facet name="header">
+				<h:outputText value="#{lblPessoa.dtAlt}" />
+			</f:facet>
+			<h:outputText value="#{resultado.dtAlt}"  >
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+			</h:outputText>
+			
+		</rich:column>
+
+
+		<rich:column width="60">
+			<f:facet name="header">
+				<h:outputText value="#{lblPessoa.status}" />
+			</f:facet>
+			<h:outputText value="#{resultado.status}" />
+		</rich:column>
+	</ui:define>
+
+
+	<!--CAMPOS MANUTENCAO-->
+	<ui:define name="repCamposManutencao">
+		
+		<h:outputText value="#{lblPessoa.nome}" />
+		<h:inputText value="#{pessoaJSFBean.tmpVO.nome}" disabled="#{myMBean.tmpVO==null}" />
+		<rich:message for="nome" />
+		
+				
+		<h:outputText value="#{lblPessoa.email}" />
+		<h:inputText value="#{pessoaJSFBean.tmpVO.email}" disabled="#{myMBean.tmpVO==null}" />
+		<rich:message for="email" />
+
+		<h:outputText value="#{lblPessoa.telefone}" />
+		<h:inputText value="#{pessoaJSFBean.tmpVO.telefone}" disabled="#{myMBean.tmpVO==null}" />
+		<rich:message for="telefone" />
+		
+		
+		
+		<h:outputText value="#{lblPessoa.dtInc}" />
+		<h:outputText value="#{pessoaJSFBean.tmpVO.dtInc}" />
+		<rich:message for="dtInc" />
+
+
+		<h:outputText value="#{lblPessoa.dtAlt}" />
+		<h:outputText value="#{pessoaJSFBean.tmpVO.dtAlt}" />
+		<rich:message for="dtAlt" />
+
+
+		<h:outputText value="#{lblPessoa.status}" />
+		<rich:comboBox defaultLabel="Selecione..." value="#{pessoaJSFBean.tmpVO.status}" disabled="#{myMBean.tmpVO==null}" selectFirstOnUpdate="false" >
+			<f:selectItems value="#{pessoaJSFBean.statusList}"  />
+		</rich:comboBox>
+		<rich:message for="status" />
+		
+		
+		<h:outputText value="Permissões de Acesso" />
+		<a4j:commandButton action="#" reRender="mdlUserInfo" oncomplete="Richfaces.showModalPanel('mdlUserInfo');" value="Exibir"  id="btnShowUserOpts" >
+			<rich:toolTip showDelay="1500">Opções para permitir que esta pessoa tenha acesso ao sistema.</rich:toolTip>
+		</a4j:commandButton>
+		<rich:message for="permissoes" />	
+
+	</ui:define>
+
+	<ui:define name="repSubModulos">
+	</ui:define>
+
+	<!-- DEFINICOES DE POPOUPS -->
+	<ui:define name="repPopups">
+	</ui:define>
+	
+	<ui:define name="noFormModals">
+	
+		<rich:modalPanel id="mdlUserInfo" autosized="true">
+			<a4j:form>
+	
+				<!-- Barra de ferramentas do modal mdlManutencao -->
+				<rich:toolBar> 
+
+					<rich:menuItem title="#{msg.btnSalvar}" value="Salvar" ajaxSingle="true" submitMode="ajax">
+						<rich:toolTip value="Salva alterações no registro" showDelay="2000" />
+						<a4j:support action="#{myMBean.actionSalvar}" reRender="resultadoDG,campos" process="campos" event="onclick" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/Save_32.png" />
+						</f:facet>
+					</rich:menuItem>
+
+					<rich:menuItem value="Revogar Acesso" ajaxSingle="true" submitMode="ajax">
+						<rich:toolTip value="Revoga Concessões de Acesso do Usuário" showDelay="2000" />
+						<a4j:support action="#{myMBean.actionRevogarAcesso}" reRender="resultadoDG,campos" process="campos" event="onclick"  oncomplete="Richfaces.hideModalPanel('mdlUserInfo')"/>
+						<f:facet name="icon">
+							<h:graphicImage value="/img/menu/revoke.png" />
+						</f:facet>
+					</rich:menuItem>					
+
+					<rich:menuItem submitMode="none" value="Sair/Cancelar" onclick="Richfaces.hideModalPanel('mdlUserInfo')" >
+						<rich:toolTip value="Fecha a tela de detalhes de usuário" showDelay="2000" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/Cancel_32.png" />
+						</f:facet>
+					</rich:menuItem>
+					
+				</rich:toolBar>
+				<rich:panel>
+
+					<h:panelGrid columns="3" >
+					
+						<h:outputText value="#{lblPessoa.empresaVO}"  rendered="#{myMBean.ifAnyGranted('MASTER')}"  />
+						<h:selectOneMenu value="#{pessoaJSFBean.tmpVO.empresaVO}" converter="empresaJSONConverter" selectFirstOnUpdate="false"  rendered="#{myMBean.ifAnyGranted('MASTER')}" >
+							<f:selectItems value="#{myMBean.empresaVOs}" />
+						</h:selectOneMenu>
+						<rich:message for="empresaVO"   rendered="#{myMBean.ifAnyGranted('MASTER')}"  />
+				
+						<h:outputText value="#{lblPessoa.login}" />
+						<h:inputText value="#{pessoaJSFBean.tmpVO.login}" disabled="#{myMBean.tmpVO==null}" converter="genericErrorConverter" id="loginPessoa"  >
+							<!-- -
+							<a4j:support event="onchange" action="#{pessoaJSFBean.checkLogin()}" reRender="msgLoginOK,pnlGrowl" ajaxSingle="true"  />
+							 -->
+						</h:inputText>
+						<h:panelGroup id="groupLogin">
+							<h:outputText value=" #{myMBean.tmpVO.msgCriticLogin}" id="msgLoginOK" />
+							<rich:message for="loginPessoa" id="msgForLogin"  />						
+						</h:panelGroup>
+				
+				
+						<h:outputText value="#{lblPessoa.email}" />
+						<h:inputText value="#{pessoaJSFBean.tmpVO.email}" disabled="#{myMBean.tmpVO==null}" />
+						<rich:message for="email" />				
+				
+						<h:outputText value="#{lblPessoa.senha}" />
+						<p:password value="#{pessoaJSFBean.tmpVO.senha}" disabled="#{myMBean.tmpVO==null}"  inline="true"  autocomplete="false" 
+						minLength="8" goodLabel="senha segura" strongLabel="senha forte" weakLabel="senha fraca" maxlength="20" id="senha" promptLabel="digite uma senha" >
+							<f:validateLength minimum="7" maximum="25"/>
+						</p:password>
+						<rich:message for="senha" />
+				
+						<h:outputText value="#{lblPessoa.senha}(confirme)" />
+						<p:password value="#{pessoaJSFBean.tmpVO.senhaConfirm}" disabled="#{myMBean.tmpVO==null}" id="txtSenhaConfirm" inline="true" autocomplete="false"  
+						minLength="8" goodLabel="senha segura" strongLabel="senha forte" weakLabel="senha fraca" maxlength="20" promptLabel="digite uma senha" >
+							<f:validateLength minimum="7" maximum="25"/>
+						</p:password>
+						<rich:message for="txtSenhaConfirm" />
+
+						<h:outputText value="Permissões" />
+						<rich:listShuttle  id="shutPermissoes"
+							sourceValue="#{pessoaJSFBean.auts}"
+							targetValue="#{pessoaJSFBean.tmpVO.authorities}"
+							var="items" listsHeight="90" sourceListWidth="130" targetListWidth="130" converter="authoritiesConverter"
+					        sourceCaptionLabel="Disponíveis" targetCaptionLabel="Selecionados" orderControlsVisible="false"  fastOrderControlsVisible="false" >
+				
+				            <rich:column>
+				                <h:outputText value="#{items}"/>
+				            </rich:column>
+				
+						</rich:listShuttle>
+						<rich:message for="shutPermissoes" />
+					
+					</h:panelGrid>		
+				</rich:panel>		
+				
+			</a4j:form>		
+				
+		</rich:modalPanel>
+
+	</ui:define>
+
+
+
+</ui:composition>
+

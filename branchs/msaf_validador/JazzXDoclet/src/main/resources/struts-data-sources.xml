@@ -1,0 +1,6 @@
+   <!-- ========== Data Sources Definitions =================================== -->
+
+   <!--
+      Define your Struts data sources in a file called struts-data-sources.xml and 
+      place it in your merge directory.
+    -->

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>JazzWA-WEB</display-name>
+
+	<error-page>
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/sessionExpired.html</location>
+	</error-page>
+
+	<!-- <session-config> <session-timeout>1</session-timeout> </session-config> -->
+
+	<context-param>
+		<param-name>org.jboss.jbossfaces.WAR_BUNDLES_JSF_IMPL</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.apache.myfaces.ERROR_HANDLING</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.CONTROL_SKINNING</param-name>
+		<param-value>enable</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.CONTROL_SKINNING_CLASSES</param-name>
+		<param-value>enable</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.LoadStyleStrategy</param-name>
+		<param-value>ALL</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.LoadScriptStrategy</param-name>
+		<param-value>ALL</param-value>
+	</context-param>
+
+	<!-- Informar parametros para funcoes via EL -->
+	<context-param>
+		<param-name>com.sun.faces.expressionFactory</param-name>
+		<param-value>org.jboss.el.ExpressionFactoryImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.apache.myfaces.EXPRESSION_FACTORY</param-name>
+		<param-value>org.jboss.el.ExpressionFactoryImpl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:ApplicationContext.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>facelets.DEVELOPMENT</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value>/WEB-INF/faces-config.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>server</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.richfaces.SKIN</param-name>
+		<param-value>#{skinBean.skin}</param-value>
+	</context-param>
+	<!-- PROTECAO PADRAO PARA PAGINAS XHTML <security-constraint> <display-name>Restrict 
+		raw XHTML Documents</display-name> <web-resource-collection> <web-resource-name>XHTML</web-resource-name> 
+		<url-pattern>*.xhtml</url-pattern> </web-resource-collection> <auth-constraint 
+		/> </security-constraint> PROTECAO PADRAO JOSSO <security-constraint> <web-resource-collection> 
+		<web-resource-name>protected-resources</web-resource-name> <url-pattern>/*</url-pattern> 
+		<http-method>HEAD</http-method> <http-method>GET</http-method> <http-method>POST</http-method> 
+		<http-method>PUT</http-method> <http-method>DELETE</http-method> </web-resource-collection> 
+		<auth-constraint> <role-name>role1</role-name> </auth-constraint> <user-data-constraint> 
+		<transport-guarantee>NONE</transport-guarantee> </user-data-constraint> </security-constraint> 
+		<login-config> <auth-method>FORM</auth-method> <form-login-config> <form-login-page>/login-redirect.jsp</form-login-page> 
+		<form-error-page>/login-redirect.jsp</form-error-page> </form-login-config> 
+		</login-config> <security-role> <description>The Role1</description> <role-name>role1</role-name> 
+		</security-role> -->
+	<filter>
+		<display-name>Ajax4jsf Filter</display-name>
+		<filter-name>ajax4jsf</filter-name>
+		<filter-class>org.ajax4jsf.Filter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>SessionTimeoutFilter</filter-name>
+		<filter-class>br.com.dlp.framework.servletfilter.SessionTimeoutFilter</filter-class>
+		<init-param>
+			<param-name>TIMEOUT_PAGE</param-name>
+			<param-value>sessionTimeout.html</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>SessionTimeoutFilter</filter-name>
+		<url-pattern>*.jsf</url-pattern>
+	</filter-mapping>
+
+
+	<filter-mapping>
+		<filter-name>ajax4jsf</filter-name>
+		<servlet-name>Faces Servlet</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<display-name>CXF Servlet</display-name>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+
+	<servlet>
+		<servlet-name>Resource Servlet</servlet-name>
+		<servlet-class>org.primefaces.resource.ResourceServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Resource Servlet</servlet-name>
+		<url-pattern>/primefaces_resource/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/cxf/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+	<!-- causa erro ao tentar decodificar stream de bytes <env-entry> <env-entry-name>com.sun.faces.ClientStateSavingPassword</env-entry-name> 
+		<env-entry-type>java.lang.String</env-entry-type> <env-entry-value>4b4c4t335tr4g4d0</env-entry-value> 
+		</env-entry> -->
+</web-app>

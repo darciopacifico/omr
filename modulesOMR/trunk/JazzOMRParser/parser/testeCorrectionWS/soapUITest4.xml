@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="JazzOMR_mtom2" resourceRoot="" soapui-version="4.5.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="OmrGeneratorServiceSoapBinding" type="wsdl" bindingName="{http://ws.omr.dlp.com.br/}OmrGeneratorServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/JazzOMR.ws/cxf/omrGenerator?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/JazzOMR.ws/cxf/omrGenerator?wsdl"><con:part><con:url>http://localhost:8080/JazzOMR.ws/cxf/omrGenerator?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="OmrGeneratorService" targetNamespace="http://ws.omr.dlp.com.br/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.omr.dlp.com.br/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://vo.framework.dlp.com.br" xmlns:tns="http://vo.framework.dlp.com.br">
+      <xsd:complexType abstract="true" name="AbstractBaseVO">
+        <xsd:sequence/>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://event.jazzomr.dlp.com.br" xmlns:tns="http://event.jazzomr.dlp.com.br" xmlns:ns4="http://person.jazzomr.dlp.com.br" xmlns:ns3="http://empresa.jazzomr.dlp.com.br" xmlns:ns2="http://ws.omr.dlp.com.br/" xmlns:ns1="http://exam.jazzomr.dlp.com.br" xmlns:ns0="http://vo.framework.dlp.com.br">
+      <xsd:import namespace="http://exam.jazzomr.dlp.com.br"/>
+      <xsd:import namespace="http://ws.omr.dlp.com.br/"/>
+      <xsd:import namespace="http://empresa.jazzomr.dlp.com.br"/>
+      <xsd:import namespace="http://person.jazzomr.dlp.com.br"/>
+      <xsd:import namespace="http://vo.framework.dlp.com.br"/>
+      <xsd:complexType name="EventVO">
+        <xsd:complexContent>
+          <xsd:extension base="ns0:AbstractBaseVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PK" nillable="true" type="xsd:long"/>
+              <xsd:element minOccurs="0" name="dataHandlerProva" nillable="true" type="xsd:base64Binary"/>
+              <xsd:element minOccurs="0" name="description" nillable="true" type="xsd:string"/>
+              <xsd:element minOccurs="0" name="examVO" nillable="true" type="ns1:ExamVO"/>
+              <xsd:element minOccurs="0" name="mapOMRMarksByPergExamVarPage" nillable="true" type="ns2:string2ArrayOfOMRMarkMap"/>
+              <xsd:element minOccurs="0" name="mapPerguntasByExamVarPage" nillable="true" type="ns2:string2ArrayOfStringMap"/>
+              <xsd:element minOccurs="0" name="participations" nillable="true" type="ns2:long2ParticipationVOMap"/>
+              <xsd:element minOccurs="0" name="relatorioVO" nillable="true" type="ns3:RelatorioVO"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ParticipationVO">
+        <xsd:complexContent>
+          <xsd:extension base="ns0:AbstractBaseVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PK" nillable="true" type="xsd:long"/>
+              <xsd:element minOccurs="0" name="examVariant" nillable="true" type="xsd:int"/>
+              <xsd:element minOccurs="0" name="pessoaVO" nillable="true" type="ns4:PessoaVO"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://person.jazzomr.dlp.com.br" xmlns:tns="http://person.jazzomr.dlp.com.br" xmlns:ns0="http://vo.framework.dlp.com.br">
+      <xsd:import namespace="http://vo.framework.dlp.com.br"/>
+      <xsd:complexType name="PessoaVO">
+        <xsd:complexContent>
+          <xsd:extension base="ns0:AbstractBaseVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PK" nillable="true" type="xsd:long"/>
+              <xsd:element minOccurs="0" name="nome" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPessoaVO">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="PessoaVO" nillable="true" type="tns:PessoaVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://payload.ws.omr.dlp.com.br" xmlns:tns="http://payload.ws.omr.dlp.com.br" xmlns:ns2="http://person.jazzomr.dlp.com.br" xmlns:ns1="http://exam.jazzomr.dlp.com.br" xmlns:ns0="http://event.jazzomr.dlp.com.br">
+      <xsd:import namespace="http://event.jazzomr.dlp.com.br"/>
+      <xsd:import namespace="http://exam.jazzomr.dlp.com.br"/>
+      <xsd:import namespace="http://person.jazzomr.dlp.com.br"/>
+      <xsd:complexType name="ArrayOfPageImageVO">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="PageImageVO" nillable="true" type="tns:PageImageVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CorrectionPayloadVO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="eventVO" nillable="true" type="ns0:EventVO"/>
+          <xsd:element minOccurs="0" name="pageImages" nillable="true" type="tns:ArrayOfPageImageVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PageImageVO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="pageImage" nillable="true" type="xsd:base64Binary"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GenerationPayloadVO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="eventName" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="examVO" nillable="true" type="ns1:ExamVO"/>
+          <xsd:element minOccurs="0" name="modeloProva" nillable="true" type="xsd:base64Binary"/>
+          <xsd:element minOccurs="0" name="modeloProvaDH" nillable="true" type="xsd:base64Binary"/>
+          <xsd:element minOccurs="0" name="pessoas" nillable="true" type="ns2:ArrayOfPessoaVO"/>
+          <xsd:element minOccurs="0" name="qtdVariacoes" nillable="true" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://empresa.jazzomr.dlp.com.br" xmlns:tns="http://empresa.jazzomr.dlp.com.br" xmlns:ns1="http://ws.omr.dlp.com.br/" xmlns:ns0="http://vo.framework.dlp.com.br">
+      <xsd:import namespace="http://ws.omr.dlp.com.br/"/>
+      <xsd:import namespace="http://vo.framework.dlp.com.br"/>
+      <xsd:complexType name="RelatorioVO">
+        <xsd:complexContent>
+          <xsd:extension base="ns0:AbstractBaseVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PK" nillable="true" type="xsd:long"/>
+              <xsd:element minOccurs="0" name="examOMRMetadataVO" nillable="true" type="ns1:string2ExamOMRMetadataVOMap"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://coordinate.exam.jazzomr.dlp.com.br" xmlns:tns="http://coordinate.exam.jazzomr.dlp.com.br" xmlns:ns0="http://ws.omr.dlp.com.br/">
+      <xsd:import namespace="http://ws.omr.dlp.com.br/"/>
+      <xsd:complexType name="ArrayOfOMRMark">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="OMRMark" nillable="true" type="tns:OMRMark"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="OMRMark">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="chave" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="critType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="criterion" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="h" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="pagina" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="paginas" nillable="true" type="ns0:ArrayOfInt"/>
+          <xsd:element minOccurs="0" name="pergunta" nillable="true" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="w" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="x" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="y" nillable="true" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.omr.dlp.com.br/" xmlns:ns4="http://result.application.jazzomr.dlp.com.br" xmlns:ns3="http://payload.ws.omr.dlp.com.br" xmlns:ns2="http://event.jazzomr.dlp.com.br" xmlns:ns1="http://exam.jazzomr.dlp.com.br" xmlns:ns0="http://coordinate.exam.jazzomr.dlp.com.br">
+      <xsd:import namespace="http://coordinate.exam.jazzomr.dlp.com.br"/>
+      <xsd:import namespace="http://exam.jazzomr.dlp.com.br"/>
+      <xsd:import namespace="http://event.jazzomr.dlp.com.br"/>
+      <xsd:import namespace="http://payload.ws.omr.dlp.com.br"/>
+      <xsd:import namespace="http://result.application.jazzomr.dlp.com.br"/>
+      <xsd:complexType name="string2ArrayOfOMRMarkMap">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="entry">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="key" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="value" type="ns0:ArrayOfOMRMark"/>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfString">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="string" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="string2ExamOMRMetadataVOMap">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="entry">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="key" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="value" type="ns1:ExamOMRMetadataVO"/>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfInt">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="int" nillable="true" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="string2ArrayOfStringMap">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="entry">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="key" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="value" type="tns:ArrayOfString"/>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="long2ParticipationVOMap">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="entry">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="key" type="xsd:long"/>
+                <xsd:element minOccurs="0" name="value" type="ns2:ParticipationVO"/>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="generateEvent" type="tns:generateEvent"/>
+      <xsd:complexType name="generateEvent">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="arg0" type="ns3:GenerationPayloadVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="generateEventResponse" type="tns:generateEventResponse"/>
+      <xsd:complexType name="generateEventResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" type="ns2:EventVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="processImages" type="tns:processImages"/>
+      <xsd:complexType name="processImages">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="arg0" type="ns3:CorrectionPayloadVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="processImagesResponse" type="tns:processImagesResponse"/>
+      <xsd:complexType name="processImagesResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" type="ns4:ArrayOfQuestionResultVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://question.jazzomr.dlp.com.br" xmlns:tns="http://question.jazzomr.dlp.com.br" xmlns:ns1="http://results.jazzomr.dlp.com.br" xmlns:ns0="http://vo.framework.dlp.com.br">
+      <xsd:import namespace="http://results.jazzomr.dlp.com.br"/>
+      <xsd:import namespace="http://vo.framework.dlp.com.br"/>
+      <xsd:complexType name="CriterionVO">
+        <xsd:complexContent>
+          <xsd:extension base="ns0:AbstractBaseVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PK" nillable="true" type="xsd:long"/>
+              <xsd:element minOccurs="0" name="critType" nillable="true" type="xsd:string"/>
+              <xsd:element minOccurs="0" name="description" nillable="true" type="xsd:string"/>
+              <xsd:element minOccurs="0" name="imageVOs" nillable="true" type="ns1:ArrayOfImageVO"/>
+              <xsd:element minOccurs="0" name="maxPonto" nillable="true" type="xsd:int"/>
+              <xsd:element minOccurs="0" name="ordem" nillable="true" type="xsd:double"/>
+              <xsd:element minOccurs="0" name="qtdLinhas" nillable="true" type="xsd:int"/>
+              <xsd:element minOccurs="0" name="required" nillable="true" type="xsd:boolean"/>
+              <xsd:element minOccurs="0" name="score" nillable="true" type="tns:AlternativeScore"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:simpleType name="AlternativeScore">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="WRONG"/>
+          <xsd:enumeration value="CORRECT"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="QuestionVO">
+        <xsd:complexContent>
+          <xsd:extension base="ns0:AbstractBaseVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PK" nillable="true" type="xsd:long"/>
+              <xsd:element minOccurs="0" name="criterionVOs" nillable="true" type="tns:ArrayOfCriterionVO"/>
+              <xsd:element minOccurs="0" name="description" nillable="true" type="xsd:string"/>
+              <xsd:element minOccurs="0" name="ordem" nillable="true" type="xsd:double"/>
+              <xsd:element minOccurs="0" name="resumo" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCriterionVO">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="CriterionVO" nillable="true" type="tns:CriterionVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfQuestionVO">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="QuestionVO" nillable="true" type="tns:QuestionVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://results.jazzomr.dlp.com.br" xmlns:tns="http://results.jazzomr.dlp.com.br" xmlns:ns0="http://vo.framework.dlp.com.br">
+      <xsd:import namespace="http://vo.framework.dlp.com.br"/>
+      <xsd:complexType name="ImageVO">
+        <xsd:complexContent>
+          <xsd:extension base="tns:AbstractImageVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PK" nillable="true" type="xsd:long"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfImageVO">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="ImageVO" nillable="true" type="tns:ImageVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType abstract="true" name="AbstractImageVO">
+        <xsd:complexContent>
+          <xsd:extension base="ns0:AbstractBaseVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="image" nillable="true" type="xsd:base64Binary"/>
+              <xsd:element minOccurs="0" name="titulo" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://result.application.jazzomr.dlp.com.br" xmlns:tns="http://result.application.jazzomr.dlp.com.br">
+      <xsd:complexType name="QuestionResultVO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="criterionResultVOs" nillable="true" type="tns:ArrayOfCriterionResultVO"/>
+          <xsd:element minOccurs="0" name="examVar" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="page" nillable="true" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="participation" nillable="true" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="pessoaPK" nillable="true" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="questionPK" nillable="true" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="score" nillable="true" type="xsd:float"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CriterionResultVO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="chave" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="checked" nillable="true" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="critType" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="criterion" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="pergunta" nillable="true" type="xsd:long"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCriterionResultVO">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="CriterionResultVO" nillable="true" type="tns:CriterionResultVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfQuestionResultVO">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="QuestionResultVO" nillable="true" type="tns:QuestionResultVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://exam.jazzomr.dlp.com.br" xmlns:tns="http://exam.jazzomr.dlp.com.br" xmlns:ns1="http://question.jazzomr.dlp.com.br" xmlns:ns0="http://vo.framework.dlp.com.br">
+      <xsd:import namespace="http://question.jazzomr.dlp.com.br"/>
+      <xsd:import namespace="http://vo.framework.dlp.com.br"/>
+      <xsd:complexType name="ExamOMRMetadataVO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="omrKey" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="x" nillable="true" type="xsd:double"/>
+          <xsd:element minOccurs="0" name="y" nillable="true" type="xsd:double"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="QuestionnaireVO">
+        <xsd:complexContent>
+          <xsd:extension base="ns0:AbstractBaseVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PK" nillable="true" type="xsd:long"/>
+              <xsd:element minOccurs="0" name="description" nillable="true" type="xsd:string"/>
+              <xsd:element minOccurs="0" name="questions" nillable="true" type="ns1:ArrayOfQuestionVO"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ExamVO">
+        <xsd:complexContent>
+          <xsd:extension base="ns0:AbstractBaseVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="PK" nillable="true" type="xsd:long"/>
+              <xsd:element minOccurs="0" name="description" nillable="true" type="xsd:string"/>
+              <xsd:element minOccurs="0" name="questionnaires" nillable="true" type="tns:ArrayOfQuestionnaireVO"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfQuestionnaireVO">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="QuestionnaireVO" nillable="true" type="tns:QuestionnaireVO"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="processImagesResponse">
+    <wsdl:part element="tns:processImagesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processImages">
+    <wsdl:part element="tns:processImages" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateEventResponse">
+    <wsdl:part element="tns:generateEventResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateEvent">
+    <wsdl:part element="tns:generateEvent" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IOmrGenerator">
+    <wsdl:operation name="generateEvent">
+      <wsdl:input message="tns:generateEvent" name="generateEvent"></wsdl:input>
+      <wsdl:output message="tns:generateEventResponse" name="generateEventResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="processImages">
+      <wsdl:input message="tns:processImages" name="processImages"></wsdl:input>
+      <wsdl:output message="tns:processImagesResponse" name="processImagesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OmrGeneratorServiceSoapBinding" type="tns:IOmrGenerator">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="generateEvent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="generateEvent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="generateEventResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="processImages">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="processImages">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="processImagesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OmrGeneratorService">
+    <wsdl:port binding="tns:OmrGeneratorServiceSoapBinding" name="OmrGeneratorPort">
+      <soap:address location="http://localhost:8080/JazzOMR.ws/cxf/omrGenerator"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/JazzOMR.ws/cxf/omrGenerator</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="generateEvent" bindingOperationName="generateEvent" type="Request-Response" outputName="generateEventResponse" inputName="generateEvent" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/JazzOMR.ws/cxf/omrGenerator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.omr.dlp.com.br/" xmlns:pay="http://payload.ws.omr.dlp.com.br" xmlns:exam="http://exam.jazzomr.dlp.com.br" xmlns:ques="http://question.jazzomr.dlp.com.br" xmlns:res="http://results.jazzomr.dlp.com.br" xmlns:per="http://person.jazzomr.dlp.com.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:generateEvent>
+         <!--Optional:-->
+         <ws:arg0>
+         	<!--
+            <pay:modeloProva>cid:101170723593</pay:modeloProva>
+         	-->
+            <pay:modeloProvaDH>cid:686329467330</pay:modeloProvaDH>
+
+
+            <!--Optional:-->
+            <pay:eventName>Teste Evento Novo</pay:eventName>
+            <!--Optional:-->
+            <pay:examVO>
+               <exam:PK xmlns:exam="http://exam.jazzomr.dlp.com.br">1</exam:PK>
+               <exam:description xmlns:exam="http://exam.jazzomr.dlp.com.br">Exame Semestral</exam:description>
+               <exam:questionnaires xmlns:exam="http://exam.jazzomr.dlp.com.br">
+                  <exam:QuestionnaireVO>
+                     <exam:PK>1</exam:PK>
+                     <exam:description>Ciências</exam:description>
+                     <exam:questions>
+                        <ques:QuestionVO xmlns:ques="http://question.jazzomr.dlp.com.br">
+                           <ques:PK>1</ques:PK>
+                           <ques:criterionVOs>
+                              <ques:CriterionVO>
+                                 <ques:PK>1</ques:PK>
+                                 <ques:critType>A</ques:critType>
+                                 <ques:description>H2O2TesteAlteracao</ques:description>
+                                 <ques:imageVOs/>
+                                 <ques:maxPonto>1</ques:maxPonto>
+                                 <ques:ordem>1.0</ques:ordem>
+                                 <ques:qtdLinhas>5</ques:qtdLinhas>
+                                 <ques:required>true</ques:required>
+                                 <ques:score>WRONG</ques:score>
+                              </ques:CriterionVO>
+                              <ques:CriterionVO>
+                                 <ques:PK>2</ques:PK>
+                                 <ques:critType>A</ques:critType>
+                                 <ques:description>H2O</ques:description>
+                                 <ques:imageVOs/>
+                                 <ques:maxPonto>1</ques:maxPonto>
+                                 <ques:ordem>1.0</ques:ordem>
+                                 <ques:qtdLinhas>5</ques:qtdLinhas>
+                                 <ques:required>true</ques:required>
+                                 <ques:score>CORRECT</ques:score>
+                              </ques:CriterionVO>
+                              <ques:CriterionVO>
+                                 <ques:PK>3</ques:PK>
+                                 <ques:critType>A</ques:critType>
+                                 <ques:description>NDA</ques:description>
+                                 <ques:imageVOs/>
+                                 <ques:maxPonto>1</ques:maxPonto>
+                                 <ques:ordem>1.0</ques:ordem>
+                                 <ques:qtdLinhas>5</ques:qtdLinhas>
+                                 <ques:required>true</ques:required>
+                                 <ques:score>WRONG</ques:score>
+                              </ques:CriterionVO>
+                           </ques:criterionVOs>
+                           <ques:description>Qual a formula da agua</ques:description>
+                           <ques:ordem>1.0</ques:ordem>
+                           <ques:resumo>Qual a formula da agua</ques:resumo>
+                        </ques:QuestionVO>
+                     </exam:questions>
+                  </exam:QuestionnaireVO>
+               </exam:questionnaires>
+
+            </pay:examVO>
+            <!--Optional:-->
+            <pay:pessoas>
+               <per:PessoaVO><per:PK>1</per:PK><per:nome>Jose</per:nome></per:PessoaVO>
+               <per:PessoaVO><per:PK>2</per:PK><per:nome>Joao</per:nome></per:PessoaVO>
+               <per:PessoaVO><per:PK>3</per:PK><per:nome>Maria</per:nome></per:PessoaVO>
+               <per:PessoaVO><per:PK>4</per:PK><per:nome>Joana</per:nome></per:PessoaVO>
+               <per:PessoaVO><per:PK>5</per:PK><per:nome>Antonio</per:nome></per:PessoaVO>
+               <per:PessoaVO><per:PK>6</per:PK><per:nome>Suellen</per:nome></per:PessoaVO>
+               <per:PessoaVO><per:PK>7</per:PK><per:nome>Igor</per:nome></per:PessoaVO>
+               <per:PessoaVO><per:PK>8</per:PK><per:nome>Marcia</per:nome></per:PessoaVO>
+               <per:PessoaVO><per:PK>9</per:PK><per:nome>Mariana</per:nome></per:PessoaVO>
+               <per:PessoaVO><per:PK>10</per:PK><per:nome>Sara</per:nome></per:PessoaVO>
+
+
+            </pay:pessoas>
+            <!--Optional:-->
+            <pay:qtdVariacoes>3</pay:qtdVariacoes>
+
+
+         </ws:arg0>
+      </ws:generateEvent>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:attachment><con:name>ExamReportDSP2.jasper</con:name><con:contentType>application/octet-stream</con:contentType><con:size>50426</con:size><con:contentId>ExamReportDSP2.jasper</con:contentId><con:part>686329467330</con:part><con:url>/home/darcio/workspace/modulesOMR/branches/JazzOMRWS/modulesOMR/JazzOMR/ws/ExamReportDSP2.jasper</con:url><con:data>UEsDBBQACAgIAC6D6EIAAAAAAAAAAAAAAAAVAAAARXhhbVJlcG9ydERTUDIuamFzcGVy7X0HeFzF9e+cuSvpSrqyJXdcwDbYuMo2NgZjg1GzLVvNkmywDYi1tJIXr7Tr3ZUtG0IJvUOAhBISEkNIAnEooQQIJUAIJARCIPSS0BNCTyCU8M6ZmXt3ZvdKu4rzvX/+73v6tDOzvyn33JkzZ860s9f/jeUl4mxaTyhZnugsPyaYiIXi8VAsGk8mykM9XeGeUPlKATYLkIm/fZ/hzKpjxe3R7lg4EqoOJoNJNqrumODW4JxwdE5LKB4ORsI7ghsjocV1rEwlawh2h1p6OzvDfUk2TCaOBHu65rQk4+GeLkxYohLGqyLBRGILO57xvjibPRBtG4MJJLC5Er10AmfUsj2aWmrWVDe2tdQ011bUta2taW6pbWxoW1NbXcucjdFkMtpdH4xjQbX0LpHe7p6qaG9PspYooW8tsWA7kubFHhbuSG5az0rDXT3ReKgpiDmDyXC0Zz0bHk4si0SDySqRblk0mgzFKWGipbe7Oxjf3hDahslD69lEDzosnNxE2IpQsCMUr+jpcHMNCSdaw0msL5mnlhVFQp1JSWglK47Gw6GepHguRsVECeGuTUh1IX0RNFZiBFZqsjGORSP5cUrgvmphMhpzSxuybVOopyFKLdi6PRaqY0Ubg+2bu+JYDR1Jtk8d1v2cROcco+7nyLqfQ9Xe04HtNlTWTnU4HmonspJs/oAZk/ikOc29qQw1Pb3dWI7TrtUeNX/Aw2QlCWwDszuQ3EQomUiyaRuykFgtk1LpHaHOYG8k2ZLcHgkl2ZQsGUUyzJbfEUoGwxFFTon81uK+6L7ZSpEJsZxhndF4dzC5LNiejMa3pzgcqzzcLXK1hJJJNlR2jN5kOIL9iOi2qZP0Ysuq5EMwa5IYw6in4u5guEe9bHayUrUS6MFeqUrO7xGMoEos1RhtbTDSi3W2X/ZmbUxlUq0qWNSgVTGt16LIQSluVY+al/1RTV4e8aQNLD9BbYZcMTUbV7iNW5CQfVExVmEy1B2LBJNUxpxsZUh506pyYGF5Seq16o2Gmx1LvdX+2d/qMCOfeLO+GGP3t6JYG4EfkBKOz2Tqj0BrJSIt7rcRDEX6zBzFJvXhlNAsGFho5m8SokbIqJZYJJysiESi20Id+L6iBYn4mr5YPJRIiO4xI0sdptKS+I/Fo5goGQ4l6oOxJJudJXOTnhzzFyaIIqq1JCvVxpfK7aJ5hnjRqjHmZm+MFjeLbIc4m59jrdZEQt3YD5ajII2lahf7mN2+KRzpiGOcS6Po6nXhhJBRIS1fks3KVn1aauQSbPXhVGQ5FVleEY8Ht1O5fSc9MeGyh4JXWgxqWSAR3hHqEzRtC6BT5DEXg1gsdnyclQ/0ilQr5UatuGw4jDGsnyHi+VTt5emR+D4FLa3NNa1VK/Ap87I+JX2A0MuiTjYhiTpIa7OQomXCHev/Vtk6QxonGSpOgNqUyh6ODJTiT6pWQkdncq0uwIkv+2IxjzguiONJNjoSbQ9G2rpDid54qK23B1UB0bGSbBLqQIrMRLQTiU72doSj5ZSkXKbpw/cpSzXzimBiEz4nr+C5++4fdfTvLcaXocIQDXbIkYaG+03YxzZFIx19saWHipezttnoClqItOlJlhcL94XEIDcjyXisry9G4T1zqFyKm/Iff0UqbqY/tfN1ahfo1CL/JrLwr9ZF1dCcam7YwPI2ojRE4T8lm/AXmk9frDeukg7AXCLpJS8e/845j5y6P6eOQBWXVrN5smaR/P1zJH95qAfV7HYlAlJvkT+QBEeFL7QVpZ8Yn1vD3ajwDU8BQo40pPSB4Wba3MewGiOf0gOKuyTFUkAPrEqsbDZfj/JIVSKO5KEmISpudF/urZ1RT+NyHOlGhxNC0ajtWRaOJ3CEi0bEmLmejVQxqAiEUAPoEPWTWM/GKpwGw2qhLjZuDcU7caBMiEzNoe7o1lAdEkgpKlFYbq5kTiyaCIsaw1dFLT+RjIeS7ZvoWy1yByn1tQz68LMdRzpS0lExpvmOGkWC25JzqgjBahqha7oo27aGUUdKsgXZlEKfXOljElX7GCQAldmQIICAqjpmbQ5tV1wT6I52CA4agekorPhmZna+qcfULrdgU+NDBTFUWEEdG6NBxKXNoc4QAu0uu5bpVagemsNEpEnLpR7up8zQQ4bVsZFelKiPqk041JG6mG06Icfo9OFCjCwb6HkC3J56HBY5P5sQasrIhQ8o1Tgnd7W9JZVJ1UGgtxeZzlBS1mDPSCmjhQyULlpIXYoEtXifUnIOjom/nAb69AbwGehHLas9vK25pq6itXZtTVtrY1tlY2trY30iS/F6//fqKCUCArWMhztw3tC+qbdnM9b43Gw1niqlirKQVkmiLiSmc5rkHJZCm0PBiBcjZP94HDXmZhs10p/Uve6xl8Krdq5xBxAL333hoN9dlKXpo5UskBTT/kAy1JdUJEKSFU+umFwe2tIbjCSmCVHbaiVxKh5PlrfHpeonUUwK02OxDC0gIIazADZchhYgRFmSTRxACVBJ/nMaRL7QIIQWQfCRugZxlNAgKNSmw0crxQI5eG52hdjsPT4MXNSAw4xUfhOulizUN+pTd11mfXJp96lzsEFWMicSwvl9S7irMpxMrMR5fdT71hf72ScT1lx69tP/+GTon08qParyp6IrEo0DzksEjZljsp9C3dB4WCLLG/uNzcYUR19SKKRwIhZsd/kfJwHHBHfsiHbjgDQB2zJ20Jw5CiinVt0Yd7+mMxPSdci/pRs1uUqDptmvZyWJzeGYEPHdseR2k+qhovumyX7sdkmWH9oSXBXaLmhrxMIm9FKo2dPoWpHnC4Lt0TYcD1W3SGC2ItTFsTPRqo2XdU+frMVNFctr2hrW1FfWNGvZC6nXtSXdbke590rPnd5B9advSXa0RcI9m9SaE+Wf6JO/hPJj2jqRNBbry8YKWpW3ovxYFg5FtLWEkQNrWCUbo9HN3cH45rrQ1lAkQzOtZEM34WvEke7NrcF4VyhZyUpSCAaEMqW6Hi2muloWKkDBnvZN0TiJ3YwBfGiavkvwcn9dl6IORa0zlF7GHh4dFeJBGQ8Z7SWgJk+LxvFei3YV2hzG+xUZuXAAGu+V5elDGeSMTdVbNBpJhmMDEOyr9QwNJ4SeKhaneiORJM6HtQUWLDQUJOWjKNVaqivZbmup7wWxYBIJ7/F0Nvk1va/F2X6DYLwM5X7KQKxXx/I3RuNq8RGV1GL5rUpTZ9XmQKWerEzH9MQlMqIp2NER7ukyq6a2JxnqEu1kd0Z7kpqKIL63hHeI7xcgAyIfhXcgFoxURMJdPfRC6sljfKKUarcwu2q3wsys1Lt8bNFopIOecB4SE07UYoJwu/peglOYjs6a7o2hjo6Qm2io6G3hzaHWTdhxujYp2CEYVfKOVqVCIFYcTqzp6RAMFVKQ2MQwKnRoCtGrs5hgVZmqbgqonMpoX/aF7TqZkCYQlEdt4KgHlmpQ7qpxXSqTW3cktaTkkByt01pIc9SueDCGGsz0bAq8m1RMeLDCe9qjblFcQstMrpE7OUY1lmqQwcMCNyvSjkfl2rzKW+J+V9UxJ4d9m6ixuk+bSQY5QzxAJ6YIUZOUsq00C2rP5PZRGRGKuIHnr4K4tXpWuWZLpVaqKcsQd/UcnkRnGYUypywUrsNenD7laG1sylR0IdtyV39LWUDwt12NUy5gdYm04etvCt6+6cpT5ky+45hZ5T2VexPxsYy/Qax0qU6REo/F6ULL5V0FkiwdeLpOpdMyWLQPEy8WArOvioQMRsazL1xXaqkX99PlCQoJRv1eRiezYl6MP5sLzEuTyX35hKj4PlGZua7sI+mVbi2lapQNYqNaVpq27pgScETPN7CoGTkWZZQz4MofNi49Q++TAvAWWKjrekDuOyR1bhZXHlAZh8kJXJk2EIrdcWIUbLlBMEqTllotPRDzE8E7PedbsUEsBGAt10nW0luPirkms3TZ0X0jctdQ8InNih9zemTuSjeW3Cr4OJdypczItWhvaEoVXYRDdietgVKb1+LwLkX2BWpsN5D00fciGu5TkKv3/LCODfPGS40tsq0ON2XkWeyOjQYZTkI+r6JT7T4jVqKwyhAtYroJk8GNLSgTBOe6UkRhaq055tbntzJksbsdIgYUkSbiTbQmeROtPG+iNZQmWh2hBM7VYjSWeosp+TMnH3fc5JkZU0kvQdnMyRNDfcHutcF4ONiTPMhNS4ViRZZrceZoQamWpoZBNQ5aLtXeokRwW7JcCAm4ZvTJpefP7+UsbxnL7wxGYpuCtSxPzIzrGG/HCcu41NKzWAuWC9DUxKHFG1hhZ7xr41YpSPiGZRuwkK3urOoBuQP51VdUX9oQLMj8pRaVFK5IcalXpZO9KrW8iimeXD2oFSs10HfiyG2sK1Y0VLetqKldvqJVDsanvL351QefnH7Fzc13vtG9tqZTrrikmrhnNxY03Pl5+qLC3v/+osI+u7WoMGU3FxWm5rSoQDHnKFZ0kBUlL3ZgpjsoZz/s8NVXLi+bzLDvf5QZxhoaX0VdXU1La1tj5cqaKsUPdxw5f+6Z15eM7bvmvNrXL2nMSyln3ras2P1WE79hf77q6k9OOv1ATnvvsvPg8F6aStfQi5Os+GnXXzKh+OJXznZXd8vSi1NT7Ecnxk986tufvYvFrXeLi4HRya+S3tVEmF/9IQTgOuw9mfq67Kkzh0IjYleuJdyQQ0L3XW6K5bb+mjZFc4WatrDpNDbUtIm+XVG3LCbffAApDulSfFq6FEfWOWBy+eSZ06LxrvIgPntTiLp7Nwpz2WLyVOOaZDiSKI+LHcJpk4/omTh51sR+uoZXbuHBB/f0RiJL5x6ULWX+9OkzkYh/d15QE4mEYwlt8Za02Jz3n2n49dl/zhtYCw10hiMRpW8WUjj33cFlmFppmUJfFtOUvbMrkItT84URxnRw4B0sjUdPPPFEf+Ez3Vf4/D+8dwIztU0SmOXuncBsHS7XDmWoOe3ZVeELHtzZuGLpuZHoA8H61xjb9q569R9IkZLTySNjtuHTzfOrK1pW1FRjHxiakp1i6vHc3x7+/vNL3n8HJecyV3JSpi8Pueyyy4novWLezuaQ/4FjLXCwXoOHmMdakixArzOYvq1OeKb6ZdlA/XI9rQfWB+lE8Gg6uNgcSkR74+2h+nAigVKMmJb0N1rfz+V4pdgIoL1o7OCoeGesf+fTAeNYLiW52+ap3ZkN+imQJJuRdZNcWyv32XyvY3lbekPx7dl38FdTMtrxjavKqezt6Yh4p3KlMh8JJVNHe5FUD82F1BY38WLKiXHLVIVnz+kmdjfu6fkrUQffSnOBjeJQ7PRshaxVaWlToR8mUML6kNyOsfoUoJ1nBdYbVwwwwF6jfCu+5OWHGmZ8GHP1I+oJs3LsCWm7Unk4UdSmXqr59N0/Xy4Z7D4/9lnetEqJEfqmnYysi/Z0CdECjRhRGIwkW6M4i01oqTUNsTrai42SSl8cpD4V7Ig2ReP+OaTqkcqR104Eamk14ShoTyW12+kCBL62lroktVuNERrhWIeDIaM4fcabNUdRB52WSlSHE7Hc6qZQZuiNJHNPP5i6Lwj1dDTFo+0Z7SpqB2WultbqCW3T0mUq86mk+TR1z41b0mf5/k9Qs4+0bINmHNrLKM+deRyRPHcGGuulb4gmW7BqQx1Nwe10djWR42uN8Epws+NcOMe8JSLv4FhYVEhHssLgr345QKWu7cmJX4pFy+bOX0UifTyOtPu3jtB7NCZDrsmVySjp4LmFcuXOLSUi+eDqXxA2aDEiCMu91WTqHFutgFIPoqdv6cm5p1PSwTcC5RpEI4jkg2wEyjP4RhC5cm4EmTrXRqDUuTdCAY7uXTm2QqlIO+hm0LLRFcGtoRxJKxL5cm+/ITL94BownyajOTIhJR08E4rZbs4vUSySR+N02SPHeipR8+nBUJU5B8/O6n4L9bm9fu6sLlPnyOriJcLdOM6tbdRrd/JGudzcEYmVu8vPcakJldfK5KlCykQhiYpBs+cwmREVsgQqyIPJKejuDvY1RXuS0RxH6ALKk3u3FhVJJw+6c1PmfBbVstMk3iMe2tIbjoc6BkNYAhlcr6xZPg2GM9EEsVm51jItlE8TEKIsrPrebK0vpkAtIiXNutJl06C5ukxmG3zTS5mWc39wk+fYIUpE8t3tEbYoJXdek0QOgtmKRQZ6fnc0t/qWOXavqYtoYNy9IoTKFQ9FgsloPBzFKk6VM9WnnFA3rfUEy5tTOTRyqKzdI0do7Z29EVo6Njpg/4pvAWXJvWnFnKInmlwTo5nI4OYUtsobzI0paO+7HJu5vUoOfv32xfSMw92MoZ5kVe4Trnwc93KeZ2LSf2PCiLkGoX2K5IOdgmGeQUzBROocZYlIHeoOhiM5qgcivVjqx/nnpmCOHCYeE4l2hXOUvMMofXeiqwp1l3B7Xe4ZCyhj7pxvi+TR7hyVI5V8az/Duf9rJ9LqaWAdWqWvivZ0huP9SNqMRSORbbeEjENFJEORUGe0J8fKGEJZtgYj4Y7BcMJI0Y9xwo8SpjUU7yZ7IjmrFUIUyhEtt+4vMmDNxJODWmP4DwjsZLg71BIL9WT2Wd8pF+bo7QmjNlS53TvdMPCrkXLSXh3uCieF4Zn2YD+DbLogHTp4IVr277ZX4aCqPn/3qr0wlyqP5bICL7dgDt3ZtqPuy76/uCvwgUGswKdZQSjNckO5U9gKcW8Frmd70JquuHYpbYY09tQE2zdJczplYr03JOyhyKMU0uoO1XRDaJs0xyPNVShI5nM2h0Kx1mhXKLmJDOSMxpaUVnRao3pCYZOol04gy62RJJuW+yZK5r2R4ear5X6hepmRz7tQTfVqWFYZpkHqfjvF2G5iw+jKMA0yE6d2Q9w9UVAnp7HV5+TY6m5N5LgFWcmK24OR9t6IOF1eyUrCPe1x74LZenH7YHsiGequDnXikzoqWWGcWl6aLSrV8uZ+tL8qlck1VpPRZkM8OvTrQsMM6nI/oF6rZ1PPHOeVFYrr5oG0faa9+klibDrVsVHhHmSQoDxTkXGJR9/jKhJ1p7/REK82cz/82+xmUW8y+Muw294l3srpkE9aY/ns/udVNa5pkGeL6HCGnX4aDZJsDGpDEzMU+Gnz6CDG8VmO9AoqMhrQh45AQ2NDjTrdQIQU5k7I3Okkp4c1BekeQzhGA1mbeCvMZ43M6YyE0Sh+tbS8uXFNU7/zGEFxmc9BPrVJFcvtummmxPI7rtHQ2FxfUSefe6B45mKWaRzjv8HsiLVYO59hLVHnM2LZSC9Qdj3ou3vmcU/vFspKisNPnXfsyKrUjhm5AXWG5sfnvH3Vmy/86ItXH7/78hdn1Y3Qjh5S/BdUWCz1J0D9NKAqzlruOdUy9rrMWBlxTX8Ru/qLuMEnAhk60IOKtExxkxtbHUv/G+gY9TCPI7nXh4omV0R6e6IHTdROQXtzGKNkHLYOyHHYqop2x5DYnsxLhXSdud2NzWahzEs4xytQWrhTX1aFtmcbMHyKwFzmjaY6l5cwxOB2UXO58NLl1z+68uz3xsza+Nlj750w+9DtWEEH+1aQR0QCKyneHu0ILTiGNNVgfRBnQH0eZalqgjqWl9gUVDc+++LsoNwLrpQhn1KLB2XWptYwk4gDE5Wa01XgfszeUNShZGUv2tEbce+36EYs5cRicb83WpF3tvSGQ8n1UXEj0jqC7hyE+pKuhFTP9m7FrTYSp0Qf83rE8PSzh5Z5kIB6SN7MybO16wTmSXDZw8TEIF9e/IplvdbitVq5zpOpZrIGvP6PVe4BTXHU4/qUIoB9OcVTSXawd45eJ0EeJuqMxrtCNAqmdZoUP6FsPiZuSNwRXi/pxV7yA/SX5dRL7nrivRHfvP6Edw577amLvjhy2Uf6TTwcBRdkHQV97t76DYNVNQ2tokWySO4tnhPxkdwy1kdy6xG7+ou4wSciFkuT2ZFByewRu82hhgTP9YYXTYfD7XQb2RBKmokTcs/P4I2k4o31OfHGJaf2/fisX1/29kcHLZhf+mhFlc4blDWavTlP9pyTfJpTxvo0px6xq7+IG3wiMprzpIzmRMXU0z3vv/b+ndGJsyc23f89MnSbRYfZM6dau/Ada+cVe/xu2X5zyp9Y/eKhO310mFJ5FYBlrb7zPOdsn+qTsT7Vp0fs6i/iBp8IuShDN93TqvHsQfWKkT66tX40zmR7qopx6ZWOIcZLvNFAHlIHcXFCawRU8Rvrm+uD8c2zk9HYbHE7TmuXdBXau8pcoHINdHXZ+m5SXP2WpRpHvb9+QMeb0/jBsRFv7Hpt6S0rF2Ue9ZZvtYhKpaIuF9+tE9M7pEhRJrTaXFjr7FPh5NItq04+du1T467984rj+rk23R83Xes51/hwk4z14SY9Yld/ETf4RGR0xmt8OmOpa152YizYEcfu6CkCCWGtkwoYjy1RW19fU11b0VqTZI4+dxQVO0znRsky1ih36k1fxnu8WTTIKTPl3lub6RYPdqZbVNMX7E7NcG8iZyY5s1OFjvKbjMrDbJKC+f8rJpAP6RPIX+c6gQSfCWSpZwR4vBK+qUtz1u/67yF33Lq2s/jzx15Y9FLlm8vnHfoDH+Hr5NJV/uA5j/t0FRnr01X0iF39RdzgE5HRVR4flMAd7cM/6QcJjcI8PhkNshsGiEsH25ec3exLJYNeNVqtjo8E42Ft1ehlvz41xq9PybOJ/5v61Md6n/r77vQpb9Thw5i0oq1NpD/vv0/9/IoLj86/4eiHVxx888IHftnwSqpPUcZluXSnrzznS5/uJGN9upMesau/iBt8IvpZj/lyUJ1qD79OlXYw1L9TjVWdytHZdbCda8hudq6hg+1cQ5pC8a5enMl5HSvg+HWssT714p43/Td7VlFmz9otszOBSSmzM/9WXxnq6aFXMaGLan0lMNXoK//XRUJAv6AYmJV5E/GKi54Yf1fe6pdOejGx7Mbrl98/ODUxMM9zpmV2VhWb2VmNiF39RdzgE5E+9uFjB9NNx/lMwY3jz8T4BRPFJDx1MTnjhKB/Tx76PyDyA5V6+1a5Ij/JbLeDYl+l4Vr+PEN1S9N+vXF1gW4gC/DeLcHJzDl3xv1HT3I3uocP0mhKmqXJQrH5vCwab4pHu7Eue7oytzLr2Chlsdl/4y7LfbUhPShHQx205dPwH77FRlNKrM/mmqbG5laUfA2tNYe36ockpg9UM7IJyERLqE+exwuskiWOVCU2VTRX1Ne01jS3tNVXNGU5feFmLllZ0dJU09wmy9Az5fwzRkZ5ZanXa6ipaq1tbNDLlL+okNgSKccX6ZHb5Eb2UpW9vuJwOTakcqfGBjfxMJW4uqK1oq2lcU1zVU3uLyB+tqVFrIL6UtBS1Vzb1FpXY9TJgNv1K5srNiaS8WB70rt7ala1KrmusaqizqC0NNU+ddTTTYpGqXzNNfId2yrXNFSbBYxJFdBsXKj1fbXW2vqatvW0raoVMSxVBC3Ur3d1mnQuW0a7jOhVVLU2Nq/TSxhwN1UUvEz/1R6j9OEu29RVtLRgDVVU1zTrZY9MO/ZYR6dJ40YRY1URa5rr2lZUUA01+1EplRIiFROSwdNg94ogVVXcj64R7lvX1tWIBqhbaxI2oJ0y+dLhSIgaJbI1jWCvOWrqm+oqWmta9HJHpJqjKhqJ+HSV4hZJWE1dtZFTOwRFv6xh5MnH92g1X2BAoaMuvi8TN899+97a2ubWNRV1tesHUerK5rXhOFnbCe9IK3VEbUtb7fKGxuYalGbLaxsq0gVIP0fCfNW52f5jI/3eVbkaIigc7AjG8O0GVPIuS7J9VgZ37Gisb9YFh2vYH/m6OpQId/X0DeIgl7gCnxrbuGY6fWa22+Uir2s13fxNKzF+o34S8bSd8FkLL/r2zIKGn3w4e8q1q2c2nodj+PRsY7h39GrjGycfd+ms26rdIbzInEnQqpk1DjmrZV0LMnLm5IANbnKRtmship+BxUt2S40BxlwmcHXmc2Gwzy2paqxbU9+Q/uQAkdPPc7U5FN/NOZQ12DmU4w20NEpSJVyXncrAblKZN+glSdGYKRpvzk5j/m7SWDDomlQNL6n0OE6ikl5yx5Ij6H+F3qREfwfm9YOChsbWFbUNyz1ySj1ySj1yiieTAbJVoe2ztcMWA23mWeaNY79o7S6sT3TGNCU9u3aL0Sfa96J8lh3H/spKs4Hmtl9MM8smuNnvhPjxcbYk6z7xANYy3Jmdcb5sTV0dPXBFbuax0n6Tz6dEm/plc0Vta/+zf30XSk3/91QF2SK93y5UHidFyd2FkocMZpOxSCJ8wAFXEO7+HowPxfmNTRWr19T4L8pds+dn++z64o83PlH75Bkf/XT5Tdm2oPICqUnt1P+BSW3eUG1Sm1f6X/4LXHljdGr30Kk9PsvxYPl7L8bvNvpxIyqsrbVV7sHA/7K330d/+ymGoab/RnJ1y1x55WmNlf0cZ+bPUfo1WEMjKb81Ldl+lKZDqJzl7o9nVqV+PzilVVp1bHh7PJpIJIMbtQT0qKl1bJj67dfMmFHaL6CmxUJfzKgiR1RRKQX7+o1AlZNvqLz+o9Gf5tutryhdctVxj/zrjrsxutyqADbZXGhqmzf/gPn7zV+w/4L5Cxfs17bf3Lnz5hWQtJw1kGpMNxnpp4XkobNovIBZwEZ7Nq7ajCk4ZDnWrgojU3mpJS2jOGPxBNj4jAdp0yMQJlrMaG8mDuL2korUJnaAHSE9kzEX9SvVW7oAtldGpLlKBGxcRorU0g2InwnLiKV1K2ATMqO0yTuwfTLifWbmfnWmLecYr+83NwRxwUklkJNbv5c2Fy386sxbcPJtJneGDmxiRmTasgy+kTDt1oYJFyzMuN4ErDxXnpPWuoAMv1F5qDYtWCjuanqQeIQJiVTiejywYRqkLEIAK5EgKnMLFjatQm5WRaF+uGChZmMD2AgZg4olZnfvlZrPFrdTgQ3XHuSaJfASivyKSONh2kKsR5ZITGSN0J+SerhXQALfUrvNCGRN24uhe5TARmmIdq/US+qZCkM2N+jSbuV7lSij5JXzFHUCdK/LAxui1QPOOLwneYa0vEoR1a8qRadTuySMIkGLSN2GTLUA4eI6rvcg71JcGt3y+ptHoHi6IHAPrSjzUqxJqmroIXolU/4R2ht71h88hhDp3KufJov6cI47J/CYQaDEDKP0SvPhGsElWkLBRUZVlmkluJWhs5hWcTrbKirHaPQYlj60NqJqzuwlqp1FGxVKSNSbLcNEc6nOI2SdLdV2RJkyYoWCWgPTb9R7by6FhF5FY3VpZN7PNJtPI75MlyWqtvSqNR4wRIsQ71aiNT69YJmWwK/uvVu3Wr9KGPS4MsutikyZ5aYcpZXrxwAG5WWeHEil0/tWRPYDvUxtDuxRKztIilrH64viVfcwmKfaEC56NXh2GEwixA16YMWqFMmQeofQzEmYORNSWuhp/arE5X9BrN4fXcMs6cONYGZX1HmsNFRvkzTh54pZvfSU1NQZO938XIpKKZrlw/Vq867mpg84ulzUErm8kzkwD9GfRIw7PJ0w8aKm9BUSfA8toWmBQudV80q1WZBqV+NlhUGU9IGtG7lmUjpdGRb/0kpKK10wsrB1p8svUzKM1tLq18fT1RG9ljMliNtqGRqKerch2lN0nnGFXNAUbL7sK1jdFSuuidY2bSEKstwu0lQub9Ubn+sVZawLY415EfoKLHKL+WyFjkwvRuHjUqkzrifqZaWOdOp5Mg+nYYulSjRO12DFezFqgQ1Y/hK63XoIMGva9LXAAlXRjpDDLmHfLMLJ7qUOy2P5hYyzyx1WIEPfdpgtQ99xWKEMXeWwIhn6vsOKZehqhzky9AOHlcjQDx02RIZ+7LChMnS9gzNDEdrlsDIZusHBebAI3eSw4TL0M4eNkKFbHTZShm532CgZusNho2XoLoeNkaG7HbYHG0uhex02ToZ+6bDxMvSAwybI0K8ctqcM/dphe8nQIw6bKEO/ddgkGfqdwybL0OMO21uGnnDYPjL0pMOmyNAfHTZVhp5x2L4y9JzDpsnQCw6bLkMvOWyGDL3isJky9GeHzZKh1xw2W4becFi5DL3lsDky9BeHzZWhdxw2T4beddh+MvS+w+bL0IcOWyBDHztsfxn6h8MWytCnDjtAhj5z2IEy9IXDFsnQvxx2kAjhSMYWyxB32BIZCjjsYBnKd9ghMmQ7bKkMFTnsUBlyHFYhQ0McVilDpQ6rkqFhDquWoREOq5GhUQ5bJkNjHLZchsY6bIUMjXdYrQzt6bCVMjTRYatkaLLD6mRoH4fVy9BUhzXI0DSHNcrQDIc1ydAsh62WoXKHNcvQXIe1yNB+DmuVoQUOWyNDCx22VoYOdNhhMnSQww6XoSUOWydDhzhsvQwd6rANMlTpsCNkqNphR8rQMocdJUMrHNYmQysddrQM1TksKEMNDtsoQ00Oa5ehZod1yFCrw0IytNZhnTJ0uMO6ZGi9wzbJ0BEOC8vQUQ47RoaOdthmGdrosIgMdTisW4Y6HdYjQ5scFpWhYxwWk6GIw7bIUI/D4jIUc1hChuIOS8pQ0mG9MrTVYVtlqM9h22Roh8P6ZOg4h22XoeMdtkOGTnTYsTL0dYcdJ0OnOOxrMnSaQ8t+FDrDYSfI0FkOO1GGznHYSTJ0nsO+LkMXOOxkGfqGw06RoYsddqoMfdNhp8kQyr/TZQjl3xkyhPLvTBlC+XcWO5tCKP/OkSGUf+fKEMq/82QI5d/5MoTy7wIZQvl3oQyh/PuGDKH8u0iGUP5dLEM34UhI5vmlFY5Wkt04WLb3JpLR7vCOUEctCm9gc6dpvyeOo/bigb+SoC8isS8Ws3C0HJaef/paB26D24uQgp+rtNJqugN3SvgunLoQjAMlgndL8B5IO9tiw30gDx15ZRfA/TjYdIWQ7KnTtKuejRuPQU1p8fRMyIEH4VfF8AA8BGJbZlDLdAXwMKSdbbLhN+B3bMGGRyHzaIwNj4FxxMKG34P/cRAb/gCZx4ZseAr6OZplw9Pgc1DKhmch/XiYDc+D7+EYG16EgY682PAy+B2QsuFP4H/MwoZXwT0gYsPr0M+JHxvehMxjWja8DZkHWmz4K/R3fMmGv0E/JptseC+3ZV5vlawAPgDNUqgNH4FmXtqGv4NmN9KGT8Awk2rDP8HdX7Xhc8g0OGvDl5Bm3teGr0Cz6W1zANMup80t0Az12jwPMs+C2rwA3L1bmxdCmiFtmxdDpukum5dAymCYzYdChvE0m5eBZgzf5sPBx+akzUeCYUzR5qMhzQikzfcAz3iozceBZhfe5hNAMwht870gw9adzSdBukEvm+8NmjU5m08BzaCTzfcFw2CjzaeDZxva5jPBz4ibzWeDZjXb5nPAM9lm83mQZqHU5vPBNE1m8/1BM7Zr8wPA3Ku2+SJwN8ptjlOE9HsvNj8Y3G18my+FDKvTNq8A3W6jzasgzZCYzWtAsztt8+XgY2HW5rWQbq7Y5qtAs7dt83oQZvNt3gj08wk2Xw36jwDYvAUMO+k2XwP+BhttfhhkmO+1+TrwtZ1o8w2QZlPY5keCbm3V5m2QccPB5jjdc61P27wdXBOLNsfRT7O+afMuSDPYZvMwpFlAtPlm8H5jwObdkGl+2uZRyLDmb/MtYJwStjmOlcVGil7Q7A7afBtknJCwOc6yTKvsNj8WXEtkNv8a+BkAtvkJkGaW0+YngWZM0eYng/oRCpufChkmRW1+OmjWAW1+JmSYoLf52aCbo7P5uWAa47X5+aCZ3Lf5hZD6OQubXwQpI682vwS0336w+bfANKxs88vA/8cFbH4F6CZqbX4lpNm4s/l3QTNgbvPvgWaOzeY7wceGnM2vAe/Ii82vBfPXFGz+I9BMX9r8OvCzHmrzn4CPLTyb/xQ025w2vxF0C7Y2vxlShlNsfgsM9NMMNr8NeSulaM1z+M+FUsXvAN1+uc3vAv1HCmx+N2TY27P5vZBp8M/mvwTNLrbNHwDt10Zs/ivQjQrb/NegGX+2+SPg2Xy1+W8hZZXV5r+DDJPmNn8cdKORNn8CjFNBNn8SxLGGwSzHFPA/Qtr5PJs/A+YZOJs/B/p5M5u/AObZLpu/BH7moGz+CuiXZ23+Z/C7AGjz1yD97pLN3wDv4JLN38IKUhZPaHNgWq2PYiue1R6S1qJBnomXCei34LfJF0blqCwVoQ6sFXBUjAJYKM71LuEfFPH3+YeoYKXSyWNSlb2dnZT4YyTGPWhm838QPXXpaRfLsj4t4n/nqAXZqKGLexPYY6f5KeX8c/5FEXzIUR8akoolA4gFHBWi/GAM+2UHqm9ZlHyd0sWOBRZHCizUmGC2beWl5XdJHSh/AeW3i/jTRFppesICCxUpOxmV39JfTpXvWCXWECoGFaoCZQ3JtsoQYZciYRW2NYL0RKFlpVWm+4brHWuUNbrIcqwxRgOqw8oF1lgsWtwQaezElpu2XidDJUI6xlsTiqxx1p7ZJ0se6eOtifRYVLb4ccfZFipYJcaP29oWKllQbVuoXEG5baFKxYvw9WaKGZ3b6Na06bWONdsqR96yUIPaOxrvmiN/kXGO+kVG/bniFxkLLNSu8uXPMgLb16fhan0pnm8tKLL2s1DrKna7TGMEWacYeRADgiLHOlDwm7UIW9ZC/avMTVqDnbNbLtyXYQbvq8p2MGbDHIdgZ5NntekYPpvEuDjMcy76eSyfjvXQAqfwbeUXKr9I+cXKd5Rfovwhyh+q/FLllyl/mPKHK3+E8kcqf5TyRyt/jPL3kGeZaOlS+OOVP0H5eyp/L+VPVP4k5U9W/t7K30f5U5Q/Vfn7Kn+a8qcrf4byZyp/lvJnK79c+XOUP1f585S/n/LnK3+B8vdX/kLlH6D8A5W/SPkHKX+x8pco/2DlH6L8pco/VPkVyq9UfpXyq5Vfo/xlyl+u/BXKr1X+SuWvUn6d8uuV36D8RuU3KX+18puV36L8VuWvUf5a5R+m/MOVv07565W/QflHKP9I5R+l/DblH638oPI3Kr9d+R3KDym/U/ldyt+k/LDyj1H+ZuVHlN+t/B7lR5UfU/4W5ceVn1B+Uvm9yt+q/G3K71P+duXvUP6xyj9O+V9TvjrrR0t+wj9R+Scp/+vKP1n5pyj/VOWfpvzTlX+G8s9U/lnsbOGfo/xzlX+e8s9X/gXKv1D531D+Rcq/WPiFDGhbBd1vMZY3CnHAyF/NuI1dNgNuYVeQcyU53yXne+TsJOcacq4l50fkXEfOT8j5KTk3knMzObeQcxs5PyfnTnJ+Qc495NxHzv3kPEjOQ+Q8TM5vyHmUnMfI+T05fyDnKXKeJudZcp4n50VyXibnT+S8Ss7r5LxJztvk/JWcv5HzHjkfkPMROX8n5xNy/knO5+R8Sc5X6ACQY5GTR04BOYXkFJNTQs5QcsrIGU7OSHJGk7MHOePImUDOXuRMImdvcqaQsy8508mZSc5scuaQM4+c+eTsT84B5CwiZzE5B5OzlJwKcqrIqSFnOTm15Kwip56cRnJWk9NCzhpyDiNnHTkbyDmSnDZyguS0kxMip4ucMDmbyekmJ0rOFnIS5PSSs42c7eQcS87XyDmBnJPIOZmcU8k5nZwzyTmbnHPJOZ+cC8m5iJxLyPkWOcR/QPwHxH9A/AfEf0D8B8R/QPwHxH9A/AfEf0D8B8R/cPONyN8AP0N+PoQsgOGIF8DRqxD70RAcvYbjyDUGR60JOGJNxtFqXxypZuEoNQ+/LcTRaTGOTIfiqFSDI9JKjG3EkagVR6F1OAIdhaNPO6behKNON444cRxttuFIcxzmPglHmNNwdDkbR5YLcFS5BEu7HEeT7+JIcjWOIj/CEWQXln4zjhy346jxCxwxfomjxUP4tN/iKPF7HCH+iKPD8zgyvIJPfx1HhL/gaPAejgQf4yjwT6TmX2wVWKwObFYPJawBhrFGGM2aYDxbDZNYM0xlLTCTtcJctgb2Z2vhIHYYLGWHQzVbB7VsPTSwDdDCjoDD2ZFwJDsKNrI26GJHQ4QFYQvbCFtZOxzLOuBEFoJTWSecxbrgfLYJLmZhuIwdA99hm2Eni8APWTf8hPXATSwKt7EY3MW2wH0sDr9iCfgNS8LjrBeeYlvhObYNXmZ98BrbDm+zHfAuOxY+YsfBp+xr8CU7nqO05AXsRO6wk3gZ+zofxU7m49gpfCI7lU9hp/EZ7HQ+h53BF7Az+SJ2Frbn2byKncNXsHN5PTuPN7Pz+WHsAn4Eu5AH2Td4J7uIb2YX8xhOHXrZN/kO9i1+AruUn8Iu42eyy/l57Ap+Efs2v5Rdya9k3+HfZ9/l17Kr+PXse/xG9n1+K9vJ72RX83vZNfxB5BtAdrpVykhsVamjlc6YeRvcMWPWbfCLGbNvg3s9bhN8xtiNqMHdhFrazaiB/Yxx2riQJcDvmIVlMDhmxszh8Mufw685uxcewX+Stwj91oCuJOh3BvRdgh43oO8R9IQB7SToSQO6hqA/GtC1BD1jQD8i6DkDuo6gFwzoJwS9ZEA/JegVA7qRoD8b0M0EvWZAtxD0hgHdRtBbBvRzgv5iQHcS9I4B/YKgdw3onlTbNAtzL3dh7/8F9uu7sT/egxrUvaitIN9iPzyV3c8uZQ+w69iDGPsr7I0PsdfYr9kn7GEoYo/ABPYb7FW/hSr2KKxlv4Mwewzb9k63bQv3lG1bECcq3ldUfIj/NNgh9LEB3U/QPwzoQYI+NaCHCPrMgB4m6AsD+g1B/zKgRxHizIAeI4gb0O8JChjQHwjKN6CnCLIN6GmCigzoWYIcA3qeoCEG9CJBpQb0MkHDDOhPBI0woFcJGmVArxM0xoDeJGisAb1N0HgD+itBexrQ3wiaaEDvETTZgD4gaB8D+oigqQb0d4KmGdAnBM0woH8SNMuAPieo3IC+JGiuAX1F0H46hMoKQgsMyCJooQHlEXSgARUQdJABFRK0xICKCTrEgEoIOtSAhhJUaUBlBFUb0HCClhnQSIJWGNBoglYa0B4E1RnQOIIaDGgCQU0GtBdBzQY0iaBWA9qboLUGNIWgww1oX4LWG9B0go4woJkEHWVAswk62oDmELTRgOYR1GFA8wnqNKD9CdpkQAcQdIwBLSIoYkCLCeoxoIMJihnQUoLiBlRBUNKAqgjaakA1BPUZ0HKCdhhQLUHHGdAqgo43oHqCTjSgRoK+bkCrCTrFgFoIOs2A1hB0hgEdRtBZBrSOoHMMaANB5xnQkQRdYEBtBH3DgIIEXWxA7QR904BCBF1qQF0EXW5AYYK+bUCbCfqOAXUTdJUBRQn6vgFtIehqA0oQ9AMD6iXohwa0jaAfG9B2gq43oGMJ2mVAXyPoBgM6gaCbDOgkgn5mQCcTdKsBnUrQ7QZ0Ompi/E5vjIfLWSeGn8Yx/hkc45/FMf45HOOfxzH+BRzjX8Qx/iUc41/GMf4VHOP/hGP8n3GMfxXH+NdwjH8dx/g3cIx/E8f4t3CMfxvH+L/AceyvqAG/A99nf8PJ4bvwa/YePM/eR032Aw7sQz6CfcT3ZR/zg9jfUSP9Bz+afcIT7FN+Gvsnv4x9hprl5/we9gV/gn3JX2f/4p+yr2jJ19oTwJoH3KoGyzoMAtYxkGd9DfKtC6DA2gm2dSsUWqh5WC9AsfUeOAEOJYGRMCQwDYYGFkNpoAHKAkEYFkjC8MDpMCJwOYwM/ARGBe6F0YE/wJjAG7BH4J8wNs+BcXl7wfi8/WBCXg3smXc47JW3GSbmHQ+T8i6EyXlXw955t8E+eY/AlLwXYWre+7BvvgXT8kfB9PzpMCN/CczMb4RZ+Rthdn4vlOefAXPyr4C5+btgXv59sF/+kzA//01YkP8Z7F9QAgsLJsIBBfPhwIJlsKhgHRxUEIHFBVtgCSPdw9WDZ0tdSQ7hvzCa9EyC7jGgswm6z4DOJeh+AzqfoAcN6EKCHjKgiwh62IAuIeg3BvQtgh41oMsIesyASGXnvzcgUtn5HwzouykVdCErwWA1Gw44tYRlbBEsx6ncCpyC1eLUaSU7FVaxS6GOXQf17G6cqv0eGpExm1DNvNutOvaVqrp76ElPySfxp/Gf5sgIPWtANBPgzxsQzQT4iwZEMwH+sgHRTID/yYBoJsBfNSCaCfDXDYhmAvxNA6KZAH/bgFIzdJxDF2PwcKyUdVgp67FSNmClHIGVciRWylFYKW1YKUdjpQSxUjYy4H/hf0VueofR9Vfg74r1q+exWiwEolA/7sfoH8Pk33T83IKf+/DzKH6eJa7Dzwf4+RKfW4ifkfiZJLhSGCPGxmGwGj9H4idM9joY42PwMxU/1fiJ4+cq/OzCz134eQQ/z+DnDfx8zJg1GT9YjrUcP2vw046fLfi5CT8P4+dp/CAN1kdIJ+AHyw6svZO/vy5wG/+o/lrrei18lRa+mMKWDJ+h4cdpeEzDOzT8cA2v0/BDNXyBhk/T8PEaXqrhgRTOP72T/33dcP7JbfyzGT+Dobfyf91rsVutwHAr/1arcMbP2G8yoWczINiWCRVnQrUE8fd16Hu3WkVpUKHI6OCXW61SJHFNijD8tlwQbA2TBJ+alnY6xd5mDfd9F+1hIjV8PqjUjyJWJZ+H3+5J1Q1+uxHjSry4nalKwm+XYNw8L+70VG3ht+0pCjKrkD1tvh2sGm6N1Ctoj9utvRBegNjNRKx4wNQU6fhtTCo9fivCb5ZshPpr2Rf0cESmy/jbrclYqcOtfeTrqxLxy3Branr7CXrYncOtaZn0sKt1etg3dXrYGTo9bIdBT8S/uDWyxWcI4malcjzECqxrWWkKuNWae7u1UBA8w60zNtqvzmbd4Kke69laWtihA8jsdoix+2ALewBFx6OwlT0OO9izcCx7AU5AJeNEVC5OYR/AqexjOJN9CWcBg/OgEM4HBy6CkXAxjIFLYRJcBvvAlTAbvgNz4fuwCHbCErgWauCHsAKuh9XwE2iFG+FIuAmOhlshDLdBBO6EXrgL+uBePgbu4+PgQT4VfsWnwyO8Gn7Dl8NjPA6P8154kl8FT/Gd8CzfBc/xG+Elfhe8zO+BV/kj8Bp/FN7iz8Db/Hn4G38D3uVvw4f8Y/iIfwKfWJPhU2sKfGEtgi+tJRys5ZxbK3m+tYYXWIfzYqudO1YnL7W28DIryUdaN/FR1i18rPUwH2f9lu9lPc0nWs/xfazX+RTrLT7d+ojPsP7BywPA5wQCfH5gDF8QGMcPDKzliwLr+MGBbl7DwDrg/4v8/3qRbx2UIfIzoGczIJRXGVBxJlRLUIbIX5wh8iljusgXhfmIfDOtIfIznp96mI/Iz5painzxPE/kK6qUyHfjdqYqyRP5btzpqdpKF/kZFf20+XYpka9gU+QvNkT+Yl3kuw+XIl80giHyRXymyF+cIfLd9ksT+QY9rshfbIj8xbrIV/Qoke/SE/Evzkfkixy6yFd0DSTy9ULTRT5vQMHUxG7nrew+voY9wNexR/l69jg/ij3Lcd7J29nrvIO9xTfhfDGM88RunAf2AIoUKOQJcPg2GMn7YAw/Dibxr8E+/CSYzb8Oc/lpsIifDkv42VDDz4EV/AJYzS+EVn4JHMm/CUfzyyHMr4AI/y70ojDv41fzMfwaPo7/iE/lP+bT+S5ezX/Kl/ObeZz/jPfy2/lV/Od8J/8FxtzNb+S/5Hfx+/k9/CH+CP81f5T/lj+D7vP89/wN/gR/m/+Rf8yf5p/w563J/AVrCn/FWsT/hCL/dRT5b6DI/wuK/L+iyH8PRf77KPI/RpH/dxT5/0SR/xmK/H+hyP/K+q1lWU9bAes5y7Zetwqtt6wS6yNriPUPa1gArOGBgDU6MMYaExhnjQ+stSYE1lmTAt3WdBT5S/6/yP+vF/n/A1r+0v+bWv7SQWn5S/83aflLDZG/9D+g5S/dLS1/qSHyl/43a/nWfoxbC9jt1oHsPhQBD1gHs0etQ9jjViV71qpiL6BIeN1awd6y6tgHVj372FrNvrSagVlrodA6DBxrA4y0joAx1tEwyQrCPlYIZludMNc6BhZZm2GJFYUaKwYrrCSstnqh1doOR1o74GjreAhbJ0DEOhl6rVOgzzqDj7HORL36XD7VOg916W/wausivtz6Fo9bl/Je69v8KutKvtP6Ht9lfZ/faP2A32Vdy++xruOPWNfzR60b+DPWjSjgb0GBfit/27oDhfid/BPrHmuyda81xXrAWmQ9aC2xHraWW49YK63fWWusx6zDrT9Y7daTVqf1jLXFetZKWi9aN1kvWbdYf8aUr6LIfxNF/lso8t9Bkf83DH2AIv9DFPn/QJH/CYr8z1HkfxEYF0CBGIDAukBeoDtQgiL/UHE8CZJshJ+NreTAv1noGR1bGdwabFemweL/B1BLBwiS41vjejsAAPrEAABQSwECFAAUAAgICAAug+hCkuNb43o7AAD6xAAAFQAAAAAAAAAAAAAAAAAAAAAARXhhbVJlcG9ydERTUDIuamFzcGVyUEsFBgAAAAABAAEAQwAAAL07AAAAAA==</con:data><con:id>eb109d53-11de-461b-a2c1-ecbf1528b842</con:id></con:attachment><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.omr.dlp.com.br/IOmrGenerator/generateEvent"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="processImages" bindingOperationName="processImages" type="Request-Response" outputName="processImagesResponse" inputName="processImages" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/JazzOMR.ws/cxf/omrGenerator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.omr.dlp.com.br/" xmlns:pay="http://payload.ws.omr.dlp.com.br" xmlns:even="http://event.jazzomr.dlp.com.br" xmlns:exam="http://exam.jazzomr.dlp.com.br" xmlns:ques="http://question.jazzomr.dlp.com.br" xmlns:res="http://results.jazzomr.dlp.com.br" xmlns:coor="http://coordinate.exam.jazzomr.dlp.com.br" xmlns:per="http://person.jazzomr.dlp.com.br" xmlns:emp="http://empresa.jazzomr.dlp.com.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:processImages>
+         <!--Optional:-->
+         <ws:arg0>
+            <!--Optional:-->
+            <pay:eventVO>
+               <!--Optional:-->
+               <even:PK>?</even:PK>
+               <!--Optional:-->
+               <even:dataHandlerProva>cid:1104638226103</even:dataHandlerProva>
+               <!--Optional:-->
+               <even:description>?</even:description>
+               <!--Optional:-->
+               <even:examVO>
+                  <!--Optional:-->
+                  <exam:PK>?</exam:PK>
+                  <!--Optional:-->
+                  <exam:description>?</exam:description>
+                  <!--Optional:-->
+                  <exam:questionnaires>
+                     <!--Zero or more repetitions:-->
+                     <exam:QuestionnaireVO>
+                        <!--Optional:-->
+                        <exam:PK>?</exam:PK>
+                        <!--Optional:-->
+                        <exam:description>?</exam:description>
+                        <!--Optional:-->
+                        <exam:questions>
+                           <!--Zero or more repetitions:-->
+                           <ques:QuestionVO>
+                              <!--Optional:-->
+                              <ques:PK>?</ques:PK>
+                              <!--Optional:-->
+                              <ques:criterionVOs>
+                                 <!--Zero or more repetitions:-->
+                                 <ques:CriterionVO>
+                                    <!--Optional:-->
+                                    <ques:PK>?</ques:PK>
+                                    <!--Optional:-->
+                                    <ques:critType>?</ques:critType>
+                                    <!--Optional:-->
+                                    <ques:description>?</ques:description>
+                                    <!--Optional:-->
+                                    <ques:imageVOs>
+                                       <!--Zero or more repetitions:-->
+                                       <res:ImageVO>
+                                          <!--Optional:-->
+                                          <res:image>cid:31616558442</res:image>
+                                          <!--Optional:-->
+                                          <res:titulo>?</res:titulo>
+                                          <!--Optional:-->
+                                          <res:PK>?</res:PK>
+                                       </res:ImageVO>
+                                    </ques:imageVOs>
+                                    <!--Optional:-->
+                                    <ques:maxPonto>?</ques:maxPonto>
+                                    <!--Optional:-->
+                                    <ques:ordem>?</ques:ordem>
+                                    <!--Optional:-->
+                                    <ques:qtdLinhas>?</ques:qtdLinhas>
+                                    <!--Optional:-->
+                                    <ques:required>?</ques:required>
+                                    <!--Optional:-->
+                                    <ques:score>?</ques:score>
+                                 </ques:CriterionVO>
+                              </ques:criterionVOs>
+                              <!--Optional:-->
+                              <ques:description>?</ques:description>
+                              <!--Optional:-->
+                              <ques:ordem>?</ques:ordem>
+                              <!--Optional:-->
+                              <ques:resumo>?</ques:resumo>
+                           </ques:QuestionVO>
+                        </exam:questions>
+                     </exam:QuestionnaireVO>
+                  </exam:questionnaires>
+               </even:examVO>
+               <!--Optional:-->
+               <even:mapOMRMarksByPergExamVarPage>
+                  <!--Zero or more repetitions:-->
+                  <ws:entry>
+                     <ws:key>?</ws:key>
+                     <!--Optional:-->
+                     <ws:value>
+                        <!--Zero or more repetitions:-->
+                        <coor:OMRMark>
+                           <!--Optional:-->
+                           <coor:chave>?</coor:chave>
+                           <!--Optional:-->
+                           <coor:critType>?</coor:critType>
+                           <!--Optional:-->
+                           <coor:criterion>?</coor:criterion>
+                           <!--Optional:-->
+                           <coor:h>?</coor:h>
+                           <!--Optional:-->
+                           <coor:pagina>?</coor:pagina>
+                           <!--Optional:-->
+                           <coor:paginas>
+                              <!--Zero or more repetitions:-->
+                              <ws:int>?</ws:int>
+                           </coor:paginas>
+                           <!--Optional:-->
+                           <coor:pergunta>?</coor:pergunta>
+                           <!--Optional:-->
+                           <coor:w>?</coor:w>
+                           <!--Optional:-->
+                           <coor:x>?</coor:x>
+                           <!--Optional:-->
+                           <coor:y>?</coor:y>
+                        </coor:OMRMark>
+                     </ws:value>
+                  </ws:entry>
+               </even:mapOMRMarksByPergExamVarPage>
+               <!--Optional:-->
+               <even:mapPerguntasByExamVarPage>
+                  <!--Zero or more repetitions:-->
+                  <ws:entry>
+                     <ws:key>?</ws:key>
+                     <!--Optional:-->
+                     <ws:value>
+                        <!--Zero or more repetitions:-->
+                        <ws:string>?</ws:string>
+                     </ws:value>
+                  </ws:entry>
+               </even:mapPerguntasByExamVarPage>
+               <!--Optional:-->
+               <even:participations>
+                  <!--Zero or more repetitions:-->
+                  <ws:entry>
+                     <ws:key>?</ws:key>
+                     <!--Optional:-->
+                     <ws:value>
+                        <!--Optional:-->
+                        <even:PK>?</even:PK>
+                        <!--Optional:-->
+                        <even:examVariant>?</even:examVariant>
+                        <!--Optional:-->
+                        <even:pessoaVO>
+                           <!--Optional:-->
+                           <per:PK>?</per:PK>
+                           <!--Optional:-->
+                           <per:nome>?</per:nome>
+                        </even:pessoaVO>
+                     </ws:value>
+                  </ws:entry>
+               </even:participations>
+               <!--Optional:-->
+               <even:relatorioVO>
+                  <!--Optional:-->
+                  <emp:PK>?</emp:PK>
+                  <!--Optional:-->
+                  <emp:examOMRMetadataVO>
+                     <!--Zero or more repetitions:-->
+                     <ws:entry>
+                        <ws:key>?</ws:key>
+                        <!--Optional:-->
+                        <ws:value>
+                           <!--Optional:-->
+                           <exam:omrKey>?</exam:omrKey>
+                           <!--Optional:-->
+                           <exam:x>?</exam:x>
+                           <!--Optional:-->
+                           <exam:y>?</exam:y>
+                        </ws:value>
+                     </ws:entry>
+                  </emp:examOMRMetadataVO>
+               </even:relatorioVO>
+            </pay:eventVO>
+            <!--Optional:-->
+            <pay:pageImages>
+               <!--Zero or more repetitions:-->
+               <pay:PageImageVO>
+                  <!--Optional:-->
+                  <pay:pageImage>cid:801061973140</pay:pageImage>
+               </pay:PageImageVO>
+            </pay:pageImages>
+         </ws:arg0>
+      </ws:processImages>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.omr.dlp.com.br/IOmrGenerator/processImages"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

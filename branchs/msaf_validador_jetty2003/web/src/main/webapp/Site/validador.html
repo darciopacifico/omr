@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>UpLoad Arquivos</title>	
+<script type="text/javascript" src="mootools.js"></script>
+<script type="text/javascript" src="moocheck.js"></script>
+<script language="javascript">
+
+
+//Identificador de seleção do tr
+var trSelecionado       = false;
+var trObjetoSelecionado = null;
+
+//Funções globais
+function mudaCor( trElemento, ligarCor ) {
+	if( trSelecionado ) return;
+}
+
+function mudarCorTR(modificaElemento, ligarCor) {
+
+	//Somente efetua a modificação se o elemento não estiver selecionado
+	if( trSelecionado ) return;
+
+	//Variaveis
+	var cor = "";
+
+	//Verifica qual a cor a selecionar
+	if( ligarCor )	cor = "#E5E9EC";
+	else			cor = "";
+	
+	//Monta a cor do elemento conforme a solicitação
+	for( x = 0; x < modificaElemento.cells.length; x++ )
+		modificaElemento.cells(x).style.backgroundColor = cor;
+}
+
+function sincronizarScrollTB(dvOrigemTB, tbScrollResize) {
+	tbScrollResize.style.width = parseInt(dvOrigemTB.style.width) - 15;
+}
+
+function doUploadECotacao(){
+  elementService = document.getElementById("dispatchMethod");
+    if (elementService != null){
+       elementService.value = "doUploadECotacao";
+    }
+  elementService.form.submit();
+}
+function doProcessamento(){
+  elementService = document.getElementById("dispatchMethod");
+    if (elementService != null){
+       elementService.value = "doProcessamento";
+    }
+  elementService.form.submit();
+}
+
+//abrir links em janela popup
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+</script>
+<link href="../css/estilo.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="readme_files/screensmall.css" type="text/css" media="screen">
+</head>
+<body class="fundodegrade">
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><form name="uploadArquivosForm" method="post" action="/msaf.validador.web/UploadArquivosAction.do" enctype="multipart/form-data">
+      <table width="100%" border=1 align="center" cellpadding=0 cellspacing=0 bordercolor="#003366">
+        <tr>
+          <td height=30 class="title0">validador</td>
+        </tr>
+        <tr>
+          <td height=30 class="title1">upload do arquivo</td>
+        </tr>
+        <tr>
+          <td height=30><div align="center">
+                <table width="480" border="0" align="center" cellpadding="1" cellspacing="2">
+                  <tr>
+                    <td colspan="3">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3"><table width="55%" border="0" align="center" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="24%"><a href="#"><img src="images/modeloxls.gif" width="44" height="42" border="0"></a></td>
+                        <td width="76%" class="registro01"><a href="#" class="text2_box2">Clique aqui para fazer o download do modelo de layout de entrada.</a></td>
+                      </tr>
+                    </table></td>
+                  </tr>
+                  <tr>
+                    <td colspan="3">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" class="textocomumleft">&nbsp;&nbsp;&nbsp;&nbsp; Por favor, escolha o arquivo para ser analisado.</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" align="left">&nbsp;&nbsp;&nbsp;<input type="hidden" name="dispatchMethod" id="dispatchMethod" value="" />
+                    <input type="file" name="arquivo" value="" class="ef" title="Arquivo Excel"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="3">
+                    </td>
+                  </tr>
+                  <tr class="textocomumleft">
+                    <td colspan="3">
+                    </td>
+                  </tr>
+                  <tr class="textocomumleft">
+                    <td colspan="3">
+                    </td>
+                  </tr>
+                  <tr class="textocomumleft">
+                    <td colspan="3">&nbsp;</td>
+                  </tr>
+                  
+                  <tr class="textocomumleft">
+                    <td width="170">
+                    	<input type="checkbox" name="tipoSelecionado" value="Sintegra">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sintegra
+                    </td>
+                    <td width="170">
+                    	<input type="checkbox" name="tipoSelecionado" value="Receita Federal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Receita Federal
+                    </td>
+                    <td width="170">
+                    	<input name="tipoSelecionado2" type="checkbox" value="testeDecricao" checked>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Valida&ccedil;&atilde;o Completa
+                    </td>
+                  </tr>
+                  <tr class="textocomumleft">
+                    <td align="center" bgcolor="#EBF4FE">R$ 0,50</td>
+                    <td align="center" bgcolor="#EBF4FE">R$ 0,50</td>
+                    <td align="center" bgcolor="#EBF4FE">R$ 0,50</td>
+                  </tr>
+                  
+                  
+                  <tr class="textocomumleft">
+                    <td colspan="3">&nbsp;</td>
+                  </tr>
+                </table>
+                <p>
+                  <input type="button" id="01" value="   Fazer Or&ccedil;amento   " class="ef" onClick="doUploadECotacao();" />
+                  <br>
+                  <br>
+                </p>
+            </div></td>
+          </tr>
+        </table>
+      <table width="100%" border=1 align="center" cellpadding=0 cellspacing=0 bordercolor="#003366">
+        <tr>
+          <td height=30><table bordercolor=#003366 cellspacing=0 cellpadding=5 width="100%" border=0>
+            <tr valign=center align=middle >
+              <td colspan="3" class="title1">or&ccedil;amento</td>
+            </tr>
+            <tr valign=center align=middle bordercolor=#cccccc>
+              <td class="title2"> quantidade de registros</td>
+              <td class="title2"> valor</td>
+              <td class="title2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="registro01">&nbsp;</td>
+              <td class="registro01">&nbsp;</td>
+              <td height="30"><div align="center">
+                <input type="button" id="02" value="   Aprovar Or&ccedil;amento   " class="ef_desativado" onClick="doProcessamento();" disabled />
+              </div></td>
+            </tr>
+            </table></td>
+        </tr>
+        </table>
+      <div align="center">
+      <table width="100%" border=1 align="center" cellpadding=0 cellspacing=0 bordercolor="#003366">
+        <tr>
+          <td height=30><table width="600" border=0 align="center" cellpadding=5 cellspacing=0 bordercolor=#003366>
+                <tr valign=center align=middle bordercolor=#cccccc>
+                  <td colspan="6" bordercolor="#003366" class="title1">registros</td>
+                <tr valign=center align=middle>
+                  <td class="title2">id</td>
+                  <td class="title2">status</td>
+                  <td class="title2">qtd.  registros</td>
+                  <td class="title2">data da solicita&ccedil;&atilde;o</td>
+                  <td class="title2">id do cliente</td>
+                  <td class="title2">processo</td>
+                <tr> 
+                  <td class="registro01"><a class="registro01" href="#" onClick="MM_openBrWindow('registro.html','','width=660,height=600')">161</a></td>
+                  <td class="registro01"><a class="registro01" href="#" onClick="MM_openBrWindow('registro.html','','width=660,height=600')"><img src="images/processando.gif" width="24" height="24" border="0"></a></td>
+                  <td class="registro01"><a class="registro01" href="#" onClick="MM_openBrWindow('registro.html','','width=660,height=600')">99</a></td>
+                  <td class="registro01"><a class="registro01" href="#" onClick="MM_openBrWindow('registro.html','','width=660,height=600')">2009-02-19</a></td>
+                  <td class="registro01"><a class="registro01" href="#" onClick="MM_openBrWindow('registro.html','','width=660,height=600')">cliente01MasterSat</a></td>
+                  <td class="registro01"><input type="button" id="0222" value="   Verificar   " class="ef" onClick="doProcessamento();" />
+                    </td>
+                </tr>
+                <tr> 
+                  <td class="registro02"><a class="registro02" href="#" onClick="MM_openBrWindow('registro.html','','width=600,height=600')">161</a></td>
+                  <td class="registro02"><a class="registro02" href="#" onClick="MM_openBrWindow('registro.html','','width=600,height=600')"><img src="images/erro.gif" width="24" height="24" border="0"></a></td>
+                  <td class="registro02"><a class="registro02" href="#" onClick="MM_openBrWindow('registro.html','','width=600,height=600')">99</a></td>
+                  <td class="registro02"><a class="registro02" href="#" onClick="MM_openBrWindow('registro.html','','width=600,height=600')">2009-02-19</a></td>
+                  <td class="registro02"><a class="registro02" href="#" onClick="MM_openBrWindow('registro.html','','width=600,height=600')">cliente01MasterSat</a></td>
+                  <td class="registro02"><input type="button" id="022" value="   Verificar   " class="ef" onClick="doProcessamento();" /></td>
+                </tr>
+                <tr> 
+                  <td class="registro01"><a class="registro01" href="#" onClick="MM_openBrWindow('registro.html','','width=660,height=600')">161</a></td>
+                  <td class="registro01"><a class="registro01" href="#" onClick="MM_openBrWindow('registro.html','','width=660,height=600')"><img src="images/processando.gif" width="24" height="24" border="0"></a></td>
+                  <td class="registro01"><a class="registro01" href="#" onClick="MM_openBrWindow('registro.html','','width=660,height=600')">99</a></td>
+                  <td class="registro01"><a class="registro01" href="#" onClick="MM_openBrWindow('registro.html','','width=660,height=600')">2009-02-19</a></td>
+                  <td class="registro01"><a class="registro01" href="#" onClick="MM_openBrWindow('registro.html','','width=660,height=600')">cliente01MasterSat</a></td>
+                  <td class="registro01"><input type="button" id="0222" value="   Verificar   " class="ef" onClick="doProcessamento();" />
+                    </td>
+                </tr>
+                <tr> 
+                  <td class="registro02"><a class="registro02" href="#" onClick="MM_openBrWindow('registro.html','','width=600,height=600')">161</a></td>
+                  <td class="registro02"><a class="registro02" href="#" onClick="MM_openBrWindow('registro.html','','width=600,height=600')"><img src="images/finalizado.gif" width="24" height="24" border="0"></a></td>
+                  <td class="registro02"><a class="registro02" href="#" onClick="MM_openBrWindow('registro.html','','width=600,height=600')">99</a></td>
+                  <td class="registro02"><a class="registro02" href="#" onClick="MM_openBrWindow('registro.html','','width=600,height=600')">2009-02-19</a></td>
+                  <td class="registro02"><a class="registro02" href="#" onClick="MM_openBrWindow('registro.html','','width=600,height=600')">cliente01MasterSat</a></td>
+                  <td class="registro02"><input type="button" id="022" value="   Verificar   " class="ef" onClick="doProcessamento();" /></td>
+                </tr>
+
+                <tr>
+                  <td height="5" colspan="6" align="right" valign="middle"><img src="images/spacer.gif" width="1" height="5"></td>
+                </tr>
+                <tr>
+                  <td colspan="6" align="right" valign="middle" class="title1">LEGENDA</td>
+                </tr>
+                <tr>
+                  <td colspan="6" align="right" valign="middle"><div align="right" class="legenda">
+                    <div align="left"><img src="images/processando.gif" width="24" height="24"> Processando <img src="images/finalizado.gif" width="24" height="24"> Finalizado <img src="images/erro.gif" width="24" height="24"> Erro</div>
+                  </div></td>
+                </tr>
+            </table></td>
+          </tr>
+        </table>
+    </form></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+</body>
+</html>
+</html>

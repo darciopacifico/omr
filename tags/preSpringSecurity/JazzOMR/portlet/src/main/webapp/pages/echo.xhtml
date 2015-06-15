@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:a4j="http://richfaces.org/a4j"
+        xmlns:rich="http://richfaces.org/rich"
+        xmlns:c="http://java.sun.com/jstl/core">
+<head>
+       <c:set var="context" value="#{facesContext.externalContext.requestContextPath}" />
+
+    <style type="text/css">
+         .home-container{
+            width: 630px;
+            height: 296px;
+            position: relative;
+         }
+
+         .home-container .content {
+            position: absolute;
+            top: 148px;
+            left: 22px;
+            width: 300px;
+         }
+      </style>
+</head>
+<body>
+
+      <h:form>
+         <rich:panel header="filters">
+            <h:outputText value="Your message: "/>
+            <h:inputText size="50" value="#{echo.text}">
+               <a4j:support event="onkeyup" reRender="rep"/>
+            </h:inputText>
+            <h:outputText id="rep" value="#{echo.text}"/>
+            
+            <a4j:commandButton action="#{echo.testeEchoEL('vim do xhtml')}" reRender="rep" value="ELEcho"/>
+            
+         </rich:panel>
+      </h:form>
+
+</body>
+</html>

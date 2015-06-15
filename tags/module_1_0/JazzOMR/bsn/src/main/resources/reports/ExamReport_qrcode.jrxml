@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ExamReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.1000000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.util.JRLoader"/>
+	<parameter name="imgLogoEscola" class="java.awt.Image" isForPrompting="false"/>
+	<parameter name="qrCodeGen" class="br.com.dlp.jazzomr.jr.util.IQRCodeGenerator" isForPrompting="false"/>
+	<parameter name="pReportQuery" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[" select  alt.qtd_linhas, alt.crit_type, aco.x aco_x, "+
+" aco.y aco_y, "+
+" 1 	eve_pk, "+
+" exv.pk 	par_pk, "+
+" 'dpacifico'	pes_pk, "+
+" 'Nome de Evento Chumbado na Query do relatorio' e_description, "+
+" 'dlopespacifico' pe_login, "+
+" 'Darcio Mais Alguma Coisa Lopes Pacifico' pe_nome, "+
+" qtn.pk	qtn_pk, "+
+" aco.question_order, "+
+" aco.alternative_order, "+
+" aco.pk	aco_pk, "+
+" exv.pk	exv_pk, "+
+" que.pk	que_pk, "+
+" alt.pk	alt_pk, "+
+" exv.pk exv_pk, "+
+" que.pk q_pk, "+
+" alt.pk a_pk, "+
+" exv.question_enum_model, "+
+" exv.alternative_enum_model, "+
+" que.description q_wiki, "+
+" qtn.pk qr_pk, "+
+" qtn.description qr_description, "+
+" alt.description a_resumo, "+
+" aco.pk ac_pk "+
+" from tb_exam_variant exv "+
+" 	inner join tb_criterion_coordinate aco		on aco.fk_exam_variant		= exv.pk "+
+" 	inner join tb_question que 				on que.pk 					= aco.fk_question "+
+" 	inner join tj_questionnairevo_questions	jqq 	on jqq.fk_questions_question	= que.pk "+
+" 	inner join tb_questionnaire qtn			on qtn.pk					= jqq.fk_questionnaire "+
+" 	inner join tb_abstract_criterion alt				on alt.pk 					= aco.fk_abstractcriterion "+
+
+"   where exv.pk in (1)  "+
+"   order by  exv.pk, aco.question_order, alt.crit_type, aco.alternative_order, alt.pk "]]></defaultValueExpression>
+	</parameter>
+	<parameter name="multiLine" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n "]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/darcio/workspace/modules/JazzOMR/bsn/src/main/resources/reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="questionImgRpt" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false">
+		<defaultValueExpression><![CDATA[(JasperReport)JRLoader.loadObject(new java.io.FileInputStream("/home/darcio/workspace/modules/JazzOMR/bsn/src/main/resources/reports/questionImgRpt.jasper"))]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[$P!{pReportQuery}
+
+/*
+select  alt.qtd_linhas,  alt.crit_type, aco.x aco_x,
+aco.y aco_y,
+
+eve.pk 	eve_pk,
+par.pk 	par_pk,
+pes.pk	pes_pk,
+eve.description  e_description,
+pes.login pe_login,
+pes.nome pe_nome,
+
+qtn.pk	qtn_pk,
+
+aco.question_order,
+aco.alternative_order,
+
+aco.pk	aco_pk,
+
+exv.pk	exv_pk,
+que.pk	que_pk,
+alt.pk	alt_pk,
+
+exv.pk exv_pk,
+que.pk q_pk,
+alt.pk a_pk,
+
+
+exv.question_enum_model,
+exv.alternative_enum_model,
+
+que.description q_wiki,
+
+
+qtn.pk qr_pk,
+qtn.description qr_description,
+
+alt.description a_resumo,
+aco.pk ac_pk
+
+
+from tb_event eve
+	inner join tb_participation par 			on par.fk_event = eve.pk
+	inner join tb_pessoa pes 					on pes.pk = par.fk_pessoa
+
+	inner join tb_exam_variant exv 			on exv.pk = par.fk_examvariant
+	inner join tb_exam exa 				on exa.pk = exv.fk_exam
+
+	inner join tb_criterion_coordinate aco		on aco.fk_exam_variant		= exv.pk
+
+	inner join tb_question que 				on que.pk 					= aco.fk_question
+	inner join tj_questionnairevo_questions	jqq 	on jqq.fk_questions_question	= que.pk
+	inner join tb_questionnaire qtn			on qtn.pk					= jqq.fk_questionnaire
+
+	inner join tb_abstract_criterion alt		on alt.pk 					= aco.fk_abstractcriterion
+	
+  where  eve.pk  in (  14 )  and exa.fk_relatorio = 6
+	
+    order by exv.pk, par.pk, qtn.pk, aco.question_order, alt.crit_type, aco.alternative_order, alt.pk
+*/]]>
+	</queryString>
+	<field name="qtd_linhas" class="java.lang.Integer"/>
+	<field name="crit_type" class="java.lang.String"/>
+	<field name="aco_x" class="java.lang.Integer"/>
+	<field name="aco_y" class="java.lang.Integer"/>
+	<field name="eve_pk" class="java.lang.Long"/>
+	<field name="par_pk" class="java.lang.Long"/>
+	<field name="pes_pk" class="java.lang.String"/>
+	<field name="e_description" class="java.lang.String"/>
+	<field name="pe_login" class="java.lang.String"/>
+	<field name="pe_nome" class="java.lang.String"/>
+	<field name="qtn_pk" class="java.lang.Long"/>
+	<field name="question_order" class="java.lang.Integer"/>
+	<field name="alternative_order" class="java.lang.Integer"/>
+	<field name="aco_pk" class="java.lang.Long"/>
+	<field name="exv_pk" class="java.lang.Long"/>
+	<field name="que_pk" class="java.lang.Long"/>
+	<field name="alt_pk" class="java.lang.Long"/>
+	<field name="q_pk" class="java.lang.Long"/>
+	<field name="a_pk" class="java.lang.Long"/>
+	<field name="question_enum_model" class="java.lang.Integer"/>
+	<field name="alternative_enum_model" class="java.lang.Integer"/>
+	<field name="q_wiki" class="java.lang.String"/>
+	<field name="qr_pk" class="java.lang.Long"/>
+	<field name="qr_description" class="java.lang.String"/>
+	<field name="a_resumo" class="java.lang.String"/>
+	<field name="ac_pk" class="java.lang.Long"/>
+	<group name="Evento" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{eve_pk}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Participacao" isStartNewPage="true" isResetPageNumber="true">
+		<groupExpression><![CDATA[$F{par_pk}]]></groupExpression>
+		<groupHeader>
+			<band height="484">
+				<textField>
+					<reportElement x="22" y="88" width="354" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="15" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Assinatura: "+$F{pe_nome}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="22" y="84" width="354" height="1"/>
+				</line>
+				<break>
+					<reportElement x="0" y="481" width="100" height="1"/>
+				</break>
+				<staticText>
+					<reportElement x="22" y="223" width="506" height="225"/>
+					<textElement>
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Questões Alternativas:
+
+- As questões alternativas serão corrigidas automaticamente.
+- Atenção para a quantidade de alternativas que deverão ser escolhidas em cada questão
+- Para confirmar sua opção, preencha completamente os círculos com caneta preta.
+- Apenas preencha as opções quando tiver certeza de sua escolha.
+
+
+Questões Dissertativas
+
+- As questões dissertativas serão corrigidas pelo professor pela internet.
+- Escreva sua resposta apenas os espaços indicados na questão.
+- Apenas estes espaços serão digitalizadas e disponibilizadas para correção.
+- Não será possível que o professor visualize outros espaços além dos indicados para as respostas]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="22" y="187" width="275" height="20"/>
+					<textElement>
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Instruções para o exame:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="415" y="42" width="127" height="16"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Long"><![CDATA[$F{exv_pk}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Questionario">
+		<groupExpression><![CDATA[$F{qtn_pk}]]></groupExpression>
+		<groupHeader>
+			<band height="31" splitType="Stretch">
+				<textField>
+					<reportElement stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="22" y="10" width="530" height="20" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+					<textElement>
+						<font size="13" isUnderline="false" isStrikeThrough="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{qr_description}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band splitType="Prevent"/>
+		</groupFooter>
+	</group>
+	<group name="Questao" minHeightToStartNewPage="100">
+		<groupExpression><![CDATA[$F{que_pk}]]></groupExpression>
+		<groupHeader>
+			<band height="29" splitType="Prevent">
+				<subreport isUsingCache="true">
+					<reportElement x="3" y="11" width="546" height="14"/>
+					<subreportParameter name="que_pk">
+						<subreportParameterExpression><![CDATA[$F{que_pk}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="textoQuestao">
+						<subreportParameterExpression><![CDATA[$F{question_order}+". "+$F{q_wiki}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{questionImgRpt}]]></subreportExpression>
+				</subreport>
+			</band>
+			<band splitType="Prevent"/>
+		</groupHeader>
+		<groupFooter>
+			<band splitType="Stretch"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="124" splitType="Stretch">
+			<componentElement>
+				<reportElement x="415" y="0" width="100" height="100"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{par_pk}+"-"+$V{PAGE_NUMBER}]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<ellipse>
+				<reportElement key="OMRMark-top-right" x="525" y="0" width="30" height="30" backcolor="#010101">
+					<property name="OMRMark" value="top-right"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</ellipse>
+			<image isLazy="true" onErrorType="Icon">
+				<reportElement x="22" y="15" width="168" height="42"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{imgLogoEscola}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="22" y="61" width="343" height="33"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{e_description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="22" y="94" width="219" height="20"/>
+				<textElement>
+					<font size="15" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Avaliado: "+$F{pe_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="" x="403" y="98" width="125" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["IdProva-Página"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="pageIdentifier" x="403" y="108" width="125" height="10"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{par_pk}+"-"+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape" isLazy="true" onErrorType="Icon">
+				<reportElement key="qrCodeExamKey" x="197" y="8" width="100" height="100" backcolor="#F71919">
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{qrCodeGen}.generateQRCode($F{par_pk}+"-"+$V{PAGE_NUMBER})]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<genericElement>
+				<reportElement x="54" y="0" width="9" height="9" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA["A".equals($F{crit_type})]]></printWhenExpression>
+				</reportElement>
+				<genericElementType namespace="http://jazzomr.com.br/jazzomr" name="jazzomr"/>
+				<genericElementParameter name="eqaKey">
+					<valueExpression><![CDATA["aco_Key-"+$F{crit_type}+"-"+$F{aco_pk}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="actualPage">
+					<valueExpression><![CDATA[$V{PAGE_NUMBER}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="crit_type">
+					<valueExpression><![CDATA[$F{crit_type}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="qtd_linhas">
+					<valueExpression><![CDATA[$F{qtd_linhas}]]></valueExpression>
+				</genericElementParameter>
+			</genericElement>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement stretchType="RelativeToTallestObject" x="77" y="0" width="351" height="14" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+				<textElement markup="none">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{crit_type}.equals("A")?$F{alternative_order}+". "+$F{a_resumo}:$F{a_resumo}+" (aproximadamente "+$F{qtd_linhas}+" linhas)")]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="54" y="0" width="9" height="9" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA["A".equals($F{crit_type})]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</ellipse>
+			<genericElement>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="3" height="14" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA["D".equals($F{crit_type})]]></printWhenExpression>
+				</reportElement>
+				<genericElementType namespace="http://jazzomr.com.br/jazzomr" name="jazzomr"/>
+				<genericElementParameter name="eqaKey">
+					<valueExpression><![CDATA["aco_Key-"+$F{crit_type}+"-"+$F{aco_pk}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="actualPage">
+					<valueExpression><![CDATA[$V{PAGE_NUMBER}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="crit_type">
+					<valueExpression><![CDATA[$F{crit_type}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="qtd_linhas">
+					<valueExpression><![CDATA[$F{qtd_linhas}]]></valueExpression>
+				</genericElementParameter>
+			</genericElement>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="442" y="1" width="100" height="12" isPrintWhenDetailOverflows="true"/>
+				<textElement lineSpacing="1_1_2">
+					<font size="17" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[(org.apache.commons.lang.StringUtils.repeat("\n ", $F{qtd_linhas}==null?0:$F{qtd_linhas}))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<ellipse>
+				<reportElement key="OMRMark-bottom-left" mode="Opaque" x="0" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#010101"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</ellipse>
+			<textField evaluationTime="Report">
+				<reportElement x="508" y="3" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="3" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

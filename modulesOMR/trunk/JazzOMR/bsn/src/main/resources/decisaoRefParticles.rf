@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<process xmlns="http://drools.org/drools-5.0/process"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+         xs:schemaLocation="http://drools.org/drools-5.0/process drools-processes-5.0.xsd"
+         type="RuleFlow" name="flow" >
+
+  <header>
+    <imports>
+      <import name="ij.ImagePlus" />
+      <import name="ij.measure.Measurements" />
+      <import name="ij.measure.ResultsTable" />
+      <import name="ij.plugin.filter.ParticleAnalyzer" />
+      <import name="ij.process.ImageConverter" />
+      <import name="ij.process.ImageProcessor" />
+      <import name="java.awt.Image" />
+      <import name="java.awt.Toolkit" />
+      <import name="java.io.ByteArrayOutputStream" />
+      <import name="java.io.FileNotFoundException" />
+      <import name="java.io.IOException" />
+      <import name="java.io.InputStream" />
+      <import name="java.util.ArrayList" />
+      <import name="java.util.Collections" />
+      <import name="java.util.List" />
+      <import name="org.apache.commons.beanutils.BeanComparator" />
+      <import name="org.slf4j.Logger" />
+      <import name="org.slf4j.LoggerFactory" />
+      <import name="br.com.dlp.jazzomr.dots.ExamInstanceVO" />
+      <import name="br.com.dlp.jazzomr.dots.ImageIdentityVO" />
+      <import name="br.com.dlp.jazzomr.omr.ParticleTemplateVO" />
+      <import name="br.com.dlp.jazzomr.omr.ParticleVO" />
+    </imports>
+    <variables>
+      <variable name="particles" >
+        <type name="org.drools.process.core.datatype.impl.type.ObjectDataType" className="java.util.List<br.com.dlp.jazzomr.omr.ParticleVO>" />
+      </variable>
+      <variable name="particleTemplate" >
+        <type name="org.drools.process.core.datatype.impl.type.ObjectDataType" className="br.com.dlp.jazzomr.omr.ParticleTemplateVO" />
+      </variable>
+    </variables>
+  </header>
+
+  <nodes>
+    <start id="1" name="Start" x="92" y="181" width="48" height="48" />
+    <actionNode id="2" name="Script" x="219" y="183" width="80" height="48" >
+        <action type="expression" dialect="java" >java.util.List&lt;br.com.dlp.jazzomr.omr.ParticleVO&gt; particles = context.getVariable(particles);
+
+BeanComparator beanComparator = new BeanComparator("circularity");
+Collections.sort(totalParticles, beanComparator);</action>
+    </actionNode>
+    <end id="3" name="End" x="387" y="247" width="48" height="48" />
+  </nodes>
+
+  <connections>
+    <connection from="1" to="2" />
+    <connection from="2" to="3" />
+  </connections>
+
+</process>

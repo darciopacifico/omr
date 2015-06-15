@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperPrint PUBLIC "-//JasperReports//DTD JasperPrint//EN" "http://jasperreports.sourceforge.net/dtds/jasperprint.dtd">
+
+<jasperPrint name="reportBlank2" pageWidth="612" pageHeight="792" topMargin="10" leftMargin="10" bottomMargin="10" rightMargin="10" locale="pt_BR" timezone="America/Sao_Paulo">
+	<property name="net.sf.jasperreports.export.xml.start.page.index" value="0"/>
+	<property name="net.sf.jasperreports.export.xml.end.page.index" value="1"/>
+	<property name="net.sf.jasperreports.export.xml.page.count" value="2"/>
+	<origin group="Questões" band="groupHeader"/>
+	<origin group="Questões" band="groupFooter"/>
+	<origin band="background"/>
+	<origin band="title"/>
+	<origin band="pageHeader"/>
+	<origin band="columnHeader"/>
+	<origin band="detail"/>
+	<origin band="columnFooter"/>
+	<origin band="pageFooter"/>
+	<page>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="472" y="10" width="100" height="100" backcolor="#F71919" origin="3"/>
+			<imageSource>
+				<![CDATA[ellipseJRElement.xml_files/img_0]]>
+			</imageSource>
+		</image>
+		<ellipse>
+			<reportElement key="topLeftMark" x="572" y="10" width="30" height="30" backcolor="#010101" origin="3"/>
+		</ellipse>
+		<text textAlignment="Center" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="22" y="144" width="287" height="20" origin="3"/>
+			<textContent><![CDATA[Antônio dos Santos - Aluno]]></textContent>
+		</text>
+		<line>
+			<reportElement x="22" y="141" width="287" height="1" origin="3"/>
+			<graphicElement>
+				<pen lineStyle="Dashed"/>
+			</graphicElement>
+		</line>
+		<line>
+			<reportElement x="21" y="165" width="573" height="1" origin="3"/>
+		</line>
+		<text verticalAlignment="Bottom" textHeight="13.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.828125">
+			<reportElement x="154" y="30" width="318" height="25" origin="3"/>
+			<font size="12" isBold="true"/>
+			<textContent><![CDATA[Universidade Paulista UNIP - Unidade Belém]]></textContent>
+		</text>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" onErrorType="Icon">
+			<reportElement x="21" y="19" width="123" height="36" origin="3"/>
+			<imageSource>
+				<![CDATA[ellipseJRElement.xml_files/img_1]]>
+			</imageSource>
+		</image>
+		<text verticalAlignment="Top" textHeight="32.5625" lineSpacing="1_1_2" lineSpacingFactor="1.628125" leadingOffset="-2.359375">
+			<reportElement x="21" y="55" width="288" height="38" origin="3"/>
+			<textContent><![CDATA[Exame final para a disciplina de Geografia Elementar
+Turma 3 - Período Diurno]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement x="460" y="96" width="125" height="14" origin="3"/>
+			<font size="6"/>
+			<textContent><![CDATA[Exame-Pág / 1-1]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="92" y="217" width="470" height="20" origin="0"/>
+			<textContent><![CDATA[Quantos países fazem fronteira com Portugal?]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="55" y="217" width="26" height="20" origin="0"/>
+			<textContent><![CDATA[1.]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="239" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[1.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-1-1" x="91" y="551" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="239" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[1]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="252" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[2.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-1-2" x="91" y="538" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="252" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="265" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[3.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-1-3" x="91" y="525" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="265" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[2]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="278" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[4.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-1-4" x="91" y="512" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="278" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[5]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="291" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[5.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-1-5" x="91" y="499" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="291" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Nenhum]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="92" y="340" width="470" height="20" origin="0"/>
+			<textContent><![CDATA[Qual é a capital da Alemanha?]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="55" y="340" width="26" height="20" origin="0"/>
+			<textContent><![CDATA[2.]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="362" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[1.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-2-1" x="91" y="428" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="362" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Dresdem]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="375" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[2.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-2-2" x="91" y="415" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="375" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Budapeste]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="388" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[3.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-2-3" x="91" y="402" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="388" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Berlim]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="401" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[4.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-2-4" x="91" y="389" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="401" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Stuttgart]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="414" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[5.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-2-5" x="91" y="376" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="414" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Munich]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="92" y="463" width="470" height="20" origin="0"/>
+			<textContent><![CDATA[Qual é o país mais ao sul das Américas?]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="55" y="463" width="26" height="20" origin="0"/>
+			<textContent><![CDATA[3.]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="485" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[1.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-3-1" x="91" y="305" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="485" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Uruguai]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="498" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[2.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-3-2" x="91" y="292" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="498" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Brasil]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="511" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[3.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-3-3" x="91" y="279" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="511" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Chile]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="524" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[4.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-3-4" x="91" y="266" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="524" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Argentina]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="537" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[5.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-3-5" x="91" y="253" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="537" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Peru]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="92" y="586" width="470" height="20" origin="0"/>
+			<textContent><![CDATA[Em qual país se fala a língua Mandarim?]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="55" y="586" width="26" height="20" origin="0"/>
+			<textContent><![CDATA[4.]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="608" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[1.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-4-1" x="91" y="182" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="608" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Marrocos]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="621" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[2.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-4-2" x="91" y="169" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="621" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Malásia]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="634" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[3.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-4-3" x="91" y="156" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="634" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[China]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="647" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[4.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-4-4" x="91" y="143" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="647" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Vietnam]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="660" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[5.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-4-5" x="91" y="130" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="660" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[México]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="bottomRightMark" mode="Opaque" x="10" y="751" width="30" height="30" backcolor="#010101" origin="8"/>
+		</ellipse>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="480" y="759" width="80" height="20" origin="8"/>
+			<textContent><![CDATA[Page 1 of]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="560" y="759" width="40" height="20" origin="8"/>
+			<textContent><![CDATA[ 2]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="116" y="759" width="364" height="20" origin="8"/>
+			<font size="8"/>
+			<textContent><![CDATA[Propriedade da Universidade Paulista UNIP - Proibida a cópia total ou parcial deste exame.]]></textContent>
+		</text>
+	</page>
+	<page>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="472" y="10" width="100" height="100" backcolor="#F71919" origin="4"/>
+			<imageSource>
+				<![CDATA[ellipseJRElement.xml_files/img_2]]>
+			</imageSource>
+		</image>
+		<ellipse>
+			<reportElement key="topLeftMark" x="572" y="10" width="30" height="30" backcolor="#010101" origin="4"/>
+		</ellipse>
+		<text verticalAlignment="Bottom" textHeight="13.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.828125">
+			<reportElement x="154" y="30" width="306" height="25" origin="4"/>
+			<font size="12" isBold="true"/>
+			<textContent><![CDATA[Universidade Paulista UNIP - Unidade Belém]]></textContent>
+		</text>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top">
+			<reportElement x="21" y="19" width="123" height="36" origin="4"/>
+			<imageSource>
+				<![CDATA[ellipseJRElement.xml_files/img_3]]>
+			</imageSource>
+		</image>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement x="460" y="96" width="125" height="14" origin="4"/>
+			<font size="6"/>
+			<textContent><![CDATA[Exame-Pág / 1-2]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="92" y="147" width="470" height="20" origin="0"/>
+			<textContent><![CDATA[Quais são as duas principais línguas faladas no Canadá ?]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="55" y="147" width="26" height="20" origin="0"/>
+			<textContent><![CDATA[5.]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="169" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[1.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-5-1" x="91" y="621" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="169" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Inglês e Espanhol]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="182" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[2.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-5-2" x="91" y="608" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="182" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Espanhol e Armênio]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="195" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[3.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-5-3" x="91" y="595" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="195" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Francês e Alemão]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="208" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[4.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-5-4" x="91" y="582" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="208" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Espanhol e Italiano]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="99" y="221" width="15" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[5.]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="eqaKey-1-5-5" x="91" y="569" width="5" height="5"/>
+		</ellipse>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="121" y="221" width="412" height="12" origin="6"/>
+			<font size="8"/>
+			<textContent><![CDATA[Francês e Inglês]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="bottomRightMark" mode="Opaque" x="10" y="751" width="30" height="30" backcolor="#010101" origin="8"/>
+		</ellipse>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="480" y="759" width="80" height="20" origin="8"/>
+			<textContent><![CDATA[Page 2 of]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="560" y="759" width="40" height="20" origin="8"/>
+			<textContent><![CDATA[ 2]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="116" y="759" width="364" height="20" origin="8"/>
+			<font size="8"/>
+			<textContent><![CDATA[Propriedade da Universidade Paulista UNIP - Proibida a cópia total ou parcial deste exame.]]></textContent>
+		</text>
+	</page>
+</jasperPrint>

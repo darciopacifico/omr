@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../template/crud/crudTemplate.xhtml">
+	
+	<ui:define name="insideScriptElement">
+		
+		function setTransp(){
+			var transp = document.getElementById('frmCorrDetail:sldTranspInput').value;
+			var divCorrection = document.getElementById('divCorrection');
+			divCorrection.style.opacity=transp/100;	
+		}
+
+		function showModalCorrection(yPosition){
+			var divCorr = document.getElementById('divCorrection');
+			divCorr.style.top=(yPosition+'px');
+			divCorr.style.display="block";
+		}	    
+		
+		function isShown(){
+			var divCorr = document.getElementById('divCorrection');
+			return (divCorr.style.display=="block");
+		
+		}
+
+		function hideModalCorrection(){
+			var divCorr = document.getElementById('divCorrection');
+			divCorr.style.display="none";
+		}	    
+		
+	</ui:define>
+	
+	
+	<ui:define name="insideStyleElement">
+	    #divCorrection {
+	    	display: table; 
+	    	width: 1px; 
+		    position: relative; 
+		    top: 20px; 
+		    left: 20px; 
+		     
+		     
+		    background: white;
+		    overflow: visible;  
+		    background:transient;
+ 			opacity:0.8;
+	    }
+
+	    #divCorrection div{
+		    background: white;
+		    display: table-cell;  
+	    }
+	    
+		.backgroundImage div{
+			overflow: auto;
+			height:455px; 
+			width:720px; 
+			background: gray url('../img/backGroundImg.gif');
+			background-repeat: repeat; 
+		}
+	
+		.scrollPanel{
+			overflow: auto; 
+			padding: 0px;
+			border: 0px;
+		}
+	
+		.scrollPanel div{
+			padding: 0px;			
+			border: 0px;
+		}
+	
+		.topAlign {
+			vertical-align: top;
+		}
+		.topAlign td {
+			vertical-align: top;
+		}
+		
+		.labelSuperior{
+			color: gray;
+			font-weight: bolder; 
+			font-size:8px;
+			padding-bottom: 0px;
+			font-variant: small-caps; 
+			text-decoration: underline; 
+		}
+		
+		
+	</ui:define>
+	
+	<!-- PARAMETROS DO MODULO -->
+	<ui:param name="myMBean" value="#{eventCorrJSFBean}" />
+	<ui:param name="tituloModulo" value="#{lblEvent.pnlEvent}" />
+	<ui:param name="iconeModulo" value="/img/menu/event_calendar_128.png" />
+	
+
+	<!-- DEFINICOES GLOBAIS DO MÓDULO -->
+	<ui:define name="repGlobal">
+		<f:loadBundle var="lblEvent" basename="br.com.dlp.jazzomr.event.Event" />
+		<f:loadBundle var="msg" basename="br.com.dlp.jazzomr.ResourceBundle" />
+
+		<script type="text/javascript">
+
+			function resize(id, coeff) {
+				var pic = document.getElementById(id); 
+				var w = Math.round(pic.width * coeff);
+				var h = Math.round(pic.height * coeff);
+				pic.width = w;
+				pic.heigth = h;
+			}
+			
+			function enlarge(id){
+				resize(id, 1.1);
+			}
+			
+			function decrease(id){
+				resize(id, 0.9);
+			}
+		</script>
+	</ui:define>
+
+
+
+	<!--COLUNAS EXIBIDAS NA PESQUISA-->
+	<ui:define name="repCamposResultado">
+
+		<rich:column width="300">
+			<f:facet name="header">
+				<a4j:commandLink
+					action="#{myMBean.dataModel.extraArgumentsDTO.processOrderChoice('description')}"
+					value="#{lblEvent.description} #{myMBean.dataModel.getOrderLabel('description')}"
+					reRender="resultadoDG" ajaxSingle="true">
+					<rich:toolTip
+						value="Ordenar resultados por #{lblEvent.description}"
+						showDelay="1000" />
+				</a4j:commandLink>
+			</f:facet>
+			<h:outputText value="#{resultado.description}" />
+		</rich:column>
+
+
+		<rich:column>
+			<f:facet name="header">
+				<h:outputText value="#{lblEvent.dtInc}" />
+			</f:facet>
+			<h:outputText value="#{resultado.dtInc}" >
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+			</h:outputText>
+		</rich:column>
+
+
+		<rich:column width="130">
+			<f:facet name="header">
+				<h:outputText value="Status Processamento" />
+			</f:facet>
+			
+			<h:outputText value="#{ ((resultado.altResult+resultado.disResult) / (resultado.altTotais+resultado.disTotais))}"  id="lblStatusProc">
+				<f:convertNumber pattern="0.0% Concluído"/>
+				
+				<rich:toolTip showDelay="1000" >
+				
+					<h:panelGrid columns="2" >
+
+						<h:outputText value="Alternativas" />
+						<h:outputText value="#{(resultado.altResult/resultado.altTotais)}" rendered="#{resultado.altTotais!=null and resultado.altTotais>0}" >
+							<f:convertNumber pattern="0.0% Concluído" />
+						</h:outputText>
+						<h:outputText value="(não possui)" rendered="#{resultado.altTotais==0}" />
+						
+						
+						<h:outputText value="Dissertativas" />
+						<h:outputText value="#{(resultado.disResult/resultado.disTotais)}" rendered="#{resultado.disTotais!=null and resultado.disTotais>0}" >
+							<f:convertNumber pattern="0.0% Concluído" />
+						</h:outputText>
+						<h:outputText value="(não possui)" rendered="#{resultado.disTotais==0}" />
+						
+						
+						<h:outputText value="Disponíveis para Revisão" />
+						<h:outputText value="#{resultado.disResDisp} " >
+							<f:convertNumber pattern="0"/>
+						</h:outputText>
+						
+					</h:panelGrid>
+				
+					<rich:spacer height="10"></rich:spacer>
+					<rich:separator lineType="dotted" height="1" ></rich:separator>
+					<rich:spacer height="10"></rich:spacer>
+					
+					<h:outputText value="Faça o upload das imagens."/><br/>
+					<h:outputText value="Caso haja alguma questão dissertativa nestas, "/><br/>
+					<h:outputText value="será monstrada como pendente de revisão na coluna ao lado." />	
+				
+				</rich:toolTip>
+				
+				
+			</h:outputText>
+			
+			
+		</rich:column>
+		
+		
+		
+		
+
+		<rich:column width="100">
+			<f:facet name="header" >
+				<h:outputText value="Pendentes de Revisão" />
+			</f:facet>
+			<h:outputText value="#{resultado.disResDisp} " />
+		</rich:column>
+		
+
+		<rich:column id="colDetalhes" width="80">
+			<f:facet name="header">
+				<h:outputText value="Revisar" />
+			</f:facet>
+			
+			
+			
+			
+			<a4j:commandLink action="#{eventCorrJSFBean.detailEvent(resultado)}" reRender="mdlCorrection" id="lnkDetail" 
+			oncomplete="Richfaces.showModalPanel('mdlCorrection')"  >
+				<h:graphicImage value="/img/openEventDetail.png" />
+			</a4j:commandLink >
+			
+			
+			<rich:toolTip value="Iniciar Roteiro de Correção" showDelay="3000" />
+		</rich:column>
+
+	</ui:define>
+
+	
+
+
+
+	
+</ui:composition>
+

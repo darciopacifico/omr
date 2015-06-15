@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="modeloAdes1" pageWidth="800" pageHeight="600" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="794" leftMargin="3" rightMargin="3" topMargin="3" bottomMargin="3">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="linhaAno" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["99/99"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="linhaSubtitulo" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["2.0 Mec Flex R$12.000"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="linhaOpcionais" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["AC DH Trio Couto\nIPVA Pago c/ Marcos"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="linhaContatos" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Claro (11) 9480-4529"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="linhaLink" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["vendocar.ro/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="linhaPlaca" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["DYG-3255"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="pk" class="java.lang.Long"/>
+	<field name="alterado_por" class="java.lang.String"/>
+	<field name="criado_por" class="java.lang.String"/>
+	<field name="dt_alt" class="java.sql.Timestamp"/>
+	<field name="dt_inc" class="java.sql.Timestamp"/>
+	<field name="status" class="java.lang.Integer"/>
+	<field name="ano_fab" class="java.lang.Integer"/>
+	<field name="ano_mod" class="java.lang.Integer"/>
+	<field name="cambio" class="java.lang.Integer"/>
+	<field name="cilindrada" class="java.lang.String"/>
+	<field name="combustivel" class="java.lang.Integer"/>
+	<field name="cor" class="java.lang.String"/>
+	<field name="custom_opc" class="java.lang.Boolean"/>
+	<field name="date_alt" class="java.sql.Timestamp"/>
+	<field name="date_inc" class="java.sql.Timestamp"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="placa" class="java.lang.String"/>
+	<field name="porta" class="java.lang.Integer"/>
+	<field name="quilometragem" class="java.lang.Long"/>
+	<field name="status_anuncio" class="java.lang.String"/>
+	<field name="str_custom_opc1" class="java.lang.String"/>
+	<field name="str_custom_opc2" class="java.lang.String"/>
+	<field name="valor" class="java.lang.Double"/>
+	<field name="fk_modeloadesivo" class="java.lang.Long"/>
+	<field name="fk_pessoa" class="java.lang.Long"/>
+	<field name="fk_produto" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="590" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="312" width="790" height="278" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="html">
+					<font fontName="FreeSans" size="70" isBold="true" isItalic="false" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Proportional" lineSpacingSize="0.7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{linhaContatos}+
+"<br/><span style=\"font-size: 30px;\"></span>"+ "<span >"+$P{linhaLink}+"</span>"+ "<span style=\"font-family:License Plate;\">"+$P{linhaPlaca}+"</span>"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="-157" y="-98" width="1109" height="259" isPrintInFirstWholeBand="true" forecolor="#010101"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="FreeSans" size="125" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["VENDO "+$P{linhaAno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="185" width="752" height="140"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="FreeSans" size="52" isBold="true" isItalic="false"/>
+					<paragraph lineSpacing="Proportional" lineSpacingSize="0.6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{linhaOpcionais}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="94" width="790" height="105" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
+					<font fontName="FreeSans" size="65" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{linhaSubtitulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

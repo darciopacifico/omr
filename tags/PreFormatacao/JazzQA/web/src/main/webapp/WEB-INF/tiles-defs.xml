@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://struts.apache.org/dtds/tiles-config_1_1.dtd">
+ <tiles-definitions>
+  <definition name="layOutPadrao" path="/tilesTemplate/main.jsp">
+   <put name="title" 			value="Reescreva o titulo" />
+   <put name="header" 			value="/tilesTemplate/header.jsp" />
+   <put name="menu" 			value="/tilesTemplate/menu.jsp" />
+   <put name="body" 			value="" />
+   <put name="barraDeStatus" 	value="/tilesTemplate/barraDeStatus.jsp" />   
+   <put name="js" 				value="" />
+   <put name="footer" 			value="/tilesTemplate/footer.jsp" />
+   <put name="botoes" 			value="/tilesTemplate/base/baseCadastroFormBotoesPesquisa.jsp" />
+   <put name="erros" 			value="/tilesTemplate/inconsistenciasTela.jsp" />
+  </definition>
+  <definition name="layOutPopUP" path="/tilesTemplate/popUpGeral/popUpMain.jsp">
+   <put name="js" 				value="../js/popUp.js" />
+   <put name="header" 		value="/tilesTemplate/popUpGeral/popUpHeader.jsp" />
+   <put name="body" 			value="/tilesTemplate/popUpGeral/popUpBody.jsp" />
+   <put name="footer" 		value="/tilesTemplate/popUpGeral/popUpFooter.jsp" />
+   <put name="botoes" 		value="/tilesTemplate/popUpGeral/popUpBotoes.jsp" />
+   <put name="erros" 			value="/tilesTemplate/inconsistenciasTela.jsp" />
+  </definition>
+  <definition name="layOutPadraoPesquisa" extends="layOutPadrao">
+   <put name="botoes" 			value="/tilesTemplate/base/baseCadastroFormBotoesPesquisa.jsp" />
+   <put name="footer" 			value="/tilesTemplate/footerVLH.jsp" />
+  </definition>
+
+  <definition name="layOutPadraoCadastro" extends="layOutPadrao">
+   <put name="botoes" 			value="/tilesTemplate/base/baseCadastroFormBotoesCadastro.jsp" />
+  </definition>
+	<definition name="layOutPadraoConsulta" extends="layOutPadrao">
+   <put name="botoes" 			value="/tilesTemplate/base/baseCadastroFormBotoesConsulta.jsp" />
+  </definition>
+  <definition name="layOutPadraoReportForm" path="/reportTile/reportMain.jsp">
+    <put name="title"			 value="Painel de sele��o"/>
+    <put name="reportForm"		 value=""/>
+    <put name="reportButtons"	 value="/tilesTemplate/reportTile/reportButtons.jsp"/>
+  </definition>
+
+  <!-- POPUP GERAL -->
+  <definition name="popUpGeral.tile" extends="layOutPopUP">
+  </definition>  
+  <!-- TRATAMENTO DE ERROS -->
+  <definition name="erro.tile" extends="layOutPadraoCadastro">
+	<put name="title" 	value="Erros" />
+   	<put name="body" 	value="/tilesTemplate/tratamentoErros.jsp" />
+   	<put name="js" 		value="tratamentoErros.js" />
+  </definition>  
+
+	<!-- Teste -->
+	<definition name="teste.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="Teste" />
+		<put name="body" 	value="/teste/cadastroTeste.jsp" />
+		<put name="js" 		value="javaScriptTeste.js" />
+	</definition>
+	<definition name="consultaTeste.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="Teste (consulta)" />
+		<put name="body" 	value="/teste/consultaTeste.jsp" />
+		<put name="js" 		value="javaScriptTeste.js" />
+	</definition>
+	<definition name="pesquisaTeste.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - Teste" />
+		<put name="body" 	value="/teste/pesquisaTeste.jsp" />
+		<put name="js" 		value="javaScriptTeste.js" />
+	</definition>  
+
+	<!-- Esforco -->
+	<definition name="esforco.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="Esforco" />
+		<put name="body" 	value="/esforco/cadastroEsforco.jsp" />
+		<put name="js" 		value="javaScriptEsforco.js" />
+	</definition>
+	<definition name="consultaEsforco.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="Esforco (consulta)" />
+		<put name="body" 	value="/esforco/consultaEsforco.jsp" />
+		<put name="js" 		value="javaScriptEsforco.js" />
+	</definition>
+	<definition name="pesquisaEsforco.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - Esforco" />
+		<put name="body" 	value="/esforco/pesquisaEsforco.jsp" />
+		<put name="js" 		value="javaScriptEsforco.js" />
+	</definition>  
+
+	<!-- Papel -->
+	<definition name="papel.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="Papel" />
+		<put name="body" 	value="/papel/cadastroPapel.jsp" />
+		<put name="js" 		value="javaScriptPapel.js" />
+	</definition>
+	<definition name="consultaPapel.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="Papel (consulta)" />
+		<put name="body" 	value="/papel/consultaPapel.jsp" />
+		<put name="js" 		value="javaScriptPapel.js" />
+	</definition>
+	<definition name="pesquisaPapel.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - Papel" />
+		<put name="body" 	value="/papel/pesquisaPapel.jsp" />
+		<put name="js" 		value="javaScriptPapel.js" />
+	</definition>  
+
+	<!-- TipoHistorico -->
+	<definition name="tipohistorico.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="TipoHistorico" />
+		<put name="body" 	value="/tipohistorico/cadastroTipoHistorico.jsp" />
+		<put name="js" 		value="javaScriptTipoHistorico.js" />
+	</definition>
+	<definition name="consultaTipoHistorico.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="TipoHistorico (consulta)" />
+		<put name="body" 	value="/tipohistorico/consultaTipoHistorico.jsp" />
+		<put name="js" 		value="javaScriptTipoHistorico.js" />
+	</definition>
+	<definition name="pesquisaTipoHistorico.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - TipoHistorico" />
+		<put name="body" 	value="/tipohistorico/pesquisaTipoHistorico.jsp" />
+		<put name="js" 		value="javaScriptTipoHistorico.js" />
+	</definition>  
+
+	<!-- Status -->
+	<definition name="status.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="Status" />
+		<put name="body" 	value="/status/cadastroStatus.jsp" />
+		<put name="js" 		value="javaScriptStatus.js" />
+	</definition>
+	<definition name="consultaStatus.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="Status (consulta)" />
+		<put name="body" 	value="/status/consultaStatus.jsp" />
+		<put name="js" 		value="javaScriptStatus.js" />
+	</definition>
+	<definition name="pesquisaStatus.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - Status" />
+		<put name="body" 	value="/status/pesquisaStatus.jsp" />
+		<put name="js" 		value="javaScriptStatus.js" />
+	</definition>  
+
+	<!-- Projeto -->
+	<definition name="projeto.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="Projeto" />
+		<put name="body" 	value="/projeto/cadastroProjeto.jsp" />
+		<put name="js" 		value="javaScriptProjeto.js" />
+	</definition>
+	<definition name="consultaProjeto.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="Projeto (consulta)" />
+		<put name="body" 	value="/projeto/consultaProjeto.jsp" />
+		<put name="js" 		value="javaScriptProjeto.js" />
+	</definition>
+	<definition name="pesquisaProjeto.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - Projeto" />
+		<put name="body" 	value="/projeto/pesquisaProjeto.jsp" />
+		<put name="js" 		value="javaScriptProjeto.js" />
+	</definition>  
+
+	<!-- TipoFonte -->
+	<definition name="tipofonte.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="TipoFonte" />
+		<put name="body" 	value="/tipofonte/cadastroTipoFonte.jsp" />
+		<put name="js" 		value="javaScriptTipoFonte.js" />
+	</definition>
+	<definition name="consultaTipoFonte.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="TipoFonte (consulta)" />
+		<put name="body" 	value="/tipofonte/consultaTipoFonte.jsp" />
+		<put name="js" 		value="javaScriptTipoFonte.js" />
+	</definition>
+	<definition name="pesquisaTipoFonte.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - TipoFonte" />
+		<put name="body" 	value="/tipofonte/pesquisaTipoFonte.jsp" />
+		<put name="js" 		value="javaScriptTipoFonte.js" />
+	</definition>  
+
+	<!-- Produto -->
+	<definition name="produto.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="Produto" />
+		<put name="body" 	value="/produto/cadastroProduto.jsp" />
+		<put name="js" 		value="javaScriptProduto.js" />
+	</definition>
+	<definition name="consultaProduto.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="Produto (consulta)" />
+		<put name="body" 	value="/produto/consultaProduto.jsp" />
+		<put name="js" 		value="javaScriptProduto.js" />
+	</definition>
+	<definition name="pesquisaProduto.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - Produto" />
+		<put name="body" 	value="/produto/pesquisaProduto.jsp" />
+		<put name="js" 		value="javaScriptProduto.js" />
+	</definition>  
+
+	<!-- DirecaoRelacionamento -->
+	<definition name="direcaorelacionamento.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="DirecaoRelacionamento" />
+		<put name="body" 	value="/direcaorelacionamento/cadastroDirecaoRelacionamento.jsp" />
+		<put name="js" 		value="javaScriptDirecaoRelacionamento.js" />
+	</definition>
+	<definition name="consultaDirecaoRelacionamento.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="DirecaoRelacionamento (consulta)" />
+		<put name="body" 	value="/direcaorelacionamento/consultaDirecaoRelacionamento.jsp" />
+		<put name="js" 		value="javaScriptDirecaoRelacionamento.js" />
+	</definition>
+	<definition name="pesquisaDirecaoRelacionamento.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - DirecaoRelacionamento" />
+		<put name="body" 	value="/direcaorelacionamento/pesquisaDirecaoRelacionamento.jsp" />
+		<put name="js" 		value="javaScriptDirecaoRelacionamento.js" />
+	</definition>  
+
+	<!-- TipoRelacionamento -->
+	<definition name="tiporelacionamento.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="TipoRelacionamento" />
+		<put name="body" 	value="/tiporelacionamento/cadastroTipoRelacionamento.jsp" />
+		<put name="js" 		value="javaScriptTipoRelacionamento.js" />
+	</definition>
+	<definition name="consultaTipoRelacionamento.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="TipoRelacionamento (consulta)" />
+		<put name="body" 	value="/tiporelacionamento/consultaTipoRelacionamento.jsp" />
+		<put name="js" 		value="javaScriptTipoRelacionamento.js" />
+	</definition>
+	<definition name="pesquisaTipoRelacionamento.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - TipoRelacionamento" />
+		<put name="body" 	value="/tiporelacionamento/pesquisaTipoRelacionamento.jsp" />
+		<put name="js" 		value="javaScriptTipoRelacionamento.js" />
+	</definition>  
+
+	<!-- Estabilidade -->
+	<definition name="estabilidade.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="Estabilidade" />
+		<put name="body" 	value="/estabilidade/cadastroEstabilidade.jsp" />
+		<put name="js" 		value="javaScriptEstabilidade.js" />
+	</definition>
+	<definition name="consultaEstabilidade.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="Estabilidade (consulta)" />
+		<put name="body" 	value="/estabilidade/consultaEstabilidade.jsp" />
+		<put name="js" 		value="javaScriptEstabilidade.js" />
+	</definition>
+	<definition name="pesquisaEstabilidade.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - Estabilidade" />
+		<put name="body" 	value="/estabilidade/pesquisaEstabilidade.jsp" />
+		<put name="js" 		value="javaScriptEstabilidade.js" />
+	</definition>  
+
+	<!-- TipoRequisito -->
+	<definition name="tiporequisito.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="TipoRequisito" />
+		<put name="body" 	value="/tiporequisito/cadastroTipoRequisito.jsp" />
+		<put name="js" 		value="javaScriptTipoRequisito.js" />
+	</definition>
+	<definition name="consultaTipoRequisito.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="TipoRequisito (consulta)" />
+		<put name="body" 	value="/tiporequisito/consultaTipoRequisito.jsp" />
+		<put name="js" 		value="javaScriptTipoRequisito.js" />
+	</definition>
+	<definition name="pesquisaTipoRequisito.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - TipoRequisito" />
+		<put name="body" 	value="/tiporequisito/pesquisaTipoRequisito.jsp" />
+		<put name="js" 		value="javaScriptTipoRequisito.js" />
+	</definition>  
+
+	<!-- FamiliaProdutoArea -->
+	<definition name="familiaprodutoarea.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="FamiliaProdutoArea" />
+		<put name="body" 	value="/familiaprodutoarea/cadastroFamiliaProdutoArea.jsp" />
+		<put name="js" 		value="javaScriptFamiliaProdutoArea.js" />
+	</definition>
+	<definition name="consultaFamiliaProdutoArea.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="FamiliaProdutoArea (consulta)" />
+		<put name="body" 	value="/familiaprodutoarea/consultaFamiliaProdutoArea.jsp" />
+		<put name="js" 		value="javaScriptFamiliaProdutoArea.js" />
+	</definition>
+	<definition name="pesquisaFamiliaProdutoArea.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - FamiliaProdutoArea" />
+		<put name="body" 	value="/familiaprodutoarea/pesquisaFamiliaProdutoArea.jsp" />
+		<put name="js" 		value="javaScriptFamiliaProdutoArea.js" />
+	</definition>  
+
+	<!-- AreaProduto -->
+	<definition name="areaproduto.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="AreaProduto" />
+		<put name="body" 	value="/areaproduto/cadastroAreaProduto.jsp" />
+		<put name="js" 		value="javaScriptAreaProduto.js" />
+	</definition>
+	<definition name="consultaAreaProduto.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="AreaProduto (consulta)" />
+		<put name="body" 	value="/areaproduto/consultaAreaProduto.jsp" />
+		<put name="js" 		value="javaScriptAreaProduto.js" />
+	</definition>
+	<definition name="pesquisaAreaProduto.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - AreaProduto" />
+		<put name="body" 	value="/areaproduto/pesquisaAreaProduto.jsp" />
+		<put name="js" 		value="javaScriptAreaProduto.js" />
+	</definition>  
+
+	<!-- FamiliaProduto -->
+	<definition name="familiaproduto.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="FamiliaProduto" />
+		<put name="body" 	value="/familiaproduto/cadastroFamiliaProduto.jsp" />
+		<put name="js" 		value="javaScriptFamiliaProduto.js" />
+	</definition>
+	<definition name="consultaFamiliaProduto.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="FamiliaProduto (consulta)" />
+		<put name="body" 	value="/familiaproduto/consultaFamiliaProduto.jsp" />
+		<put name="js" 		value="javaScriptFamiliaProduto.js" />
+	</definition>
+	<definition name="pesquisaFamiliaProduto.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - FamiliaProduto" />
+		<put name="body" 	value="/familiaproduto/pesquisaFamiliaProduto.jsp" />
+		<put name="js" 		value="javaScriptFamiliaProduto.js" />
+	</definition>  
+
+	<!-- Modulo -->
+	<definition name="modulo.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="Modulo" />
+		<put name="body" 	value="/modulo/cadastroModulo.jsp" />
+		<put name="js" 		value="javaScriptModulo.js" />
+	</definition>
+	<definition name="consultaModulo.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="Modulo (consulta)" />
+		<put name="body" 	value="/modulo/consultaModulo.jsp" />
+		<put name="js" 		value="javaScriptModulo.js" />
+	</definition>
+	<definition name="pesquisaModulo.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - Modulo" />
+		<put name="body" 	value="/modulo/pesquisaModulo.jsp" />
+		<put name="js" 		value="javaScriptModulo.js" />
+	</definition>  
+
+	<!-- Requisito -->
+	<definition name="requisito.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="Requisito" />
+		<put name="body" 	value="/requisito/cadastroRequisito.jsp" />
+		<put name="js" 		value="javaScriptRequisito.js" />
+	</definition>
+	<definition name="consultaRequisito.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="Requisito (consulta)" />
+		<put name="body" 	value="/requisito/consultaRequisito.jsp" />
+		<put name="js" 		value="javaScriptRequisito.js" />
+	</definition>
+	<definition name="pesquisaRequisito.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - Requisito" />
+		<put name="body" 	value="/requisito/pesquisaRequisito.jsp" />
+		<put name="js" 		value="javaScriptRequisito.js" />
+	</definition>  
+
+	<!-- UsuarioJazz -->
+	<definition name="usuariojazz.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="UsuarioJazz" />
+		<put name="body" 	value="/usuariojazz/cadastroUsuarioJazz.jsp" />
+		<put name="js" 		value="javaScriptUsuarioJazz.js" />
+	</definition>
+	<definition name="consultaUsuarioJazz.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="UsuarioJazz (consulta)" />
+		<put name="body" 	value="/usuariojazz/consultaUsuarioJazz.jsp" />
+		<put name="js" 		value="javaScriptUsuarioJazz.js" />
+	</definition>
+	<definition name="pesquisaUsuarioJazz.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - UsuarioJazz" />
+		<put name="body" 	value="/usuariojazz/pesquisaUsuarioJazz.jsp" />
+		<put name="js" 		value="javaScriptUsuarioJazz.js" />
+	</definition>  
+
+</tiles-definitions>

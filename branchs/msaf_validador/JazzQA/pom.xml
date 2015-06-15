@@ -1,0 +1,271 @@
+<project>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>JazzQA</groupId>
+   <artifactId>JazzQA</artifactId>   
+   <version>1.0</version>
+   <packaging>pom</packaging>
+   <name>POM - Jazz QA</name>
+
+   <parent>
+    <groupId>Jazz</groupId>
+    <version>1.0</version>
+    <artifactId>Jazz</artifactId>  
+   </parent>   
+   
+   <modules>
+      <module>core</module>
+      <module>ejb</module>
+      <module>web</module>
+      <module>ear</module>
+   </modules>
+
+   <dependencyManagement>
+      <dependencies>
+	  		
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>1.6.1</version>
+				<scope>provided</scope>
+			</dependency>		
+
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>1.6.1</version>
+				<scope>provided</scope>
+			</dependency>		
+
+			
+			<dependency>
+				<groupId>javax.ejb</groupId>
+				<artifactId>ejb-api</artifactId>
+				<version>2.1</version>
+				<scope>provided</scope>
+			</dependency>
+
+	  
+		<dependency>
+			<groupId>Jazz</groupId>
+			<artifactId>JazzFramework</artifactId>
+			<version>1.1</version>
+						
+		   <exclusions>
+			 <exclusion>
+			   <groupId>javax.ejb</groupId>
+			   <artifactId>ejb-api</artifactId>
+			 </exclusion>
+		   </exclusions>				
+		</dependency>
+				 
+		<dependency>
+		      <groupId>junit</groupId>
+		      <artifactId>junit</artifactId>
+		      <version>4.4</version>
+		      <scope>test</scope>
+	    </dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>3.2.6.ga</version>
+			<scope>provided</scope>
+	    </dependency>
+		
+		<dependency>
+			<groupId>struts</groupId>
+			<artifactId>struts</artifactId>
+			<version>1.2.9</version>
+	    </dependency>
+		
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>2.1.1</version>
+	    </dependency>
+		
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.7.0</version>	
+	    </dependency>
+
+		<!--
+		-->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1</version>	
+	    </dependency>
+		
+		
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>1.8</version>
+	    </dependency>
+	    <!-- 
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.0.5</version>
+			<scope>provided</scope>		
+	    </dependency>
+	     
+
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jboss-client</artifactId>
+			<version>4.0.2</version>
+			<scope>provided</scope>	
+	    </dependency>
+	     -->
+
+
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jboss-j2ee</artifactId>
+			<version>4.2.3.GA</version>	
+			<scope>provided</scope>	
+	    </dependency>	
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.1.2</version>
+			<scope>compile</scope>	
+	    </dependency>
+
+	  
+
+	  
+		<dependency>
+		    <groupId>javax.jms</groupId>
+		    <artifactId>jms</artifactId>
+		    <version>1.1</version>
+			<scope>compile</scope>	
+		</dependency>		 
+		 
+	 </dependencies>
+   </dependencyManagement>
+
+
+
+      <dependencies>
+		<dependency>
+			<groupId>Jazz</groupId>
+			<artifactId>JazzFramework</artifactId>
+			<version>1.1</version>
+			
+		   <exclusions>
+			 <exclusion>
+			   <groupId>xdoclet</groupId>
+			   <artifactId>xdoclet</artifactId>
+			 </exclusion>
+		   </exclusions>				
+		</dependency>		 
+		 
+		<dependency>
+		      <groupId>junit</groupId>
+		      <artifactId>junit</artifactId>
+		      <version>4.4</version>
+		      <scope>test</scope>
+	    </dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+
+	    </dependency>
+		
+		<dependency>
+			<groupId>struts</groupId>
+			<artifactId>struts</artifactId>
+			<version>1.2.9</version>
+	    </dependency>
+		
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>2.1.1</version>
+	    </dependency>
+		
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.7.0</version>	
+	    </dependency>
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1</version>
+			
+		   <exclusions>
+			 <exclusion>
+			   <groupId>javax.servlet</groupId>
+			   <artifactId>servlet-api</artifactId>
+			 </exclusion>
+		   </exclusions>			
+	    </dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.3</version>		
+			<scope>provided</scope>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>1.8</version>
+	    </dependency>
+
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.0.5</version>
+			<scope>provided</scope>		
+	    </dependency>
+
+		<!--
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jboss-client</artifactId>
+			<version>4.2.3.GA</version>
+			<scope>provided</scope>		
+	    </dependency>
+		-->
+
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jboss-j2ee</artifactId>
+			<version>4.2.3.GA</version>
+			<scope>provided</scope>		
+	    </dependency>	
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.1.2</version>
+			<scope>compile</scope>	
+	    </dependency>
+
+	  
+
+
+	  
+		<dependency>
+		    <groupId>javax.jms</groupId>
+		    <artifactId>jms</artifactId>
+		    <version>1.1</version>
+			<scope>provided</scope>	
+		</dependency>		 
+		 
+	 </dependencies>
+
+   
+</project>

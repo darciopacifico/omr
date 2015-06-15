@@ -1,0 +1,40 @@
+Manifest-Version: 1.0
+Class-Path: antlr-2.7.6.jar aopalliance-1.0.jar asm-3.1.jar aspectjrt-
+ 1.6.6.jar bcmail-jdk14-138.jar bcmail-jdk14-1.38.jar bcprov-jdk14-138
+ .jar bcprov-jdk14-1.38.jar bctsp-jdk14-1.38.jar bluecove-2.1.0.jar ca
+ s-client-core-3.1.10.jar castor-1.2.jar cglib-2.2.jar commons-beanuti
+ ls-1.8.2.jar commons-collections-3.2.1.jar commons-dbcp-1.2.2.jar com
+ mons-digester-1.8.1.jar commons-lang-2.4.jar commons-logging-1.1.1.ja
+ r commons-pool-1.3.jar cxf-api-2.7.5.jar cxf-rt-bindings-soap-2.7.5.j
+ ar cxf-rt-bindings-xml-2.7.5.jar cxf-rt-core-2.7.5.jar cxf-rt-databin
+ ding-aegis-2.7.5.jar cxf-rt-databinding-jaxb-2.7.5.jar cxf-rt-fronten
+ d-jaxws-2.7.5.jar cxf-rt-frontend-simple-2.7.5.jar cxf-rt-transports-
+ http-2.7.5.jar cxf-rt-ws-addr-2.7.5.jar cxf-rt-ws-policy-2.7.5.jar cx
+ f-rt-ws-security-2.7.5.jar dom4j-1.6.1.jar ehcache-core-2.5.1.jar fre
+ emarker-2.3.15.jar geronimo-javamail_1.4_spec-1.7.1.jar gson-1.7.1.ja
+ r hibernate-annotations-3.5.1-Final.jar hibernate-commons-annotations
+ -3.2.0.Final.jar hibernate-core-3.5.1-Final.jar hibernate-entitymanag
+ er-3.5.1-Final.jar hibernate-jmx-3.5.1-Final.jar hibernate-jpa-2.0-ap
+ i-1.0.0.Final.jar hibernate-validator-4.1.0.Final.jar ij-1.43.jar ite
+ xt-2.1.7.js2.jar jackson-annotations-2.0.5.jar jackson-core-2.0.5.jar
+  jackson-databind-2.0.5.jar jasperreports-5.1.2.jar javassist-3.9.0.G
+ A.jar JazzAnnotations.jar JazzFramework.jar JazzJRDataSource.jar Jazz
+ XDoclet.jar jcommon-1.0.15.jar jdtcore-3.1.0.jar jfreechart-1.0.12.ja
+ r joda-time-1.6.2.jar log4j-1.2.16.jar mysql-connector-java-5.1.14.ja
+ r neethi-3.0.2.jar opensaml-2.5.1-1.jar openws-1.4.2-1.jar primefaces
+ -1.1.jar qdox-1.12.1.jar richfaces-api-3.3.3.Final.jar richfaces-impl
+ -3.3.3.Final.jar richfaces-ui-3.3.3.Final.jar slf4j-api-1.6.1.jar slf
+ 4j-log4j12-1.6.1.jar spring-aop-3.0.5.RELEASE.jar spring-asm-3.0.5.RE
+ LEASE.jar spring-beans-3.0.5.RELEASE.jar spring-context-3.0.5.RELEASE
+ .jar spring-core-3.0.5.RELEASE.jar spring-expression-3.0.5.RELEASE.ja
+ r spring-jdbc-3.0.7.RELEASE.jar spring-ldap-core-1.3.1.RELEASE.jar sp
+ ring-orm-3.0.5.RELEASE.jar spring-security-acl-3.1.4.RELEASE.jar spri
+ ng-security-cas-client-3.0.8.RELEASE.jar spring-security-config-3.1.4
+ .RELEASE.jar spring-security-core-3.1.4.RELEASE.jar spring-security-l
+ dap-3.1.4.RELEASE.jar spring-security-web-3.1.4.RELEASE.jar spring-tx
+ -3.0.7.RELEASE.jar spring-web-3.0.7.RELEASE.jar stax2-api-3.1.1.jar v
+ alidation-api-1.0.0.GA.jar woodstox-core-asl-4.2.0.jar wsdl4j-1.6.3.j
+ ar wss4j-1.6.10.jar xercesImpl-2.11.0.jar xml-apis-1.0.b2.jar xml-res
+ olver-1.2.jar xmlschema-core-2.0.3.jar xmlsec-1.5.4.jar xmltooling-1.
+ 3.2-1.jar
+

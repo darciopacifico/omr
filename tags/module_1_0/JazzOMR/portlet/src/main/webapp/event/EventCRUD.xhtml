@@ -1,0 +1,408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../template/crud/crudTemplate.xhtml">
+
+
+
+	<!-- PARAMETROS DO MODULO -->
+	<ui:param name="myMBean" value="#{eventJSFBean}" />
+	<ui:param name="tituloModulo" value="#{lblEvent.pnlEvent}" />
+	<ui:param name="iconeModulo" value="/img/menu/event_calendar_128.png" />
+	<ui:param name="menuUrlPrefix" value="../" />	
+
+	<!-- DEFINICOES GLOBAIS DO MÓDULO -->
+	<ui:define name="repGlobal">
+		<f:loadBundle var="lblEvent" basename="br.com.dlp.jazzomr.event.Event" />
+		<f:loadBundle var="msg" basename="br.com.dlp.jazzomr.ResourceBundle" />
+
+	</ui:define>
+
+
+	<!-- DEFINICAO DE PAINEL DE FORMULARIO DE PESQUISA PESQUISA -->
+	<ui:define name="repPesquisa">
+		<h:panelGrid columns="2">
+
+			<h:outputText value="#{lblEvent.description}" />
+			<h:inputText value="#{eventJSFBean.description}" />
+
+			<h:outputText value="#{lblEvent.dtFimFrom}" />
+			<rich:calendar value="#{eventJSFBean.dtFimFrom}" />
+
+			<h:outputText value="#{lblEvent.dtFimTo}" />
+			<rich:calendar value="#{eventJSFBean.dtFimTo}" />
+
+			<h:outputText value="#{lblEvent.dtInicioFrom}" />
+			<rich:calendar value="#{eventJSFBean.dtInicioFrom}" />
+
+			<h:outputText value="#{lblEvent.dtInicioTo}" />
+			<rich:calendar value="#{eventJSFBean.dtInicioTo}" />
+
+			<h:outputText value="#{lblEvent.dtIncFrom}" />
+			<rich:calendar value="#{eventJSFBean.dtIncFrom}" />
+
+			<h:outputText value="#{lblEvent.dtIncTo}" />
+			<rich:calendar value="#{eventJSFBean.dtIncTo}" />
+
+			<h:outputText value="#{lblEvent.dtAltFrom}" />
+			<rich:calendar value="#{eventJSFBean.dtAltFrom}" />
+
+			<h:outputText value="#{lblEvent.dtAltTo}" />
+			<rich:calendar value="#{eventJSFBean.dtAltTo}" />
+
+			<h:outputText value="#{lblEvent.status}" />
+			<rich:comboBox defaultLabel="Selecione..." value="#{eventJSFBean.status}" selectFirstOnUpdate="false" >
+				<f:selectItems value="#{eventJSFBean.statusList}"  />
+			</rich:comboBox>
+
+		</h:panelGrid>
+	</ui:define>
+
+
+
+	<!-- DEFINICAO DOS CAMPOS PARA PESQUISA INSTANTANEA -->
+	<ui:define name="repInstantSearch">
+
+	</ui:define>
+
+
+	<!--COLUNAS EXIBIDAS NA PESQUISA-->
+	<ui:define name="repCamposResultado">
+
+		<rich:column>
+			<f:facet name="header">
+				<a4j:commandLink
+					action="#{myMBean.dataModel.extraArgumentsDTO.processOrderChoice('description')}"
+					value="#{lblEvent.description} #{myMBean.dataModel.getOrderLabel('description')}"
+					reRender="resultadoDG" ajaxSingle="true">
+					<rich:toolTip
+						value="Ordenar resultados por #{lblEvent.description}"
+						showDelay="1000" />
+				</a4j:commandLink>
+			</f:facet>
+			<h:outputText value="#{resultado.description}" />
+		</rich:column>
+
+		<rich:column  width="90">
+			<f:facet name="header">
+				<a4j:commandLink
+					action="#{myMBean.dataModel.extraArgumentsDTO.processOrderChoice('dtFim')}"
+					value="#{lblEvent.dtFim} #{myMBean.dataModel.getOrderLabel('dtFim')}"
+					reRender="resultadoDG" ajaxSingle="true">
+					<rich:toolTip value="Ordenar resultados por #{lblEvent.dtFim}"
+						showDelay="1000" />
+				</a4j:commandLink>
+			</f:facet>
+			<h:outputText value="#{resultado.dtFim}" >
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+			</h:outputText>
+		</rich:column>
+
+		<rich:column  width="90">
+			<f:facet name="header">
+				<a4j:commandLink
+					action="#{myMBean.dataModel.extraArgumentsDTO.processOrderChoice('dtInicio')}"
+					value="#{lblEvent.dtInicio} #{myMBean.dataModel.getOrderLabel('dtInicio')}"
+					reRender="resultadoDG" ajaxSingle="true">
+					<rich:toolTip value="Ordenar resultados por #{lblEvent.dtInicio}"
+						showDelay="1000" />
+				</a4j:commandLink>
+			</f:facet>
+			<h:outputText value="#{resultado.dtInicio}" >
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+			</h:outputText>
+		</rich:column>
+
+		<rich:column width="60">
+			<f:facet name="header">
+				<h:outputText value="#{lblEvent.status}" />
+			</f:facet>
+			<h:outputText value="#{resultado.status}" />
+		</rich:column>
+	</ui:define>
+
+	<!--CAMPOS MANUTENCAO-->
+	<ui:define name="repCamposManutencao">
+
+		<h:outputText value="#{lblEvent.description} do Evento" />
+		<h:inputText value="#{eventJSFBean.tmpVO.description}" disabled="#{myMBean.tmpVO==null}" size="80" maxlength="200"  />
+		<rich:message for="description" />
+
+		<h:outputText value="#{lblEvent.dtFim}" />
+		<rich:calendar value="#{eventJSFBean.tmpVO.dtFim}" disabled="#{myMBean.tmpVO==null}" />
+		<rich:message for="dtFim" />
+
+		<h:outputText value="#{lblEvent.dtInicio}" />
+		<rich:calendar value="#{eventJSFBean.tmpVO.dtInicio}" disabled="#{myMBean.tmpVO==null}" />
+		<rich:message for="dtInicio" />
+
+		<h:outputText value="#{lblEvent.dtInc}" />
+		<h:outputText value="#{eventJSFBean.tmpVO.dtInc}"  >
+			<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+		</h:outputText>
+		<rich:message for="dtInc" />
+
+		<h:outputText value="#{lblEvent.dtAlt}" />
+		<h:outputText value="#{eventJSFBean.tmpVO.dtAlt}"  >
+			<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+		</h:outputText>
+		<rich:message for="dtAlt" />
+
+		<h:outputText value="#{lblEvent.status}" />
+		<rich:comboBox defaultLabel="Selecione..." value="#{eventJSFBean.tmpVO.status}" disabled="#{myMBean.tmpVO==null}" selectFirstOnUpdate="false" id="status">
+			<f:selectItems value="#{eventJSFBean.statusList}"  />
+		</rich:comboBox>
+		<rich:message for="status" />
+		
+		
+		<h:panelGroup id="flagSaved" >
+			<!-- hidden para controle de abertura por javascript do modal de participacoes -->
+			<input id="hiddenIsEventVOSaved" type="hidden" value="#{eventJSFBean.eventVOSaved}"/>
+		</h:panelGroup>
+	</ui:define>
+
+	
+	<ui:define name="botoesModuloEdicao">
+
+		<rich:menuItem value="Adicionar Participantes" id="btnParticipations" 
+			title="Adicionar Participantes" submitMode="ajax"
+			action="#{eventJSFBean.actionAddParticipations(eventJSFBean.tmpVO)}"
+			oncomplete="if(document.getElementById('hiddenIsEventVOSaved').value=='true')Richfaces.showModalPanel('mdlParticipations');"
+			reRender="flagSaved,pnlGrowl,mdlParticipations" >
+		
+			<rich:toolTip value="Adicionar novos participantes ao evento" showDelay="2000" />
+			<f:facet name="icon">
+				<h:graphicImage value="/img/participants32.png" />
+			</f:facet>
+			
+		</rich:menuItem>		
+		
+		<rich:menuItem value="Baixar Provas" action="#{eventJSFBean.downloadExamFile(eventJSFBean.tmpVO)}" submitMode="server" ajaxSingle="true" id="btnDownloadExam" reRender="pnlGrowl" >
+			<rich:toolTip value="Baixar arquivo PDF contendo os exames" showDelay="2000" />
+			<f:facet name="icon">
+				<h:graphicImage value="/img/download_pdf_32.png" />
+			</f:facet>
+		</rich:menuItem>		
+		
+	</ui:define>
+
+
+	<ui:define name="repSubModulos">
+	
+		<rich:separator id="sepTabs" height="1"/>
+		<rich:spacer height="3" />
+		
+		<h:panelGrid columns="2">
+		
+			
+			<rich:dataTable value="#{eventJSFBean.tmpVO.participations}" var="par" rows="7" id="tbParticipacoes" width="850" >
+				<f:facet name="header">Participações</f:facet>
+				<rich:column width="50">
+					<f:facet name="header" >ID. Part.</f:facet>
+					<h:outputText value="#{par.PK}" />
+				</rich:column>
+
+				<rich:column width="300">
+					<f:facet name="header">Pessoa</f:facet>
+					<h:outputText value="#{par.pessoaVO.nome}" />
+				</rich:column>
+
+				<rich:column width="400">
+					<f:facet name="header">Exame</f:facet>
+					<h:outputText value="#{par.examVariantVO.examVO.description}" />
+				</rich:column>
+			
+				<rich:column >
+					<f:facet name="header">Variante Exame</f:facet>
+					<h:outputText value="#{par.examVariantVO.PK}" />
+				</rich:column>
+			
+				<rich:column width="70">
+					<f:facet name="header">&nbsp;</f:facet>
+					
+					<a4j:commandLink action="#{eventJSFBean.actionDeleteParticipation(par)}" reRender="tbParticipacoes,pnlGrowl">
+						<h:graphicImage value="/img/Delete_16.png" /> Excluir
+					</a4j:commandLink>
+				</rich:column>
+			
+				<f:facet name="footer">
+					<rich:datascroller  />							
+				</f:facet>
+			</rich:dataTable>
+			
+		</h:panelGrid>		
+	
+	</ui:define>
+
+
+	<ui:define name="noFormModals">
+	
+		
+		<!-- ########################## -->
+		<!-- # MODAL DE PARTICIPACOES # -->
+		<!-- ########################## -->
+		
+		<rich:modalPanel id="mdlParticipations" autosized="true"  >
+
+			<a4j:form id="frmParticipation" >
+			<a4j:region>
+			<rich:modalPanel id="waitPanel" autosized="true" >
+				<f:facet name="header">  Por favor, aguarde.</f:facet>
+				
+				<h:panelGrid columns="2">
+					<h:graphicImage value="/img/generatingParts.gif" />
+				
+					
+					<h:outputText value="Registrando Participações." style="font-size: large;" />
+					
+				</h:panelGrid>
+	
+			</rich:modalPanel>
+
+			
+	
+				<!-- Barra de ferramentas do modal mdlManutencao -->
+				<rich:toolBar> 
+				
+					<rich:menuItem value="Salvar Participações" submitMode="ajax" 
+						action="#{eventJSFBean.participationHelper.processParticipations(eventJSFBean.tmpVO)}"
+						eventsQueue="none"
+						reRender="pnlGrowl,tbParticipacoes,tabPessoasExames" process="mdlParticipations,campos,hiddenIsEventVOSaved" >
+				
+						<rich:toolTip value="Salva as participações do evento, combinando as pessoas, grupos e exames selecionados!" showDelay="2000" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/procPart_32.png" />
+						</f:facet>
+					</rich:menuItem>
+					        	
+		
+					<rich:menuItem submitMode="none" value="Sair/Cancelar" onclick="Richfaces.hideModalPanel('mdlParticipations')" >
+						<rich:toolTip value="Fecha a tela de participações" showDelay="2000" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/Cancel_32.png" />
+						</f:facet>
+					</rich:menuItem>
+					
+					<a4j:status id="ajaxStatus" onstart="#{rich:component('waitPanel')}.show('',{height:'100px', width:'350px'})"
+					   onstop="#{rich:component('waitPanel')}.hide()" />
+					 
+		        	
+				</rich:toolBar>
+			
+	
+				<rich:tabPanel switchType="client" id="tabPessoasExames" >
+					<rich:tab label="Seleção Grupos e Pessoas" >
+					
+						<h:panelGrid columns="2" id="gridPessoas">
+							<rich:panel style="height: 320px;vertical-align: bottom;" id="pngGrupEv" >
+								<rich:toolTip showDelay="1500">Adicione grupos de participantes a este evento.</rich:toolTip>
+								<f:facet name="header">Grupos (?)</f:facet>
+								
+								<h:panelGrid columns="2">
+									<h:panelGrid id="pnlFiltroGrupos" columns="2" width="220" style="height: 90px;">
+										<h:outputText value="Descrição" />
+										<h:inputText value="#{eventJSFBean.participationHelper.groupDescription}" size="20" />
+									</h:panelGrid>
+									<a4j:commandButton action="#" process="pnlFiltroGrupos" reRender="shuttleGrupos" value="OK"/>
+								</h:panelGrid>
+						        <rich:listShuttle id="shuttleGrupos"
+							        sourceValue="#{eventJSFBean.participationHelper.gruposDisponiveis}"
+							        targetValue="#{eventJSFBean.participationHelper.gruposSelecionados}"
+							        var="items" listsHeight="150" sourceListWidth="90" targetListWidth="90" converter="grupoJSONConverter"
+							        sourceCaptionLabel="Disponíveis" targetCaptionLabel="Selecionados" orderControlsVisible="false"  fastOrderControlsVisible="false">
+						            <rich:column>
+						                <h:outputText value="#{items.description}"/>
+						            </rich:column>
+						        </rich:listShuttle>
+						        
+							</rich:panel>
+							<rich:panel style="height: 320px;vertical-align: bottom;" id="pnlPessEv" >
+								<rich:toolTip showDelay="3000">Adicione participantes neste evento.</rich:toolTip>
+								<f:facet name="header">Pessoas (?)</f:facet>
+									<h:panelGrid columns="2">
+										<h:panelGrid id="pnlFiltroPessoas" columns="2" width="220" style="height: 90px;">
+											<h:outputText value="Nome" />
+											<h:inputText value="#{eventJSFBean.participationHelper.pessoaNome}" size="20" />
+											<h:outputText value="Login" />
+											<h:inputText value="#{eventJSFBean.participationHelper.pessoaLogin}" size="20" />
+											<h:outputText value="Email" />
+											<h:inputText value="#{eventJSFBean.participationHelper.pessoaEmail}" size="20" />
+										</h:panelGrid>
+										<a4j:commandButton action="#" process="pnlFiltroPessoas" reRender="shuttlePessoas" value="OK" />
+									</h:panelGrid>
+							        <rich:listShuttle id="shuttlePessoas"
+								        sourceValue="#{eventJSFBean.participationHelper.pessoasDisponiveis}"
+								        targetValue="#{eventJSFBean.participationHelper.pessoasSelecionadas}"
+								        var="items" listsHeight="150" sourceListWidth="90" targetListWidth="90" converter="pessoaJSONConverter"
+								        sourceCaptionLabel="Disponíveis" targetCaptionLabel="Selecionadas" orderControlsVisible="false" fastOrderControlsVisible="false">
+							            <rich:column>
+							                <h:outputText value="#{items.nome}"/>
+							            </rich:column>
+							        </rich:listShuttle>
+							</rich:panel>
+						</h:panelGrid>
+					</rich:tab>
+		
+					<rich:tab label="Variantes de Provas" >
+						<h:panelGrid columns="2" id="gridExames">
+							<rich:toolTip showDelay="1500">Selecione os exames que serão aplicados aos grupos e pessoas participantes deste evento.</rich:toolTip>
+							<rich:panel style="height: 320px;vertical-align: bottom;"  >
+								<f:facet name="header">Exames (?)</f:facet>
+								
+								<h:panelGrid columns="2">
+									<h:outputText value="Variações de Exame (?)" id="lblVarExam" >
+										<rich:toolTip showDelay="1500" >
+										Cada variação de exame possuirá diferentes ordens de questões e alternativas.<br/>
+										Cada participante receberá uma variação diferente aleatoriamente.<br/><br/>
+										Para mantar a sequência de questões e alternativas determinada no cadastro de questões, basta escolher apenas uma variação.
+										</rich:toolTip>
+									</h:outputText>
+									
+									<rich:inputNumberSpinner value="#{eventJSFBean.participationHelper.numeroDeVariacoes}" maxValue="30" minValue="1" inputSize="1"/>
+
+									<h:panelGrid id="pnlFiltroExames" columns="2" width="220" style="height: 90px;">
+										<h:outputText value="Descrição" />
+										<h:inputText value="#{eventJSFBean.participationHelper.examDescription}" size="20" />
+									</h:panelGrid>
+									<a4j:commandButton action="#" process="pnlFiltroExames" reRender="shuttleExams" value="OK"/>
+									
+
+								</h:panelGrid>
+								
+						        <rich:listShuttle id="shuttleExams"
+							        sourceValue="#{eventJSFBean.participationHelper.examDisponiveis}"
+							        targetValue="#{eventJSFBean.participationHelper.examSelecionados}" 
+							        var="items" listsHeight="120" sourceListWidth="250" targetListWidth="250" converter="examJSONConverter"
+							        sourceCaptionLabel="Disponíveis" targetCaptionLabel="Selecionados" orderControlsVisible="false"  fastOrderControlsVisible="false">
+						            <rich:column>
+						                <h:outputText value="#{items.description}"/>
+						            </rich:column>
+						        </rich:listShuttle>
+
+
+							</rich:panel>
+							
+						</h:panelGrid>
+					</rich:tab>			
+				</rich:tabPanel>
+			</a4j:region>
+			</a4j:form>
+		
+		</rich:modalPanel>
+			
+	</ui:define>
+
+
+	<!-- DEFINICOES DE POPOUPS -->
+	<ui:define name="repPopups">
+	</ui:define>
+
+</ui:composition>
+

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="transaction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="date"/>
+        <xs:element ref="lastEventDate"/>
+        <xs:element ref="code"/>
+        <xs:element ref="reference"/>
+        <xs:element ref="type"/>
+        <xs:element ref="status"/>
+        <xs:element ref="paymentMethod"/>
+        <xs:element ref="grossAmount"/>
+        <xs:element ref="discountAmount"/>
+        <xs:element ref="feeAmount"/>
+        <xs:element ref="netAmount"/>
+        <xs:element ref="extraAmount"/>
+        <xs:element ref="installmentCount"/>
+        <xs:element ref="itemCount"/>
+        <xs:element ref="items"/>
+        <xs:element ref="sender"/>
+        <xs:element ref="shipping"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="date" type="xs:NMTOKEN"/>
+  <xs:element name="lastEventDate" type="xs:NMTOKEN"/>
+  <xs:element name="reference" type="xs:NCName"/>
+  <xs:element name="status" type="xs:integer"/>
+  <xs:element name="paymentMethod">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="type"/>
+        <xs:element ref="code"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="grossAmount" type="xs:decimal"/>
+  <xs:element name="discountAmount" type="xs:decimal"/>
+  <xs:element name="feeAmount" type="xs:decimal"/>
+  <xs:element name="netAmount" type="xs:decimal"/>
+  <xs:element name="extraAmount" type="xs:decimal"/>
+  <xs:element name="installmentCount" type="xs:integer"/>
+  <xs:element name="itemCount" type="xs:integer"/>
+  <xs:element name="items">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="item"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="item">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="id"/>
+        <xs:element ref="description"/>
+        <xs:element ref="quantity"/>
+        <xs:element ref="amount"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="id" type="xs:integer"/>
+  <xs:element name="description" type="xs:string"/>
+  <xs:element name="quantity" type="xs:integer"/>
+  <xs:element name="amount" type="xs:decimal"/>
+  <xs:element name="sender">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element ref="email"/>
+        <xs:element ref="phone"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="email" type="xs:string"/>
+  <xs:element name="phone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="areaCode"/>
+        <xs:element ref="number"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="areaCode" type="xs:integer"/>
+  <xs:element name="shipping">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="address"/>
+        <xs:element ref="type"/>
+        <xs:element ref="cost"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="address">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="street"/>
+        <xs:element ref="number"/>
+        <xs:element ref="complement"/>
+        <xs:element ref="district"/>
+        <xs:element ref="postalCode"/>
+        <xs:element ref="city"/>
+        <xs:element ref="state"/>
+        <xs:element ref="country"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="street" type="xs:string"/>
+  <xs:element name="complement" type="xs:string"/>
+  <xs:element name="district" type="xs:string"/>
+  <xs:element name="postalCode" type="xs:integer"/>
+  <xs:element name="city" type="xs:string"/>
+  <xs:element name="state" type="xs:NCName"/>
+  <xs:element name="country" type="xs:NCName"/>
+  <xs:element name="cost" type="xs:decimal"/>
+  <xs:element name="code" type="xs:NMTOKEN"/>
+  <xs:element name="type" type="xs:integer"/>
+  <xs:element name="number" type="xs:integer"/>
+</xs:schema>

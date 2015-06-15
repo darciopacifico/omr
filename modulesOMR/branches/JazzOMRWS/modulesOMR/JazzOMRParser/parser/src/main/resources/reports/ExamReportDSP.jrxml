@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ExamReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5bb6c1e1-81ef-430d-ab46-8234301270d8">
+	<property name="ireport.zoom" value="1.331000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JazzOMRDSP2"/>
+	<import value="net.sf.jasperreports.engine.util.JRLoader"/>
+	<parameter name="imgLogoEscola" class="java.awt.Image" isForPrompting="false"/>
+	<parameter name="qrCodeGen" class="br.com.dlp.jazzomr.jr.util.IQRCodeGenerator" isForPrompting="false"/>
+	<parameter name="pReportQuery" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="multiLine" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n multiLine \n /n "]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/darcio/workspace/modules/JazzOMR/bsn/src/main/resources/reports/"]]></defaultValueExpression>
+	</parameter>
+	<field name="PK" class="java.lang.Long"/>
+	<field name="altResult" class="java.lang.Double"/>
+	<field name="altTotais" class="java.lang.Double"/>
+	<field name="alteradoPor" class="java.lang.String"/>
+	<field name="class" class="java.lang.Class"/>
+	<field name="countMap" class="java.util.Map"/>
+	<field name="criadoPor" class="java.lang.String"/>
+	<field name="criterionCoords" class="br.com.dlp.jazzomr.exam.coordinate.CriterionCoordinateVO"/>
+	<field name="criterionResults" class="br.com.dlp.jazzomr.application.result.CriterionResultVO"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="disResDisp" class="java.lang.Double"/>
+	<field name="disResult" class="java.lang.Double"/>
+	<field name="disTotais" class="java.lang.Double"/>
+	<field name="dtAlt" class="java.util.Date"/>
+	<field name="dtFim" class="java.util.Date"/>
+	<field name="dtInc" class="java.util.Date"/>
+	<field name="dtInicio" class="java.util.Date"/>
+	<field name="emp.PK" class="java.io.Serializable"/>
+	<field name="emp.alteradoPor" class="java.lang.String"/>
+	<field name="emp.class" class="java.lang.Class"/>
+	<field name="emp.criadoPor" class="java.lang.String"/>
+	<field name="emp.dtAlt" class="java.util.Date"/>
+	<field name="emp.dtInc" class="java.util.Date"/>
+	<field name="emp.logo" class="br.com.dlp.jazzomr.results.ImageLogoVO"/>
+	<field name="emp.logos" class="br.com.dlp.jazzomr.results.ImageLogoVO"/>
+	<field name="emp.new" class="java.lang.Boolean"/>
+	<field name="emp.nome" class="java.lang.String"/>
+	<field name="emp.relatorioVOs" class="br.com.dlp.jazzomr.empresa.RelatorioVO"/>
+	<field name="emp.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="endProc" class="java.util.Date"/>
+	<field name="new" class="java.lang.Boolean"/>
+	<field name="par.PK" class="java.io.Serializable"/>
+	<field name="par.alteradoPor" class="java.lang.String"/>
+	<field name="par.class" class="java.lang.Class"/>
+	<field name="par.countMap" class="java.util.Map"/>
+	<field name="par.countNotSendedPayloads" class="java.lang.Integer"/>
+	<field name="par.countSendedPages" class="java.lang.Integer"/>
+	<field name="par.criadoPor" class="java.lang.String"/>
+	<field name="par.criterionResults" class="br.com.dlp.jazzomr.application.result.CriterionResultVO"/>
+	<field name="par.dtAlt" class="java.util.Date"/>
+	<field name="par.dtInc" class="java.util.Date"/>
+	<field name="par.endProc" class="java.util.Date"/>
+	<field name="par.errors" class="java.lang.Float"/>
+	<field name="exv.PK" class="java.lang.Long"/>
+	<field name="exv.alteradoPor" class="java.lang.String"/>
+	<field name="exv.alternativeEnumModel" class="br.com.dlp.jazzomr.exam.EnumerationModel"/>
+	<field name="exv.class" class="java.lang.Class"/>
+	<field name="exv.criadoPor" class="java.lang.String"/>
+	<field name="exv.criterionCoordinates" class="br.com.dlp.jazzomr.exam.coordinate.CriterionCoordinateVO"/>
+	<field name="exv.dtAlt" class="java.util.Date"/>
+	<field name="exv.dtInc" class="java.util.Date"/>
+	<field name="exa.PK" class="java.io.Serializable"/>
+	<field name="exa.alteradoPor" class="java.lang.String"/>
+	<field name="exa.class" class="java.lang.Class"/>
+	<field name="exa.criadoPor" class="java.lang.String"/>
+	<field name="exa.description" class="java.lang.String"/>
+	<field name="exa.dtAlt" class="java.util.Date"/>
+	<field name="exa.dtInc" class="java.util.Date"/>
+	<field name="exa.empresaVO" class="br.com.dlp.jazzomr.empresa.EmpresaVO"/>
+	<field name="exa.new" class="java.lang.Boolean"/>
+	<field name="qnr.PK" class="java.lang.Long"/>
+	<field name="qnr.alteradoPor" class="java.lang.String"/>
+	<field name="qnr.class" class="java.lang.Class"/>
+	<field name="qnr.criadoPor" class="java.lang.String"/>
+	<field name="qnr.description" class="java.lang.String"/>
+	<field name="qnr.dtAlt" class="java.util.Date"/>
+	<field name="qnr.dtInc" class="java.util.Date"/>
+	<field name="qnr.empresaVO" class="br.com.dlp.jazzomr.empresa.EmpresaVO"/>
+	<field name="qnr.new" class="java.lang.Boolean"/>
+	<field name="perg.PK" class="java.lang.Long"/>
+	<field name="perg.alteradoPor" class="java.lang.String"/>
+	<field name="perg.alternative" class="java.lang.Boolean"/>
+	<field name="perg.alternativeVOs" class="br.com.dlp.jazzomr.question.AlternativeVO"/>
+	<field name="perg.class" class="java.lang.Class"/>
+	<field name="perg.criadoPor" class="java.lang.String"/>
+	<field name="perg.criterionVOList" class="br.com.dlp.jazzomr.question.CriterionVO"/>
+	<field name="crt.PK" class="java.io.Serializable"/>
+	<field name="crt.alteradoPor" class="java.lang.String"/>
+	<field name="crt.class" class="java.lang.Class"/>
+	<field name="crt.correct" class="java.lang.Boolean"/>
+	<field name="crt.criadoPor" class="java.lang.String"/>
+	<field name="crt.critType" class="java.lang.String"/>
+	<field name="crt.description" class="java.lang.String"/>
+	<field name="crt.dtAlt" class="java.util.Date"/>
+	<field name="crt.dtInc" class="java.util.Date"/>
+	<field name="crt.imageVOs" class="br.com.dlp.jazzomr.results.ImageVO"/>
+	<field name="crt.isAlternative" class="java.lang.Boolean"/>
+	<field name="crt.isDissertative" class="java.lang.Boolean"/>
+	<field name="crt.maxPonto" class="java.lang.Integer"/>
+	<field name="crt.new" class="java.lang.Boolean"/>
+	<field name="crt.ordem" class="java.lang.Double"/>
+	<field name="crt.qtdLinhas" class="java.lang.Integer"/>
+	<field name="crt.required" class="java.lang.Boolean"/>
+	<field name="crt.score" class="br.com.dlp.jazzomr.question.AlternativeScore"/>
+	<field name="crt.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="perg.description" class="java.lang.String"/>
+	<field name="perg.dissertative" class="java.lang.Boolean"/>
+	<field name="perg.dissertativeVOs" class="br.com.dlp.jazzomr.question.DissertativeVO"/>
+	<field name="perg.dtAlt" class="java.util.Date"/>
+	<field name="perg.dtInc" class="java.util.Date"/>
+	<field name="perg.empresaVO" class="br.com.dlp.jazzomr.empresa.EmpresaVO"/>
+	<field name="perg.imageVOs" class="br.com.dlp.jazzomr.results.ImageVO"/>
+	<field name="perg.new" class="java.lang.Boolean"/>
+	<field name="perg.ordem" class="java.lang.Double"/>
+	<field name="perg.resumo" class="java.lang.String"/>
+	<field name="perg.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="qnr.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="exa.relatorioVO" class="br.com.dlp.jazzomr.empresa.RelatorioVO"/>
+	<field name="exa.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="exv.new" class="java.lang.Boolean"/>
+	<field name="exv.questionEnumModel" class="br.com.dlp.jazzomr.exam.EnumerationModel"/>
+	<field name="exv.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="par.fulfilled" class="java.lang.Float"/>
+	<field name="par.new" class="java.lang.Boolean"/>
+	<field name="par.notUploadedPages" class="java.lang.Integer"/>
+	<field name="par.nota" class="java.lang.Double"/>
+	<field name="par.payloadVOs" class="br.com.dlp.jazzomr.results.PayloadVO"/>
+	<field name="par.percCorrection" class="java.lang.Double"/>
+	<field name="par.percentCountMap" class="java.util.Map"/>
+	<field name="pes.PK" class="java.io.Serializable"/>
+	<field name="pes.alteradoPor" class="java.lang.String"/>
+	<field name="pes.authorities" class="br.com.dlp.jazzomr.person.EAuthority"/>
+	<field name="pes.class" class="java.lang.Class"/>
+	<field name="pes.criadoPor" class="java.lang.String"/>
+	<field name="pes.dtAlt" class="java.util.Date"/>
+	<field name="pes.dtInc" class="java.util.Date"/>
+	<field name="pes.email" class="java.lang.String"/>
+	<field name="pes.empresaVO" class="br.com.dlp.jazzomr.empresa.EmpresaVO"/>
+	<field name="pes.equalsSenha" class="java.lang.Boolean"/>
+	<field name="pes.login" class="java.lang.String"/>
+	<field name="pes.msgCriticLogin" class="java.lang.String"/>
+	<field name="pes.new" class="java.lang.Boolean"/>
+	<field name="pes.nome" class="java.lang.String"/>
+	<field name="pes.novo" class="java.lang.Boolean"/>
+	<field name="pes.senha" class="java.lang.String"/>
+	<field name="pes.senhaConfirm" class="java.lang.String"/>
+	<field name="pes.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="pes.telefone" class="java.lang.String"/>
+	<field name="pes.validSenha" class="java.lang.Boolean"/>
+	<field name="par.processTerminated" class="java.lang.Boolean"/>
+	<field name="par.resultMap" class="java.util.Map"/>
+	<field name="par.startProc" class="java.util.Date"/>
+	<field name="par.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="par.timeSpent" class="java.lang.Long"/>
+	<field name="par.uniqueByPage" class="java.util.Map"/>
+	<field name="percDigitalizacao" class="java.lang.Double"/>
+	<field name="percentCountKeys" class="br.com.dlp.jazzomr.results.EProcessingState"/>
+	<field name="percentCountMap" class="java.util.Map"/>
+	<field name="processTerminated" class="java.lang.Boolean"/>
+	<field name="startProc" class="java.util.Date"/>
+	<field name="status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="timeSpent" class="java.lang.Long"/>
+	<group name="Evento" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{PK}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Participacao" isStartNewPage="true" isResetPageNumber="true">
+		<groupExpression><![CDATA[$F{par.PK}]]></groupExpression>
+		<groupHeader>
+			<band height="484">
+				<textField>
+					<reportElement uuid="3d1adf3c-2f79-4380-9f9a-f464cb0f36a3" x="22" y="88" width="354" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="15" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Assinatura: "+$F{pes.nome}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="7e30e308-fa52-43d2-91ce-4ad9792e2b66" x="22" y="87" width="354" height="1"/>
+					<graphicElement>
+						<pen lineWidth="0.25"/>
+					</graphicElement>
+				</line>
+				<break>
+					<reportElement uuid="c010667f-8f2d-4946-81aa-08e2809872ba" x="0" y="481" width="100" height="1"/>
+				</break>
+				<staticText>
+					<reportElement uuid="e43222b4-2ce9-41ab-a6e6-0c12372b37b7" x="22" y="222" width="506" height="225"/>
+					<textElement>
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Questões Alternativas:
+
+- As questões alternativas serão corrigidas automaticamente.
+- Para confirmar sua opção, preencha completamente os círculos com caneta preta ou azul.
+- Apenas preencha as opções quando tiver certeza de sua escolha.
+
+
+Questões Dissertativas
+
+- Não use o verso das folhas.
+- Escreva sua resposta apenas nos espaços reservados para dissertação.
+- Apenas estes espaços serão digitalizadas e disponibilizadas para correção.
+- As questões dissertativas serão corrigidas pelo professor por meio do portal.
+- Não será possível que o professor visualize outros espaços além dos indicados para as respostas]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="21a3062c-09e8-48c0-bdb1-2117aaaec81d" x="22" y="187" width="275" height="20"/>
+					<textElement>
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Instruções para o exame:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Questionario">
+		<groupExpression><![CDATA[$F{qnr.PK}]]></groupExpression>
+		<groupHeader>
+			<band height="31" splitType="Stretch">
+				<textField>
+					<reportElement uuid="9ab08d68-ad85-4d22-9cc3-abf2908613f2" stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="22" y="10" width="530" height="20" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+					<textElement>
+						<font size="13" isUnderline="false" isStrikeThrough="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{qnr.description}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band splitType="Prevent"/>
+		</groupFooter>
+	</group>
+	<group name="Questao" minHeightToStartNewPage="100">
+		<groupExpression><![CDATA[$F{perg.PK}]]></groupExpression>
+		<groupHeader>
+			<band height="29" splitType="Prevent"/>
+			<band splitType="Prevent"/>
+		</groupHeader>
+		<groupFooter>
+			<band splitType="Stretch"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="103" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="81c5aa7a-0bab-4e21-abf5-81837237bc27" x="438" y="0" width="76" height="76"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{par.PK}+"-"+$V{PAGE_NUMBER}]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<ellipse>
+				<reportElement uuid="3b940aef-ec14-4c9a-ab6d-eda42535ad92" key="OMRMark-top-right" x="525" y="0" width="30" height="30" backcolor="#010101">
+					<property name="OMRMark" value="top-right"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</ellipse>
+			<image isLazy="true" onErrorType="Icon">
+				<reportElement uuid="d8ef1550-e91b-4ed9-acd5-413a932bd75d" x="22" y="0" width="154" height="65"/>
+				<imageExpression><![CDATA[$P{imgLogoEscola}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="bb6329ec-0862-4fd5-a737-68df6b85d9f4" x="22" y="68" width="409" height="14"/>
+				<textElement>
+					<font size="9" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4b8b8918-0f2e-45f9-9810-436383063e3a" x="22" y="84" width="409" height="14"/>
+				<textElement>
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Avaliado: "+$F{pes.nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a3a7bc1b-3e52-489d-9259-30c73ee5d3e5" key="" x="438" y="76" width="76" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["IdProva-Página"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5ab97033-73f6-4c0d-a024-5ef827cc084b" x="188" y="0" width="243" height="65" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emp.nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6adb6e6d-4ef6-4e04-93fb-832e4700866e" key="pageIdentifier" x="438" y="86" width="76" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{par.PK}+"-"+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="cdc67fa6-ee95-45f1-9cb9-5a363ad58e3f" x="10" y="100" width="532" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<genericElement>
+				<reportElement uuid="08f598fd-7286-47a1-9417-5007810148e9" positionType="FixRelativeToBottom" x="54" y="0" width="9" height="9" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA["A".equals($F{crt.critType})]]></printWhenExpression>
+				</reportElement>
+				<genericElementType namespace="http://jazzomr.com.br/jazzomr" name="jazzomr"/>
+				<genericElementParameter name="eqaKey">
+					<valueExpression><![CDATA["aco_Key-"+$F{crt.critType}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="actualPage">
+					<valueExpression><![CDATA[$V{PAGE_NUMBER}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="crit_type">
+					<valueExpression><![CDATA[$F{crt.critType}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="qtd_linhas">
+					<valueExpression><![CDATA[$F{crt.qtdLinhas}]]></valueExpression>
+				</genericElementParameter>
+			</genericElement>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement uuid="aefd42ac-701f-4c9b-86c3-cbcc5966cfa4" stretchType="RelativeToTallestObject" x="77" y="0" width="351" height="14" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+				<textElement markup="none">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{crt.critType}.equals("A")?". "+$F{crt.description}:$F{crt.description}+" (aproximadamente "+$F{crt.qtdLinhas}+" linhas)")]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement uuid="786b6b8a-b6a9-4e26-a135-42cf2e0eb7ca" x="40" y="3" width="9" height="9" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA["A".equals($F{crt.critType})]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</ellipse>
+			<genericElement>
+				<reportElement uuid="5cb34ca9-3625-4f5f-9f6a-f642956e01cc" stretchType="RelativeToBandHeight" x="0" y="0" width="3" height="14" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA["D".equals($F{crt.critType})]]></printWhenExpression>
+				</reportElement>
+				<genericElementType namespace="http://jazzomr.com.br/jazzomr" name="jazzomr"/>
+				<genericElementParameter name="eqaKey">
+					<valueExpression><![CDATA["aco_Key-"+$F{crt.critType}+"-"]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="actualPage">
+					<valueExpression><![CDATA[$V{PAGE_NUMBER}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="crit_type">
+					<valueExpression><![CDATA[$F{crt.critType}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="qtd_linhas">
+					<valueExpression><![CDATA[$F{crt.qtdLinhas}]]></valueExpression>
+				</genericElementParameter>
+			</genericElement>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="862444fe-4f06-46d6-a993-6efe090a223d" stretchType="RelativeToTallestObject" x="442" y="1" width="100" height="12" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="17" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(org.apache.commons.lang.StringUtils.repeat("\n ", $F{crt.qtdLinhas}==null?0:$F{crt.qtdLinhas}))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="38" splitType="Stretch">
+			<ellipse>
+				<reportElement uuid="0a534dd7-9281-4e72-a236-65507fb8032a" key="OMRMark-bottom-left" mode="Opaque" x="0" y="8" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#010101"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</ellipse>
+			<textField evaluationTime="Report">
+				<reportElement uuid="880df8e5-8a99-4b6a-bc24-e7890a9e4d02" x="508" y="11" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8f86e7dc-0ef9-4150-b3b5-f39955159159" x="428" y="11" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="112c6af4-8e6f-4479-b288-1de025d74902" x="10" y="2" width="532" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

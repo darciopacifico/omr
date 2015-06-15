@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich" xmlns:p="http://primefaces.org/ui"
+	xmlns:t="http://myfaces.apache.org/tomahawk" xmlns:spring="http://www.springframework.org/tags" template="/templates/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form prependId="false" styleClass="wufoo topLabel page1">
+
+			<h2>
+				Usuário Logado:
+				<h:outputText value="#{anuncioBean.anuncioVO.pessoaVO.nome}" />
+				
+			</h2>
+
+			<div>This is my form. Please fill it out. It's awesome!</div>
+
+
+			<h:panelGrid columns="2" id="gridPrincipal">
+				<rich:panel style="text-align: center;">
+					<f:facet name="header">Informações do Adesivo</f:facet>
+					<span style="text-align: center; margin: auto;"> <span class="cboAno" style="font-size: 40px;">VENDO </span> <h:selectOneMenu id="cboAnoFab"
+							value="#{anuncioBean.anuncioVO.veiculoVO.anoFab}" styleClass="cboAno">
+							<f:selectItems value="#{anuncioBean.anosFab}" />
+							<a4j:ajax event="change" execute="@this cboAnoMod" render="cboAnoMod"></a4j:ajax>
+							<f:ajax event="change" execute="@this" render="pnlSampleAnuncio" />
+						</h:selectOneMenu> <span class="cboAno">/</span> <h:selectOneMenu id="cboAnoMod" value="#{anuncioBean.anuncioVO.veiculoVO.anoMod}" styleClass="cboAno">
+							<f:selectItems value="#{anuncioBean.anosMod}" />
+							<f:ajax event="change" execute="@this" render="pnlSampleAnuncio" />
+						</h:selectOneMenu>
+					</span>
+
+
+
+					<p:inputTextarea id="txtSubTitulo" autoResize="false" value="#{anuncioBean.anuncioVO.adesivoVO.campos.linhaSubTitulo.valor}" styleClass="txtCustom" cols="29"
+						style="font-size: 22px;" rows="1" accesskey="20" label="Título">
+						<a4j:ajax event="change" execute="pnlDizeres" render="imgSample msgSubTit1" />
+						<f:validateLength maximum="20" />
+					</p:inputTextarea>
+					<p:watermark for="txtSubTitulo" value="#{anuncioBean.anuncioVO.adesivoVO.placeholders.linhaSubTitulo}" />
+					<h:message id="msgSubTit1" for="txtSubTitulo"></h:message>
+
+
+					<p:spacer height="18" width="230"></p:spacer>
+
+
+					<p:inputTextarea rows="2" autoResize="false" value="#{anuncioBean.anuncioVO.adesivoVO.campos.linhaOpcionais.valor}" styleClass="txtCustom" cols="29" style="font-size: 22px;"
+						id="txtOpcionais" label="Opcionais">
+						<a4j:ajax event="change" execute="pnlDizeres" render="imgSample msgSubTit2" />
+						<f:validateLength maximum="40" />
+					</p:inputTextarea>
+					<p:watermark for="txtOpcionais" value="#{anuncioBean.anuncioVO.adesivoVO.placeholders.linhaOpcionais}" />
+					<h:message id="msgSubTit2" for="txtOpcionais"></h:message>
+
+
+					<p:spacer height="20" width="10"></p:spacer>
+
+
+					<p:inputTextarea rows="2" autoResize="false" value="#{anuncioBean.anuncioVO.adesivoVO.campos.linhaContatos.valor}" styleClass="txtCustom" cols="22" style="font-size: 28px;"
+						id="txtDadosContato" label="Contatos">
+						<a4j:ajax event="change" execute="pnlDizeres" render="imgSample msgSubTit3" />
+						<f:validateLength maximum="40" />
+					</p:inputTextarea>
+					<p:watermark for="txtDadosContato" value="(11)99999-9999                   (11)98888-8888"></p:watermark>
+					<h:message id="msgSubTit3" for="txtDadosContato"></h:message>
+
+
+
+
+					<p:spacer height="20" width="200">
+					</p:spacer>
+					<rich:panel style="text-align: left; border-style:none;">
+
+						<h:outputLabel styleClass="desc">
+							<a4j:commandLink render="gridModelos" limitRender="true" title="Atualiza lista de modelos disponíveis...">
+								<h:graphicImage value="/img/Icons/refresh_ico.png" title="Atualiza lista de modelos disponíveis..." />
+				              Modelos de Adesivos:  
+				            </a4j:commandLink>
+						</h:outputLabel>
+
+						<p:spacer height="10" width="200">
+						</p:spacer>
+
+						<rich:dataGrid value="#{anuncioBean.modelos}" var="modelo" columns="4" elements="4" styleClass="gridModelos" id="gridModelos" style="width:100%; border: 1px;">
+
+							<a4j:commandLink action="#{anuncioBean.switchModel(modelo)}" render="pnlSampleAnuncio">
+
+								<a4j:mediaOutput styleClass="imgAdesLaterais" element="img" cacheable="false" session="false" value="#{modelo.PK}" createContent="#{anuncioBean.paintModeloSample}"
+									mimeType="image/png" fileName="modelo_#{modelo.PK}.png" />
+
+							</a4j:commandLink>
+
+
+							<f:facet name="footer">
+								<rich:dataScroller stepControls="hide" fastControls="hide" />
+							</f:facet>
+						</rich:dataGrid>
+					</rich:panel>
+				</rich:panel>
+
+
+
+				<h:panelGrid columns="1" layout="block">
+
+					<h:panelGrid id="pnlSampleAnuncio" columns="1">
+
+						<a4j:mediaOutput id="imgSample" styleClass="classAdesPrincipal" element="img" cacheable="false" style="width:492px;height:369px;" session="false"
+							createContent="#{anuncioBean.paintModeloAnuncio}" value="" mimeType="image/png" />
+
+
+
+
+					</h:panelGrid>
+
+
+					<rich:panel style="text-align: center; border-style:none; width: 100%;">
+
+
+
+
+						<h:commandLink style="text-decoration: none; height: 40px;">
+
+							<a4j:ajax execute="pnlDizeres" render="imgSample msgSubTit3 pnlConfirm" oncomplete="#{rich:component('pnlConfirm')}.show()"></a4j:ajax>
+
+
+							<div style="">
+								<div>
+									<img src="../img/empty_cart.png" /> <span style="text-shadow: 1px 1px gray; font-size: 20px; font-weight: bolder;">Comprar222</span>
+								</div>
+								<div>
+									<span style="color: #066814; text-shadow: 3px 3px 7px gray; font-size: 40px; font-family: freeSans; font-weight: bolder;">R$30,00</span>
+								</div>
+								<div>
+									<img src="../img/2ades.png" /> <span style="text-shadow: 1px 1px gray; font-size: 20px; font-weight: bolder;">2 Adesivos + Anúncio com fotos</span>
+								</div>
+							</div>
+
+
+						</h:commandLink>
+
+
+
+					</rich:panel>
+
+				</h:panelGrid>
+
+			</h:panelGrid>
+		</h:form>
+
+
+		<rich:popupPanel id="pnlConfirm" modal="true" onmaskclick="#{rich:component('pnlConfirm')}.hide()" autosized="true">
+			<h:form>
+
+				<f:facet name="header">
+					<h:outputText value="Confirma os dados do adesivo!" />
+				</f:facet>
+				<f:facet name="controls">
+					<h:outputLink value="#" onclick="#{rich:component('pnlConfirm')}.hide(); return false;">
+					                X
+					            </h:outputLink>
+				</f:facet>
+
+				<a4j:mediaOutput id="imgSampleConfirm" styleClass="classAdesPrincipal" element="img" cacheable="false" style="width:492px;height:369px;" session="false"
+					createContent="#{anuncioBean.paintModeloAnuncio}" value="" mimeType="image/png" />
+
+				<h:commandButton value="Sim! Confirmo!" action="#{anuncioBean.checkout}" />
+
+				<h:commandButton value="Não! Editar!">
+					<rich:componentControl target="pnlConfirm" operation="hide" />
+				</h:commandButton>
+
+
+			</h:form>
+
+		</rich:popupPanel>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,23 @@
+
+
+	<XDtWj2eeClass:forTodosOsEscravos2 superclasses="true" recursivamente="true" sort="true">
+	/*FORWARDS PARA TELA DO MODULO ESCRAVO <XDtWj2eeClass:moduleId/>*/
+	public static final String FORWARD_TELA_CADASTRO_<XDtWj2eeMethod:maiusculo nome="<XDtWj2eeClass:moduleId/>"/> = "cadastro<XDtWj2eeClass:moduleId/>";
+	public static final String FORWARD_TELA_CONSULTA_<XDtWj2eeMethod:maiusculo nome="<XDtWj2eeClass:moduleId/>"/> = "consulta<XDtWj2eeClass:moduleId/>";
+	/*SERVICOS PARA RELACIONAMENTOS RENDERIZADOS DE FORMA INDEXADA OU MODULO ESCRAVO. MODULO <XDtWj2eeClass:moduleId/> */
+	public final static String <XDtWj2eeMethod:constanteParaServico nome="<XDtWj2eeClass:servicoIncluirItem/>"/>="<XDtWj2eeClass:servicoIncluirItem/>";
+	public final static String <XDtWj2eeMethod:constanteParaServico nome="<XDtWj2eeClass:servicoRemoverItem/>"/>="<XDtWj2eeClass:servicoRemoverItem/>";
+	public final static String <XDtWj2eeMethod:constanteParaServico nome="<XDtWj2eeClass:servicoEditarItem/>"/>="<XDtWj2eeClass:servicoEditarItem/>";
+	public final static String <XDtWj2eeMethod:constanteParaServico nome="<XDtWj2eeClass:servicoConsultarItem/>"/>="<XDtWj2eeClass:servicoConsultarItem/>";
+
+		<XDtWj2eeMethod:forAllMethods sort="true" >
+			<XDtMethod:ifIsGetter>
+		  		<XDtWj2eeMethod:ifIsCriarMecanismoPopUp>
+	/*SERVICOS PARA RELACIONAMENTOS RENDERIZADOS COMO MONO POPUP. MODULO <XDtWj2eeMethod:moduleId/> */
+	public final static String <XDtWj2eeMethod:confirmConstantServiceParaPopUp/> 	= "<XDtWj2eeMethod:confirmServiceParaPopUp/>";
+	public final static String <XDtWj2eeMethod:callConstantServiceParaPopUp/> 		= "<XDtWj2eeMethod:callServiceParaPopUp/>";
+		  		</XDtWj2eeMethod:ifIsCriarMecanismoPopUp>
+			</XDtMethod:ifIsGetter>
+		</XDtWj2eeMethod:forAllMethods>		
+
+	</XDtWj2eeClass:forTodosOsEscravos2>

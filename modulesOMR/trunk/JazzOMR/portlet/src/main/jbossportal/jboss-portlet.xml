@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE portlet-app PUBLIC
+   "-//JBoss Portal//DTD JBoss Portlet 2.6//EN"
+   "http://www.jboss.org/portal/dtd/jboss-portlet_2_6.dtd"><portlet-app>
+    
+    <portlet>
+        <portlet-name>RichFacesEchoPortlet</portlet-name>
+        <header-content>
+           <!--<script src="/faces/rfRes/org/ajax4jsf/framework.pack.js" type="text/javascript"></script>-->
+           <!--<script src="/faces/rfRes/org/richfaces/ui.pack.js" type="text/javascript"></script>-->
+           <!--<link rel="stylesheet" type="text/css" href="/faces/rfRes/org/richfaces/skin.xcss"/>-->
+        </header-content>
+    </portlet>
+
+</portlet-app>  

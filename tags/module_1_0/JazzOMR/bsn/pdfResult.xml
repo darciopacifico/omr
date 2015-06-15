@@ -1,0 +1,3367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperPrint PUBLIC "-//JasperReports//DTD JasperPrint//EN" "http://jasperreports.sourceforge.net/dtds/jasperprint.dtd">
+
+<jasperPrint name="ExamReport" pageWidth="595" pageHeight="842" topMargin="20" leftMargin="20" bottomMargin="20" rightMargin="20" locale="pt_BR" timezone="America/Sao_Paulo">
+	<property name="net.sf.jasperreports.export.xml.start.page.index" value="0"/>
+	<property name="net.sf.jasperreports.export.xml.end.page.index" value="11"/>
+	<property name="net.sf.jasperreports.export.xml.page.count" value="12"/>
+	<origin group="Evento" band="groupHeader"/>
+	<origin group="Evento" band="groupFooter"/>
+	<origin group="Participacao" band="groupHeader"/>
+	<origin group="Participacao" band="groupFooter"/>
+	<origin group="Questionario" band="groupHeader"/>
+	<origin group="Questionario" band="groupFooter"/>
+	<origin group="QuestaoCoordenada" band="groupHeader"/>
+	<origin group="QuestaoCoordenada" band="groupFooter"/>
+	<origin band="background"/>
+	<origin band="title"/>
+	<origin band="pageHeader"/>
+	<origin band="columnHeader"/>
+	<origin band="detail"/>
+	<origin band="columnFooter"/>
+	<origin band="pageFooter"/>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="545" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+			<imageSource/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="435" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+			<imageSource/>
+		</image>
+		<text textHeight="32.59375" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="343" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="423" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="423" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[1-1]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="232" width="354" height="20" origin="2"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Assinatura: Darcio Mais Alguma Coisa Lopes ]]></textContent>
+		</text>
+		<line>
+			<reportElement x="42" y="228" width="354" height="1" origin="2"/>
+		</line>
+		<text textHeight="162.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="42" y="367" width="506" height="225" origin="2"/>
+			<font isBold="false" isItalic="true"/>
+			<textContent><![CDATA[Questões Alternativas:
+
+- As questões alternativas serão corrigidas automaticamente.
+- Atenção para a quantidade de alternativas que deverão ser escolhidas em cada questão
+- Para confirmar sua opção, preencha completamente os círculos com caneta preta.
+- Apenas preencha as opções quando tiver certeza de sua escolha.
+
+
+Questões Dissertativas
+
+- As questões dissertativas serão corrigidas pelo professor pela internet.
+- Escreva sua resposta apenas os espaços indicados na questão.
+- Apenas estes espaços serão digitalizadas e disponibilizadas para correção.
+- Não será possível que o professor visualize outros espaços além dos indicados para as respostas]]></textContent>
+		</text>
+		<text textHeight="13.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.828125">
+			<reportElement x="42" y="331" width="275" height="20" origin="2"/>
+			<font size="12" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Instruções para o exame:]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="13.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.828125" valueClass="java.lang.Long">
+			<reportElement x="435" y="186" width="127" height="16" origin="2"/>
+			<font size="12" isBold="true"/>
+			<textContent><![CDATA[1]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="792" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="528" y="795" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="448" y="795" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 1 of]]></textContent>
+		</text>
+	</page>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="545" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+			<imageSource/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="435" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+			<imageSource/>
+		</image>
+		<text textHeight="32.59375" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="343" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="423" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="423" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[1-2]]></textContent>
+		</text>
+		<text textHeight="15.140625" lineSpacingFactor="1.1646634" leadingOffset="-3.0625">
+			<reportElement x="42" y="154" width="530" height="20" origin="4"/>
+			<font size="13" isUnderline="true"/>
+			<textContent><![CDATA[Questionário de Física]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="187" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[1. Qual é a aceleração da gravidade?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-1-2" x="74" y="204" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="207" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-1 x=74 y=204]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="202" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. ~10m/s2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-2-2" x="74" y="218" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="221" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-2 x=74 y=218]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="216" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. ~9m/s2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-3-2" x="74" y="232" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="235" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-3 x=74 y=232]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="230" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. ~4m/s2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-4-2" x="74" y="246" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="249" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-4 x=74 y=246]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="244" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. ~10Km/h]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-5-2" x="74" y="260" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="263" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-5 x=74 y=260]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="258" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. ~3Km/h]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="280" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[2. Qual é a fórmula da teoria da relatividade especial?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-6-2" x="74" y="297" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="300" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-6 x=74 y=297]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="295" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. m=w.c4]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-7-2" x="74" y="311" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="314" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-7 x=74 y=311]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="309" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. E=m.c2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-8-2" x="74" y="325" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="328" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-8 x=74 y=325]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="323" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. A=v/c]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-9-2" x="74" y="339" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="342" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-9 x=74 y=339]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="337" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. f(x)=x2y]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-10-2" x="74" y="353" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="356" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-10 x=74 y=353]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="351" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. R=r/e3]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="373" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[3. Qual é a velocidade da luz no vácuo?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-11-2" x="74" y="390" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="393" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-11 x=74 y=390]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="388" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. ~10.000m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-12-2" x="74" y="404" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="407" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-12 x=74 y=404]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="402" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. ~1.000.000Km/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-13-2" x="74" y="418" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="421" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-13 x=74 y=418]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="416" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. ~300.000Km/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-14-2" x="74" y="432" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="435" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-14 x=74 y=432]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="430" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. ~20.000Km/h]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-15-2" x="74" y="446" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="449" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-15 x=74 y=446]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="444" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. ~1200Km/2]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="466" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[4. Qual o nome da primeira teoria da relatividade Einstein?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-16-2" x="74" y="483" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="486" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-16 x=74 y=483]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="481" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Teoria da Relatividade Geral]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-17-2" x="74" y="497" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="500" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-17 x=74 y=497]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="495" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Teoria da Relatividade Especial]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-18-2" x="74" y="511" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="514" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-18 x=74 y=511]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="509" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Teoria da Energia Limpa]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-19-2" x="74" y="525" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="528" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-19 x=74 y=525]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="523" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Teoria da Aceleracao dos Corpos]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-20-2" x="74" y="539" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="542" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-20 x=74 y=539]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="537" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Teoria de Tudo]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="559" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[5. Qual é a velocidade do som no ar?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-21-2" x="74" y="576" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="579" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-21 x=74 y=576]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="574" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. ~3000m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-22-2" x="74" y="590" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="593" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-22 x=74 y=590]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="588" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. ~10.000m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-23-2" x="74" y="604" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="607" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-23 x=74 y=604]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="602" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. ~340m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-24-2" x="74" y="618" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="621" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-24 x=74 y=618]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="616" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. ~1040m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-25-2" x="74" y="632" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="635" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-25 x=74 y=632]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="630" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. ~140m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="792" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="528" y="795" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="448" y="795" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 2 of]]></textContent>
+		</text>
+	</page>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="545" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+			<imageSource/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="435" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+			<imageSource/>
+		</image>
+		<text textHeight="32.59375" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="343" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="423" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="423" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[1-3]]></textContent>
+		</text>
+		<text textHeight="15.140625" lineSpacingFactor="1.1646634" leadingOffset="-3.0625">
+			<reportElement x="42" y="154" width="530" height="20" origin="4"/>
+			<font size="13" isUnderline="true"/>
+			<textContent><![CDATA[Questionário de Geografia]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="187" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[1. Qual é o país mais ao sul das Américas?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-26-2" x="74" y="204" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="207" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-26 x=74 y=204]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="202" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Uruguai]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-27-2" x="74" y="218" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="221" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-27 x=74 y=218]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="216" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Peru]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-28-2" x="74" y="232" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="235" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-28 x=74 y=232]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="230" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Argentina]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-29-2" x="74" y="246" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="249" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-29 x=74 y=246]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="244" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Chile]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-30-2" x="74" y="260" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="263" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-30 x=74 y=260]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="258" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Brasil]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="280" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[2. Quantos países fazem fronteira com Portugal?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-31-3" x="74" y="297" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="300" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-31 x=74 y=297]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="295" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. 5]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-32-3" x="74" y="311" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="314" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-32 x=74 y=311]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="309" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. 3]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-33-3" x="74" y="325" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="328" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-33 x=74 y=325]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="323" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. 2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-34-3" x="74" y="339" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="342" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-34 x=74 y=339]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="337" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. 1]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-35-3" x="74" y="353" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="356" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-35 x=74 y=353]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="351" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. 4]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="373" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[3. Quais são as duas principais línguas faladas no Canadá ?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-36-3" x="74" y="390" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="393" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-36 x=74 y=390]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="388" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Espanhol e Armênio]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-37-3" x="74" y="404" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="407" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-37 x=74 y=404]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="402" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Francês e Alemão]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-38-3" x="74" y="418" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="421" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-38 x=74 y=418]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="416" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Francês e Inglês]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-39-3" x="74" y="432" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="435" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-39 x=74 y=432]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="430" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Inglês e Espanhol]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-40-3" x="74" y="446" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="449" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-40 x=74 y=446]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="444" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Espanhol e Italiano]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="466" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[4. Em qual país se fala a língua Mandarim?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-41-3" x="74" y="483" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="486" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-41 x=74 y=483]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="481" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Vietnam]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-42-3" x="74" y="497" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="500" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-42 x=74 y=497]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="495" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Malásia]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-43-3" x="74" y="511" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="514" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-43 x=74 y=511]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="509" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Marrocos]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-44-3" x="74" y="525" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="528" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-44 x=74 y=525]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="523" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. China]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-45-3" x="74" y="539" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="542" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-45 x=74 y=539]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="537" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. México]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="559" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[5. Qual é a capital da Alemanha?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-46-3" x="74" y="576" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="579" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-46 x=74 y=576]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="574" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Budapeste]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-47-3" x="74" y="590" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="593" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-47 x=74 y=590]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="588" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Dresdem]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-48-3" x="74" y="604" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="607" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-48 x=74 y=604]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="602" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Munich]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-49-3" x="74" y="618" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="621" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-49 x=74 y=618]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="616" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Stuttgart]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-50-3" x="74" y="632" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="635" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-50 x=74 y=632]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="630" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Berlim]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="792" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="528" y="795" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="448" y="795" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 3 of]]></textContent>
+		</text>
+	</page>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="545" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+			<imageSource/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="435" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+			<imageSource/>
+		</image>
+		<text textHeight="32.59375" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="343" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="423" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="423" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[2-1]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="232" width="354" height="20" origin="2"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Assinatura: Darcio Mais Alguma Coisa Lopes ]]></textContent>
+		</text>
+		<line>
+			<reportElement x="42" y="228" width="354" height="1" origin="2"/>
+		</line>
+		<text textHeight="162.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="42" y="367" width="506" height="225" origin="2"/>
+			<font isBold="false" isItalic="true"/>
+			<textContent><![CDATA[Questões Alternativas:
+
+- As questões alternativas serão corrigidas automaticamente.
+- Atenção para a quantidade de alternativas que deverão ser escolhidas em cada questão
+- Para confirmar sua opção, preencha completamente os círculos com caneta preta.
+- Apenas preencha as opções quando tiver certeza de sua escolha.
+
+
+Questões Dissertativas
+
+- As questões dissertativas serão corrigidas pelo professor pela internet.
+- Escreva sua resposta apenas os espaços indicados na questão.
+- Apenas estes espaços serão digitalizadas e disponibilizadas para correção.
+- Não será possível que o professor visualize outros espaços além dos indicados para as respostas]]></textContent>
+		</text>
+		<text textHeight="13.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.828125">
+			<reportElement x="42" y="331" width="275" height="20" origin="2"/>
+			<font size="12" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Instruções para o exame:]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="13.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.828125" valueClass="java.lang.Long">
+			<reportElement x="435" y="186" width="127" height="16" origin="2"/>
+			<font size="12" isBold="true"/>
+			<textContent><![CDATA[2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="792" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="528" y="795" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="448" y="795" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 1 of]]></textContent>
+		</text>
+	</page>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="545" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+			<imageSource/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="435" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+			<imageSource/>
+		</image>
+		<text textHeight="32.59375" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="343" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="423" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="423" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[2-2]]></textContent>
+		</text>
+		<text textHeight="15.140625" lineSpacingFactor="1.1646634" leadingOffset="-3.0625">
+			<reportElement x="42" y="154" width="530" height="20" origin="4"/>
+			<font size="13" isUnderline="true"/>
+			<textContent><![CDATA[Questionário de Física]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="187" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[1. Qual é a velocidade do som no ar?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-51-2" x="74" y="204" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="207" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-51 x=74 y=204]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="202" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. ~3000m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-52-2" x="74" y="218" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="221" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-52 x=74 y=218]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="216" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. ~10.000m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-53-2" x="74" y="232" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="235" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-53 x=74 y=232]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="230" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. ~140m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-54-2" x="74" y="246" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="249" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-54 x=74 y=246]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="244" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. ~340m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-55-2" x="74" y="260" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="263" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-55 x=74 y=260]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="258" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. ~1040m/s]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="280" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[2. Qual é a velocidade da luz no vácuo?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-56-2" x="74" y="297" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="300" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-56 x=74 y=297]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="295" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. ~10.000m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-57-2" x="74" y="311" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="314" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-57 x=74 y=311]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="309" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. ~1.000.000Km/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-58-2" x="74" y="325" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="328" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-58 x=74 y=325]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="323" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. ~20.000Km/h]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-59-2" x="74" y="339" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="342" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-59 x=74 y=339]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="337" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. ~1200Km/2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-60-2" x="74" y="353" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="356" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-60 x=74 y=353]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="351" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. ~300.000Km/s]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="373" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[3. Qual é a fórmula da teoria da relatividade especial?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-61-2" x="74" y="390" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="393" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-61 x=74 y=390]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="388" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. R=r/e3]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-62-2" x="74" y="404" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="407" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-62 x=74 y=404]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="402" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. f(x)=x2y]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-63-2" x="74" y="418" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="421" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-63 x=74 y=418]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="416" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. m=w.c4]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-64-2" x="74" y="432" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="435" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-64 x=74 y=432]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="430" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. E=m.c2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-65-2" x="74" y="446" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="449" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-65 x=74 y=446]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="444" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. A=v/c]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="466" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[4. Qual é a aceleração da gravidade?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-66-2" x="74" y="483" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="486" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-66 x=74 y=483]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="481" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. ~9m/s2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-67-2" x="74" y="497" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="500" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-67 x=74 y=497]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="495" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. ~4m/s2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-68-2" x="74" y="511" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="514" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-68 x=74 y=511]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="509" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. ~10Km/h]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-69-2" x="74" y="525" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="528" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-69 x=74 y=525]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="523" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. ~3Km/h]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-70-2" x="74" y="539" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="542" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-70 x=74 y=539]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="537" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. ~10m/s2]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="559" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[5. Qual o nome da primeira teoria da relatividade Einstein?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-71-2" x="74" y="576" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="579" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-71 x=74 y=576]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="574" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Teoria da Aceleracao dos Corpos]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-72-2" x="74" y="590" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="593" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-72 x=74 y=590]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="588" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Teoria da Relatividade Geral]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-73-2" x="74" y="604" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="607" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-73 x=74 y=604]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="602" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Teoria da Energia Limpa]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-74-2" x="74" y="618" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="621" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-74 x=74 y=618]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="616" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Teoria da Relatividade Especial]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-75-2" x="74" y="632" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="635" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-75 x=74 y=632]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="630" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Teoria de Tudo]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="792" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="528" y="795" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="448" y="795" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 2 of]]></textContent>
+		</text>
+	</page>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="545" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+			<imageSource/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="435" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+			<imageSource/>
+		</image>
+		<text textHeight="32.59375" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="343" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="423" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="423" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[2-3]]></textContent>
+		</text>
+		<text textHeight="15.140625" lineSpacingFactor="1.1646634" leadingOffset="-3.0625">
+			<reportElement x="42" y="154" width="530" height="20" origin="4"/>
+			<font size="13" isUnderline="true"/>
+			<textContent><![CDATA[Questionário de Geografia]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="187" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[1. Quais são as duas principais línguas faladas no Canadá ?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-76-2" x="74" y="204" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="207" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-76 x=74 y=204]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="202" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Inglês e Espanhol]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-77-2" x="74" y="218" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="221" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-77 x=74 y=218]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="216" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Francês e Inglês]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-78-2" x="74" y="232" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="235" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-78 x=74 y=232]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="230" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Espanhol e Armênio]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-79-2" x="74" y="246" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="249" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-79 x=74 y=246]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="244" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Francês e Alemão]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-80-2" x="74" y="260" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="263" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-80 x=74 y=260]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="258" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Espanhol e Italiano]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="280" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[2. Em qual país se fala a língua Mandarim?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-81-3" x="74" y="297" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="300" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-81 x=74 y=297]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="295" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. México]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-82-3" x="74" y="311" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="314" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-82 x=74 y=311]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="309" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Vietnam]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-83-3" x="74" y="325" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="328" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-83 x=74 y=325]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="323" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Marrocos]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-84-3" x="74" y="339" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="342" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-84 x=74 y=339]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="337" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Malásia]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-85-3" x="74" y="353" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="356" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-85 x=74 y=353]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="351" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. China]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="373" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[3. Qual é o país mais ao sul das Américas?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-86-3" x="74" y="390" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="393" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-86 x=74 y=390]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="388" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Argentina]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-87-3" x="74" y="404" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="407" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-87 x=74 y=404]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="402" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Uruguai]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-88-3" x="74" y="418" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="421" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-88 x=74 y=418]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="416" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Brasil]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-89-3" x="74" y="432" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="435" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-89 x=74 y=432]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="430" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Peru]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-90-3" x="74" y="446" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="449" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-90 x=74 y=446]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="444" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Chile]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="466" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[4. Qual é a capital da Alemanha?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-91-3" x="74" y="483" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="486" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-91 x=74 y=483]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="481" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Dresdem]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-92-3" x="74" y="497" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="500" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-92 x=74 y=497]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="495" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Budapeste]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-93-3" x="74" y="511" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="514" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-93 x=74 y=511]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="509" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Munich]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-94-3" x="74" y="525" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="528" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-94 x=74 y=525]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="523" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Berlim]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-95-3" x="74" y="539" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="542" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-95 x=74 y=539]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="537" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Stuttgart]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="559" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[5. Quantos países fazem fronteira com Portugal?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-96-3" x="74" y="576" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="579" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-96 x=74 y=576]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="574" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. 2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-97-3" x="74" y="590" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="593" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-97 x=74 y=590]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="588" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. 4]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-98-3" x="74" y="604" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="607" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-98 x=74 y=604]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="602" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. 5]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-99-3" x="74" y="618" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="621" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-99 x=74 y=618]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="616" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. 1]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-100-3" x="74" y="632" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="635" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-100 x=74 y=632]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="630" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. 3]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="792" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="528" y="795" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="448" y="795" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 3 of]]></textContent>
+		</text>
+	</page>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="545" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+			<imageSource/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="435" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+			<imageSource/>
+		</image>
+		<text textHeight="32.59375" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="343" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="423" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="423" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[3-1]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="232" width="354" height="20" origin="2"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Assinatura: Darcio Mais Alguma Coisa Lopes ]]></textContent>
+		</text>
+		<line>
+			<reportElement x="42" y="228" width="354" height="1" origin="2"/>
+		</line>
+		<text textHeight="162.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="42" y="367" width="506" height="225" origin="2"/>
+			<font isBold="false" isItalic="true"/>
+			<textContent><![CDATA[Questões Alternativas:
+
+- As questões alternativas serão corrigidas automaticamente.
+- Atenção para a quantidade de alternativas que deverão ser escolhidas em cada questão
+- Para confirmar sua opção, preencha completamente os círculos com caneta preta.
+- Apenas preencha as opções quando tiver certeza de sua escolha.
+
+
+Questões Dissertativas
+
+- As questões dissertativas serão corrigidas pelo professor pela internet.
+- Escreva sua resposta apenas os espaços indicados na questão.
+- Apenas estes espaços serão digitalizadas e disponibilizadas para correção.
+- Não será possível que o professor visualize outros espaços além dos indicados para as respostas]]></textContent>
+		</text>
+		<text textHeight="13.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.828125">
+			<reportElement x="42" y="331" width="275" height="20" origin="2"/>
+			<font size="12" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Instruções para o exame:]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="13.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.828125" valueClass="java.lang.Long">
+			<reportElement x="435" y="186" width="127" height="16" origin="2"/>
+			<font size="12" isBold="true"/>
+			<textContent><![CDATA[3]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="792" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="528" y="795" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="448" y="795" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 1 of]]></textContent>
+		</text>
+	</page>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="545" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+			<imageSource/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="435" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+			<imageSource/>
+		</image>
+		<text textHeight="32.59375" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="343" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="423" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="423" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[3-2]]></textContent>
+		</text>
+		<text textHeight="15.140625" lineSpacingFactor="1.1646634" leadingOffset="-3.0625">
+			<reportElement x="42" y="154" width="530" height="20" origin="4"/>
+			<font size="13" isUnderline="true"/>
+			<textContent><![CDATA[Questionário de Física]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="187" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[1. Qual é a fórmula da teoria da relatividade especial?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-101-2" x="74" y="204" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="207" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-101 x=74 y=204]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="202" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. R=r/e3]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-102-2" x="74" y="218" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="221" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-102 x=74 y=218]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="216" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. f(x)=x2y]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-103-2" x="74" y="232" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="235" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-103 x=74 y=232]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="230" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. A=v/c]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-104-2" x="74" y="246" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="249" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-104 x=74 y=246]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="244" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. E=m.c2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-105-2" x="74" y="260" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="263" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-105 x=74 y=260]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="258" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. m=w.c4]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="280" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[2. Qual é a aceleração da gravidade?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-106-2" x="74" y="297" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="300" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-106 x=74 y=297]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="295" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. ~9m/s2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-107-2" x="74" y="311" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="314" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-107 x=74 y=311]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="309" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. ~3Km/h]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-108-2" x="74" y="325" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="328" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-108 x=74 y=325]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="323" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. ~10Km/h]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-109-2" x="74" y="339" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="342" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-109 x=74 y=339]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="337" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. ~10m/s2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-110-2" x="74" y="353" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="356" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-110 x=74 y=353]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="351" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. ~4m/s2]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="373" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[3. Qual o nome da primeira teoria da relatividade Einstein?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-111-2" x="74" y="390" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="393" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-111 x=74 y=390]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="388" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Teoria da Relatividade Especial]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-112-2" x="74" y="404" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="407" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-112 x=74 y=404]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="402" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Teoria da Relatividade Geral]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-113-2" x="74" y="418" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="421" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-113 x=74 y=418]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="416" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Teoria da Aceleracao dos Corpos]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-114-2" x="74" y="432" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="435" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-114 x=74 y=432]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="430" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Teoria de Tudo]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-115-2" x="74" y="446" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="449" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-115 x=74 y=446]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="444" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Teoria da Energia Limpa]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="466" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[4. Qual é a velocidade do som no ar?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-116-2" x="74" y="483" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="486" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-116 x=74 y=483]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="481" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. ~1040m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-117-2" x="74" y="497" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="500" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-117 x=74 y=497]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="495" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. ~340m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-118-2" x="74" y="511" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="514" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-118 x=74 y=511]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="509" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. ~140m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-119-2" x="74" y="525" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="528" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-119 x=74 y=525]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="523" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. ~3000m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-120-2" x="74" y="539" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="542" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-120 x=74 y=539]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="537" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. ~10.000m/s]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="559" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[5. Qual é a velocidade da luz no vácuo?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-121-2" x="74" y="576" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="579" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-121 x=74 y=576]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="574" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. ~1200Km/2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-122-2" x="74" y="590" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="593" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-122 x=74 y=590]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="588" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. ~300.000Km/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-123-2" x="74" y="604" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="607" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-123 x=74 y=604]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="602" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. ~10.000m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-124-2" x="74" y="618" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="621" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-124 x=74 y=618]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="616" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. ~1.000.000Km/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-125-2" x="74" y="632" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="635" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-125 x=74 y=632]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="630" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. ~20.000Km/h]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="792" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="528" y="795" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="448" y="795" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 2 of]]></textContent>
+		</text>
+	</page>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="545" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+			<imageSource/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="435" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+			<imageSource/>
+		</image>
+		<text textHeight="32.59375" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="343" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="423" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="423" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[3-3]]></textContent>
+		</text>
+		<text textHeight="15.140625" lineSpacingFactor="1.1646634" leadingOffset="-3.0625">
+			<reportElement x="42" y="154" width="530" height="20" origin="4"/>
+			<font size="13" isUnderline="true"/>
+			<textContent><![CDATA[Questionário de Geografia]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="187" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[1. Em qual país se fala a língua Mandarim?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-126-2" x="74" y="204" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="207" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-126 x=74 y=204]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="202" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Marrocos]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-127-2" x="74" y="218" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="221" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-127 x=74 y=218]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="216" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Malásia]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-128-2" x="74" y="232" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="235" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-128 x=74 y=232]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="230" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. México]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-129-2" x="74" y="246" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="249" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-129 x=74 y=246]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="244" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. China]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-130-2" x="74" y="260" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="263" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-130 x=74 y=260]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="258" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Vietnam]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="280" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[2. Qual é o país mais ao sul das Américas?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-131-3" x="74" y="297" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="300" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-131 x=74 y=297]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="295" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Argentina]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-132-3" x="74" y="311" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="314" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-132 x=74 y=311]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="309" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Uruguai]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-133-3" x="74" y="325" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="328" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-133 x=74 y=325]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="323" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Brasil]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-134-3" x="74" y="339" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="342" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-134 x=74 y=339]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="337" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Chile]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-135-3" x="74" y="353" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="356" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-135 x=74 y=353]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="351" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Peru]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="373" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[3. Quantos países fazem fronteira com Portugal?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-136-3" x="74" y="390" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="393" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-136 x=74 y=390]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="388" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. 2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-137-3" x="74" y="404" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="407" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-137 x=74 y=404]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="402" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. 3]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-138-3" x="74" y="418" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="421" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-138 x=74 y=418]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="416" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. 5]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-139-3" x="74" y="432" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="435" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-139 x=74 y=432]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="430" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. 4]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-140-3" x="74" y="446" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="449" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-140 x=74 y=446]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="444" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. 1]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="466" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[4. Quais são as duas principais línguas faladas no Canadá ?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-141-3" x="74" y="483" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="486" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-141 x=74 y=483]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="481" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Francês e Inglês]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-142-3" x="74" y="497" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="500" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-142 x=74 y=497]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="495" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Inglês e Espanhol]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-143-3" x="74" y="511" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="514" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-143 x=74 y=511]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="509" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Espanhol e Italiano]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-144-3" x="74" y="525" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="528" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-144 x=74 y=525]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="523" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Espanhol e Armênio]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-145-3" x="74" y="539" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="542" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-145 x=74 y=539]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="537" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Francês e Alemão]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="559" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[5. Qual é a capital da Alemanha?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-146-3" x="74" y="576" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="579" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-146 x=74 y=576]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="574" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Dresdem]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-147-3" x="74" y="590" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="593" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-147 x=74 y=590]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="588" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Berlim]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-148-3" x="74" y="604" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="607" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-148 x=74 y=604]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="602" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Munich]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-149-3" x="74" y="618" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="621" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-149 x=74 y=618]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="616" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Stuttgart]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-150-3" x="74" y="632" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="635" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-150 x=74 y=632]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="630" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Budapeste]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="792" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="528" y="795" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="448" y="795" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 3 of]]></textContent>
+		</text>
+	</page>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="545" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+			<imageSource/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="435" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+			<imageSource/>
+		</image>
+		<text textHeight="32.59375" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="343" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="423" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="423" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[4-1]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="232" width="354" height="20" origin="2"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Assinatura: Darcio Mais Alguma Coisa Lopes ]]></textContent>
+		</text>
+		<line>
+			<reportElement x="42" y="228" width="354" height="1" origin="2"/>
+		</line>
+		<text textHeight="162.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="42" y="367" width="506" height="225" origin="2"/>
+			<font isBold="false" isItalic="true"/>
+			<textContent><![CDATA[Questões Alternativas:
+
+- As questões alternativas serão corrigidas automaticamente.
+- Atenção para a quantidade de alternativas que deverão ser escolhidas em cada questão
+- Para confirmar sua opção, preencha completamente os círculos com caneta preta.
+- Apenas preencha as opções quando tiver certeza de sua escolha.
+
+
+Questões Dissertativas
+
+- As questões dissertativas serão corrigidas pelo professor pela internet.
+- Escreva sua resposta apenas os espaços indicados na questão.
+- Apenas estes espaços serão digitalizadas e disponibilizadas para correção.
+- Não será possível que o professor visualize outros espaços além dos indicados para as respostas]]></textContent>
+		</text>
+		<text textHeight="13.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.828125">
+			<reportElement x="42" y="331" width="275" height="20" origin="2"/>
+			<font size="12" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Instruções para o exame:]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="13.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.828125" valueClass="java.lang.Long">
+			<reportElement x="435" y="186" width="127" height="16" origin="2"/>
+			<font size="12" isBold="true"/>
+			<textContent><![CDATA[4]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="792" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="528" y="795" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="448" y="795" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 1 of]]></textContent>
+		</text>
+	</page>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="545" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+			<imageSource/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="435" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+			<imageSource/>
+		</image>
+		<text textHeight="32.59375" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="343" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="423" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="423" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[4-2]]></textContent>
+		</text>
+		<text textHeight="15.140625" lineSpacingFactor="1.1646634" leadingOffset="-3.0625">
+			<reportElement x="42" y="154" width="530" height="20" origin="4"/>
+			<font size="13" isUnderline="true"/>
+			<textContent><![CDATA[Questionário de Física]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="187" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[1. Qual o nome da primeira teoria da relatividade Einstein?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-151-2" x="74" y="204" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="207" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-151 x=74 y=204]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="202" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Teoria da Relatividade Geral]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-152-2" x="74" y="218" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="221" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-152 x=74 y=218]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="216" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Teoria da Energia Limpa]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-153-2" x="74" y="232" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="235" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-153 x=74 y=232]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="230" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Teoria da Aceleracao dos Corpos]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-154-2" x="74" y="246" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="249" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-154 x=74 y=246]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="244" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Teoria de Tudo]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-155-2" x="74" y="260" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="263" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-155 x=74 y=260]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="258" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Teoria da Relatividade Especial]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="280" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[2. Qual é a fórmula da teoria da relatividade especial?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-156-2" x="74" y="297" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="300" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-156 x=74 y=297]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="295" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. R=r/e3]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-157-2" x="74" y="311" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="314" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-157 x=74 y=311]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="309" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. m=w.c4]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-158-2" x="74" y="325" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="328" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-158 x=74 y=325]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="323" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. f(x)=x2y]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-159-2" x="74" y="339" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="342" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-159 x=74 y=339]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="337" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. A=v/c]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-160-2" x="74" y="353" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="356" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-160 x=74 y=353]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="351" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. E=m.c2]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="373" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[3. Qual é a velocidade da luz no vácuo?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-161-2" x="74" y="390" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="393" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-161 x=74 y=390]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="388" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. ~1.000.000Km/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-162-2" x="74" y="404" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="407" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-162 x=74 y=404]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="402" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. ~20.000Km/h]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-163-2" x="74" y="418" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="421" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-163 x=74 y=418]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="416" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. ~10.000m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-164-2" x="74" y="432" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="435" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-164 x=74 y=432]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="430" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. ~1200Km/2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-165-2" x="74" y="446" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="449" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-165 x=74 y=446]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="444" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. ~300.000Km/s]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="466" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[4. Qual é a velocidade do som no ar?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-166-2" x="74" y="483" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="486" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-166 x=74 y=483]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="481" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. ~1040m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-167-2" x="74" y="497" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="500" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-167 x=74 y=497]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="495" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. ~140m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-168-2" x="74" y="511" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="514" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-168 x=74 y=511]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="509" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. ~3000m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-169-2" x="74" y="525" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="528" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-169 x=74 y=525]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="523" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. ~340m/s]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-170-2" x="74" y="539" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="542" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-170 x=74 y=539]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="537" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. ~10.000m/s]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="559" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[5. Qual é a aceleração da gravidade?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-171-2" x="74" y="576" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="579" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-171 x=74 y=576]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="574" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. ~3Km/h]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-172-2" x="74" y="590" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="593" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-172 x=74 y=590]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="588" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. ~10m/s2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-173-2" x="74" y="604" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="607" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-173 x=74 y=604]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="602" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. ~10Km/h]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-174-2" x="74" y="618" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="621" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-174 x=74 y=618]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="616" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. ~4m/s2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-175-2" x="74" y="632" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="635" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-175 x=74 y=632]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="630" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. ~9m/s2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="792" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="528" y="795" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="448" y="795" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 2 of]]></textContent>
+		</text>
+	</page>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="545" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+			<imageSource/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="435" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+			<imageSource/>
+		</image>
+		<text textHeight="32.59375" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="343" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="423" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="423" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[4-3]]></textContent>
+		</text>
+		<text textHeight="15.140625" lineSpacingFactor="1.1646634" leadingOffset="-3.0625">
+			<reportElement x="42" y="154" width="530" height="20" origin="4"/>
+			<font size="13" isUnderline="true"/>
+			<textContent><![CDATA[Questionário de Geografia]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="187" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[1. Quantos países fazem fronteira com Portugal?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-176-2" x="74" y="204" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="207" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-176 x=74 y=204]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="202" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. 2]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-177-2" x="74" y="218" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="221" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-177 x=74 y=218]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="216" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. 5]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-178-2" x="74" y="232" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="235" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-178 x=74 y=232]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="230" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. 3]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-179-2" x="74" y="246" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="249" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-179 x=74 y=246]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="244" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. 1]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-180-2" x="74" y="260" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="263" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-180 x=74 y=260]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="258" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. 4]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="280" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[2. Qual é a capital da Alemanha?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-181-3" x="74" y="297" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="300" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-181 x=74 y=297]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="295" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Stuttgart]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-182-3" x="74" y="311" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="314" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-182 x=74 y=311]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="309" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Dresdem]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-183-3" x="74" y="325" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="328" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-183 x=74 y=325]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="323" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Munich]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-184-3" x="74" y="339" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="342" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-184 x=74 y=339]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="337" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Berlim]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-185-3" x="74" y="353" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="356" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-185 x=74 y=353]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="351" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Budapeste]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="373" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[3. Quais são as duas principais línguas faladas no Canadá ?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-186-3" x="74" y="390" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="393" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-186 x=74 y=390]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="388" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Francês e Inglês]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-187-3" x="74" y="404" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="407" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-187 x=74 y=404]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="402" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Espanhol e Armênio]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-188-3" x="74" y="418" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="421" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-188 x=74 y=418]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="416" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Espanhol e Italiano]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-189-3" x="74" y="432" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="435" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-189 x=74 y=432]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="430" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Francês e Alemão]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-190-3" x="74" y="446" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="449" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-190 x=74 y=446]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="444" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Inglês e Espanhol]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="466" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[4. Em qual país se fala a língua Mandarim?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-191-3" x="74" y="483" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="486" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-191 x=74 y=483]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="481" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Vietnam]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-192-3" x="74" y="497" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="500" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-192 x=74 y=497]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="495" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. China]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-193-3" x="74" y="511" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="514" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-193 x=74 y=511]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="509" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Malásia]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-194-3" x="74" y="525" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="528" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-194 x=74 y=525]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="523" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Marrocos]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-195-3" x="74" y="539" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="542" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-195 x=74 y=539]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="537" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. México]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="60" y="559" width="509" height="12" origin="6"/>
+			<textContent><![CDATA[5. Qual é o país mais ao sul das Américas?]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-196-3" x="74" y="576" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="579" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-196 x=74 y=576]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="574" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[1. Chile]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-197-3" x="74" y="590" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="593" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-197 x=74 y=590]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="588" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[2. Argentina]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-198-3" x="74" y="604" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="607" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-198 x=74 y=604]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="602" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[3. Uruguai]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-199-3" x="74" y="618" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="621" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-199 x=74 y=618]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="616" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[4. Peru]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="aco_Key-200-3" x="74" y="632" width="9" height="9"/>
+		</ellipse>
+		<text textHeight="0.0" lineSpacingFactor="0.0" leadingOffset="0.0">
+			<reportElement x="94" y="635" width="200" height="10" forecolor="#FF0000"/>
+			<textContent><![CDATA[aco_Key-200 x=74 y=632]]></textContent>
+		</text>
+		<text textHeight="9.3125" lineSpacingFactor="1.1640625" leadingOffset="-1.890625">
+			<reportElement x="97" y="630" width="439" height="13" origin="12"/>
+			<font size="8"/>
+			<textContent><![CDATA[5. Brasil]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="792" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="528" y="795" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="448" y="795" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 3 of]]></textContent>
+		</text>
+	</page>
+</jasperPrint>

@@ -1,0 +1,13 @@
+<!DOCTYPE sun-web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Application Server 8.1
+Servlet 2.4//EN" "http://www.sun.com/software/appserver/dtds/sun-web-app_2_4-1.dtd">
+
+<sun-web-app>
+ 
+	<security-role-mapping>
+		<role-name>admin-role</role-name>
+		<group-name>admins</group-name>
+		<group-name>users</group-name>
+		<group-name>guests</group-name>
+	</security-role-mapping>
+	    
+</sun-web-app>

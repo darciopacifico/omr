@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<faces-config>
+
+	<application>
+			<!-- VIEW HANDLER ORIGINAL DO PORTLET BRIDGE <view-handler>org.jboss.portletbridge.application.PortletViewHandler</view-handler> -->
+			<view-handler>org.jboss.portletbridge.application.FaceletPortletViewHandler</view-handler>
+			<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+			<state-manager>org.jboss.portletbridge.application.PortletStateManager</state-manager>
+
+		
+			<!--  CONFIGURACAO PARA APLICACAO NAO "PORTLETIZADA"
+			<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+			<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+			 -->
+	</application>
+	
+	
+	<navigation-rule> 
+		<from-view-id>*</from-view-id> 
+		<navigation-case> 
+			<from-outcome>index</from-outcome> 
+			<to-view-id>/index.jsf</to-view-id> 
+			<redirect/> 
+		</navigation-case> 
+	</navigation-rule> 
+		
+	
+	
+	<converter>
+		<converter-id>BaseVOConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.converter.IBaseVOConverter</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-id>hibernateBaseVOConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.converter.HibernateIBaseVOConverter</converter-class>
+	</converter>
+	
+
+
+
+	<converter>
+		<converter-id>questionnaireJSONConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.exam.QuestionnaireJSONConverter</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-id>pessoaJSONConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.person.PessoaJSONConverter</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-id>grupoJSONConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.person.GrupoJSONConverter</converter-class>
+	</converter>	
+	
+	<converter>
+		<converter-id>examJSONConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.exam.ExamJSONConverter</converter-class>
+	</converter>		
+</faces-config>

@@ -1,0 +1,78 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:Locale="en-US">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="transaction">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="date" type="xs:string" minOccurs="0" />
+              <xs:element name="lastEventDate" type="xs:string" minOccurs="0" />
+              <xs:element name="code" type="xs:string" minOccurs="0" />
+              <xs:element name="reference" type="xs:string" minOccurs="0" />
+              <xs:element name="type" type="xs:string" minOccurs="0" />
+              <xs:element name="status" type="xs:string" minOccurs="0" />
+              <xs:element name="grossAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="discountAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="feeAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="netAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="extraAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="installmentCount" type="xs:string" minOccurs="0" />
+              <xs:element name="itemCount" type="xs:string" minOccurs="0" />
+              <xs:element name="paymentMethod" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="type" type="xs:string" minOccurs="0" />
+                    <xs:element name="code" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="items" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="sender" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name" type="xs:string" minOccurs="0" />
+                    <xs:element name="email" type="xs:string" minOccurs="0" />
+                    <xs:element name="phone" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="areaCode" type="xs:string" minOccurs="0" />
+                          <xs:element name="number" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="shipping" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="type" type="xs:string" minOccurs="0" />
+                    <xs:element name="cost" type="xs:string" minOccurs="0" />
+                    <xs:element name="address" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="street" type="xs:string" minOccurs="0" />
+                          <xs:element name="number" type="xs:string" minOccurs="0" />
+                          <xs:element name="complement" type="xs:string" minOccurs="0" />
+                          <xs:element name="district" type="xs:string" minOccurs="0" />
+                          <xs:element name="postalCode" type="xs:string" minOccurs="0" />
+                          <xs:element name="city" type="xs:string" minOccurs="0" />
+                          <xs:element name="state" type="xs:string" minOccurs="0" />
+                          <xs:element name="country" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

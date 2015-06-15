@@ -1,0 +1,169 @@
+package <XDtPackage:packageName/>;
+
+import java.util.Collection;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts.Globals;
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.util.MessageResources;
+
+import br.com.dlp.framework.struts.action.BaseCadastroAction;
+import br.com.dlp.framework.util.AcheActionMessage;
+import br.com.dlp.framework.util.FrameworkAcheUtil;
+import br.com.dlp.framework.vowrapper.AbstractVOWrapper;
+import br.com.dlp.framework.vowrapper.VOWrapperException;
+/**
+ *
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+<XDtClass:ifIsClassNotAbstract>
+ * @struts.form 
+ * name = "<XDtWj2eeClass:actionFormName/>"
+ * include-all ="true" 
+ *
+ * ActionForm para o componente <XDtWj2eeClass:moduleId/>
+</XDtClass:ifIsClassNotAbstract>
+<XDtClass:ifIsClassAbstract>
+ * ActionForm abstrato para componente <XDtWj2eeClass:moduleId/>
+</XDtClass:ifIsClassAbstract>
+ *
+ **/
+<XDtClass:modifiers/> class <XDtWj2eeClass:actionFormClassName/> extends <XDtWj2eeClass:extendedActionFormClassName/>{
+	/**
+	 * Controle de versão para classes serializáveis
+	 */
+	private static final long serialVersionUID = <XDtWj2eeClass:classSerialVersionUID/>
+	
+<XDtWj2eeClass:forTodosOsEscravos	superclasses="true" recursivamente="true" sort="true">
+	/**
+	 * Getter do Wrapper do modulo escravo <XDtWj2eeMethod:moduleId/>
+	 */
+	public <XDtWj2eeMethod:voWrapperClassName/> get<XDtWj2eeMethod:voWrapperClassName/>() throws VOWrapperException {
+	  <XDtWj2eeClass:voWrapperClassName/> <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/> = get<XDtWj2eeClass:voWrapperClassName/>();
+	  Collection collection = <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>.get<XDtMethod:methodNameWithoutPrefix/>();
+	  <XDtWj2eeMethod:voWrapperClassName/> <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeMethod:voWrapperClassName/>"/> = (<XDtWj2eeMethod:voWrapperClassName/>)AbstractVOWrapper.getIVOWrapperSelecionado(collection);
+		return <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeMethod:voWrapperClassName/>"/>;
+	}
+	
+	/******************************************************************/
+	/* METODOS PARA ATRIBUTOS UM-MUITOS. ATRIBUTO <XDtMethod:methodNameWithoutPrefix />  */
+	public <XDtWj2eeMethod:voWrapperClassName/> get<XDtWj2eeMethod:toSingularPrimeiraMaiuscula nome='<XDtMethod:propertyName/>' />(int index) throws VOWrapperException {
+		<XDtWj2eeClass:voWrapperClassName/> <XDtWj2eeMethod:denifirVariavelParaTipo tipo='<XDtWj2eeClass:voWrapperClassName/>'/> = this.get<XDtWj2eeClass:voWrapperClassName/>();
+		List list = <XDtWj2eeMethod:denifirVariavelParaTipo tipo='<XDtWj2eeClass:voWrapperClassName/>'/>.get<XDtMethod:methodNameWithoutPrefix/>();
+		return (<XDtWj2eeMethod:voWrapperClassName/>)list.get(index);
+	}
+	public void set<XDtWj2eeMethod:toSingularPrimeiraMaiuscula nome='<XDtMethod:propertyName/>' />(int index, <XDtWj2eeMethod:tipoDoConteudoDaColecao/> <XDtWj2eeMethod:denifirVariavelParaTipo tipo='<XDtWj2eeMethod:voWrapperClassName/>' /> ) throws VOWrapperException {
+		<XDtWj2eeClass:voWrapperClassName/> <XDtWj2eeMethod:denifirVariavelParaTipo tipo='<XDtWj2eeClass:voWrapperClassName/>'/> = this.get<XDtWj2eeClass:voWrapperClassName/>();
+		List list = <XDtWj2eeMethod:denifirVariavelParaTipo tipo='<XDtWj2eeClass:voWrapperClassName/>'/>.get<XDtMethod:methodNameWithoutPrefix/>();
+		list.set(index,<XDtWj2eeMethod:denifirVariavelParaTipo tipo='<XDtWj2eeMethod:voWrapperClassName/>' />);
+	}
+	/***************************************************/
+
+</XDtWj2eeClass:forTodosOsEscravos>
+
+	/**
+	 * Método getter para o wrapper de VO deste de módulo
+	 */
+	public <XDtWj2eeClass:voWrapperClassName/> get<XDtWj2eeClass:voWrapperClassName/>(){
+		<XDtWj2eeClass:voWrapperClassName/> <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/> = (<XDtWj2eeClass:voWrapperClassName/>)getIVOWrapper();
+		return <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>;
+	}
+
+	/**
+	 * <b>Consistências e Validacões</b> das entradas de dados do modulo '<XDtWj2eeClass:moduleDescription/>'<br>
+	 * ATENÇÃO!! NAO IMPLEMENTAR VALIDAÇÕES DE NEGÓCIO NESTE MÉTODO.<br> 
+	 * VALIDAÇÕES DE NEGÓCIO DO MÓDULO '<XDtWj2eeClass:moduleDescription/>' DEVEM ESTAR IMPLEMENTADAS <br>
+	 * NA FACHADA '<XDtWj2eeClass:facadeImplClassName/>' OU EM 'OBJETOS DE NEGÓCIO' ACESSADOS POR ESTA
+	 */
+  public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+    ActionErrors actionErrors = super.validate(mapping, request);
+
+    String paramService = getParamService();
+    /* TODO: Caso queira validar os atributos de '<XDtWj2eeClass:voClassName/>'
+     *  durante outros servicos, altere este 'if' */
+    if(paramService!=null && paramService.equals(BaseCadastroAction.SERVICE_SALVAR)){
+		MessageResources messageResources = (MessageResources) request.getAttribute(Globals.MESSAGES_KEY);
+		
+		<XDtWj2eeClass:voClassName/> <XDtWj2eeMethod:denifirVariavelParaTipo tipo='<XDtWj2eeClass:voClassName/>' /> = get<XDtWj2eeClass:voWrapperClassName/>().get<XDtWj2eeClass:voClassName/>();
+
+<XDtWj2eeMethod:forAllMethods sort="true" superclasses="false">
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsNotPk>
+			
+		/******************************************************************/
+		/*Validacoes do atributo '<XDtMethod:propertyName/>' de '<XDtWj2eeClass:voClassName/>' */
+		<XDtWj2eeMethod:methodType /> <XDtMethod:propertyName/> = <XDtWj2eeMethod:denifirVariavelParaTipo tipo='<XDtWj2eeClass:voClassName/>' />.get<XDtMethod:methodNameWithoutPrefix/>();
+		if(<XDtWj2eeMethod:validacaoCampoRequerido/>){
+			/*VALIDACAO DO ATRIBUTO <XDtMethod:propertyName/> COMO REQUERIDO*/
+			<XDtWj2eeMethod:ifIsRequerido>
+			actionErrors.add("<XDtMethod:propertyName/>",<XDtWj2eeMethod:newAcheActionMessageRequerido/>);
+			</XDtWj2eeMethod:ifIsRequerido>
+			<XDtWj2eeMethod:ifIsNotRequerido>
+			//Caso queira tornar este atributo requerido, 'descomente' a linha abaixo
+			//actionErrors.add("<XDtMethod:propertyName/>",<XDtWj2eeMethod:newAcheActionMessageRequerido/>);
+			</XDtWj2eeMethod:ifIsNotRequerido>
+
+		}<XDtWj2eeMethod:ifIsValorDelimitado><XDtWj2eeMethod:ifIsRequerido> else </XDtWj2eeMethod:ifIsRequerido>if(<XDtWj2eeMethod:validacaoValorDelimitado/>){
+			/*VALIDACAO DO VALOR DO ATRIBUTO <XDtMethod:propertyName/> DE ACORDO COM O RANGE DE VALORES ESTABELECIDOS*/
+			actionErrors.add("<XDtMethod:propertyName/>",<XDtWj2eeMethod:newAcheActionMessageValorDelimitado/>);
+
+		}
+		</XDtWj2eeMethod:ifIsValorDelimitado>		
+		<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoCollection>
+		/*validando os itens da colecao de <XDtMethod:propertyName/>*/
+		Iterator <XDtMethod:propertyName/>Iterator = <XDtMethod:propertyName/>.iterator();
+		while(<XDtMethod:propertyName/>Iterator.hasNext()){
+
+			<XDtWj2eeMethod:tipoDoConteudoDaColecao/> itemDaVez = (<XDtWj2eeMethod:tipoDoConteudoDaColecao/>)<XDtMethod:propertyName/>Iterator.next();
+
+			<XDtWj2eeMethod:forTodosOsMethodDaClasse superclasses="true" sort="true" tipo="<XDtWj2eeMethod:tipoDoConteudoDaColecaoQualifiedName/>">
+				<XDtMethod:ifIsGetter>
+					<XDtWj2eeMethod:ifIsNotPk>
+
+			/*Validacoes do atributo '<XDtMethod:propertyName/>' de '<XDtWj2eeClass:voClassName/>' */
+			<XDtWj2eeMethod:methodType /> <XDtMethod:propertyName/>From<XDtWj2eeClass:moduleIdPrimLetraMaiuscula/> = itemDaVez.get<XDtMethod:methodNameWithoutPrefix/>();
+			if(<XDtWj2eeMethod:validacaoCampoRequerido sufix="From<XDtWj2eeClass:moduleIdPrimLetraMaiuscula/>"/>){
+				/*VALIDACAO DO ATRIBUTO <XDtMethod:propertyName/> COMO REQUERIDO*/
+				<XDtWj2eeMethod:ifIsRequerido>
+				actionErrors.add("<XDtMethod:propertyName/>",<XDtWj2eeMethod:newAcheActionMessageRequerido sufix="From<XDtWj2eeClass:moduleIdPrimLetraMaiuscula/>"/>);
+				</XDtWj2eeMethod:ifIsRequerido>
+				<XDtWj2eeMethod:ifIsNotRequerido>
+				//Caso queira tornar este atributo requerido, 'descomente' a linha abaixo
+				//actionErrors.add("<XDtMethod:propertyName/>",<XDtWj2eeMethod:newAcheActionMessageRequerido sufix="From<XDtWj2eeClass:moduleIdPrimLetraMaiuscula/>"/>);
+				</XDtWj2eeMethod:ifIsNotRequerido>
+
+			}<XDtWj2eeMethod:ifIsValorDelimitado sufix="From<XDtWj2eeClass:moduleIdPrimLetraMaiuscula/>" ><XDtWj2eeMethod:ifIsRequerido> else </XDtWj2eeMethod:ifIsRequerido>if(<XDtWj2eeMethod:validacaoValorDelimitado sufix="From<XDtWj2eeClass:moduleIdPrimLetraMaiuscula/>"/>){
+				/*VALIDACAO DO VALOR DO ATRIBUTO <XDtMethod:propertyName/> DE ACORDO COM O RANGE DE VALORES ESTABELECIDOS*/
+				actionErrors.add("<XDtMethod:propertyName/>",<XDtWj2eeMethod:newAcheActionMessageValorDelimitado sufix="From<XDtWj2eeClass:moduleIdPrimLetraMaiuscula/>"/>);
+
+			}
+			</XDtWj2eeMethod:ifIsValorDelimitado>		
+
+					</XDtWj2eeMethod:ifIsNotPk>
+				</XDtMethod:ifIsGetter>
+			</XDtWj2eeMethod:forTodosOsMethodDaClasse>
+		}
+			
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoCollection>
+		</XDtWj2eeMethod:ifIsNotPk>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>
+		}
+		return actionErrors;
+	}
+
+
+	/**
+	 * Retorna a Wrapper class para <XDtWj2eeClass:voClassName/>
+	 */
+	protected Class getWrapperClass() {
+		return <XDtWj2eeClass:voWrapperClassName/>.class;
+	}
+}

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.msaf.validador.dadosretinst.DadosRetInstVO"
+        lazy="false"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Long"
+        >
+            <generator class="increment">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-DadosRetInstVO.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="bairro"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="bairro"
+        />
+
+        <property
+            name="cep"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="cep"
+        />
+
+        <property
+            name="cidade"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="cidade"
+        />
+
+        <property
+            name="cnpj"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="cnpj"
+        />
+
+        <property
+            name="complemento"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="complemento"
+        />
+
+        <property
+            name="enquandramentoEmpresa"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="enquandramentoEmpresa"
+        />
+
+        <property
+            name="estado"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="estado"
+        />
+
+        <property
+            name="ie"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="ie"
+        />
+
+        <property
+            name="iesEncontradas"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="iesEncontradas"
+        />
+
+        <property
+            name="logradouro"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="logradouro"
+        />
+
+        <property
+            name="numero"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="numero"
+        />
+
+        <property
+            name="razaoSocial"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="razaoSocial"
+        />
+
+        <property
+            name="regimeApuracao"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="regimeApuracao"
+        />
+
+        <property
+            name="situacao"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="situacao"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-DadosRetInstVO.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

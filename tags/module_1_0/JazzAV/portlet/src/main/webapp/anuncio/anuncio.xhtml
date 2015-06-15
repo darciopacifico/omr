@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich">
+
+<h:body>
+  <ui:composition template="/templates/template.xhtml">
+
+
+
+    <ui:define name="body">
+
+      <h:form prependId="false" styleClass="wufoo topLabel page1" style="width: 800px;">
+
+        <header id="header" class="info">
+        <h2>Untitled Form</h2>
+        <div>This is my form. Please fill it out. It's awesome!</div>
+        </header>
+        <h:panelGrid columns="2">
+
+
+          <rich:tabPanel rendered="true" switchType="client" id="tabPrincipal" >
+            <rich:tab header="Adesivo">
+
+              <ul>
+
+
+                <li class="notranslate">
+                  <h:outputLabel value="Dados do Veículo" styleClass="desc" />
+                  <div>
+
+                      <table class="tabDivisora" style="border-top: 1px dotted #CCC;">
+                        <tr>
+                          <td>
+                            <label for="cboAnoFab">Ano Fabricação</label>
+                            <h:selectOneMenu style="width:90px;" id="cboAnoFab">
+                              <f:selectItem itemValue="0" itemLabel="Option 1" />
+                              <f:selectItem itemValue="1" itemLabel="Option 2" />
+                              <f:selectItem itemValue="2" itemLabel="Option 3" />
+                              <f:selectItem itemValue="3" itemLabel="Option 4" />
+                              <f:selectItem itemValue="4" itemLabel="Option 5" />
+                            </h:selectOneMenu> 
+                          </td>
+                          <td>
+                            <label for="cboAnoMod">Ano Modelo</label>
+                            <h:selectOneMenu style="width:90px;" id="cboAnoMod">
+                              <f:selectItem itemValue="0" itemLabel="Option 1" />
+                              <f:selectItem itemValue="1" itemLabel="Option 2" />
+                              <f:selectItem itemValue="2" itemLabel="Option 3" />
+                              <f:selectItem itemValue="3" itemLabel="Option 4" />
+                              <f:selectItem itemValue="4" itemLabel="Option 5" />
+                            </h:selectOneMenu> 
+                          </td>
+                          <td>
+                            <label for="txtValor">Valor</label> 
+                            <h:inputText id="txtValor" value="" />
+                          </td>
+                        </tr>
+                      </table>
+                  </div>
+                </li>
+
+                <li class="notranslate">
+                  <div>
+
+  
+                    <table class="tabDivisora" >
+                      <tr>
+                        <td>
+                
+                          <label for="cboCombustivel">Combustível</label>
+                          <h:selectOneMenu id="cboCombustivel" style="width:130px;">
+                            <f:selectItem itemValue="0" itemLabel="Option 1" />
+                            <f:selectItem itemValue="1" itemLabel="Option 2" />
+                            <f:selectItem itemValue="2" itemLabel="Option 3" />
+                            <f:selectItem itemValue="3" itemLabel="Option 4" />
+                            <f:selectItem itemValue="4" itemLabel="Option 5" />
+                          </h:selectOneMenu>
+                        </td>                    
+                        <td>
+  
+                          <label for="cboCambio">Câmbio</label>
+                          <h:selectOneMenu id="cboCambio" listWidth="3" style="width:130px;">
+                          </h:selectOneMenu>
+  
+                        </td>
+                       </tr>
+                     </table>
+
+                    
+                  </div>
+                </li>
+
+
+
+
+
+
+
+                <li class="notranslate">
+                  <h:outputLabel  styleClass="desc" for="txtAnunciante" value="Dados do Anunciante" />
+                  <div>
+
+                      <table class="tabDivisora" style="border-top: 1px dotted #CCC;" >
+                        <tr>
+                          <td>
+                            <label for="txtAnunciante">Nome Anunciante</label>
+                            <h:inputText id="txtAnunciante" value="" size="20" />
+                          </td>
+                          <td>
+                            <label for="txtTelefone1">Telefone 1</label>
+                            <h:inputText id="txtTelefone1" value="" size="11" />
+                          </td>
+                          <td>
+                            <label for="txtTelefone2">Telefone 2</label>
+                            <h:inputText id="txtTelefone2" value="" size="11" />
+                          </td>
+                        </tr>
+                      </table>
+
+                  </div>
+
+                </li>
+
+
+                <li class="notranslate">
+                  <div>
+                    <table class="tabDivisora">
+                      <tr>
+                        <td>                  
+                          <label for="txtObservacao">Observações</label>
+                          <h:inputText value="" id="txtObservacao" size="60" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </li>
+
+                <li class="notranslate"><h:outputLabel  styleClass="desc" value="Opcionais:" for="accordOpcionais" />
+
+                  <div>
+                      <table class="tabDivisora" style="border-top: 1px dotted #CCC; width: 100%;" >
+                        <tr>
+                          <td>                  
+                    <rich:accordion title="Opcionais" id="accordOpcionais" width="220">
+                      <rich:accordionItem header="Princiais">
+                      </rich:accordionItem>
+                      <rich:accordionItem header="Segurança">
+                      </rich:accordionItem>
+                      <rich:accordionItem header="Segurança">
+                      </rich:accordionItem>
+                    </rich:accordion>
+                    </td></tr></table>
+                  </div></li>
+                  
+
+              </ul>
+
+
+            </rich:tab>
+            <rich:tab header="Anúncio">
+            sdsdsd
+            </rich:tab>
+            <rich:tab header="Fechar Compra"> 
+            sdsdsd
+            </rich:tab>
+          </rich:tabPanel>
+
+
+
+          <h:panelGrid columns="1" style="height: 300px;width: 380px; " layout="block">
+
+            <h:panelGrid columns="1" styleClass="gridGrupo">
+              <h:panelGrid columns="1" styleClass="gridCampo">
+                <h:outputLabel value="Modelos de Adesivo:" for="cboModelos" />
+                <h:selectOneMenu id="cboModelos" style="width:230px;">
+                  <f:selectItem itemValue="0" itemLabel="Option 1" />
+                  <f:selectItem itemValue="1" itemLabel="Option 2" />
+                  <f:selectItem itemValue="2" itemLabel="Option 3" />
+                  <f:selectItem itemValue="3" itemLabel="Option 4" />
+                  <f:selectItem itemValue="4" itemLabel="Option 5" />
+                </h:selectOneMenu>
+
+              </h:panelGrid>
+            </h:panelGrid>
+
+            <h:panelGrid columns="1" styleClass="gridGrupo">
+              <h:panelGroup layout="block">
+
+                <h:panelGrid columns="1" styleClass="gridCampo">
+                  <h:outputLabel value="Vidro Traseiro:" for="imgAnuncio1" />
+                  
+                </h:panelGrid>
+
+                <h:panelGrid columns="1" styleClass="gridCampo">
+                  <h:outputLabel value="Vidros Laterais:" for="imgAnuncio2" />
+                </h:panelGrid>
+
+
+              </h:panelGroup>
+            </h:panelGrid>
+
+          </h:panelGrid>
+        </h:panelGrid>
+
+      </h:form>
+    </ui:define>
+  </ui:composition>
+</h:body>
+</html>

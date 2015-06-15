@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss PUBLIC "-//JBoss//DTD JBOSS 3.0//EN" "http://www.jboss.org/j2ee/dtd/jboss_3_0.dtd">
+
+<jboss>
+
+   <enterprise-beans>
+
+     <!--
+       To add beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called jboss-beans.xml that contains
+       the <session></session>, <entity></entity> and <message-driven></message-driven>
+       markup for those beans.
+     -->
+
+      <session>
+         <ejb-name>TipoFonteVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/tipofonte/TipoFonteVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>FamiliaProdutoVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/familiaproduto/FamiliaProdutoVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>EstabilidadeEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/estabilidade/EstabilidadeLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>UsuarioJazzVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/usuariojazz/UsuarioJazzVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>TipoHistoricoVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/tipohistorico/TipoHistoricoVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>DirecaoRelacionamentoVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/direcaorelacionamento/DirecaoRelacionamentoVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>TesteVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/teste/TesteVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>EsforcoEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/esforco/EsforcoLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>EsforcoVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/esforco/EsforcoVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>TipoRelacionamentoVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/tiporelacionamento/TipoRelacionamentoVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>RequisitoVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/requisito/RequisitoVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>TipoRequisitoVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/tiporequisito/TipoRequisitoVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>ProjetoVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/projeto/ProjetoVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>FamiliaProdutoAreaEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/familiaprodutoarea/FamiliaProdutoAreaLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>TipoFonteEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/tipofonte/TipoFonteLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>FamiliaProdutoAreaVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/familiaprodutoarea/FamiliaProdutoAreaVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>FamiliaProdutoEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/familiaproduto/FamiliaProdutoLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>ProdutoEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/produto/ProdutoLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>TipoHistoricoEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/tipohistorico/TipoHistoricoLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>ProjetoEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/projeto/ProjetoLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>ModuloEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/modulo/ModuloLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>StatusEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/status/StatusLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>PapelEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/papel/PapelLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>ProdutoVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/produto/ProdutoVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>AreaProdutoVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/areaproduto/AreaProdutoVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>EstabilidadeVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/estabilidade/EstabilidadeVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>TesteEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/teste/TesteLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>RequisitoEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/requisito/RequisitoLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>PapelVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/papel/PapelVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>UsuarioJazzEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/usuariojazz/UsuarioJazzLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>StatusVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/status/StatusVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>TipoRequisitoEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/tiporequisito/TipoRequisitoLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>TipoRelacionamentoEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/tiporelacionamento/TipoRelacionamentoLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>ModuloVlhEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/modulo/ModuloVlhLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>AreaProdutoEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/areaproduto/AreaProdutoLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>DirecaoRelacionamentoEJB</ejb-name>
+         <local-jndi-name>br/com/dlp/jazzqa/direcaorelacionamento/DirecaoRelacionamentoLocal</local-jndi-name>
+
+      </session>
+
+    <!--
+      write a merge file jboss-webservices.ent for webservice-description 
+    -->
+
+   </enterprise-beans>
+
+   <resource-managers>
+   </resource-managers>
+
+  <!--
+    | for container settings, you can merge in jboss-container.xml
+    | this can contain <invoker-proxy-bindings/> and <container-configurations/>
+  -->
+
+</jboss>

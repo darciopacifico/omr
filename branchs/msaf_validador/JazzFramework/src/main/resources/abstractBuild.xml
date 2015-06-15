@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="DeployAll" name="Packaging Abstrato" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+	<property environment="env" />
+	<property file="build.properties" />
+	<property file="buildWizard.properties" />
+	
+	<artifact:dependencies filesetid="FS_XDoclet_Dependencies" >
+		<dependency groupId="Jazz" 		artifactId="JazzFramework" 	version="1.1" 	scope="compile"/>
+		<dependency groupId="Jazz" 		artifactId="JazzXDoclet" 	version="1.0-SNAPSHOT" 	scope="compile"/>
+		<dependency groupId="JazzQA" 	artifactId="JazzQA.core" 	version="1.0" 			scope="compile"/>
+		<dependency groupid="xjavadoc" 	artifactid="xjavadoc" 		version="1.1" 			scope="compile" />
+		<!--
+		<dependency groupid="mysql" a  />
+		-->
+		
+	</artifact:dependencies>
+	
+	<path id="pathPadraoXDoclet">
+		
+		<!--
+		-->
+		<fileset dir="${env.XDOCLET_HOME}/lib">
+			<include name="**/*.jar"/>
+		</fileset>	
+
+		<!--
+		-->
+		<fileset refid="FS_XDoclet_Dependencies"/>
+		
+		
+	
+	</path>
+	
+	<fileset dir="${dir.lib}" id="jarsSistemasExternos">
+		<include name="runtime/**/*.*"/>
+	</fileset>
+	
+	
+	<target name="RefreshEJB">
+		<delete  >
+			<fileset dir="${dir.deployJ2EEServer.app}">
+				<include name="**/ejb-jar.xml"/>
+				<include name="**/jboss.xml"/>
+			</fileset>
+		</delete>
+		<echo>sleep de 4 segundos</echo>
+		<sleep seconds="4"/>
+		
+		<antcall target="DeployEJB"></antcall>
+		
+	</target>
+	
+	<target name="PackageAll" depends="XDoclet_All, DeployAll" description="Invoca todas as targets XDoclet e todas as targets de deploy" />
+	<target name="DeployAll" depends="DeployEJB, DeployWAR" description="Deploya todas as classes nos servidores de desenvolvimento " />
+	
+	<target name="PackageExternalProjects" description="Empacota de copia Jars de outros sistemas para dentro deste projeto">
+	</target>
+	
+	<target name="TOUCH">
+		<touch>
+			<fileset dir=".">
+				<include name="**\*.*"/>
+			</fileset>
+		</touch>
+	</target>
+	
+	
+	<target name="DeployEAR">
+		
+	</target>
+	
+	
+	<target name="DeployEJB" depends="DeployFramework"  >
+		<mkdir dir="${dir.deployJ2EEServer.app}" />
+		<copy todir="${dir.deployJ2EEServer.app}\META-INF\lib">
+			<fileset refid="jarsSistemasExternos"  />	
+		</copy>
+
+		<copy todir="${dir.deployJ2EEServer.app}">
+			<fileset dir="bin" >
+				<include name="**\*.*" />
+			</fileset>
+		</copy>
+
+		<copy todir="${dir.deployJ2EEServer.app}\META-INF">
+			<fileset dir="src\META-INF" >
+				<include name="**\*.*" />
+			</fileset>
+		</copy>
+
+	</target>
+	
+	<target name="DeployWAR" depends="DeployFramework" >
+		<mkdir dir="${dir.deployWebServer.app}" />
+		<copy todir="${dir.deployWebServer.app}/WEB-INF/lib">
+			<fileset refid="jarsSistemasExternos"  />	
+		</copy>
+		<copy todir="${dir.deployWebServer.app}/WEB-INF/classes" failonerror="true">
+			<fileset dir="bin" >
+				<include name="**/*.*"/>
+			</fileset>
+		</copy>
+		<copy todir="${dir.deployWebServer.app}" >
+			<fileset dir="web" excludes="mergeDir" />
+		</copy>
+	</target>
+	
+	<target name="UnDeployAll" depends="UnDeployEJB,UnDeployWAR" />
+	<target name="UnDeployWAR" description="UnDeployWAR">
+		<delete dir="${dir.deployWebServer.app}" />
+	</target>
+	<target name="UnDeployEJB" description="UnDeployEJB">
+		<delete dir="${dir.deployJ2EEServer.app}" />
+	</target>
+
+	<target name="Apaga_HBMs">
+		<delete>
+			<fileset dir="${DIR_RAIZ_PROJETO}\core\src\main\resources" includes="**/*.hbm.xml" />
+			<!-- fileset dir="src" includes="**/hibernate.cfg.xml" / -->
+		</delete>
+	</target>
+	
+	<target name="DeployFramework" depends="PackageExternalProjects">
+		<!-- Empacota o FrameworkJazz empacotando e copiando 
+	 		o Jar deste (recomendado para produção e testes)
+		<ant 
+			inheritrefs="false" 
+			inheritall="false" 
+			dir="../${name.framework}" 
+			antfile="../${name.framework}/build.xml" 
+			target="Package" />
+		<copy todir="${dir.deployWebServer.app}/WEB-INF/lib">
+			<fileset dir="${dir.lib}" >	
+				<include name="${name.framework}*.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="${dir.deployJ2EEServer.app}\META-INF\lib">
+			<fileset dir="${dir.lib}" >	
+				<include name="${name.framework}*.jar"/>
+			</fileset>
+		</copy>
+		-->	
+
+		
+		<!-- Empacota o FrameworkJazz copiando as classes deste
+			recomendado para tempo de desenvolvimento 
+		-->
+		<copy todir="${dir.deployWebServer.app}/WEB-INF/classes" >
+			<fileset dir="${dir.framework.bin}" >
+				<include name="**\*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${dir.deployJ2EEServer.app}">
+			<fileset dir="${dir.framework.bin}" >
+				<include name="**\*.*" />
+			</fileset>
+		</copy>
+		
+		
+	</target>
+
+	<target name="XDoclet_All"  depends="XDoclet_EJB" description="Invoca todas as targets contendo processamento XDoclet"/>
+
+	<target name="XDoclet_EJB" description="Gera interfaces dos EJBs + deployment descriptors">
+		<taskdef 
+			classpathref="pathPadraoXDoclet" 
+			classname="xdoclet.modules.ejb.EjbDocletTask" 
+			name="ejbdoclet"/>
+		
+		<ejbdoclet 
+			ejbSpec="2.0"  
+			excludedTags="@version,@author,@todo"  
+			destDir="${DIR_RAIZ_PROJETO}/ejb/src/main/java"  
+			verbose="true"  
+			addedTags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}" >
+			<fileset 
+				dir="${DIR_RAIZ_PROJETO}/ejb/src/main/java"  
+				includes="**/*.java" />
+			<packageSubstitution 
+				packages="ejb"  
+				substituteWith="interfaces" />
+			<remoteinterface/>
+			<localinterface/>
+			<homeinterface/>
+			<localhomeinterface/>
+			<dataobject/>
+			<deploymentdescriptor validateXML="true"  destDir="${DIR_RAIZ_PROJETO}/ejb/src/main/resources/META-INF" />
+			<jboss Version="3.0"  destDir="${DIR_RAIZ_PROJETO}/ejb/src/main/resources/META-INF" />
+		</ejbdoclet>
+	</target>
+		
+	<target name="XDoclet_Web" description="Gera deployment descriptors para Struts e Servlets">
+		<taskdef 
+			classpathref="pathPadraoXDoclet" 
+			classname="xdoclet.modules.web.WebDocletTask" 
+			name="webdoclet"/>
+
+		<webdoclet 
+			excludedTags="@version,@author,@todo"  
+			destDir="${DIR_RAIZ_PROJETO}/web/src/main/webapp/WEB-INF"  
+			verbose="true"  
+			addedTags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}" >
+			<fileset 
+				dir="${DIR_RAIZ_PROJETO}/web/src/main/java"
+				includes="**/*.java" />
+			<strutsconfigxml 
+				Version="1.1"  
+				mergeDir="classpath*:xdoclet/jazzwizard/mergeDir/" >
+			</strutsconfigxml >
+			<strutsvalidationxml  />
+		</webdoclet>
+	</target>
+
+	<target name="XDoclet_Hibernate_AppServer" description="Gera arquivos de mapeamento do Hibernate">
+		
+		<taskdef  
+			classpathref="pathPadraoXDoclet" 
+			classname="xdoclet.modules.hibernate.HibernateDocletTask" 
+			name="hibernatedoclet"/>
+			
+		<hibernatedoclet   
+			excludedTags="@version,@author,@todo,@see"  
+			destDir="${DIR_RAIZ_PROJETO}\core\src\main\resources"  
+			addedTags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}" >
+			
+			<fileset 
+				dir="${DIR_RAIZ_PROJETO}\core\src\main\java">
+				<include name="**/ClienteVO.java"/>
+				<include name="**/PedValidacaoVO.java"/>
+			</fileset>
+			<!--
+			-->
+			<hibernate Version="3.0" >
+			</hibernate>
+			
+			
+			<hibernatecfg 
+				version="3.0"
+				destDir="${DIR_RAIZ_PROJETO}\core\src\main\resources\${pkg.project}"
+				destinationFile="hibernate.cfg.xml"
+				transactionManagerStrategy="org.hibernate.transaction.CMTTransactionFactory"  
+				transactionManagerLookup="org.hibernate.transaction.JBossTransactionManagerLookup"  
+				showSql="True"  
+				jndiName="java:/${name.sf}"  
+				dataSource="java:/${name.ds}"
+				dialect="${hibernate.dialect}" >
+			</hibernatecfg>
+		
+		</hibernatedoclet>
+	</target>
+
+	<!--
+	-->
+	<target name="XDoclet_Hibernate_No_AppServer" description="Gera arquivos de mapeamento do Hibernate">
+		<taskdef  
+			classpathref="pathPadraoXDoclet" 
+			classname="xdoclet.modules.hibernate.HibernateDocletTask" 
+			name="hibernatedoclet"/>
+			
+		<hibernatedoclet 
+			excludedTags="@version,@author,@todo,@see"  
+			destDir="${DIR_RAIZ_PROJETO}\core\src\main\resources"  
+			addedTags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}" >
+			<fileset 
+				dir="${DIR_RAIZ_PROJETO}\core\src\main\java"  >
+				<include name="**/ClienteVO.java"/>
+				<include name="**/PedValidacaoVO.java"/>
+			</fileset>
+			<!--  
+			-->
+			<hibernate Version="3.0" >
+			</hibernate>
+			
+			<hibernatecfg 
+				version="3.0"
+				destDir="${DIR_RAIZ_PROJETO}\core\src\main\resources\${pkg.project}"
+				destinationFile="hibernateLocal.cfg.xml"
+				showSql="True"  
+				dialect="${hibernate.dialect}" 
+				jdbcUrl="${jdbc.url}"
+				driver="${jdbc.driver}"
+				userName="${jdbc.user}"
+				password="${jdbc.password}">
+				
+			</hibernatecfg>
+		</hibernatedoclet>
+	</target>
+	
+	<!-- DESATIVADO
+	-->
+	<target name="AtualizarModelagemTabelas"  >
+		<path id="HibernateConfigurationPath">
+			<path refid="pathPadraoXDoclet" />
+			<pathelement location="${DIR_RAIZ_PROJETO}\core\src\main\resources" />
+			
+			<fileset refid="FS_XDoclet_Dependencies" />
+						
+		</path>
+		
+		<taskdef name="schemaupdate"
+			classname="org.hibernate.tool.hbm2ddl.SchemaUpdateTask"
+			classpathref="HibernateConfigurationPath"
+			/>
+		
+		<echo level="warning">
+ATENÇÃO!! POR MOTIVOS DE SEGURANÇA O ATRIBUTO 'text' DA SUBTASK schemaupdate
+DEVE SER MANTIDO COM O VALOR 'true', O QUE FAZ COM Q OS COMANDOS DDL's NÃO
+SEJAM EXECUTADOS NO BANCO DE DADOS E SIM APENAS APAREÇAM NA CONSOLE.
+		</echo>
+		
+		<schemaupdate 
+			quiet="false" 
+			text="false"
+			config="${DIR_RAIZ_PROJETO}\core\src\main\resources\${pkg.project}\hibernateLocal.cfg.xml">
+			
+		</schemaupdate>
+	</target>
+
+</project>

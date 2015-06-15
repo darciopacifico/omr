@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:ui="http://java.sun.com/jsf/facelets" 
+		xmlns:h="http://java.sun.com/jsf/html" 
+		xmlns:f="http://java.sun.com/jsf/core">
+	<head>
+		<f:loadBundle var="msg" basename="org.docs.richfaces.MsgDarcio" />
+		<title><ui:insert name="titleName"></ui:insert></title>
+		<link rel="stylesheet" href="../css/style2.css" type="text/css"/>
+	</head>
+	<body>
+		<table id="divPrincipal" >
+			<tr style="background-color: Lavender;">
+				<td style="width: 200px; vertical-align: top;">
+					<div id="divLeftMenu">
+						<ui:insert name="leftMenu"></ui:insert>
+					</div>
+				</td>
+				<td>
+					<div id="divHeader">
+						<ui:insert name="header"></ui:insert>
+					</div>
+					<div id="divBody">
+						<ui:insert name="body"></ui:insert>
+					</div>
+					<div id="divFooter">
+						<ui:insert name="footer"></ui:insert>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

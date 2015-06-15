@@ -1,0 +1,15 @@
+package com.sample
+ 
+import java.util.List;
+import br.com.dlp.jazzomr.omr.ParticleVO;
+ 
+rule "Hello World"
+	no-loop 
+	when
+		forall( List( ym >150 ) )
+	then
+		
+		System.out.prinln("ENCONTRADO ##########################");
+		
+end
+

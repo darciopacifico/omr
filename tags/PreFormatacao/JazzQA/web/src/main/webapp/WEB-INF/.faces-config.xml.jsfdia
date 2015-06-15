@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#pages#index.jsp" PATH="/pages/index.jsp"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#index.jsp:0" NAME="item"
+   PATH="/pages/index.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Pag2::#pages#Pag2.jsp" NAME="output"
+    PATH="/pages/Pag2.jsp" TARGET="rules:#pages#Pag2.jsp" TITLE="Pag2" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#Pag2.jsp" PATH="/pages/Pag2.jsp"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#Pag2.jsp:0" NAME="item"
+   PATH="/pages/Pag2.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Pag3::#pages#Pag3.jsp" NAME="output"
+    PATH="/pages/Pag3.jsp" TARGET="rules:#pages#Pag3.jsp" TITLE="Pag3" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#Pag3.jsp" PATH="/pages/Pag3.jsp"
+  SHAPE="448,17,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

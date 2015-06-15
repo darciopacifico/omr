@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<!-- Arquivo gerado automaticamente - não edite!! -->
+
+<hibernate-configuration>
+
+	<!-- a SessionFactory instance listed as /jndi/name -->
+	<session-factory name="java:/JazzQASessionFactory">
+
+		<!-- properties -->
+		<property name="connection.datasource">java:/jazzqa_ds</property>
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="show_sql">true</property>
+		<property name="use_outer_join">false</property>
+		<property name="transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
+		<property name="transaction.factory_class">org.hibernate.transaction.CMTTransactionFactory</property>
+
+		<!-- mapping files -->
+		<mapping resource="br/com/dlp/validador/cliente/ClienteVO.hbm.xml"/>
+		<mapping resource="br/com/dlp/validador/pedvalidacao/PedValidacaoVO.hbm.xml"/>
+	</session-factory>
+
+</hibernate-configuration>

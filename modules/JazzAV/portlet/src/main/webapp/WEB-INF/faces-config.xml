@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
+	<application>
+		<variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+		
+	    <locale-config>  
+	        <default-locale>pt_BR</default-locale>  
+	    </locale-config>
+
+		<!--
+	    <message-bundle>  
+	        br.com.dlp.jazzav.bundle.avBundle.properties  
+	    </message-bundle>
+		-->
+	    
+   	</application>
+
+    <navigation-rule>
+		<navigation-case>
+			<from-outcome>resetConfirm</from-outcome>
+			<to-view-id>/senhaResetConfirm.jsf</to-view-id>
+		</navigation-case>
+    </navigation-rule>	
+
+    <navigation-rule>
+		<navigation-case>
+		
+			<from-outcome>checkout</from-outcome>
+			<to-view-id>/checkout/checkout.jsf</to-view-id>
+			<redirect/>
+		</navigation-case>
+    </navigation-rule>	
+
+    <navigation-rule>
+		<navigation-case>
+			<from-outcome>anuncio</from-outcome>
+			<to-view-id>/anuncio/anuncio.jsf</to-view-id>
+		</navigation-case>
+    </navigation-rule>	
+
+	<converter>
+		<converter-id>opcionalJSONConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.exam.OpcionalJSONConverter</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-id>modeloJSONConverter</converter-id>
+		<converter-class>br.com.dlp.jazzav.anuncio.ModeloJSONConverter</converter-class>
+	</converter>
+	
+	
+	
+</faces-config>

@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Class-Path: antlr-2.7.6.jar aopalliance-1.0.jar asm-3.1.jar aspectjrt-
+ 1.6.8.jar aspectjweaver-1.6.8.jar batik-awt-util-1.6-1.jar batik-brid
+ ge-1.6-1.jar batik-css-1.6-1.jar batik-dom-1.6-1.jar batik-ext-1.6-1.
+ jar batik-gui-util-1.6-1.jar batik-gvt-1.6-1.jar batik-parser-1.6-1.j
+ ar batik-script-1.6-1.jar batik-svg-dom-1.6-1.jar batik-transcoder-1.
+ 6-1.jar batik-util-1.6-1.jar batik-xml-1.6-1.jar cas-client-core-3.1.
+ 10.jar cglib-2.2.jar commons-beanutils-1.8.2.jar commons-collections-
+ 3.2.1.jar commons-io-2.1.jar commons-lang-2.4.jar commons-logging-1.1
+ .1.jar cssparser-0.9.5.jar dom4j-1.6.1.jar ehcache-1.6.0.jar freemark
+ er-2.3.18.jar gson-1.7.1.jar guava-10.0.1.jar hibernate-annotations-3
+ .5.1-Final.jar hibernate-commons-annotations-3.2.0.Final.jar hibernat
+ e-core-3.5.1-Final.jar hibernate-entitymanager-3.5.1-Final.jar hibern
+ ate-jmx-3.5.1-Final.jar hibernate-jpa-2.0-api-1.0.0.Final.jar hiberna
+ te-validator-4.1.0.Final.jar javassist-3.9.0.GA.jar javax.faces-2.1.5
+ .jar JazzAnnotations.jar JazzAV.bsn.jar JazzAV.core.jar JazzFramework
+ .jar jsf-impl-2.1.5-jbossorg-1.jar jsr305-1.3.9.jar jstl-api-1.2.jar 
+ log4j-1.2.16.jar richfaces-components-api-4.3.0-SNAPSHOT.jar richface
+ s-components-ui-4.3.0-SNAPSHOT.jar richfaces-core-api-4.3.0-SNAPSHOT.
+ jar richfaces-core-impl-4.3.0-SNAPSHOT.jar sac-1.3.jar slf4j-api-1.6.
+ 1.jar slf4j-log4j12-1.6.1.jar spring-aop-3.0.3.RELEASE.jar spring-asm
+ -3.0.5.RELEASE.jar spring-beans-3.0.5.RELEASE.jar spring-context-3.0.
+ 5.RELEASE.jar spring-context-support-3.0.3.RELEASE.jar spring-core-3.
+ 0.3.RELEASE.jar spring-expression-3.0.3.RELEASE.jar spring-jdbc-3.0.3
+ .RELEASE.jar spring-ldap-core-1.3.0.RELEASE.jar spring-orm-3.0.5.RELE
+ ASE.jar spring-security-acl-3.0.5.RELEASE.jar spring-security-cas-cli
+ ent-3.0.5.RELEASE.jar spring-security-config-3.0.5.RELEASE.jar spring
+ -security-core-3.0.5.RELEASE.jar spring-security-ldap-3.0.5.RELEASE.j
+ ar spring-security-taglibs-3.0.5.RELEASE.jar spring-security-web-3.0.
+ 5.RELEASE.jar spring-test-3.0.5.RELEASE.jar spring-tx-3.0.3.RELEASE.j
+ ar spring-web-3.0.3.RELEASE.jar validation-api-1.0.0.GA.jar xercesImp
+ l-2.9.1.jar xercesImpl-2.5.0.jar xml-apis-1.0.b2.jar xmlParserAPIs-2.
+ 0.2.jar
+

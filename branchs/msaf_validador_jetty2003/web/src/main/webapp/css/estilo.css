@@ -1,0 +1,528 @@
+/* ABRINDO ESTILO CSS */
+
+/* abrindo configuracoes para o body*/
+
+body.fundodegrade {
+	background-image:url(../Site/images/bg_default.jpg);
+	background-attachment:fixed;
+	background-repeat:repeat-x;
+	scrollbar-face-color: #e6ecfb;
+	scrollbar-shadow-color: #e6ecfb;
+	scrollbar-highlight-color: #e6ecfb;
+	scrollbar-3dlight-color: #cbd4ee;
+	scrollbar-darkshadow-color: #cbd4ee;
+	scrollbar-track-color: #cbd4ee;
+	scrollbar-arrow-color: #99aec9;
+}
+
+body.fundobranco {
+	background-color:#FFFFFF;
+	scrollbar-face-color: #e6ecfb;
+	scrollbar-shadow-color: #e6ecfb;
+	scrollbar-highlight-color: #e6ecfb;
+	scrollbar-3dlight-color: #cbd4ee;
+	scrollbar-darkshadow-color: #cbd4ee;
+	scrollbar-track-color: #cbd4ee;
+	scrollbar-arrow-color: #99aec9;
+}
+
+/* fechando configuracoes para o body*/
+
+/* abrindo estilização para menu e submenu */
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	width: 150px; /* Width of Menu Items */
+	height:24px;
+	border-bottom: 0px solid #ccc;
+}
+
+ul li {
+	position:relative;
+}
+
+ul li a {
+	display: block;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	color:#003;
+	font-weight:bold;
+	text-decoration: none;
+	color: #777;
+	background-image:url(../Site/images/bg_botao_js.png);
+	padding: 6px;
+	border: 0px solid #ccc;
+	border-bottom: 0;
+}
+
+/* Fix IE. Hide from IE Mac \*/
+* html ul li { 
+	float: left;
+	height: 0%; 
+}
+
+* html ul li a {
+	height: 0%; 
+}
+/* End */
+
+ul li a:hover { /* Hover Styles */
+	color: #006; 
+	background-image:url(../Site/images/bg_botao_js_over.png); 
+}
+
+ul ul {
+	position:absolute;
+	display:none;
+	left: 149px; /* Set 1px less than menu width */
+	top: 0;
+}
+
+li ul li a { /* Sub Menu Styles */
+	padding: 4px; 
+}
+
+li:hover ul ul, li.over ul ul {
+	display:none;
+}
+
+li:hover ul, li li:hover ul, li.over ul, li li.over ul {
+	display: block; 
+}
+
+/* fechando estilização para menu e submenu */
+
+/* abrindo forms */
+
+	/* abrindo input */
+
+input.login {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #0A5F88;
+	text-decoration: none;
+	border: 0px solid #CCC;
+}
+
+select.ef, input.ef {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #003366;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	BACKGROUND-COLOR: #C7D9FA;
+	text-decoration: none;
+	border-top-width: 1px;
+	border-right-width: 2px;
+	border-bottom-width: 2px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-bottom-color: #666666;
+	border-left-color: #999999;
+	border-top-color: #999999;
+	border-right-color: #666666;
+	cursor:pointer;
+	cursor:hand;
+}
+
+select.ef_desativado, input.ef_desativado {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #999999;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	BACKGROUND-COLOR: #ECF2FD;
+	text-decoration: none;
+	text-align:center;
+	border-top-width: 1px;
+	border-right-width: 2px;
+	border-bottom-width: 2px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-bottom-color: #999999;
+	border-left-color: #CCCCCC;
+	border-top-color: #CCCCCC;
+	border-right-color: #999999;
+	cursor:default;
+}
+
+select.efe, input.efe {
+	BORDER-RIGHT: 1px solid;
+	BORDER-TOP: 1px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 10px;
+	BORDER-LEFT: #666666 1px solid;
+	COLOR: #6c6c6c;
+	BORDER-BOTTOM: #666666 1px solid;
+	FONT-FAMILY: verdana;
+	HEIGHT: 17px;
+	BACKGROUND-COLOR: #ffffff;
+	WIDTH: 200px;
+	cursor:pointer;
+	cursor:hand;
+	text-align:left;
+}
+
+input.simulador_val {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #0A5F88;
+	text-decoration: none;
+	background-color: #ECF4FD;
+	border: 1px solid #D5E8F7;
+}
+
+input.simulador_val_des {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #0A5F88;
+	text-decoration: none;
+	background-color:#EEE;
+	border: 1px solid #D8D8D8;
+}
+
+input.simulador_val:focus, select:focus{
+	border: 1px solid #069;
+	}
+
+/* fechando input */
+
+/* fechando forms */
+
+/* abrindo mensagem popup de aviso */
+
+	/* abrindo aviso ficar sobre select */
+	
+select.aviso {
+	z-index:1;
+}
+
+iframe.aviso {
+	visibility:hidden;
+	position: absolute;
+	z-index:0;
+	bottom:30px;
+	left:120px;
+	top:50px;
+	width:503px;
+	height:202px;
+}
+
+div.aviso {
+	position:absolute;
+	left:120px;
+	top:50px;
+	bottom:30px;
+	width:500px;
+	height:252px;
+	z-index:3;
+	visibility: hidden;
+}
+
+/* fechando aviso ficar sobre select */
+
+	/* abrindo popup de aviso */
+
+td.title0aviso {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-align:left;
+	font-weight: bold;
+	text-transform: uppercase;
+	background-image:url(../site/images/bg_title0aviso.gif);
+	background-repeat: repeat-x;
+	text-indent: 10px;
+	height:30px;
+}
+
+td.title1aviso {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bold;
+	background-color:#333;
+	text-transform: uppercase;
+	text-indent: 10px;
+	text-align: left;
+	height:30px;
+}
+
+/* fechando popup de aviso */
+
+/* fechando mensagem popup de aviso */
+
+/* abrindo mensagem de bem-vindo usuario */
+
+td.bemvindo {
+	background-image:url(../Site/images/layers_04.jpg);
+	background-repeat:no-repeat;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:bolder;
+	color:#666;
+	text-decoration: none;
+	text-align:left;
+	text-shadow:#666;
+}
+/* fechando mensagem de bem-vindo usuario */
+
+/* abrindo estilos particulares para textos e links*/
+
+.legenda {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	text-transform: uppercase;
+	color: #003366;
+	text-decoration: none;
+	font-weight: bolder;
+	line-height: 15px;
+}
+.opcoes {
+	BORDER-RIGHT: 0px solid;
+	BORDER-TOP: 0px solid;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 10px;
+	BORDER-LEFT: 0px solid;
+	COLOR: #6c6c6c;
+	BORDER-BOTTOM: 0px solid;
+	FONT-FAMILY: verdana;
+}
+.textocomum {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align:center;
+	color:#000;
+	background-color:#FFFFFF;
+	text-decoration: none;
+}
+.textocomumleft {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align:left;
+	color:#000;
+	background-color:#FFFFFF;
+	text-decoration: none;
+}
+.title_box2 {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-variant: small-caps;
+	font-weight: bold;
+	color: #666666;
+}
+a.title_text2_box2:link, a.title_text2_box2:active, a.title_text2_box2:visited {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-variant:inherit;
+	font-weight:bolder;
+	color: #000;
+	text-decoration: none;
+}
+
+a.title_text2_box2:hover {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-variant:inherit;
+	font-weight:bolder;
+	color: #116690;
+	text-decoration: none;
+}
+.text1_box2 {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-variant:inherit;
+	font-weight:bold;
+	color:#116690;
+}
+a.text2_box2:link, a.text2_box2:active, a.text2_box2:visited {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-variant:inherit;
+	color:#000;
+	text-decoration: none;
+}
+
+a.text2_box2:hover {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-variant:inherit;
+	color:#116690;
+	text-decoration: none;
+}
+.text1_box3 {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-variant:inherit;
+	font-weight:bold;
+	color:#116690;
+}
+a.titlenews:link, a.titlenews:visited, a.titlenews:active {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #116690;
+	text-decoration: none;
+	font-variant:inherit;
+	font-weight:bold;
+}
+
+a.titlenews:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color:#0066FF;
+	text-decoration: none;
+	font-variant:inherit;
+	font-weight:bold;
+}
+a.textocomum:link, a.textocomum:visited, a.textocomum:active {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align:center;
+	color:#039;
+	background-color:#FFFFFF;
+	text-decoration: none;
+	cursor:pointer;
+	cursor:hand;
+}
+a.textocomum:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align:center;
+	color:#06C;
+	background-color:#FFFFFF;
+	text-decoration: none;
+	cursor:pointer;
+	cursor:hand;
+}
+a.registro01:link, a.registro01:visited, a.registro01:active {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align:center;
+	color: #000000;
+	background-color:#FFFFFF;
+	text-decoration: none;
+	cursor:pointer;
+	cursor:hand;
+}
+a.registro01:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align:center;
+	color:#003399;
+	background-color:#FFFFFF;
+	text-decoration: none;
+	cursor:pointer;
+	cursor:hand;
+}
+a.registro02:link, a.registro02:visited, a.registro02:active {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align:center;
+	color: #000000;
+	background-color:#EBEBEB;
+	text-decoration: none;
+	cursor:pointer;
+	cursor:hand;
+}
+a.registro02:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align:center;
+	color:#003399;
+	background-color:#EBEBEB;
+	text-decoration: none;
+	cursor:pointer;
+	cursor:hand;
+}
+
+.campos {
+	font-family: Verdana, Geneva, sans-serif;
+	text-decoration: none;
+	color: #036;
+	font-size: 10px;
+}
+
+/* fechando estilos particulares para textos e links*/
+
+/* abrindo estilos para TDs */
+
+td.title0 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-align:left;
+	font-weight: bold;
+	text-transform: uppercase;
+	background-image:url(../Site/images/bg_title0.gif);
+	background-repeat: repeat-x;
+	text-indent: 10px;
+	height:30px;
+}
+td.title1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bold;
+	background-color:#003366;
+	text-transform: uppercase;
+	text-indent: 10px;
+	text-align: left;
+	height:30px;
+}
+td.title2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #003366;
+	text-decoration: none;
+	font-weight: bold;
+	background-color:#C7D9FA;
+	text-transform: uppercase;
+	text-align:center;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+td.total {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #000000;
+	text-decoration: none;
+	font-weight: bold;
+	background-color:#DDF0F9;
+	text-transform: uppercase;
+}
+td.registro01 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align:center;
+	color: #000000;
+	background-color:#FFFFFF;
+	text-decoration: none;
+}
+td.registro02 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align:center;
+	color: #000000;
+	background-color:#EBEBEB;
+	text-decoration: none;
+}
+
+/* fechando estilos para TDs */
+
+/* abrindo estilos para table */
+
+/* fechando estilos para table */
+
+/* FECHANDO ESTILO CSS */

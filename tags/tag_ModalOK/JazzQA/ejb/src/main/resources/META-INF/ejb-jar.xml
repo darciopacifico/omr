@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+
+<ejb-jar >
+
+   <description><![CDATA[Sem Descrição.]]></description>
+   <display-name>Gerado pelo XDoclet</display-name>
+
+   <enterprise-beans>
+
+      <!-- Session Beans -->
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>TipoFonteVlh</display-name>
+
+         <ejb-name>TipoFonteVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.tipofonte.TipoFonteVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.tipofonte.TipoFonteVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.tipofonte.TipoFonteVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>FamiliaProdutoVlh</display-name>
+
+         <ejb-name>FamiliaProdutoVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.familiaproduto.FamiliaProdutoVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.familiaproduto.FamiliaProdutoVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.familiaproduto.FamiliaProdutoVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>Estabilidade</display-name>
+
+         <ejb-name>EstabilidadeEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.estabilidade.EstabilidadeEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.estabilidade.EstabilidadeEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.estabilidade.EstabilidadeSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>UsuarioJazzVlh</display-name>
+
+         <ejb-name>UsuarioJazzVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.usuariojazz.UsuarioJazzVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.usuariojazz.UsuarioJazzVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.usuariojazz.UsuarioJazzVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>TipoHistoricoVlh</display-name>
+
+         <ejb-name>TipoHistoricoVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.tipohistorico.TipoHistoricoVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.tipohistorico.TipoHistoricoVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.tipohistorico.TipoHistoricoVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>DirecaoRelacionamentoVlh</display-name>
+
+         <ejb-name>DirecaoRelacionamentoVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.direcaorelacionamento.DirecaoRelacionamentoVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.direcaorelacionamento.DirecaoRelacionamentoVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.direcaorelacionamento.DirecaoRelacionamentoVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>TesteVlh</display-name>
+
+         <ejb-name>TesteVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.teste.TesteVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.teste.TesteVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.teste.TesteVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>Esforco</display-name>
+
+         <ejb-name>EsforcoEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.esforco.EsforcoEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.esforco.EsforcoEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.esforco.EsforcoSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>EsforcoVlh</display-name>
+
+         <ejb-name>EsforcoVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.esforco.EsforcoVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.esforco.EsforcoVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.esforco.EsforcoVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>TipoRelacionamentoVlh</display-name>
+
+         <ejb-name>TipoRelacionamentoVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.tiporelacionamento.TipoRelacionamentoVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.tiporelacionamento.TipoRelacionamentoVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.tiporelacionamento.TipoRelacionamentoVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>RequisitoVlh</display-name>
+
+         <ejb-name>RequisitoVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.requisito.RequisitoVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.requisito.RequisitoVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.requisito.RequisitoVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>TipoRequisitoVlh</display-name>
+
+         <ejb-name>TipoRequisitoVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.tiporequisito.TipoRequisitoVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.tiporequisito.TipoRequisitoVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.tiporequisito.TipoRequisitoVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>ProjetoVlh</display-name>
+
+         <ejb-name>ProjetoVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.projeto.ProjetoVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.projeto.ProjetoVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.projeto.ProjetoVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>FamiliaProdutoArea</display-name>
+
+         <ejb-name>FamiliaProdutoAreaEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.familiaprodutoarea.FamiliaProdutoAreaEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.familiaprodutoarea.FamiliaProdutoAreaEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.familiaprodutoarea.FamiliaProdutoAreaSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>TipoFonte</display-name>
+
+         <ejb-name>TipoFonteEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.tipofonte.TipoFonteEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.tipofonte.TipoFonteEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.tipofonte.TipoFonteSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>FamiliaProdutoAreaVlh</display-name>
+
+         <ejb-name>FamiliaProdutoAreaVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.familiaprodutoarea.FamiliaProdutoAreaVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.familiaprodutoarea.FamiliaProdutoAreaVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.familiaprodutoarea.FamiliaProdutoAreaVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>FamiliaProduto</display-name>
+
+         <ejb-name>FamiliaProdutoEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.familiaproduto.FamiliaProdutoEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.familiaproduto.FamiliaProdutoEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.familiaproduto.FamiliaProdutoSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>Produto</display-name>
+
+         <ejb-name>ProdutoEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.produto.ProdutoEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.produto.ProdutoEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.produto.ProdutoSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>TipoHistorico</display-name>
+
+         <ejb-name>TipoHistoricoEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.tipohistorico.TipoHistoricoEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.tipohistorico.TipoHistoricoEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.tipohistorico.TipoHistoricoSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>Projeto</display-name>
+
+         <ejb-name>ProjetoEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.projeto.ProjetoEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.projeto.ProjetoEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.projeto.ProjetoSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>Modulo</display-name>
+
+         <ejb-name>ModuloEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.modulo.ModuloEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.modulo.ModuloEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.modulo.ModuloSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>Status</display-name>
+
+         <ejb-name>StatusEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.status.StatusEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.status.StatusEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.status.StatusSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>Papel</display-name>
+
+         <ejb-name>PapelEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.papel.PapelEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.papel.PapelEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.papel.PapelSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>ProdutoVlh</display-name>
+
+         <ejb-name>ProdutoVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.produto.ProdutoVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.produto.ProdutoVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.produto.ProdutoVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>AreaProdutoVlh</display-name>
+
+         <ejb-name>AreaProdutoVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.areaproduto.AreaProdutoVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.areaproduto.AreaProdutoVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.areaproduto.AreaProdutoVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>EstabilidadeVlh</display-name>
+
+         <ejb-name>EstabilidadeVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.estabilidade.EstabilidadeVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.estabilidade.EstabilidadeVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.estabilidade.EstabilidadeVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>Teste</display-name>
+
+         <ejb-name>TesteEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.teste.TesteEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.teste.TesteEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.teste.TesteSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>Requisito</display-name>
+
+         <ejb-name>RequisitoEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.requisito.RequisitoEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.requisito.RequisitoEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.requisito.RequisitoSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>PapelVlh</display-name>
+
+         <ejb-name>PapelVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.papel.PapelVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.papel.PapelVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.papel.PapelVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>UsuarioJazz</display-name>
+
+         <ejb-name>UsuarioJazzEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.usuariojazz.UsuarioJazzEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.usuariojazz.UsuarioJazzEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.usuariojazz.UsuarioJazzSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>StatusVlh</display-name>
+
+         <ejb-name>StatusVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.status.StatusVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.status.StatusVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.status.StatusVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>TipoRequisito</display-name>
+
+         <ejb-name>TipoRequisitoEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.tiporequisito.TipoRequisitoEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.tiporequisito.TipoRequisitoEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.tiporequisito.TipoRequisitoSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>TipoRelacionamento</display-name>
+
+         <ejb-name>TipoRelacionamentoEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.tiporelacionamento.TipoRelacionamentoEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.tiporelacionamento.TipoRelacionamentoEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.tiporelacionamento.TipoRelacionamentoSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>ModuloVlh</display-name>
+
+         <ejb-name>ModuloVlhEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.modulo.ModuloVlhEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.modulo.ModuloVlhEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.modulo.ModuloVLHSessionFacade</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>AreaProduto</display-name>
+
+         <ejb-name>AreaProdutoEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.areaproduto.AreaProdutoEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.areaproduto.AreaProdutoEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.areaproduto.AreaProdutoSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
+         <description><![CDATA[value]]></description>
+         <display-name>DirecaoRelacionamento</display-name>
+
+         <ejb-name>DirecaoRelacionamentoEJB</ejb-name>
+
+         <local-home>br.com.dlp.jazzqa.direcaorelacionamento.DirecaoRelacionamentoEJBLocalHome</local-home>
+         <local>br.com.dlp.jazzqa.direcaorelacionamento.DirecaoRelacionamentoEJBLocal</local>
+         <ejb-class>br.com.dlp.jazzqa.direcaorelacionamento.DirecaoRelacionamentoSessionFacade</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+     <!--
+       To add session beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called session-beans.xml that contains
+       the <session></session> markup for those beans.
+     -->
+
+      <!-- Entity Beans -->
+     <!--
+       To add entity beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called entity-beans.xml that contains
+       the <entity></entity> markup for those beans.
+     -->
+
+      <!-- Message Driven Beans -->
+     <!--
+       To add message driven beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called message-driven-beans.xml that contains
+       the <message-driven></message-driven> markup for those beans.
+     -->
+
+   </enterprise-beans>
+
+   <!-- Relationships -->
+
+   <!-- Assembly Descriptor -->
+     <!--
+       To specify your own assembly descriptor info here, add a file to your
+       XDoclet merge directory called assembly-descriptor.xml that contains
+       the <assembly-descriptor></assembly-descriptor> markup.
+     -->
+
+   <assembly-descriptor >
+     <!--
+       To specify additional security-role elements, add a file in the merge
+       directory called ejb-security-roles.xml that contains them.
+     -->
+
+   <!-- method permissions -->
+     <!--
+       To specify additional method-permission elements, add a file in the merge
+       directory called ejb-method-permissions.ent that contains them.
+     -->
+
+   <!-- transactions -->
+     <!--
+       To specify additional container-transaction elements, add a file in the merge
+       directory called ejb-container-transactions.ent that contains them.
+     -->
+   <container-transaction >
+      <method >
+         <ejb-name>TipoFonteVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>FamiliaProdutoVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>EstabilidadeEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>UsuarioJazzVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>TipoHistoricoVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>DirecaoRelacionamentoVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>TesteVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>EsforcoEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>EsforcoVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>TipoRelacionamentoVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>RequisitoVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>TipoRequisitoVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>ProjetoVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>FamiliaProdutoAreaEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>TipoFonteEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>FamiliaProdutoAreaVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>FamiliaProdutoEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>ProdutoEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>TipoHistoricoEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>ProjetoEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>ModuloEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>StatusEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>PapelEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>ProdutoVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>AreaProdutoVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>EstabilidadeVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>TesteEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>RequisitoEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>PapelVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>UsuarioJazzEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>StatusVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>TipoRequisitoEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>TipoRelacionamentoEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>ModuloVlhEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>AreaProdutoEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>DirecaoRelacionamentoEJB</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+
+   <!-- finder transactions -->
+
+   <!-- message destinations -->
+     <!--
+       To specify additional message-destination elements, add a file in the merge
+       directory called ejb-message-destinations.ent that contains them.
+     -->
+
+   <!-- exclude list -->
+     <!--
+       To specify an exclude-list element, add a file in the merge directory
+       called ejb-exclude-list.xml that contains it.
+     -->
+   </assembly-descriptor>
+
+</ejb-jar>

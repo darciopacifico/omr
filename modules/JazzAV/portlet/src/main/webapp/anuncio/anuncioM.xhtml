@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich" xmlns:p="http://primefaces.org/ui"
+	xmlns:t="http://myfaces.apache.org/tomahawk" template="/templates/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form prependId="false" styleClass="wufoo topLabel page1">
+
+
+
+			<h2>www.adesivovendese.com.br</h2>
+			<div>Adesivo + Anúncio na Web com foto por R$20,00</div>
+
+			<rich:panel>
+
+				<f:facet name="header">Informações do Adesivo</f:facet>
+				<h:panelGrid columns="2" id="gridPrincipal">
+
+					<h:panelGroup>
+
+						<ul>
+
+							<li class="notranslate">
+								<div>
+									<table class="tabDivisora">
+										<tr>
+
+
+											<td style="width: 170px; vertical-align: bottom;"><span style="font-size: 45px; font-weight: bolder; vertical-align: bottom;">VENDO</span></td>
+
+											<td><h:outputLabel for="chkShowAnoFab" id="lblShowAnoFab">
+                          Ano Fab/Modelo
+                      </h:outputLabel> <h:selectOneMenu id="cboAnoFab" value="#{anuncioBean.anuncioVO.veiculoVO.anoFab}" styleClass="cboAno">
+													<f:selectItems value="#{anuncioBean.anosFab}" itemValue="" />
+													<a4j:ajax event="change" execute="@this cboAnoMod" render="cboAnoMod"></a4j:ajax>
+													<f:ajax event="change" execute="@this" render="pnlSampleAnuncio" />
+												</h:selectOneMenu> <h:selectOneMenu id="cboAnoMod" value="#{anuncioBean.anuncioVO.veiculoVO.anoMod}" styleClass="cboAno">
+													<f:selectItems value="#{anuncioBean.anosMod}" />
+													<f:ajax event="change" execute="@this" render="pnlSampleAnuncio" />
+												</h:selectOneMenu></td>
+
+
+										</tr>
+									</table>
+								</div>
+							</li>
+
+
+
+							<li class="notranslate" style="padding-top: 0px;"><h:outputLabel style="font-weight: normal;" styleClass="desc" value="Subtítulo" /> <h:inputText
+									value="#{anuncioBean.anuncioVO.adesivoVO.campos.linhaSubtitulo}" maxlength="50" size="20" disabled="#{!anuncioBean.anuncioVO.customOpc}" styleClass="txtCustom"
+									style="font-size: 30px;">
+
+									<a4j:ajax event="change" execute="pnlDizeres" render="imgSample" />
+								</h:inputText></li>
+
+
+
+
+
+							<li class="notranslate"><h:outputLabel style="font-weight: normal;" styleClass="desc" value="(até 3 linhas) Lista de Opcionais / Características" /> <h:inputTextarea
+									rows="3" cols="28" value="#{anuncioBean.anuncioVO.adesivoVO.campos.linhaOpcionais}" disabled="#{!anuncioBean.anuncioVO.customOpc}" styleClass="txtCustom"
+									style="font-size: 22px;">
+									<a4j:ajax event="change" execute="pnlDizeres" render="imgSample" />
+								</h:inputTextarea></li>
+
+
+
+							<li class="notranslate"><h:outputLabel styleClass="desc" value="(até 2 linhas) Dados Para Contato (DDD+Telefone):" />
+								<div>
+
+									<table class="tabDivisora">
+										<tr>
+											<td style="white-space: normal;"><h:panelGroup id="pnlDizeres">
+
+
+
+
+
+													<h:inputTextarea rows="2" cols="20" value="#{anuncioBean.anuncioVO.adesivoVO.campos.linhaContatos}" disabled="#{!anuncioBean.anuncioVO.customOpc}"
+														styleClass="txtCustom" style="font-size: 30px;">
+
+														<a4j:ajax event="change" execute="pnlDizeres" render="imgSample" />
+													</h:inputTextarea>
+
+
+												</h:panelGroup></td>
+										</tr>
+									</table>
+
+									<!-- 
+                  <rich:jQuery selector="#txtTelefone1" query="mask('(99)9999-9999')" ></rich:jQuery>
+                  <rich:jQuery selector="#txtTelefone2" query="mask('(99)9999-9999')" ></rich:jQuery>
+                   -->
+
+								</div></li>
+
+
+
+						</ul>
+
+						<a4j:commandButton value="Salvar" action="#{anuncioBean.salvaAnuncio()}"></a4j:commandButton>
+
+
+
+					</h:panelGroup>
+
+
+
+					<h:panelGrid columns="1" layout="block">
+
+
+						<h:panelGrid id="pnlSampleAnuncio" columns="1">
+
+							<p:spacer height="6px"></p:spacer>
+
+							<a4j:mediaOutput id="imgSample" styleClass="classAdesPrincipal" element="img" cacheable="false" style="width:400px;" session="false"
+								createContent="#{anuncioBean.paintModeloAnuncio}" value="" mimeType="image/png" />
+						</h:panelGrid>
+
+						<h:outputLabel styleClass="desc">
+							<a4j:commandLink render="gridModelos" limitRender="true" title="Atualiza lista de modelos disponíveis...">
+								<h:graphicImage value="/img/Icons/refresh_ico.png" title="Atualiza lista de modelos disponíveis..." />
+              Modelos de Adesivos:  
+            </a4j:commandLink>
+						</h:outputLabel>
+
+						<rich:dataGrid value="#{anuncioBean.modelos}" var="modelo" columns="4" elements="4" styleClass="gridModelos" id="gridModelos" style="width:500px; border: 1px;">
+							<a4j:commandLink action="#{anuncioBean.switchModel(modelo)}" render="pnlSampleAnuncio">
+
+								<a4j:mediaOutput styleClass="imgAdesLaterais" element="img" cacheable="false" session="false" value="#{modelo.PK}" createContent="#{anuncioBean.paintModeloSample}"
+									mimeType="image/png" fileName="modelo_#{modelo.PK}.png" />
+
+							</a4j:commandLink>
+							<f:facet name="footer">
+								<rich:dataScroller stepControls="hide" fastControls="hide" />
+							</f:facet>
+						</rich:dataGrid>
+
+					</h:panelGrid>
+
+				</h:panelGrid>
+			</rich:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

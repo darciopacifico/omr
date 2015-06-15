@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperPrint PUBLIC "-//JasperReports//DTD JasperPrint//EN" "http://jasperreports.sourceforge.net/dtds/jasperprint.dtd">
+
+<jasperPrint name="ExamReport" pageWidth="612" pageHeight="792" topMargin="20" leftMargin="20" bottomMargin="20" rightMargin="20" locale="pt_BR" timezone="America/Sao_Paulo">
+	<property name="net.sf.jasperreports.export.xml.start.page.index" value="0"/>
+	<property name="net.sf.jasperreports.export.xml.end.page.index" value="2"/>
+	<property name="net.sf.jasperreports.export.xml.page.count" value="3"/>
+	<origin group="Evento" band="groupHeader"/>
+	<origin group="Evento" band="groupFooter"/>
+	<origin group="Participacao" band="groupHeader"/>
+	<origin group="Participacao" band="groupFooter"/>
+	<origin group="Questionario" band="groupHeader"/>
+	<origin group="Questionario" band="groupFooter"/>
+	<origin group="QuestaoCoordenada" band="groupHeader"/>
+	<origin group="QuestaoCoordenada" band="groupFooter"/>
+	<origin band="background"/>
+	<origin band="title"/>
+	<origin band="pageHeader"/>
+	<origin band="columnHeader"/>
+	<origin band="detail"/>
+	<origin band="columnFooter"/>
+	<origin band="pageFooter"/>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="562" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="455" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+		</image>
+		<text textHeight="16.296875" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="395" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="447" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="447" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[1-1]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="232" width="354" height="20" origin="2"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Assinatura: Darcio Mais Alguma Coisa Lopes ]]></textContent>
+		</text>
+		<line>
+			<reportElement x="42" y="228" width="354" height="1" origin="2"/>
+		</line>
+		<text textHeight="162.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="42" y="367" width="538" height="225" origin="2"/>
+			<font isBold="false" isItalic="true"/>
+			<textContent><![CDATA[Questões Alternativas:
+
+- As questões alternativas serão corrigidas automaticamente.
+- Atenção para a quantidade de alternativas que deverão ser escolhidas em cada questão
+- Para confirmar sua opção, preencha completamente os círculos com caneta preta.
+- Apenas preencha as opções quando tiver certeza de sua escolha.
+
+
+Questões Dissertativas
+
+- As questões dissertativas serão corrigidas pelo professor pela internet.
+- Escreva sua resposta apenas os espaços indicados na questão.
+- Apenas estes espaços serão digitalizadas e disponibilizadas para correção.
+- Não será possível que o professor visualize outros espaços além dos indicados para as respostas]]></textContent>
+		</text>
+		<text textHeight="13.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.828125">
+			<reportElement x="42" y="331" width="275" height="20" origin="2"/>
+			<font size="12" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Instruções para o exame:]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="13.96875" lineSpacingFactor="1.1640625" leadingOffset="-2.828125" valueClass="java.lang.Long">
+			<reportElement x="435" y="186" width="127" height="32" origin="2"/>
+			<font size="12" isBold="true"/>
+			<textContent><![CDATA[1]]></textContent>
+		</text>
+		<ellipse>
+			<reportElement key="OMRMark-bottom-left" mode="Opaque" x="20" y="742" width="30" height="30" backcolor="#010101" origin="14"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="552" y="745" width="40" height="20" origin="14"/>
+			<textContent><![CDATA[ 3]]></textContent>
+		</text>
+		<text textAlignment="Right" textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="472" y="745" width="80" height="20" origin="14"/>
+			<textContent><![CDATA[Page 1 of]]></textContent>
+		</text>
+	</page>
+	<page>
+		<ellipse>
+			<reportElement key="OMRMark-top-right" x="562" y="20" width="30" height="30" backcolor="#010101" origin="10"/>
+			<graphicElement>
+				<pen lineWidth="0.0"/>
+			</graphicElement>
+		</ellipse>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement x="29" y="39" width="123" height="36" origin="10"/>
+		</image>
+		<image scaleImage="RetainShape" hAlign="Left" vAlign="Top" isLazy="true" onErrorType="Icon">
+			<reportElement key="qrCodeExamKey" x="455" y="20" width="100" height="100" backcolor="#F71919" origin="10"/>
+		</image>
+		<text textHeight="16.296875" lineSpacingFactor="1.1640625" leadingOffset="-3.296875">
+			<reportElement x="42" y="79" width="395" height="33" origin="10"/>
+			<font size="14" isBold="true" isItalic="true"/>
+			<textContent><![CDATA[Nome de Evento Chumbado na Query do relatorio]]></textContent>
+		</text>
+		<text textHeight="17.46875" lineSpacingFactor="1.1645833" leadingOffset="-3.53125">
+			<reportElement x="42" y="112" width="219" height="20" origin="10"/>
+			<font size="15" isBold="false"/>
+			<textContent><![CDATA[Avaliado: Darcio Mais ]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="" x="447" y="118" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[IdProva-Página]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="6.984375" lineSpacingFactor="1.1640625" leadingOffset="-1.421875">
+			<reportElement key="pageIdentifier" x="447" y="128" width="125" height="10" origin="10"/>
+			<font size="6"/>
+			<textContent><![CDATA[1-2]]></textContent>
+		</text>
+		<text textHeight="15.140625" lineSpacingFactor="1.1646634" leadingOffset="-3.0625">
+			<reportElement x="57" y="154" width="432" height="20" origin="4"/>
+			<font size="13" isUnderline="true"/>
+			<textContent><![CDATA[Questionário de Física]]></textContent>
+		</text>
+		<text textHeight="11.640625" lineSpacingFactor="1.1640625" leadingOffset="-2.359375">
+			<reportElement x="116" y="187" width="373" height="12" origin="6"/>
+			<textContent><![CDATA[1. Qual o nome da primeira teoria da Relatividade Einstein?]]></textContent>
+		</text>

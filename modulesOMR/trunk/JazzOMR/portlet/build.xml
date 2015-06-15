@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Portlet Scripts" default="deploy">
+		<property environment="env" />
+	
+	
+	
+	
+    <target name="deploy" >
+    	
+    	
+    	<echo>teste123</echo>
+    	
+    	
+    	
+    </target>
+
+	
+	
+</project>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>Jazz</groupId>
+   <version>1.0</version>
+   <artifactId>Jazz</artifactId>
+   <packaging>pom</packaging>
+   <name>project</name>
+
+         <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                    <excludes>
+                        <exclude>**/*Point*.java</exclude>
+                    </excludes>
+                </configuration>
+             </plugin>
+         </plugins>
+
+      </build>
+
+   
+</project>

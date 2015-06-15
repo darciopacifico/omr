@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="solicitacaoValidacaoVO" type="solicitacaoValidacaoVO"/>
+
+
+	<!-- Tipo para criacao de um arquivo de solicitacao de validacao de cadastro -->
+  <xs:complexType name="solicitacaoValidacaoVO">
+    <xs:complexContent>
+      <xs:extension base="abstractVO">
+        <xs:sequence>
+          <xs:element name="clienteVO" type="clienteVO"/>
+          <xs:element name="dataDownload" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="dataSolicitacao" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="dataTermino" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="registrosParaValidacao" type="Registro" maxOccurs="unbounded"/>
+          <xs:element name="tiposValidacao" type="tipoValidacaoVO" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:int"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="abstractVO">
+    <xs:sequence/>
+  </xs:complexType>
+
+	<!-- Dados do cliente solicitante da validacao. Nao confundir com o tipo para retorno dos dados de empresas a serem validado -->
+  <xs:complexType name="clienteVO">
+    <xs:complexContent>
+      <xs:extension base="abstractVO">
+        <xs:sequence>
+          <xs:element name="cnpj" type="xs:string"/>
+          <xs:element name="id" type="xs:int" minOccurs="0"/>
+          <xs:element name="nome" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+	<!-- Tipo registro de pessoa (PJ,PF) a ser validado na  solicitacao -->
+  <xs:complexType name="Registro">
+    <xs:complexContent>
+      <xs:extension base="abstractVO">
+        <xs:sequence>
+          <xs:element name="Bairro" type="xs:string" minOccurs="0"/>
+          <xs:element name="CEP" type="xs:string" minOccurs="0"/>
+          <xs:element name="Cidade" type="xs:string" minOccurs="0"/>
+          <xs:element name="CNPJ" type="xs:string" minOccurs="0"/>
+          <xs:element name="Complemento" type="xs:string" minOccurs="0"/>
+          <xs:element name="DataBaixa" type="xs:string" minOccurs="0"/>
+          <xs:element name="DataConsulta" type="xs:string" minOccurs="0"/>
+          <xs:element name="DataInclusao" type="xs:string" minOccurs="0"/>
+          <xs:element name="Estado" type="xs:string" minOccurs="0"/>
+          <xs:element name="IE" type="xs:string" minOccurs="0"/>
+          <xs:element name="Logradouro" type="xs:string" minOccurs="0"/>
+          <xs:element name="Numero" type="xs:string" minOccurs="0"/>
+          <xs:element name="NumeroConsulta" type="xs:string" minOccurs="0"/>
+          <xs:element name="Pagina" type="xs:string" minOccurs="0"/>
+          <xs:element name="RazaoSocial" type="xs:string" minOccurs="0"/>
+          <xs:element name="RegimeApuracao" type="xs:string" minOccurs="0"/>
+          <xs:element name="Situacao" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="Id" type="xs:int"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+	<!-- Tipo validacao a ser executada pelo sistema. O tipo solicitacaoValidacaoVO pode conter mais de um elemente deste tipo -->
+  <xs:complexType name="tipoValidacaoVO">
+    <xs:complexContent>
+      <xs:extension base="abstractVO">
+        <xs:sequence>
+          <xs:element name="descricao" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:int" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
+

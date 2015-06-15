@@ -1,0 +1,140 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:t="http://myfaces.apache.org/tomahawk" 
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:c="http://java.sun.com/jstl/core">
+	
+<head>
+		<!-- revisar estilo e layout de paginas-->
+    <style>
+        img {
+            border-width: 0;
+        }
+    </style>
+</head>
+
+<f:loadBundle var="msg" basename="br.com.dlp.jazzqa.ResourceBundle" />
+<f:loadBundle var="lblProjeto" basename="br.com.dlp.jazzqa.projeto.Projeto" />
+
+<f:view>
+	<head>
+			<title><h:outputText value="#{lblProjeto.pnlProjeto}"/></title>
+	</head>
+	<body>
+
+	<h:form>
+		<rich:panel>
+
+			<f:facet name="header">
+				<h:outputText value="#{lblProjeto.pnlProjeto}"/>
+			</f:facet>
+
+			<!--FORMULARIO DE PESQUISA-->
+			<h:panelGrid columns="2">
+				<h:outputText value="#{lblProjeto.tipoProjeto}"/>
+				
+ 				<h:outputText value="#{lblProjeto.dtInc}"/>
+				<h:inputText     value="#{projetoJSFBean.dtInc}"/>
+				
+ 				<h:outputText value="#{lblProjeto.dtAlt}"/>
+				<h:inputText     value="#{projetoJSFBean.dtAlt}"/>
+				
+ 				<h:outputText value="#{lblProjeto.status}"/>
+				<h:inputText     value="#{projetoJSFBean.status}"/>
+				
+			</h:panelGrid>
+
+			<!--BARRA DE BOTOES -->
+			<rich:toolBar height="26" itemSeparator="grid">
+				<rich:toolBarGroup>
+
+					<a4j:commandLink action="#{projetoJSFBean.actionNovo}"   title="#{msg.btnNovo}"   reRender="campos">
+						<h:graphicImage value="../img/create_doc.gif"/>
+					</a4j:commandLink>
+
+					<a4j:commandLink action="#{projetoJSFBean.actionSalvar}" title="#{msg.btnSalvar}" reRender="campos,resultadoDG" >
+						<h:graphicImage value="../img/save.gif" />
+					</a4j:commandLink>
+
+					<a4j:commandLink action="#{projetoJSFBean.actionPesquisar}" title="#{msg.btnPesquisar}" reRender="resultadoDG" >
+						<h:graphicImage value="../img/find.gif"  />
+					</a4j:commandLink>
+
+				</rich:toolBarGroup>    
+			</rich:toolBar>
+
+			<rich:spacer height="30px;" />
+
+			<!--TABELA DE RESULTADOS-->
+			<rich:dataTable value="#{projetoJSFBean.resultados}" var="resultado" id="resultadoDG" >
+				<f:facet name="header">Resultados Consulta</f:facet>
+				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblProjeto.tipoProjeto}"/></f:facet>
+					<h:outputText value="#{resultado.tipoProjeto}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblProjeto.dtInc}"/></f:facet>
+					<h:outputText value="#{resultado.dtInc}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblProjeto.dtAlt}"/></f:facet>
+					<h:outputText value="#{resultado.dtAlt}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblProjeto.status}"/></f:facet>
+					<h:outputText value="#{resultado.status}"/>
+				</rich:column>
+				
+
+				<rich:column>
+					<f:facet name="header">&nbsp;</f:facet>
+					<a4j:commandButton action="#{projetoJSFBean.actionUpdate(resultado)}" value="#{msg.btnAlterar}" reRender="campos" />
+				</rich:column>
+			
+				<rich:column>
+					<f:facet name="header">&nbsp;</f:facet>
+					<a4j:commandButton action="#{projetoJSFBean.actionDelete(resultado)}" value="#{msg.btnExcluir}" reRender="campos,resultadoDG" />
+				</rich:column>
+			
+			</rich:dataTable>
+
+
+			<!--CAMPOS MANUTENCAO-->
+			<h:panelGrid columns="3" id="campos">
+				<h:outputText value="#{lblProjeto.tipoProjeto}"/>
+				<rich:message for="tipoProjeto" />
+				
+ 				<h:outputText value="#{lblProjeto.dtInc}"/>
+				<h:inputText     value="#{projetoJSFBean.tmpVO.dtInc}"/>
+				<rich:message for="dtInc" />
+				
+ 				<h:outputText value="#{lblProjeto.dtAlt}"/>
+				<h:inputText     value="#{projetoJSFBean.tmpVO.dtAlt}"/>
+				<rich:message for="dtAlt" />
+				
+ 				<h:outputText value="#{lblProjeto.status}"/>
+				<h:inputText     value="#{projetoJSFBean.tmpVO.status}"/>
+				<rich:message for="status" />
+				
+			</h:panelGrid>
+
+		</rich:panel>
+	</h:form>
+	</body>
+</f:view>
+</html>
+
+
+
+
+
+
+

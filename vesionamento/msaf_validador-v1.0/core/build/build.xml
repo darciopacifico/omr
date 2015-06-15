@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+	<property environment="env" />
+
+	<artifact:dependencies pathid="JAXB_Classpath">
+		<dependency groupId="javax.xml.bind" artifactId="jaxb-api" version="2.1" scope="compile" />
+		<dependency groupId="com.sun.xml.bind" artifactId="jaxb-xjc" version="2.1.6" scope="compile" />
+
+
+	</artifact:dependencies>
+
+
+
+	<path id="JaxbUnha">
+		<fileset dir="C:\darcio\appDownloads\java\jaxb-ri-20070122\lib">
+			<include name="**\*.*" />
+		</fileset>
+	</path>
+
+
+	<taskdef name="schemagen" classname="com.sun.tools.jxc.SchemaGenTask" classpathref="JAXB_Classpath">
+	</taskdef>
+
+	<target name="gerarXSDs">
+		<schemagen srcdir="../src/main/java/com/msaf/validador/consultaonline/solicitacaovalidacao" destdir="../src/main/java/com/msaf/validador/consultaonline/solicitacaovalidacao">
+			<fileset dir="../src/main/" id="id">
+				<include name="**/ClienteVO.*" />
+			</fileset>
+
+		</schemagen>
+
+	</target>
+
+	<!--
+	<schemagen destdir="build/schemas">
+	  <source  dir="src" includes="org/acme/foo/**/*.java"/>
+	  <schema namespace="http://foo.org/" file="foo.xsd" />
+	  <schema namespace="" file="bar.xsd" />
+	</xjc>
+
+-->
+
+
+</project>

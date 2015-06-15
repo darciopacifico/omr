@@ -1,0 +1,590 @@
+package <XDtPackage:packageName/>;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import br.com.dlp.framework.dao.QueryOrder;
+import br.com.dlp.framework.exception.BaseBusinessException;
+import br.com.dlp.framework.exception.BaseTechnicalError;
+import br.com.dlp.framework.struts.form.BaseForm;
+import br.com.dlp.framework.util.AcheCollectionUtils;
+import br.com.dlp.framework.vo.ICadastroBaseVO;
+
+/**
+ * teste gcode
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+<XDtClass:ifIsClassAbstract>
+ * Action abstrato para o componente <XDtWj2eeClass:moduleId/><br>
+</XDtClass:ifIsClassAbstract>
+<XDtClass:ifIsClassNotAbstract>
+ * Action para o componente <XDtWj2eeClass:moduleId/><br>
+ *
+ * @struts.action input = "<XDtWj2eeClass:cadastroTileName/>"
+ * name = "<XDtWj2eeClass:actionFormName/>"
+ * path = "<XDtWj2eeClass:actionPath/>"
+ * scope = "session"
+ * validate = "false"
+ * 
+ * @struts.action-forward 
+ * 	name = "pesquisa" 
+ * 	path = "<XDtWj2eeClass:pesquisaTileName/>"
+ * 
+ * @struts.action-forward 
+ * 	name = "cadastro" 
+ * 	path = "<XDtWj2eeClass:cadastroTileName/>"
+ *
+ * @struts.action-forward 
+ * 	name = "consulta" 
+ * 	path = "<XDtWj2eeClass:consultaTileName/>"
+ *
+<XDtWj2eeClass:forTodosOsEscravos2 superclasses="true" recursivamente="true" sort="true">
+ * @struts.action-forward 
+ * 	name = "cadastro<XDtWj2eeClass:moduleId/>" 
+ * 	path = "<XDtWj2eeClass:cadastroTileName/>"
+ *
+ * @struts.action-forward 
+ * 	name = "consulta<XDtWj2eeClass:moduleId/>" 
+ * 	path = "<XDtWj2eeClass:consultaTileName/>"
+ *
+</XDtWj2eeClass:forTodosOsEscravos2>
+</XDtClass:ifIsClassNotAbstract>
+ *
+ **/
+
+<XDtClass:modifiers/> class <XDtWj2eeClass:actionClassName/> extends <XDtWj2eeClass:extendedActionClassName/>{
+
+	<XDtWj2eeClass:forTodosOsEscravos2 superclasses="true" recursivamente="true" sort="true">
+		<XDtWj2eeClass:ifIsRenderer renderer="moduloescravo">
+	/*FORWARDS PARA TELA DO MODULO ESCRAVO <XDtWj2eeClass:moduleId/>*/
+	public static final String FORWARD_TELA_CADASTRO_<XDtWj2eeMethod:maiusculo nome="<XDtWj2eeClass:moduleId/>"/> = "cadastro<XDtWj2eeClass:moduleId/>";
+	public static final String FORWARD_TELA_CONSULTA_<XDtWj2eeMethod:maiusculo nome="<XDtWj2eeClass:moduleId/>"/> = "consulta<XDtWj2eeClass:moduleId/>";
+
+	/*SERVICOS PARA RELACIONAMENTOS RENDERIZADOS COMO MODULO ESCRAVO. MODULO <XDtWj2eeClass:moduleId/> */
+	public final static String <XDtWj2eeMethod:constanteParaServico nome="<XDtWj2eeClass:servicoEditarItem/>"/>="<XDtWj2eeClass:servicoEditarItem/>";
+	public final static String <XDtWj2eeMethod:constanteParaServico nome="<XDtWj2eeClass:servicoConsultarItem/>"/>="<XDtWj2eeClass:servicoConsultarItem/>";
+		</XDtWj2eeClass:ifIsRenderer>
+		
+	public final static String <XDtWj2eeMethod:constanteParaServico nome="<XDtWj2eeClass:servicoIncluirItem/>"/>="<XDtWj2eeClass:servicoIncluirItem/>";
+	public final static String <XDtWj2eeMethod:constanteParaServico nome="<XDtWj2eeClass:servicoRemoverItem/>"/>="<XDtWj2eeClass:servicoRemoverItem/>";
+	</XDtWj2eeClass:forTodosOsEscravos2>
+
+	<XDtWj2eeClass:forTodosOsEscravos2 incluirMestre="true" superclasses="true" recursivamente="true" sort="true">
+		<XDtWj2eeMethod:forAllMethods sort="true" >
+			<XDtMethod:ifIsGetter>
+		  		<XDtWj2eeMethod:ifIsCriarMecanismoPopUp>
+	/*SERVICOS PARA RELACIONAMENTOS RENDERIZADOS COMO MONO POPUP. MODULO <XDtWj2eeMethod:moduleId/> */
+	public final static String <XDtWj2eeMethod:confirmConstantServiceParaPopUp/> 	= "<XDtWj2eeMethod:confirmServiceParaPopUp/>";
+	public final static String <XDtWj2eeMethod:callConstantServiceParaPopUp/> 		= "<XDtWj2eeMethod:callServiceParaPopUp/>";
+		  		</XDtWj2eeMethod:ifIsCriarMecanismoPopUp>
+			</XDtMethod:ifIsGetter>
+		</XDtWj2eeMethod:forAllMethods>		
+	</XDtWj2eeClass:forTodosOsEscravos2>
+
+  /**
+   * Prepara para inclusão ou alteração o Wrapper <XDtWj2eeClass:voWrapperClassName/> e os Wrappers relacionados a este.
+   */
+  public ActionForward preparaIncluirOuAlterar(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseBusinessException, BaseTechnicalError, RemoteException {
+	<XDtWj2eeMethod:forAllMethods  superclasses="false">
+		<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+			<XDtMethod:ifIsGetter>
+				<XDtWj2eeMethod:ifIsPrimeiroItemIteracao>
+	<XDtWj2eeClass:facadeClassName/> facade = (<XDtWj2eeClass:facadeClassName/>) getCadastroFacade(mapping,form,request,response);
+  	<XDtWj2eeClass:actionFormClassName/> moduleForm = (<XDtWj2eeClass:actionFormClassName/>)form;
+	<XDtWj2eeClass:voWrapperClassName/> <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/> = moduleForm.get<XDtWj2eeClass:voWrapperClassName/>();
+				</XDtWj2eeMethod:ifIsPrimeiroItemIteracao>
+
+				<XDtWj2eeMethod:ifIsCriarMecanismoDeFind recursivamente="false">
+	/* Alimenta a listagem para a seleção de '<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>' */					
+	List <XDtMethod:propertyName/>s = facade.findAll<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>();
+	<XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>.setList<XDtWj2eeMethod:voClassName/>s(<XDtMethod:propertyName/>s);
+				</XDtWj2eeMethod:ifIsCriarMecanismoDeFind>
+				<XDtWj2eeMethod:ifIsMetodoParaRelacionamentoMuitos>
+
+	/*********************************************************************/
+	/* carregando listagens para o atributo indexado '<XDtMethod:propertyName/>' */
+	    
+	// devo setar a lista de wrappers de <XDtWj2eeMethod:propertyName/> 
+	// como nulo para forcar que a lista de <XDtWj2eeMethod:propertyName/> antiga
+	// seja destruida e forcar que uma nova lista seja criada automaticamente
+	<XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>.set<XDtWj2eeMethod:methodNameWithoutPrefix/>(null);
+	List <XDtMethod:propertyName/> = <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>.get<XDtWj2eeMethod:methodNameWithoutPrefix/>();
+	prepara<XDtWj2eeMethod:voWrapperClassName/>s(<XDtMethod:propertyName/>,mapping,form,request,response);
+	/* carregando listagens para o atributo indexado '<XDtMethod:propertyName/>' */
+	/*********************************************************************/
+				</XDtWj2eeMethod:ifIsMetodoParaRelacionamentoMuitos>
+			</XDtMethod:ifIsGetter>
+		</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+	</XDtWj2eeMethod:forAllMethods>
+	
+	
+	
+    return super.preparaIncluirOuAlterar(mapping, form, request, response);
+  }
+
+	/**
+	 * Efetua as operacoes necessárias para preparar o IVOWrapper para a tela de consulta
+	 */
+	public ActionForward preparaConsultar(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseBusinessException, BaseTechnicalError, RemoteException {
+		ActionForward actionForward = super.preparaConsultar(mapping, form, request, response); 
+		<XDtWj2eeMethod:forAllMethods>
+			<XDtMethod:ifIsGetter>
+				<XDtWj2eeMethod:ifIsUmPraMuitos>
+				
+					<XDtWj2eeMethod:ifIsPrimeiroItemIteracao>
+		ResourceBundle resourceBundle = getResourceBundle(mapping,form,request,response);		
+		<XDtWj2eeClass:actionFormClassName/> baseCadastroForm = (<XDtWj2eeClass:actionFormClassName/>)form;
+		/* O método BaseCadastroForm.getIVOWrapper() forca que um <XDtWj2eeClass:voWrapperClassName/> 
+		 * seja construído, caso este nao exista.*/						
+		<XDtWj2eeClass:voWrapperClassName/> <XDtWj2eeClass:voWrapperClassName isVar="true"/> = (<XDtWj2eeClass:voWrapperClassName/>)baseCadastroForm.getIVOWrapper(resourceBundle);
+					</XDtWj2eeMethod:ifIsPrimeiroItemIteracao>
+
+		// Seto como nulo para forcar que uma nova lista seja criada automaticamente
+		<XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>.set<XDtWj2eeMethod:methodNameWithoutPrefix/>(null);					
+				</XDtWj2eeMethod:ifIsUmPraMuitos>
+			</XDtMethod:ifIsGetter>
+		</XDtWj2eeMethod:forAllMethods>
+
+		return actionForward;
+	}
+  
+  
+<XDtWj2eeClass:forTodosOsEscravos2 superclasses="true" recursivamente="true" sort="true">
+	/**
+	 * Carrega as listagens necessárias para a o IVOWrapper <XDtWj2eeClass:voWrapperClassName/><br>
+	 */
+	protected void prepara<XDtWj2eeClass:voWrapperClassName/>(<XDtWj2eeClass:voWrapperClassName/> <XDtWj2eeClass:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>,ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  throws BaseBusinessException, BaseTechnicalError, RemoteException  {
+	  Collection collection = new ArrayList(1);
+	  collection.add(<XDtWj2eeClass:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>);
+	  prepara<XDtWj2eeClass:voWrapperClassName/>s(collection, mapping, form, request, response);
+	}
+
+	/**
+	 * Carrega as listagens necessárias para a colecao de o IVOWrapper <XDtWj2eeClass:voWrapperClassName/>
+	 */
+	protected void prepara<XDtWj2eeClass:voWrapperClassName/>s(Collection <XDtWj2eeClass:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>s,ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)  throws BaseBusinessException, BaseTechnicalError, RemoteException {
+		<XDtWj2eeClass:facadeClassNameMestre/> facade = (<XDtWj2eeClass:facadeClassNameMestre/>) getCadastroFacade(mapping,form,request,response);
+
+					<XDtWj2eeMethod:forAllMethods>
+						<XDtMethod:ifIsGetter>
+							<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+								<XDtWj2eeMethod:ifIsCriarMecanismoDeFind recursivamente="false">
+		List list2<XDtMethod:methodNameWithoutPrefix/>s = facade.findAll<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>();
+								</XDtWj2eeMethod:ifIsCriarMecanismoDeFind>
+							</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+						</XDtMethod:ifIsGetter>
+					</XDtWj2eeMethod:forAllMethods>
+
+
+		Iterator <XDtWj2eeClass:moduleId/>Iterator = <XDtWj2eeClass:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>s.iterator(); 
+		while(<XDtWj2eeClass:moduleId/>Iterator.hasNext()){
+
+		  <XDtWj2eeClass:voWrapperClassName/> <XDtWj2eeClass:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/> = (<XDtWj2eeClass:voWrapperClassName/>) <XDtWj2eeClass:moduleId/>Iterator.next();
+					<XDtWj2eeMethod:forAllMethods>
+						<XDtMethod:ifIsGetter>
+							<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+								<XDtWj2eeMethod:ifIsCriarMecanismoDeFind recursivamente="false">
+	  	<XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>.setList<XDtMethod:methodNameWithoutPrefix/>s(list2<XDtMethod:methodNameWithoutPrefix/>s);
+								</XDtWj2eeMethod:ifIsCriarMecanismoDeFind>
+							</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+						</XDtMethod:ifIsGetter>
+					</XDtWj2eeMethod:forAllMethods>
+
+		}
+	}
+
+	/**
+	 * Adiciona um <XDtWj2eeClass:moduleId/>
+	 */
+	public ActionForward <XDtWj2eeClass:servicoIncluirItem/>(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseBusinessException, BaseTechnicalError, RemoteException{
+	    <XDtWj2eeClass:actionFormClassNameMestre/> moduleForm = (<XDtWj2eeClass:actionFormClassNameMestre/>)form;
+		ResourceBundle resourceBundle = getResourceBundle(mapping, form, request, response);
+
+	    /*****************************************/
+	    /* CRIA O NOVO WRAPPER COM O SEU NOVO VO */
+	    <XDtWj2eeClass:voClassName /> novoVO = new <XDtWj2eeClass:voClassName />();
+	    <XDtWj2eeClass:voWrapperClassName /> novoVOWrapper = new <XDtWj2eeClass:voWrapperClassName />(resourceBundle);
+		novoVOWrapper.setBaseVO(novoVO);
+		
+		<XDtWj2eeClass:ifIsRenderer renderer="moduloescravo">		
+		/* Configura o novo vo como 'selecionado' para simular que este vo 'já existia anteriormente' e foi 
+		   selecionado para alteracao, assim reaproveito todo o mecanismo de 'alteracao' para fazer uma 'inclusao'*/
+		novoVOWrapper.setSelecionado(true);
+		</XDtWj2eeClass:ifIsRenderer>
+		
+	    prepara<XDtWj2eeClass:voWrapperClassName/>(novoVOWrapper ,mapping, form, request, response);
+	    /* CRIA O NOVO WRAPPER COM O SEU NOVO VO */
+	    /*****************************************/
+	
+	    /*******************************************************/
+	    /* ADICIONA O NOVO WRAPPER NO WRAPPER DO MODULO MESTRE */
+	    <XDtWj2eeClass:voWrapperClassNameMestre /> <XDtWj2eeClass:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassNameMestre />"/> = moduleForm.get<XDtWj2eeClass:voWrapperClassNameMestre />(); 
+	    Collection <XDtWj2eeClass:moduleId isVar="true"/>VOWrappers = <XDtWj2eeClass:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassNameMestre />"/>.get<XDtWj2eeClass:moduleId/>s();
+		<XDtWj2eeClass:moduleId isVar="true"/>VOWrappers.add(novoVOWrapper);
+	    /* ADICIONA O NOVO WRAPPER NO WRAPPER DO MODULO MESTRE */
+	    /*******************************************************/
+	
+	    /*********************************************/
+	    /* ADICIONA O NOVO VO NO VO DO MODULO MESTRE */
+	    <XDtWj2eeClass:voClassNameMestre/> <XDtWj2eeClass:voClassNameMestre isVar="true"/>  = <XDtWj2eeClass:voWrapperClassNameMestre isVar="true"/>.get<XDtWj2eeClass:voClassNameMestre />(); 
+	    Collection <XDtWj2eeClass:moduleIdMestre isVar="true" />VOs = <XDtWj2eeClass:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voClassNameMestre />"/>.get<XDtWj2eeClass:moduleId/>s();
+	    <XDtWj2eeClass:moduleIdMestre isVar="true" />VOs.add(novoVO);
+	    /* ADICIONA O NOVO VO NO VO DO MODULO MESTRE */
+	    /*********************************************/
+	
+		//TEMPLATE XDT ALTERADO POR DARCIO 08/02/2006 - Não estava calculando corretamente o forward
+	    return mapping.findForward(<XDtWj2eeClass:forwardParaCadastroModuloMestre/>);
+	    //return mapping.findForward(<XDtWj2eeClass:forwardParaCadastro/>);
+	}
+	
+    <XDtWj2eeClass:ifIsRenderer renderer="moduloescravo">
+	/**
+	 * Edita o <XDtWj2eeClass:moduleId/> selecionado
+	 */
+	public ActionForward <XDtWj2eeClass:servicoEditarItem/>(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseBusinessException, BaseTechnicalError, RemoteException{
+		<XDtWj2eeClass:actionFormClassNameMestre/> baseForm = (<XDtWj2eeClass:actionFormClassNameMestre/>) form;
+		/*********************************************************************************/
+		/*** PREPARA AS LISTAS (COMBOS, RADIOS ETC...) DO WRAPPER <XDtWj2eeClass:voWrapperClassName /> ***/
+		<XDtWj2eeClass:voWrapperClassName /> <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName />"/> = baseForm.get<XDtWj2eeClass:voWrapperClassName />();
+		prepara<XDtWj2eeClass:voWrapperClassName />(<XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName />"/>,mapping,form,request,response);
+
+	<XDtMethod:forAllMethods  superclasses="true">
+		<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+			<XDtMethod:ifIsGetter>
+				<XDtWj2eeMethod:ifIsMetodoParaRelacionamentoMuitos>
+					<XDtWj2eeMethod:ifIsRenderer renderer="indexado">
+		/*prepara a lista de <XDtWj2eeMethod:moduleId isVar="true" /> para renderizar grid indexado*/
+		List <XDtWj2eeMethod:moduleId isVar="true" /> = <XDtWj2eeClass:voWrapperClassName isVar="true" />.get<XDtMethod:methodNameWithoutPrefix/>();
+		prepara<XDtWj2eeMethod:voWrapperClassName />s(<XDtWj2eeMethod:moduleId isVar="true" />,mapping,form,request,response);
+					</XDtWj2eeMethod:ifIsRenderer>
+					<XDtWj2eeMethod:ifIsRenderer renderer="local">
+		/* prepara o vo de <XDtWj2eeMethod:moduleId isVar="true" /> */
+		ICadastroBaseVO <XDtWj2eeMethod:moduleId isVar="true" /> = <XDtWj2eeClass:voWrapperClassName isVar="true" />.get<XDtMethod:methodNameWithoutPrefix/>();
+		prepara<XDtWj2eeMethod:voWrapperClassName />(<XDtWj2eeMethod:moduleId isVar="true" />,mapping,form,request,response);
+					</XDtWj2eeMethod:ifIsRenderer>
+				</XDtWj2eeMethod:ifIsMetodoParaRelacionamentoMuitos>
+			</XDtMethod:ifIsGetter>
+		</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+	</XDtMethod:forAllMethods>
+
+		/*** PREPARA AS LISTAS (COMBOS, RADIOS ETC...) DO WRAPPER <XDtWj2eeClass:voWrapperClassName /> ***/
+		/*********************************************************************************/
+		return mapping.findForward(<XDtWj2eeClass:forwardParaCadastro/>);
+	}
+    
+	/**
+	 * Salvar o <XDtWj2eeClass:moduleId/> incluido ou selecionado 
+	 */
+	public ActionForward <XDtWj2eeClass:servicoSalvarItem/>(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseBusinessException, BaseTechnicalError, RemoteException{
+		String forwardAoFechar = getForwardOrigem(mapping,form, request,response);
+		return mapping.findForward(forwardAoFechar);
+	}
+
+	/**
+	 * Fechar a tela contendo o cadastro do item <XDtWj2eeClass:moduleId/> selecionado
+	 */
+	public ActionForward <XDtWj2eeClass:servicoFecharItem/>(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseBusinessException, BaseTechnicalError, RemoteException{
+		String forwardAoFechar = getForwardOrigem(mapping,form, request,response);
+		return mapping.findForward(forwardAoFechar);
+	}
+
+	/**
+	 * Consulta o <XDtWj2eeClass:moduleId/> selecionado
+	 */
+	public ActionForward <XDtWj2eeClass:servicoConsultarItem/>(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseBusinessException, BaseTechnicalError, RemoteException{
+    	return mapping.findForward(<XDtWj2eeClass:forwardParaConsulta/>);
+	}
+	</XDtWj2eeClass:ifIsRenderer>
+ 
+/**
+ * REMOVE O <XDtWj2eeClass:moduleId/> SELECIONADO
+ */
+public ActionForward <XDtWj2eeClass:servicoRemoverItem/>(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseBusinessException, BaseTechnicalError, RemoteException{
+
+    <XDtWj2eeClass:actionFormClassNameMestre/> moduleForm = (<XDtWj2eeClass:actionFormClassNameMestre/>)form;
+
+  	/*Recupera o wrapper de <XDtWj2eeClass:voClassNameMestre /> contido no form*/
+    <XDtWj2eeClass:voWrapperClassNameMestre /> <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassNameMestre />"/> = moduleForm.get<XDtWj2eeClass:voWrapperClassNameMestre/>(); 
+
+    /*recupera a listagem de wrappers de <XDtWj2eeClass:moduleId/>*/
+    Collection <XDtWj2eeClass:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName />"/>s = <XDtWj2eeClass:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassNameMestre />"/>.get<XDtWj2eeClass:moduleId/>s(); 
+
+    /*<XDtWj2eeClass:voClassNameMestre /> que tera os itens selecionados removidos*/
+    <XDtWj2eeClass:voClassNameMestre /> <XDtWj2eeClass:voClassNameMestre isVar="true"/> = <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassNameMestre />"/>.get<XDtWj2eeClass:voClassNameMestre />();
+
+    /*recupera a colecao de <XDtWj2eeClass:moduleId/>*/
+    Collection <XDtWj2eeClass:moduleId isVar="true"/>s = <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voClassNameMestre />"/>.get<XDtWj2eeClass:moduleId/>s();
+
+    /*retorna os <XDtWj2eeClass:moduleId/>selecionados para remoção*/
+    Collection <XDtWj2eeClass:moduleId isVar="true"/>Selecionados = <XDtWj2eeClass:voWrapperClassNameMestre />.getIBaseVOSelecionados(<XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName />"/>s);
+
+
+   /************************************************************/
+    /*remove da colecao de <XDtWj2eeClass:moduleId/> do VO <XDtWj2eeClass:voClassNameMestre /> os <XDtWj2eeClass:moduleId/> selecionados*/
+    /************************************************************/
+    AcheCollectionUtils.remove(<XDtWj2eeClass:moduleId isVar="true"/>s,<XDtWj2eeClass:moduleId isVar="true"/>Selecionados);
+
+    /*****************************************************************************/
+    /*remove da colecao de wrappers de <XDtWj2eeClass:moduleId/> os wrappers selecionados */
+    /*****************************************************************************/
+    AcheCollectionUtils.removeWrappers(<XDtWj2eeClass:voWrapperClassName isVar="true"/>s,<XDtWj2eeClass:moduleId isVar="true" />Selecionados);
+
+	return mapping.findForward(<XDtWj2eeClass:forwardParaCadastroModuloMestre/>);
+  }
+	
+</XDtWj2eeClass:forTodosOsEscravos2>
+
+
+    /** Override do metodo preparaPesquisa da superclasse */
+  public ActionForward preparaPesquisa(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseBusinessException, BaseTechnicalError, RemoteException{
+	<XDtWj2eeMethod:forAllMethods  superclasses="false">
+		<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+			<XDtMethod:ifIsGetter>
+				<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+	
+					<XDtWj2eeMethod:ifIsPrimeiroItemIteracao>
+  	<XDtWj2eeClass:actionFormClassName/> moduleForm = (<XDtWj2eeClass:actionFormClassName/>)form;
+    <XDtWj2eeClass:facadeClassName/> facade = (<XDtWj2eeClass:facadeClassName/>) getCadastroFacade(mapping,form,request,response);
+	/* Recupera o arquivo de internacionalizacao do sistema. As configuracoes de 
+	 * formatacao de data e numeros serao utilizadas para construir o IVOWrapper */
+    ResourceBundle resourceBundle = getResourceBundle(mapping, form, request, response);
+
+    /*Constroi e/ou recupera o IVOWrapper do modulo */
+	<XDtWj2eeClass:voWrapperClassName/> <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/> = (<XDtWj2eeClass:voWrapperClassName/>)moduleForm.getIVOWrapper(resourceBundle);
+					</XDtWj2eeMethod:ifIsPrimeiroItemIteracao>
+		
+	
+					<XDtWj2eeMethod:ifIsCriarMecanismoDeFind recursivamente="false">
+	/* Alimenta a listagem para a seleção de '<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>' */					
+	List <XDtMethod:propertyName/>s = facade.findAll<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>();
+	<XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>.setList<XDtMethod:methodNameWithoutPrefix/>s(<XDtMethod:propertyName/>s);
+				</XDtWj2eeMethod:ifIsCriarMecanismoDeFind>
+				<XDtWj2eeMethod:ifIsMetodoParaRelacionamentoMuitos>
+	/*********************************************************************/
+	/* carregando listagens para o atributo indexado '<XDtMethod:propertyName/>' */
+	List <XDtMethod:propertyName/> = <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName/>"/>.get<XDtMethod:methodNameWithoutPrefix/>();
+	prepara<XDtWj2eeMethod:voWrapperClassName/>s(<XDtMethod:propertyName/>,mapping,form,request,response);
+	/* carregando listagens para o atributo indexado '<XDtMethod:propertyName/>' */
+	/*********************************************************************/
+					</XDtWj2eeMethod:ifIsMetodoParaRelacionamentoMuitos>
+	
+	
+				</XDtWj2eeMethod:ifIsPropriedadePesquisavel>		
+			</XDtMethod:ifIsGetter>
+		</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+	</XDtWj2eeMethod:forAllMethods>
+    return super.preparaIncluirOuAlterar(mapping, form, request, response);
+  }
+  
+
+<XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>
+	/**
+	 * SOBRESCRITA DO MECANISMO DE PESQUISA ORIGINAL DA SUPERCLASSE
+	 */
+	public ActionForward pesquisar(
+		ActionMapping mapping,
+		ActionForm form,
+		HttpServletRequest request,
+		HttpServletResponse response) throws BaseBusinessException, BaseTechnicalError, RemoteException {
+
+    	/*Prepara os objetos necessário para a tela de pesquisa (lista para combos, radios etc...)*/
+    	preparaPesquisa(mapping, form, request, response);
+
+		/*Recupera o VLHFacade deste módulo*/
+		<XDtWj2eeClass:vlhFacadeClassName/> facade = (<XDtWj2eeClass:vlhFacadeClassName/>) getVLHFacade(mapping,form,request,response);
+
+		/*Cast do form para <XDtWj2eeClass:actionFormClassName/>*/
+		<XDtWj2eeClass:actionFormClassName/> baseCadastroForm=(<XDtWj2eeClass:actionFormClassName/>)form;
+
+		/*ResourceBundle padrao*/
+		ResourceBundle resourceBundle = getResourceBundle(mapping, form, request, response);
+
+		/*Recupera o voWrapper do módulo contido no Form*/
+		<XDtWj2eeClass:voWrapperClassName/> voWrapper = (<XDtWj2eeClass:voWrapperClassName/>) baseCadastroForm.getIVOWrapper(resourceBundle);
+
+		/******************************/
+		/*TRATA PARAMETROS DA PESQUISA*/
+<XDtWj2eeMethod:forAllMethods sort="true" >
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelNaoTipoVO>
+		<XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>=null;
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelNaoTipoVO>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+		<XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>IPK=null;
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+		</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>
+
+		if(voWrapper!=null){
+<XDtWj2eeMethod:forAllMethods sort="true" >
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelNaoTipoVO>
+			<XDtWj2eeMethod:nomeAtributoParaPesquisa/> = voWrapper.get<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:nomeAtributoParaPesquisa/>" /><XDtWj2eeMethod:methodType/>();
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelNaoTipoVO>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+			<XDtWj2eeMethod:nomeAtributoParaPesquisa/>IPK = (<XDtWj2eeMethod:tipoAtributoParaPesquisa/>)voWrapper.get<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:nomeAtributoParaPesquisa/>" />IPK();
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+		</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>
+		}
+		
+		/*ordenações escolhidas pelo usuário*/
+		QueryOrder[] queryOrders = voWrapper.getArrayQueryOrders();
+		
+		/*TRATA PARAMETROS DA PESQUISA*/
+		/******************************/
+
+		/* Invoca a pesquisa no VLH (não retorna nada, fica aguardando a solicitação de paginação) */
+		facade.<XDtWj2eeClass:metodoMecanismoPesquisaVLH/>(
+<XDtWj2eeMethod:forAllMethods sort="true" >
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelNaoTipoVO>
+			<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelNaoTipoVO>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+			<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:nomeAtributoParaPesquisa/>IPK
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+		</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>,queryOrders); 
+
+		
+		/*Seta a quantidade de páginas da pesquisa*/
+		setQtdPaginas(mapping,form,request,response);
+		
+		/*pega página atual do vlh Seta resultados da pesquisa*/
+		if(logger.isDebugEnabled()){
+			logger.debug("Recuperando a pagina atual do VLH");
+		}
+		List page = facade.getPage();
+		baseCadastroForm.setResultadoPesquisa(page);
+		
+		/*RECUPERA O ÍNDICE DA PÁGINA DO VLH ATUAL*/
+		int pageIndex = facade.getPageIndex();
+		baseCadastroForm.setPaginaVLH(pageIndex);
+
+		/*appenda uma mensagem de diálogo para o usuário*/
+		appendDialogMessage(mapping,form,request,response,"geral.sucesso.pesquisar");
+		
+		return super.pesquisar(mapping,form,request,response);
+	}
+</XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>
+
+
+
+
+<XDtWj2eeClass:forTodosOsEscravos2 incluirMestre="true" superclasses="true" recursivamente="true" sort="true">
+  <XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+		  <XDtWj2eeMethod:ifIsCriarMecanismoPopUp>
+ 	/**
+ 	 * Servico para abrir popup de selecao e pesquisa de <XDtWj2eeMethod:voClassName/> para <XDtWj2eeClass:actionFormClassName/>
+ 	 */
+	public ActionForward <XDtWj2eeMethod:callServiceParaPopUp/>(ActionMapping mapping,ActionForm form,HttpServletRequest request,	HttpServletResponse response) throws BaseBusinessException, BaseTechnicalError, RemoteException{
+	  /* Recupero VLH Facade  */
+	  <XDtWj2eeMethod:vlhFacadeClassName/> vlhFacade = (<XDtWj2eeMethod:vlhFacadeClassName/>)getFacade(mapping,form,request,response,<XDtWj2eeMethod:constantClassName/>.<XDtWj2eeMethod:moduleVLHConstant entidade="<XDtWj2eeMethod:entidadeDoMetodo/>" />);
+
+		ResourceBundle resourceBundle = getResourceBundle(mapping, form, request, response); 
+
+		/*INSTANCIO O POPUP CONTROLLER*/
+		VLHPopUpController popUpController = new VLHPopUpController(vlhFacade, resourceBundle, <XDtWj2eeMethod:confirmConstantServiceParaPopUp/>);
+
+		/******************************************************/
+		/** OPCIONALMENTE POSSO DIZER QUAL O FINDER UTILIZAR **/
+		String finder = "<XDtWj2eeMethod:metodoMecanismoPesquisaVLH/>";
+			
+		List list = new ArrayList();
+
+		<XDtWj2eeMethod:forTodosOsMethodDaClasse tipo="<XDtMethod:methodType/>" sort="true">
+			<XDtMethod:ifIsGetter>
+				<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+					list.add(new PopUpArgument(<XDtWj2eeMethod:methodType/>.class,"<XDtWj2eeMethod:defaultValueParaPesquisa/>","<XDtWj2eeMethod:initialValueParaPesquisa/>","<XDtWj2eeMethod:multiLinguaLabelKey/>","<XDtWj2eeMethod:multiLinguaDicaKey/>"));
+				</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+			</XDtMethod:ifIsGetter>
+		</XDtWj2eeMethod:forTodosOsMethodDaClasse>
+
+		popUpController.setNomeFinderPesquisa(finder);
+		popUpController.setArguments(list);
+
+		/******************************************************************/
+		/** OPCIONALMENTE POSSO DIZER QUAL É O VO SELECIONADO ATUALMENTE **/
+		<XDtWj2eeClass:actionFormClassNameMestre/> baseForm = (<XDtWj2eeClass:actionFormClassNameMestre/>) form;
+			
+		<XDtWj2eeClass:voWrapperClassName /> <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName />"/> = baseForm.get<XDtWj2eeClass:voWrapperClassName />();
+		<XDtWj2eeClass:voClassName /> <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voClassName />"/> = <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName />"/>.get<XDtWj2eeClass:voClassName />();
+		<XDtWj2eeMethod:voClassName /> baseVO = <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voClassName />"/>.get<XDtWj2eeMethod:voClassName />();
+			
+		popUpController.setCheckedItem(baseVO);
+
+		/********************************************************/
+		/** ATRIBUO O CONTROLLER DO POPUP AO BaseForm CORRENTE **/
+		baseForm.setPopUpController(popUpController);
+		return chamarPopUp(mapping,form,request,response);				
+		
+	}
+
+ 	/**
+ 	 * Servico para confirmar o item selecionado no popup de <XDtWj2eeMethod:voClassName/>s
+ 	 */
+	public ActionForward <XDtWj2eeMethod:confirmServiceParaPopUp/>(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws BaseBusinessException, BaseTechnicalError, RemoteException{
+		<XDtWj2eeClass:actionFormClassNameMestre/> baseForm = (<XDtWj2eeClass:actionFormClassNameMestre/>) form;
+
+		PopUpController popUpController = baseForm.getPopUpController();
+		<XDtWj2eeMethod:voClassName/> baseVOSelecionado = (<XDtWj2eeMethod:voClassName/>) popUpController.getCheckedPopUpItem();
+		<XDtWj2eeClass:voWrapperClassName /> <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName />"/> = baseForm.get<XDtWj2eeClass:voWrapperClassName />();
+		<XDtWj2eeClass:voClassName /> <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voClassName />"/> = <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voWrapperClassName />"/>.get<XDtWj2eeClass:voClassName />();
+
+		/**********************************************************************************************/
+		/* Atribui o VO selecionado no popup, na propriedade <XDtMethod:propertyName/> do VO <XDtWj2eeClass:voClassName />*/
+		/**********************************************************************************************/
+		<XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voClassName />"/>.set<XDtWj2eeMethod:voClassName />(baseVOSelecionado);
+
+		/*finaliza e desaloca recursos de popUpController*/
+		popUpController.finalizarPopUp();
+		baseForm.setPopUpController(null);
+
+		/*volta para a tela de cadastro*/
+		ActionForward actionForward = mapping.findForward(<XDtWj2eeClass:forwardParaCadastro/>); 
+		return actionForward;
+	}
+	
+		  </XDtWj2eeMethod:ifIsCriarMecanismoPopUp>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>		
+</XDtWj2eeClass:forTodosOsEscravos2>	
+
+<XDtClass:ifIsClassNotAbstract>
+	/**
+	 *Indica ao framework qual o id do modulo atual
+	 */
+	public String getModuleId() throws BaseTechnicalError, RemoteException {
+	    return <XDtConfig:configParameterValue paramName="constantClass" />.<XDtWj2eeClass:moduleConstant/>;
+	}
+
+	/**
+	 *Indica ao framework qual o id do VLH modulo atual
+	 */
+	public String getModuleVLHId() throws BaseTechnicalError, RemoteException {
+    	return <XDtConfig:configParameterValue paramName="constantClass" />.<XDtWj2eeClass:moduleVLHConstant/>;
+	}
+</XDtClass:ifIsClassNotAbstract>
+
+
+
+}

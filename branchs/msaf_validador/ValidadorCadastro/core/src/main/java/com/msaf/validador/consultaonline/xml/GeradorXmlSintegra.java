@@ -1,0 +1,48 @@
+package com.msaf.validador.consultaonline.xml;
+
+import java.text.MessageFormat;
+
+/**
+ * Gera o Xml para o sintegra
+ * @author ederson
+ *
+ */
+public class GeradorXmlSintegra implements GeradorXmlPedidoValidacao {
+
+	@Override
+	public String gerarXml(Object... argumentos) {
+
+		int index = 0;
+
+		String estado = (String) argumentos[index++];
+		String documento = (String) argumentos[index++];
+		String proxyAtivo = (String) argumentos[index++];
+		String proxyUsuario = (String) argumentos[index++];
+		String proxySenha = (String) argumentos[index++];
+		String proxyHost = (String) argumentos[index++];
+		String proxyPorta = (String) argumentos[index++];
+		String tipoDocumento = (String) argumentos[index++];
+		String cnpj = (String) argumentos[index++];
+		String cidade = (String) argumentos[index++];
+
+
+		return MessageFormat.format(
+				"<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>"
+						+ "<ParametrosConsulta Versao=\"1.0\">"
+						+ "<TipoConsulta>{0}</TipoConsulta>"
+						+ "<Estado>{1}</Estado>" + "<Valor>{2}</Valor>"
+						+ "<Proxy>" + "<Ativo>{3}</Ativo>"
+						+ "<Usuario>{4}</Usuario>" + "<Senha>{5}</Senha>"
+						+ "<Host>{6}</Host>" + "<Porta>{7}</Porta>"
+						+ "</Proxy>" + "</ParametrosConsulta>", 
+				tipoDocumento,
+				estado, 
+				documento, 
+				proxyAtivo, 
+				proxyUsuario, 
+				proxySenha,
+				proxyHost, 
+				proxyPorta);
+	}
+
+}

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jazzGeneratorConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="C:\darcio\java\eclipse\workspace\XdocletWizardJ2EE\GeneratorConfig.xsd">
+
+	<module name="CentroCusto" 					generate="true" override="true">
+		<component prefix="Action" 						generate="true" override="true"/>
+		<component prefix="BusinessDelegate" 	generate="true" override="true"/>
+		<component prefix="DAO" 						generate="true" override="true"/>
+		<component prefix="Facade" 					generate="true" override="true"/>
+		<component prefix="FacadeImpl" 				generate="true" override="true"/>
+		<component prefix="Form" 						generate="true" override="true"/>
+		<component prefix="HibernateDAO" 			generate="true" override="true"/>
+		<component prefix="JDBCOracleDAO" 		generate="true" override="true"/>
+		<component prefix="SessionFacade" 		generate="true" override="true"/>
+		<component prefix="VLHFacade" 				generate="true" override="true"/>
+		<component prefix="VLHFacadeImpl" 		generate="true" override="true"/>
+		<component prefix="VLHSessionFacade" generate="true" override="true"/>
+		<component prefix="VOWrapper" 				generate="true" override="true"/>
+	</module>
+	
+	<module name="ClassificacaoAtividade" 	generate="true" override="true">
+		<component prefix="Action" 						generate="true" override="true"/>
+		<component prefix="BusinessDelegate" 	generate="true" override="true"/>
+		<component prefix="DAO" 						generate="true" override="true"/>
+		<component prefix="Facade" 					generate="true" override="true"/>
+		<component prefix="FacadeImpl" 				generate="true" override="true"/>
+		<component prefix="Form" 						generate="true" override="true"/>
+		<component prefix="HibernateDAO" 			generate="true" override="true"/>
+		<component prefix="JDBCOracleDAO" 		generate="true" override="true"/>
+		<component prefix="SessionFacade" 		generate="true" override="true"/>
+		<component prefix="VLHFacade" 				generate="true" override="true"/>
+		<component prefix="VLHFacadeImpl" 		generate="true" override="true"/>
+		<component prefix="VLHSessionFacade" generate="true" override="true"/>
+		<component prefix="VOWrapper" 				generate="true" override="true"/>
+	</module>
+	
+	<module name="Funcionario" 					generate="true" override="true">
+		<component prefix="Action" 						generate="true" override="true"/>
+		<component prefix="BusinessDelegate" 	generate="true" override="true"/>
+		<component prefix="DAO" 						generate="true" override="true"/>
+		<component prefix="Facade" 					generate="true" override="true"/>
+		<component prefix="FacadeImpl" 				generate="true" override="true"/>
+		<component prefix="Form" 						generate="true" override="true"/>
+		<component prefix="HibernateDAO" 			generate="true" override="true"/>
+		<component prefix="JDBCOracleDAO" 		generate="true" override="true"/>
+		<component prefix="SessionFacade" 		generate="true" override="true"/>
+		<component prefix="VLHFacade" 				generate="true" override="true"/>
+		<component prefix="VLHFacadeImpl" 		generate="true" override="true"/>
+		<component prefix="VLHSessionFacade" generate="true" override="true"/>
+		<component prefix="VOWrapper" 				generate="true" override="true"/>
+	</module>
+	
+	<module name="Projeto" 							generate="true" override="true">
+		<component prefix="Action" 						generate="true" override="true"/>
+		<component prefix="BusinessDelegate" 	generate="true" override="true"/>
+		<component prefix="DAO" 						generate="true" override="true"/>
+		<component prefix="Facade" 					generate="true" override="true"/>
+		<component prefix="FacadeImpl" 				generate="true" override="true"/>
+		<component prefix="Form" 						generate="true" override="true"/>
+		<component prefix="HibernateDAO" 			generate="true" override="true"/>
+		<component prefix="JDBCOracleDAO" 		generate="true" override="true"/>
+		<component prefix="SessionFacade" 		generate="true" override="true"/>
+		<component prefix="VLHFacade" 				generate="true" override="true"/>
+		<component prefix="VLHFacadeImpl" 		generate="true" override="true"/>
+		<component prefix="VLHSessionFacade" generate="true" override="true"/>
+		<component prefix="VOWrapper" 				generate="true" override="true"/>
+	</module>
+	
+	<module name="StatusHistorico" 				generate="true" override="true">
+		<component prefix="Action" 						generate="true" override="true"/>
+		<component prefix="BusinessDelegate" 	generate="true" override="true"/>
+		<component prefix="DAO" 						generate="true" override="true"/>
+		<component prefix="Facade" 					generate="true" override="true"/>
+		<component prefix="FacadeImpl" 				generate="true" override="true"/>
+		<component prefix="Form" 						generate="true" override="true"/>
+		<component prefix="HibernateDAO" 			generate="true" override="true"/>
+		<component prefix="JDBCOracleDAO" 		generate="true" override="true"/>
+		<component prefix="SessionFacade" 		generate="true" override="true"/>
+		<component prefix="VLHFacade" 				generate="true" override="true"/>
+		<component prefix="VLHFacadeImpl" 		generate="true" override="true"/>
+		<component prefix="VLHSessionFacade" generate="true" override="true"/>
+		<component prefix="VOWrapper" 				generate="true" override="true"/>
+	</module>
+	
+	<module name="TilesTemplate" 					generate="true" override="true">
+		<component prefix="Action" 						generate="true" override="true"/>
+		<component prefix="BusinessDelegate" 	generate="true" override="true"/>
+		<component prefix="DAO" 						generate="true" override="true"/>
+		<component prefix="Facade" 					generate="true" override="true"/>
+		<component prefix="FacadeImpl" 				generate="true" override="true"/>
+		<component prefix="Form" 						generate="true" override="true"/>
+		<component prefix="HibernateDAO" 			generate="true" override="true"/>
+		<component prefix="JDBCOracleDAO" 		generate="true" override="true"/>
+		<component prefix="SessionFacade" 		generate="true" override="true"/>
+		<component prefix="VLHFacade" 				generate="true" override="true"/>
+		<component prefix="VLHFacadeImpl" 		generate="true" override="true"/>
+		<component prefix="VLHSessionFacade" generate="true" override="true"/>
+		<component prefix="VOWrapper" 				generate="true" override="true"/>
+	</module>
+	
+	<module name="TipoHistorico" 					generate="true" override="true">
+		<component prefix="Action" 						generate="true" override="true"/>
+		<component prefix="BusinessDelegate" 	generate="true" override="true"/>
+		<component prefix="DAO" 						generate="true" override="true"/>
+		<component prefix="Facade" 					generate="true" override="true"/>
+		<component prefix="FacadeImpl" 				generate="true" override="true"/>
+		<component prefix="Form" 						generate="true" override="true"/>
+		<component prefix="HibernateDAO" 			generate="true" override="true"/>
+		<component prefix="JDBCOracleDAO" 		generate="true" override="true"/>
+		<component prefix="SessionFacade" 		generate="true" override="true"/>
+		<component prefix="VLHFacade" 				generate="true" override="true"/>
+		<component prefix="VLHFacadeImpl" 		generate="true" override="true"/>
+		<component prefix="VLHSessionFacade" generate="true" override="true"/>
+		<component prefix="VOWrapper" 				generate="true" override="true"/>
+	</module>
+	
+	<module name="TipoProjeto" 						generate="true" override="true">
+		<component prefix="Action" 						generate="true" override="true"/>
+		<component prefix="BusinessDelegate" 	generate="true" override="true"/>
+		<component prefix="DAO" 						generate="true" override="true"/>
+		<component prefix="Facade" 					generate="true" override="true"/>
+		<component prefix="FacadeImpl" 				generate="true" override="true"/>
+		<component prefix="Form" 						generate="true" override="true"/>
+		<component prefix="HibernateDAO" 			generate="true" override="true"/>
+		<component prefix="JDBCOracleDAO" 		generate="true" override="true"/>
+		<component prefix="SessionFacade" 		generate="true" override="true"/>
+		<component prefix="VLHFacade" 				generate="true" override="true"/>
+		<component prefix="VLHFacadeImpl" 		generate="true" override="true"/>
+		<component prefix="VLHSessionFacade" generate="true" override="true"/>
+		<component prefix="VOWrapper" 				generate="true" override="true"/>
+	</module>
+	
+
+</jazzGeneratorConfig>

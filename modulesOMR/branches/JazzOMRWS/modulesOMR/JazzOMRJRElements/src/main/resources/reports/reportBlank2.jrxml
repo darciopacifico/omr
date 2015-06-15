@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportBlank2" pageWidth="612" pageHeight="792" columnWidth="592" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10">
+	<property name="ireport.zoom" value="1.6105100000000039"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="imgLogoEscola" class="java.awt.Image" isForPrompting="false"/>
+	<parameter name="qrCodeGen" class="br.com.dlp.jazzomr.jr.util.IQRCodeGenerator" isForPrompting="false"/>
+	<parameter name="examInstancePK" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[select
+ei.pk exam_pk,
+ei.desc_wiki e_wiki,
+ei.dt_creation,
+ei.exam_model,
+ei.fk_aplicador_pessoa,
+ei.fk_avaliado_pessoa,
+ei.fk_criador_pessoa,
+
+qi.pk question_pK,
+qi.desc_wiki q_wiki,
+qi.question_type,
+qi.ordem q_ordem,
+qi.fk_exam,
+
+ai.pk alternative_pk,
+ai.ordem a_ordem,
+ai.desc_wiki a_wiki,
+ai.resumo a_resumo,
+ai.score a_score,
+ai.fk_question,
+
+app.nome aplicador,
+avp.nome avaliador,
+crp.nome criador
+
+
+from tb_exam_instance ei
+	inner join tb_question_instance qi on qi.fk_exam = ei.pk
+	inner join tb_alternative_instance ai on ai.fk_question = qi.pk
+
+	inner join tb_pessoa avp on avp.pk = ei.fk_avaliado_pessoa
+	inner join tb_pessoa app on app.pk = ei.fk_avaliado_pessoa
+	inner join tb_pessoa crp on crp.pk = ei.fk_avaliado_pessoa
+
+where ei.pk = $P{examInstancePK}]]>
+	</queryString>
+	<field name="exam_pk" class="java.lang.Long"/>
+	<field name="e_wiki" class="java.lang.String"/>
+	<field name="dt_creation" class="java.sql.Timestamp"/>
+	<field name="exam_model" class="java.lang.String"/>
+	<field name="fk_aplicador_pessoa" class="java.lang.Long"/>
+	<field name="fk_avaliado_pessoa" class="java.lang.Long"/>
+	<field name="fk_criador_pessoa" class="java.lang.Long"/>
+	<field name="question_pK" class="java.lang.Long"/>
+	<field name="q_wiki" class="java.lang.String"/>
+	<field name="question_type" class="java.lang.Integer"/>
+	<field name="q_ordem" class="java.lang.Integer"/>
+	<field name="fk_exam" class="java.lang.Long"/>
+	<field name="alternative_pk" class="java.lang.Long"/>
+	<field name="a_ordem" class="java.lang.Integer"/>
+	<field name="a_wiki" class="java.lang.String"/>
+	<field name="a_resumo" class="java.lang.String"/>
+	<field name="a_score" class="java.lang.Integer"/>
+	<field name="fk_question" class="java.lang.Long"/>
+	<field name="aplicador" class="java.lang.String"/>
+	<field name="avaliador" class="java.lang.String"/>
+	<field name="criador" class="java.lang.String"/>
+	<group name="Questões" keepTogether="true">
+		<groupExpression><![CDATA[$F{question_pK}]]></groupExpression>
+		<groupHeader>
+			<band height="58">
+				<textField isBlankWhenNull="true">
+					<reportElement x="82" y="36" width="470" height="20"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{q_wiki}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="45" y="36" width="26" height="20"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{question_pK}.toString()+"."]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="171" splitType="Stretch">
+			<image onErrorType="Icon">
+				<reportElement key="qrCodeExamKey" x="462" y="0" width="100" height="100" backcolor="#F71919"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{qrCodeGen}.generateQRCode($F{exam_pk}+"-"+$V{PAGE_NUMBER})]]></imageExpression>
+			</image>
+			<ellipse>
+				<reportElement key="topLeftMark" x="562" y="0" width="30" height="30" backcolor="#010101">
+					<printWhenExpression><![CDATA[$V{PAGE_NUMBER}.equals(1)]]></printWhenExpression>
+				</reportElement>
+			</ellipse>
+			<textField>
+				<reportElement x="12" y="134" width="287" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{avaliador}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="12" y="131" width="287" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="11" y="155" width="573" height="1"/>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="144" y="20" width="318" height="25"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Universidade Paulista UNIP - Unidade Belém]]></text>
+			</staticText>
+			<image onErrorType="Icon">
+				<reportElement x="11" y="9" width="123" height="36"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{imgLogoEscola}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="11" y="45" width="288" height="38"/>
+				<textElement verticalAlignment="Top" lineSpacing="1_1_2"/>
+				<text><![CDATA[Exame final para a disciplina de Geografia Elementar
+Turma 3 - Período Diurno]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="86" width="125" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Exame-Pág / "+$F{exam_pk}+"-"+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="101" splitType="Stretch">
+			<printWhenExpression><![CDATA[!$V{PAGE_NUMBER}.equals(1)]]></printWhenExpression>
+			<image onErrorType="Icon">
+				<reportElement key="qrCodeExamKey" x="462" y="0" width="100" height="100" backcolor="#F71919"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{qrCodeGen}.generateQRCode($F{exam_pk}+"-"+$V{PAGE_NUMBER})]]></imageExpression>
+			</image>
+			<ellipse>
+				<reportElement key="topLeftMark" x="562" y="0" width="30" height="30" backcolor="#010101">
+					<printWhenExpression><![CDATA[!$V{PAGE_NUMBER}.equals(1)]]></printWhenExpression>
+				</reportElement>
+			</ellipse>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="144" y="20" width="306" height="25"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Universidade Paulista UNIP - Unidade Belém]]></text>
+			</staticText>
+			<image evaluationTime="Page">
+				<reportElement x="11" y="9" width="123" height="36"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{imgLogoEscola}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="450" y="86" width="125" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Exame-Pág / "+$F{exam_pk}+"-"+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="13">
+			<textField>
+				<reportElement x="89" y="0" width="15" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{a_ordem}.toString()+"."]]></textFieldExpression>
+			</textField>
+			<genericElement>
+				<reportElement x="81" y="2" width="5" height="5"/>
+				<genericElementType namespace="http://jazzomr.com.br/jazzomr" name="jazzomr"/>
+				<genericElementParameter name="eqaKey">
+					<valueExpression><![CDATA["eqaKey-"+$F{exam_pk}+"-"+$F{q_ordem}+"-"+$F{a_ordem}]]></valueExpression>
+				</genericElementParameter>
+			</genericElement>
+			<textField>
+				<reportElement x="111" y="0" width="412" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{a_resumo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="49">
+			<ellipse>
+				<reportElement key="bottomRightMark" mode="Opaque" x="0" y="18" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#010101"/>
+			</ellipse>
+			<textField>
+				<reportElement x="470" y="26" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="550" y="26" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="106" y="26" width="364" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Propriedade da Universidade Paulista UNIP - Proibida a cópia total ou parcial deste exame.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Prevent"/>
+	</summary>
+</jasperReport>

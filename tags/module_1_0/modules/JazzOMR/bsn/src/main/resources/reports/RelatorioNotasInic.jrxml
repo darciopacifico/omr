@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioNotas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.4641000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="135"/>
+	<parameter name="events_pks" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[new Long(5)]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+
+eve_pk,
+e_description,
+
+par_pk,
+pes_nome,
+pes_login,
+
+exa_pk,
+exa_description,
+
+qtn_pk,
+qtn_description,
+
+count(distinct qre_pk) / count(distinct q_pk)*100 Corrigidos,
+
+(10 * (sum(ifnull((alr_checked*alt_score),0)) / count(distinct que_pk))) nota
+
+ from vw_exam_correction
+
+
+where
+eve_pk in
+($P{events_pks})
+
+group by
+eve_pk,
+par_pk,
+qtn_pk,
+exa_pk]]>
+	</queryString>
+	<field name="eve_pk" class="java.lang.Long"/>
+	<field name="e_description" class="java.lang.String"/>
+	<field name="par_pk" class="java.lang.Long"/>
+	<field name="pes_nome" class="java.lang.String"/>
+	<field name="pes_login" class="java.lang.String"/>
+	<field name="exa_pk" class="java.lang.Long"/>
+	<field name="exa_description" class="java.lang.String"/>
+	<field name="qtn_pk" class="java.lang.Long"/>
+	<field name="qtn_description" class="java.lang.String"/>
+	<field name="Corrigidos" class="java.math.BigDecimal"/>
+	<field name="nota" class="java.math.BigDecimal"/>
+	<group name="Evento">
+		<groupExpression><![CDATA[$F{eve_pk}]]></groupExpression>
+		<groupHeader>
+			<band height="66">
+				<textField>
+					<reportElement x="23" y="11" width="100" height="20"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.Long"><![CDATA[$F{eve_pk}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="129" y="11" width="100" height="20"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{e_description}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="61" y="46" width="100" height="20"/>
+					<textElement/>
+					<text><![CDATA[Alunos e Notas]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="participacao">
+		<groupExpression><![CDATA[$F{par_pk}]]></groupExpression>
+		<groupHeader>
+			<band height="28">
+				<textField>
+					<reportElement x="11" y="6" width="100" height="15"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{pes_nome}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="205" y="6" width="242" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Questionários]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="129" y="6" width="60" height="20"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nota]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="11"/>
+		</groupFooter>
+	</group>
+	<group name="questionario">
+		<groupExpression><![CDATA[$F{qtn_pk}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="33" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Corrigidos]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<textField>
+				<reportElement x="205" y="0" width="287" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{qtn_description}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="129" y="0" width="60" height="12"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nota}]]></textFieldExpression>
+			</textField>
+			<textField pattern="0 &apos;%&apos;">
+				<reportElement x="71" y="0" width="52" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{Corrigidos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="0" width="55" height="12"/>
+				<textElement/>
+				<text><![CDATA[Corrigido:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="22" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

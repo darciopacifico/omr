@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="yes"?>
+<deployments>
+   <deployment>
+      <instance>
+         <instance-id>RichFacesEchoPortletInstance</instance-id>
+         <portlet-ref>RichFacesEchoPortlet</portlet-ref>
+      </instance>
+   </deployment>
+</deployments>

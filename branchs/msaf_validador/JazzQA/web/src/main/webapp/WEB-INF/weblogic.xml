@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE weblogic-web-app PUBLIC "-//BEA Systems, Inc.//DTD Web Application 6.0//EN" "http://www.bea.com/servers/wls600/dtd/weblogic-web-jar.dtd">
+
+<weblogic-web-app>
+   <description><![CDATA[Gerado pelo XDoclet. Use o atributo description da tarefa weblogicwebxml para modificar seu valor.]]></description>
+   <weblogic-version>8.1</weblogic-version>
+   <!-- XDoclet TODO: implement security roles (see DTD) -->
+   <reference-descriptor>
+   </reference-descriptor>
+   <!-- XDoclet TODO: implement the rest of the stuff (see DTD)
+        NB use merge points for most of them?  -->
+</weblogic-web-app>

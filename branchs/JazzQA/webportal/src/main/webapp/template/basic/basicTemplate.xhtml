@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:t="http://myfaces.apache.org/tomahawk" 
+	xmlns:c="http://java.sun.com/jstl/core">
+<f:view>
+	<ui:insert name="repGlobal">DEFINICOES GLOBAIS DO MODULO, NORMALMENTE RESOURCE BUNDLES</ui:insert>
+	<head>
+	<style>
+img {
+	border-width: 0;
+}
+
+.ui-growl-title {
+	font-size: small;
+}
+
+.rich-inplace-select-font {
+	font-size: xx-small;
+	font-family: Arial, Verdana, sans-serif;
+}
+</style>
+	<title><h:outputText value="#{tituloModulo}" /></title>
+	
+	</head>
+	<body>
+
+	<a4j:form ajaxSubmit="true" id="frmMain">
+		<!-- FORMULARIO AJAX PRINCIPAL -->
+		<a4j:log level="ALL" popup="true" />
+
+		<!-- 
+				<rich:panel width="500" id="pnlPesquisa" height="400" shadowDepth="false" visualOptions="">
+				 -->
+		<!-- PAINEL COM CAMPOS PARA PESQUISA -->
+
+		<rich:toolBar itemSeparator="line">
+
+			<!-- COMANDOS BASICOS -->
+			<rich:toolBarGroup>
+
+				<rich:menuItem submitMode="ajax" value="Novo" action="#{myMBean.actionNovo}" process="pnlPesquisa" reRender="campos" oncomplete="Richfaces.showModalPanel('mdlManutencao')">
+					<f:facet name="icon">
+						<h:graphicImage value="/img/New_32.png" />
+					</f:facet>
+					<rich:toolTip value="Criar um novo registro" showDelay="1000" />
+				</rich:menuItem>
+
+
+				<rich:menuItem title="#{msg.btnPesquisar}" action="#{myMBean.invalidateRowCountCache}" submitMode="ajax" reRender="resultadoDG,pnlInstantSearch" process="pnlPesquisa"
+					ajaxSingle="true" value="Pesquisar">
+					<f:facet name="icon">
+						<h:graphicImage value="/img/binoculo_32.png" />
+					</f:facet>
+					<rich:toolTip value="Executar pesquisa de dados. Clique em 'Exibir Filtros' para ver os critérios de busca." showDelay="1000" />
+				</rich:menuItem>
+
+				<h:commandButton value="Limpar" type="reset" id="cmdReset">
+					<rich:componentControl event="onclick" attachTo="cmdReset" for="frmMdlPesquisa" operation="reset" />
+					<a4j:support event="onclick" action="#{myMBean.actionLimparPesquisa()}" ajaxSingle="true" />
+				</h:commandButton>
+
+				<rich:menuSeparator />
+			</rich:toolBarGroup>
+
+			<rich:toolBarGroup location="left">
+				<rich:toggleControl for="pnlPesquisa" dir="ltr" value="Exibir Filtros">
+					<rich:toolTip value="Exibe painel de critérios de pesquisa" showDelay="500" />
+				</rich:toggleControl>
+			</rich:toolBarGroup>
+
+
+		</rich:toolBar>
+
+
+		<rich:togglePanel id="pnlPesquisa" initialState="empty" switchType="client" stateOrder="opened,empty">
+
+			<f:facet name="empty">
+				<rich:spacer height="0" width="0" />
+			</f:facet>
+			<f:facet name="opened">
+				<rich:panel>
+					<h:form id="frmMdlPesquisa">
+						<h:panelGrid columns="1">
+							<!-- FACELETS INSERT PARA CAMPOS DE PESQUISA DO MODULO -->
+							<ui:insert name="repPesquisa" />
+						</h:panelGrid>
+					</h:form>
+				</rich:panel>
+			</f:facet>
+
+		</rich:togglePanel>
+
+		<rich:panel>
+
+			<rich:dataTable value="#{myMBean.dataModel}" var="resultado" onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
+				onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" id="resultadoDG" rows="#{myMBean.linhasPorPagina}">
+				<!-- CABECALHO DA TABELA -->
+				<f:facet name="header">
+					<rich:toolBar>
+						<rich:toolBarGroup location="left">
+							<h:outputText value="#{tituloModulo} " style="font-size: small;" />
+							<a4j:status id="commonstatus" startText="Processando..." stopText="Pronto" />
+						</rich:toolBarGroup>
+					</rich:toolBar>
+				</f:facet>
+
+				<!-- COLUNAS RESULTADO -->
+				<ui:insert name="repCamposResultado">
+					DEFINA OS CAMPOS A SEREM EXIBIDOS NA PESQUISA
+				</ui:insert>
+
+				<!-- COMANDO ALTERAR -->
+				<rich:column style="text-align: center;">
+					<f:facet name="header"></f:facet>
+
+					<a4j:commandLink action="#{myMBean.actionUpdate(resultado)}" style="text-decoration: none;" reRender="campos,popupValue" ajaxSingle="true"
+						oncomplete="Richfaces.showModalPanel('mdlManutencao')">
+						<h:graphicImage value="/img/Edit_16.png" />
+						<h:outputText value="Editar" />
+						<rich:toolTip value="Clique aqui para editar este registro" showDelay="1000" />
+					</a4j:commandLink>
+
+				</rich:column>
+
+
+
+				<!-- COMANDO DELETAR -->
+				<rich:column style="text-align: center;">
+					<f:facet name="header"></f:facet>
+
+					<a4j:commandLink action="#{myMBean.actionDelete(resultado)}" oncomplete="deleteConfirm.show()" style="text-decoration: none;" reRender="campos,resultadoDG,popupValue"
+						ajaxSingle="true">
+						<h:graphicImage value="/img/Delete_16.png" /> Excluir
+						<rich:toolTip value="Clique aqui para excluir este registro" showDelay="1000" />
+					</a4j:commandLink>
+
+
+				</rich:column>
+
+				<!-- RODAPE DA TABELA DE RESULTADOS -->
+				<f:facet name="footer">
+					<rich:toolBar>
+
+						<!-- LABEL DE RESULTADOS POR PAGINA + COMBO DE ALTERACAO DE RESULTADOS POR PAGINA -->
+						<rich:toolBarGroup location="left">
+							<h:outputLabel value="Registros por Página:" style="font-size: xx-small;" />
+							<!-- 
+							<h:selectOneMenu value="#{myMBean.linhasPorPagina}" style="font-size: xx-small;" id="linhasPorPagina">
+								<f:selectItems value="#{myMBean.opcoesQtdLinhas}" />
+								<a4j:support reRender="resultadoDG" event="onchange" ajaxSingle="true" />
+							</h:selectOneMenu>
+							 -->
+						</rich:toolBarGroup>
+
+						<!-- DATA SCROLLER / PAGINADOR -->
+						<rich:toolBarGroup location="left">
+							<rich:datascroller for="resultadoDG" id="dtScroller" ajaxSingle="true" fastControls="hidden" style="width: 300px;" maxPages="7" />
+						</rich:toolBarGroup>
+
+						<!-- LABEL DE RESULTADOS ENCONTRADOS -->
+						<rich:toolBarGroup location="right">
+							<h:outputText value="Registros Encontrados: #{myMBean.linhasTotais}" style="font-size: xx-small;" />
+						</rich:toolBarGroup>
+
+					</rich:toolBar>
+				</f:facet>
+
+			</rich:dataTable>
+
+			<!-- ESPACADOR -->
+			<rich:spacer width="1" height="10" />
+			<rich:separator height="1" lineType="dotted" />
+			<rich:spacer width="1" height="10" />
+			<!-- CONFIRMACAO PARA EXCLUSAO DE REGISTROS -->
+			
+		</rich:panel>
+
+		<!-- DEFINICOES DE POPUPS DO MODULO -->
+		<ui:insert name="repPopups">popups do modulo</ui:insert>
+
+	</a4j:form>
+
+	<!-- mdlManutencao de edicao VALIDACAO INTEGRADA COM HIBERNATE VALIDATOR -->
+	<rich:modalPanel id="mdlManutencao" width="500" keepVisualState="true" showWhenRendered="#{myMBean.tmpVO!=null}" height="500">
+		<f:facet name="header">
+			Inclusão / Alteração do Registro
+		</f:facet>
+
+		<h:form id="frmManutencao">
+			<!-- Barra de ferramentas do modal mdlManutencao -->
+			<rich:toolBar>
+				<rich:menuItem title="#{msg.btnSalvar}" value="Salvar" ajaxSingle="true" submitMode="ajax">
+					<a4j:support action="#{myMBean.actionSalvar}" ajaxSingle="true" reRender="campos,resultadoDG,mdlManutencao" process="campos" event="onclick" />
+					<f:facet name="icon">PesquisarExecutar pesquisa de dados. Clique em 'Exibir Filtros' para ver os critérios de busca.
+						<h:graphicImage value="/img/Save_32.png" />
+					</f:facet>
+				</rich:menuItem>
+
+				<rich:menuItem title="Cancelar Ação" submitMode="ajax" value="Cancelar" oncomplete="Richfaces.hideModalPanel('mdlManutencao')" ajaxSingle="true" id="fechamdlManutencao">
+					<f:facet name="icon">
+						<h:graphicImage value="/img/Cancel_32.png" />
+					</f:facet>
+
+				</rich:menuItem>
+
+				<a4j:commandButton value="Cancelar" oncomplete="Richfaces.hideModalPanel('mdlManutencao')" id="btnFechar"></a4j:commandButton>
+
+PesquisarExecutar pesquisa de dados. Clique em 'Exibir Filtros' para ver os critérios de busca.
+			</rich:toolBar>
+
+			<rich:spacer height="10" />
+
+			<rich:graphValidator>
+				<!--CAMPOS MANUTENCAO-->
+				<h:panelGrid columns="3" id="campos">
+					<ui:insert name="repCamposManutencao">campos para manutenção</ui:insert>
+
+					<!-- COMPONENTE DE MENSAGENS DO PRIMEFACES ESTILO MAC -->
+					<a4j:outputPanel>
+					</a4j:outputPanel>
+
+				</h:panelGrid>
+			</rich:graphValidator>
+
+		</h:form>
+
+
+
+
+	</rich:modalPanel>
+
+	</body>
+</f:view>
+</html>

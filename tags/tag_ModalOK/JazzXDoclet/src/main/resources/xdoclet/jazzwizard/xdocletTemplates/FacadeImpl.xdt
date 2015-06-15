@@ -1,0 +1,169 @@
+/**
+ * Gerado por XDoclet, nao edite!!
+ **/
+package <XDtPackage:packageName/>;
+
+import java.rmi.RemoteException;
+import java.util.List;
+
+import br.com.dlp.framework.dao.DAOException;
+import br.com.dlp.framework.dao.DAOFactoryException;
+import br.com.dlp.framework.dao.QueryOrder;
+import br.com.dlp.framework.exception.BaseBusinessException;
+import br.com.dlp.framework.exception.BaseTechnicalError;
+import br.com.dlp.framework.vo.ICadastroBaseVO;
+import br.com.dlp.framework.vo.IUsuarioVO;
+
+/**
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+ *
+<XDtClass:ifIsClassNotAbstract>
+ * Implementaaao da fachada <XDtWj2eeClass:facadeClassName/>
+</XDtClass:ifIsClassNotAbstract>
+<XDtClass:ifIsClassAbstract>
+ * Implementaaao abstrata da abstrata fachada <XDtWj2eeClass:facadeClassName/>
+</XDtClass:ifIsClassAbstract>
+ *
+ **/
+<XDtClass:modifiers/> class <XDtWj2eeClass:facadeImplClassName/> 
+extends    <XDtWj2eeClass:extendedFacadeImplClassName/> 
+implements <XDtWj2eeClass:facadeClassName/> {
+
+
+<XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>
+	/**
+	 * Pesquisa genarica 
+	 */
+	public List <XDtWj2eeClass:metodoMecanismoPesquisa/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>			
+		)throws BaseBusinessException, BaseTechnicalError{
+
+			List results = <XDtWj2eeClass:metodoMecanismoPesquisa/>(
+			<XDtWj2eeMethod:forAllMethods sort="true" >
+				<XDtMethod:ifIsGetter>
+					<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+						<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+					</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				</XDtMethod:ifIsGetter>
+			</XDtWj2eeMethod:forAllMethods>, new QueryOrder[]{});
+
+			return results;
+		}
+		
+	/**
+	 * Pesquisa genarica com Ordenaaao
+	 */
+	public List <XDtWj2eeClass:metodoMecanismoPesquisa/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>, QueryOrder[] queryOrders
+		)throws BaseBusinessException, BaseTechnicalError{
+			
+			if(logger.isDebugEnabled()){
+				logger.debug("executando pesquisa... ");
+			}
+
+			
+			<XDtWj2eeClass:daoClassName/> dao;
+			
+				dao = (<XDtWj2eeClass:daoClassName/>)getDAO();
+				List result = dao.<XDtWj2eeClass:metodoMecanismoPesquisa/>(
+		<XDtWj2eeMethod:forAllMethods sort="true" >
+			<XDtMethod:ifIsGetter>
+				<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+					<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+				</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+			</XDtMethod:ifIsGetter>
+		</XDtWj2eeMethod:forAllMethods>,queryOrders);
+	
+			if(logger.isDebugEnabled()){
+				logger.debug("... pesquisa executada com sucesso!");
+			}
+	
+			return result;
+
+			
+	}
+		
+</XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>	
+
+/* finders para relacionamentos */
+<XDtMethod:forAllMethods  superclasses="false">
+	<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsCriarMecanismoDeFind recursivamente="true">
+	public List findAll<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>() throws BaseBusinessException, BaseTechnicalError{
+		/* Pesquisa todas as ocorrancias de <XDtWj2eeMethod:entidadeDoMetodo/>*/
+		/* Repassa para o componente <XDtWj2eeMethod:facadeClassName /> */
+		<XDtWj2eeMethod:facadeClassName /> <XDtWj2eeMethod:denifirVariavelParaTipo tipo='<XDtWj2eeMethod:facadeClassName />'/> = (<XDtWj2eeMethod:facadeClassName entidade="<XDtWj2eeMethod:entidadeDoMetodo/>"/>)getFacade(<XDtWj2eeMethod:constantClassName/>.<XDtWj2eeMethod:moduleConstant entidade="<XDtWj2eeMethod:mestreEntidadeDoMetodo/>" />); 
+			
+			List list = <XDtWj2eeMethod:denifirVariavelParaTipo tipo='<XDtWj2eeMethod:facadeClassName />'/>.findAll();
+
+		return list;
+	}
+			</XDtWj2eeMethod:ifIsCriarMecanismoDeFind>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+</XDtMethod:forAllMethods>
+
+<XDtMethod:forAllMethods superclasses="false" >
+	<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsCriarMecanismoDeFindUmParaMuitos recursivamente="true">
+			/*findAll classe:<XDtClass:className/>  method:<XDtMethod:methodName/>*/
+			public List findAll<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>() throws BaseBusinessException, BaseTechnicalError{
+				/*Invoca o DAO de (<XDtWj2eeClass:daoClassName/>)*/
+				<XDtWj2eeClass:daoClassName/> dao = (<XDtWj2eeClass:daoClassName/>) getDAO();
+				return dao.findAll<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>();
+				
+			}
+			</XDtWj2eeMethod:ifIsCriarMecanismoDeFindUmParaMuitos>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+</XDtMethod:forAllMethods>
+
+
+  /** Override do metodo validacoesDeNegocioAlterar da superclasse */
+  public void validacoesDeNegocioAlterar(ICadastroBaseVO baseVO) throws BaseBusinessException{
+  }
+  /** Override do metodo validacoesDeNegocioExcluir da superclasse */
+  public void validacoesDeNegocioExcluir(ICadastroBaseVO baseVO) throws BaseBusinessException{
+  }
+  /** Override do metodo validacoesDeNegocioExcluir da superclasse */
+  public void validacoesDeNegocioExcluir(Object id) throws BaseBusinessException{
+  }
+  /** Override do metodo validacoesDeNegocioIncluir da superclasse */
+  public void validacoesDeNegocioIncluir(ICadastroBaseVO baseVO) throws BaseBusinessException{
+  }
+  /** Override do metodo validacoesDeNegocioIncluirAlterar da superclasse */
+  public void validacoesDeNegocioIncluirAlterar(ICadastroBaseVO id) throws BaseBusinessException{
+  }
+
+<XDtClass:ifIsClassNotAbstract>
+
+  /**
+   * Retorna o objeto Class deste madulo (<XDtWj2eeClass:moduleId/>)
+   */
+	protected Class getVOClass() throws BaseBusinessException, BaseTechnicalError {
+		return <XDtWj2eeClass:voClassName/>.class;
+	}
+
+	/**
+	 *Indica ao framework qual o id do modulo atual
+	 */
+	public String getModuleId() throws BaseTechnicalError {
+    return <XDtConfig:configParameterValue paramName="constantClass" />.<XDtWj2eeClass:moduleConstant/>;
+	}
+</XDtClass:ifIsClassNotAbstract>
+}
+

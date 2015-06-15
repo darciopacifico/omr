@@ -1,0 +1,145 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:t="http://myfaces.apache.org/tomahawk" 
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:c="http://java.sun.com/jstl/core">
+	
+<head>
+		<!-- revisar estilo e layout de paginas-->
+    <style>
+        img {
+            border-width: 0;
+        }
+    </style>
+</head>
+
+<f:loadBundle var="msg" basename="br.com.dlp.jazzqa.ResourceBundle" />
+<f:loadBundle var="lblUsuarioJazz" basename="br.com.dlp.jazzqa.usuariojazz.UsuarioJazz" />
+
+<f:view>
+	<head>
+			<title><h:outputText value="#{lblUsuarioJazz.pnlUsuarioJazz}"/></title>
+	</head>
+	<body>
+
+	<h:form>
+		<rich:panel>
+
+			<f:facet name="header">
+				<h:outputText value="#{lblUsuarioJazz.pnlUsuarioJazz}"/>
+			</f:facet>
+
+			<!--FORMULARIO DE PESQUISA-->
+			<h:panelGrid columns="2">
+				<h:outputText value="#{lblUsuarioJazz.altura}"/>
+				<h:inputText     value="#{usuarioJazzJSFBean.altura}"/>
+				
+ 				<h:outputText value="#{lblUsuarioJazz.login}"/>
+				<h:inputText     value="#{usuarioJazzJSFBean.login}"/>
+				
+ 				<h:outputText value="#{lblUsuarioJazz.dtInclusao}"/>
+				<rich:calendar value="#{usuarioJazzJSFBean.dtInclusaoFrom}" />
+				
+ 				<h:outputText value="#{lblUsuarioJazz.dtInclusao}"/>
+				<rich:calendar value="#{usuarioJazzJSFBean.dtInclusaoTo}" />
+				
+ 				<h:outputText value="#{lblUsuarioJazz.nome}"/>
+				<h:inputTextarea value="#{usuarioJazzJSFBean.nome}" />
+				
+			</h:panelGrid>
+
+			<!--BARRA DE BOTOES -->
+			<rich:toolBar height="26" itemSeparator="grid">
+				<rich:toolBarGroup>
+
+					<a4j:commandLink action="#{usuarioJazzJSFBean.actionNovo}"   title="#{msg.btnNovo}"   reRender="campos">
+						<h:graphicImage value="../img/create_doc.gif"/>
+					</a4j:commandLink>
+
+					<a4j:commandLink action="#{usuarioJazzJSFBean.actionSalvar}" title="#{msg.btnSalvar}" reRender="campos,resultadoDG" >
+						<h:graphicImage value="../img/save.gif" />
+					</a4j:commandLink>
+
+					<a4j:commandLink action="#{usuarioJazzJSFBean.actionPesquisar}" title="#{msg.btnPesquisar}" reRender="resultadoDG" >
+						<h:graphicImage value="../img/find.gif"  />
+					</a4j:commandLink>
+
+				</rich:toolBarGroup>    
+			</rich:toolBar>
+
+			<rich:spacer height="30px;" />
+
+			<!--TABELA DE RESULTADOS-->
+			<rich:dataTable value="#{usuarioJazzJSFBean.resultados}" var="resultado" id="resultadoDG" >
+				<f:facet name="header">Resultados Consulta</f:facet>
+				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblUsuarioJazz.altura}"/></f:facet>
+					<h:outputText value="#{resultado.altura}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblUsuarioJazz.login}"/></f:facet>
+					<h:outputText value="#{resultado.login}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblUsuarioJazz.dtInclusao}"/></f:facet>
+					<h:outputText value="#{resultado.dtInclusao}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblUsuarioJazz.nome}"/></f:facet>
+					<h:outputText value="#{resultado.nome}"/>
+				</rich:column>
+				
+
+				<rich:column>
+					<f:facet name="header">&nbsp;</f:facet>
+					<a4j:commandButton action="#{usuarioJazzJSFBean.actionUpdate(resultado)}" value="#{msg.btnAlterar}" reRender="campos" />
+				</rich:column>
+			
+				<rich:column>
+					<f:facet name="header">&nbsp;</f:facet>
+					<a4j:commandButton action="#{usuarioJazzJSFBean.actionDelete(resultado)}" value="#{msg.btnExcluir}" reRender="campos,resultadoDG" />
+				</rich:column>
+			
+			</rich:dataTable>
+
+
+			<!--CAMPOS MANUTENCAO-->
+			<h:panelGrid columns="3" id="campos">
+				<h:outputText value="#{lblUsuarioJazz.altura}"/>
+				<h:inputText     value="#{usuarioJazzJSFBean.tmpVO.altura}"/>
+				<rich:message for="altura" />
+				
+ 				<h:outputText value="#{lblUsuarioJazz.login}"/>
+				<h:inputText     value="#{usuarioJazzJSFBean.tmpVO.login}"/>
+				<rich:message for="login" />
+				
+ 				<h:outputText value="#{lblUsuarioJazz.dtInclusao}"/>
+				<rich:calendar value="#{usuarioJazzJSFBean.tmpVO.dtInclusao}" />
+				<rich:message for="dtInclusao" />
+				
+ 				<h:outputText value="#{lblUsuarioJazz.nome}"/>
+				<h:inputTextarea value="#{usuarioJazzJSFBean.tmpVO.nome}" />
+				<rich:message for="nome" />
+				
+			</h:panelGrid>
+
+		</rich:panel>
+	</h:form>
+	</body>
+</f:view>
+</html>
+
+
+
+
+
+
+

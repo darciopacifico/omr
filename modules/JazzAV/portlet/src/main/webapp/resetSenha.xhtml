@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich" xmlns:p="http://primefaces.org/ui"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+
+<h:head>
+	<title>Reset Senha</title>
+
+	<style>
+* {
+	margin: auto;
+}
+
+span,a,label {
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.divReg {
+	position: relative;
+	height: 630px;
+	width: 724px;
+	background: #91b1c7 url('../img/menu/repearVertical.png');
+	background-repeat: repeat-y;
+	margin: auto;
+	top: 30px;
+}
+
+.divReg form {
+	position: relative;
+	top: 10%;
+}
+
+.divReg fieldset {
+	width: 650px;
+	position: inherit;
+	margin: auto;
+}
+
+.divReg legend,label {
+	font-family: Arial, sans-serif;
+	color: #eeeeee;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.divReg table {
+	margin: auto;
+}
+
+.divReg td {
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	color: white;
+}
+
+.divReg label {
+	font-family: Arial, sans-serif;
+	color: #eeeeee;
+}
+
+.divLoginReg {
+	height: 390px;
+	width: 530px;
+	background: url('./img/menu/repearVertical.png');
+	background-repeat: repeat;
+	margin: auto;
+}
+</style>
+
+</h:head>
+
+<body style="background: #eeeeee url('./img/menu/examCenterGray.png'); background-repeat: repeat;" onload='document.frmLogin.j_username.focus();'>
+
+	<div style="position: relative; margin: auto; top: 300px;" class="divLoginReg">
+
+		<h:form> 
+			<h:panelGrid id="pnlReset">
+
+				<input type="text" value="#{param.resetToken}" id="resetToken" name="resetToken" />
+				
+				<input type="text" value="#{param.email}" id="email" name="email" />
+
+				<p:spacer width="200" height="60"></p:spacer>
+
+				<h:outputText value="Redefina a senha para o usuário referente ao email #{param.email}" />
+
+				<h:outputLabel value="Nova Senha" />
+				<h:inputSecret value="#{anuncioBean.pessoaVO.senha}" id="txtNovaSenha" label="Senha" />
+				<h:message for="txtNovaSenha" />
+
+				<h:outputLabel value="Nova Senha (confirmação)" />
+				
+				<h:inputSecret value="#{anuncioBean.pessoaVO.senhaConfirm}" id="txtNovaSenhaConfirm" label="Senha Confirmação" />
+				<h:message for="txtNovaSenhaConfirm" />
+
+				<h:commandButton  action="#{anuncioBean.confirmReset()}" execute="pnlReset" render="pnlReset"/>
+
+			</h:panelGrid>
+		</h:form>
+
+	</div>
+
+</body>
+</html>

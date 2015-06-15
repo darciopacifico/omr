@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://cxf.apache.org/configuration/security" xmlns:http="http://cxf.apache.org/transports/http/configuration"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+					 http://cxf.apache.org/configuration/security
+           http://cxf.apache.org/transports/http/configuration
+           http://www.springframework.org/schema/aop
+           http://cxf.apache.org/jaxws 
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/tx">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<context:annotation-config />
+	<!--<context:component-scan base-package="br.com.dlp.jazzomr.tiporequisito"/>-->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+
+	<!-- -->
+	<http:conduit name="https://192.168.56.101/JazzOMR.web/.*">
+		<!-- 
+		<http:tlsClientParameters disableCNCheck="true" />
+		 -->
+		
+			<!-- 
+		<http:sslClient>
+      <sec:Keystore>c:\\pocssl\\myky</sec:Keystore>
+      <sec:KeystorePassword>celtixpass</sec:KeystorePassword>
+      <sec:KeyPassword>mapfre2010</sec:KeyPassword>
+      <sec:TrustStore>C:\\pocssl\\certVMLab.crt</sec:TrustStore>
+      <sec:CiphersuiteFilters>
+        <sec:include>.*_EXPORT_.*</sec:include>
+        <sec:include>.*_EXPORT1024_.*</sec:include>
+        <sec:include>.*_WITH_DES_.*</sec:include>
+        <sec:exclude>.*_WITH_NULL_.*</sec:exclude>
+        <sec:exclude>.*_MD5</sec:exclude>
+      </sec:CiphersuiteFilters>
+    </http:sslClient>
+			 -->
+		
+	</http:conduit>
+
+
+	<jaxws:client id="produtoWSClient" 
+	serviceClass="br.com.dlp.jazzomr.produto.ProdutoBusiness" 
+	address="http://localhost:8087/JazzOMR.web/cxf/produto" />
+
+</beans>

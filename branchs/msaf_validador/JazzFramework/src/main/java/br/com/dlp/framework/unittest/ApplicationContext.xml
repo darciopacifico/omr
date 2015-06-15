@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- Hibernate SessionFactory -->
+	<bean id="sessionFactorySecurity"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceSecurity" />
+
+		<property name="mappingResources">
+			<list>
+
+				<value>
+					br/com/netservicos/jnet/security/domain/Sistema.hbm.xml
+				</value>
+				<value>
+					br/com/netservicos/jnet/security/domain/Funcionalidade.hbm.xml
+				</value>
+				<value>
+					br/com/netservicos/jnet/security/domain/Perfil.hbm.xml
+				</value>
+				<value>
+					br/com/netservicos/jnet/security/domain/Usuario.hbm.xml
+				</value>
+				<value>
+					br/com/netservicos/jnet/security/domain/Menu.hbm.xml
+				</value>
+				<value>
+					br/com/netservicos/jnet/security/domain/ParametrosTrace.hbm.xml
+				</value>
+				<value>
+					br/com/netservicos/jnet/security/domain/Trace.hbm.xml
+				</value>
+				<value>
+					br/com/netservicos/jnet/security/domain/SegAtiva.hbm.xml
+				</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.Oracle9Dialect
+				</prop>
+				<prop key="hibernate.cache.use_query_cache">
+					false
+				</prop>
+				<prop key="hibernate.cache.use_second_level_cache">
+					false
+				</prop>
+				<prop key="hibernate.query.factory_class">
+					org.hibernate.hql.classic.ClassicQueryTranslatorFactory
+				</prop>
+				<prop key="show_sql">true</prop>
+
+			</props>
+		</property>
+	</bean>
+	
+	
+	
+</beans>

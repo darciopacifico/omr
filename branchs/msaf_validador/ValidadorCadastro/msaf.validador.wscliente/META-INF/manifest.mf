@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: ClienteWebService
+Created-By: Mastersaf
+Class-Path: . lib/jaxrpc-ri.jar lib/jaxrpc-api.jar lib/mail.jar lib/dom4j.jar lib/saaj-api.jar lib/saaj-ri.jar lib/activation.jar lib/commons-logging.jar lib/jaas.jar lib/jax-qname.jar lib/jcert.jar lib/jnet.jar lib/jsse.jar lib/mail.jar lib/namespace.jar lib/providerutil.jar 

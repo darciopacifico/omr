@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="questionImgRpt" printOrder="Horizontal" pageWidth="572" pageHeight="752" columnWidth="572" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.2100000000000009"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="que_pk" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[2l]]></defaultValueExpression>
+	</parameter>
+	<parameter name="textoQuestao" class="java.lang.String">
+		<defaultValueExpression><![CDATA["rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert rwer ewrert "]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select img.* from tb_question que
+	left outer join tj_questionvo_imagevos tjqi on tjqi.fk_question = que.pk
+	left outer join tb_image img 				on img.pk = tjqi.fk_imagevos_image
+
+where que.pk = $P{que_pk}]]>
+	</queryString>
+	<field name="pk" class="java.lang.Long"/>
+	<field name="image" class="java.lang.Object"/>
+	<field name="titulo" class="java.lang.String"/>
+	<variable name="imagem" class="java.awt.Image">
+		<variableExpression><![CDATA[javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream((byte[])$F{image}))]]></variableExpression>
+	</variable>
+	<variable name="imgHeightP" class="java.lang.Integer">
+		<initialValueExpression><![CDATA[100]]></initialValueExpression>
+	</variable>
+	<variable name="imgHeightM" class="java.lang.Integer">
+		<variableExpression><![CDATA[500]]></variableExpression>
+		<initialValueExpression><![CDATA[500]]></initialValueExpression>
+	</variable>
+	<group name="teste">
+		<groupExpression><![CDATA[$P{textoQuestao}]]></groupExpression>
+		<groupHeader>
+			<band height="18" splitType="Stretch">
+				<textField isStretchWithOverflow="true">
+					<reportElement stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="26" y="0" width="520" height="15"/>
+					<textElement markup="none">
+						<font isPdfEmbedded="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{textoQuestao}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band splitType="Immediate"/>
+		<band height="123">
+			<printWhenExpression><![CDATA[javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream((byte[])$F{image})).getHeight()<100]]></printWhenExpression>
+			<image scaleImage="RealSize" isUsingCache="false">
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="44" y="23" width="502" height="12"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Dotted" lineColor="#8A8A8A"/>
+				</graphicElement>
+				<imageExpression class="java.io.InputStream"><![CDATA[new java.io.ByteArrayInputStream((byte[])$F{image})]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="0" width="26" height="33">
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[P]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="44" y="6" width="502" height="14"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="225" splitType="Prevent">
+			<printWhenExpression><![CDATA[javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream((byte[])$F{image})).getHeight()>=100 &&
+javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream((byte[])$F{image})).getHeight()<500]]></printWhenExpression>
+			<staticText>
+				<reportElement x="0" y="0" width="26" height="33">
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<image scaleImage="RealSize" isUsingCache="false">
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="44" y="23" width="502" height="12"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Dotted" lineColor="#7B7B7B"/>
+				</graphicElement>
+				<imageExpression class="java.io.InputStream"><![CDATA[new java.io.ByteArrayInputStream((byte[])$F{image})]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="44" y="6" width="502" height="14"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="412">
+			<printWhenExpression><![CDATA[javax.imageio.ImageIO.read(new java.io.ByteArrayInputStream((byte[])$F{image})).getHeight()>=500]]></printWhenExpression>
+			<image scaleImage="RealSize" isUsingCache="true">
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="44" y="23" width="502" height="12"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Dotted" lineColor="#8C8C8C"/>
+				</graphicElement>
+				<imageExpression class="java.io.InputStream"><![CDATA[new java.io.ByteArrayInputStream((byte[])$F{image})]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="0" width="26" height="33">
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[G]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="44" y="6" width="502" height="14"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

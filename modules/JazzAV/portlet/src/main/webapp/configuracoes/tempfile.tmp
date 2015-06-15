@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/template/crud/crudTemplate.xhtml">
+
+	<ui:param name="tituloModulo" value="Configurações" />
+	<ui:param name="iconeModulo" value="/img/menu/settings.png" />
+	<ui:param name="menuUrlPrefix" value="../"  />
+		
+	<ui:param name="myMBean" value="#{pessoaJSFBean}" />
+
+	<!-- DEFINICOES GLOBAIS DO MÓDULO -->
+	<ui:define name="repGlobal">
+		<f:loadBundle var="msg" basename="br.com.dlp.jazzav.ResourceBundle" />
+		<f:loadBundle var="lblEmpresa" basename="br.com.dlp.jazzav.empresa.Empresa" />
+	</ui:define>
+	
+	<ui:define name="mainResultTables" >    
+			<a4j:outputPanel id="pnlGrowl">
+				<p:growl life="3000" id="growlGeral"/>
+			</a4j:outputPanel>
+
+			<rich:panel style="height:470px;width:808px;" >
+				<f:facet name="header">
+					<h:outputText value="Configurações Gerais" />
+				</f:facet>
+				
+				<rich:tabPanel>
+
+					<rich:tab label="Dados da Conta" >
+
+												
+						<rich:toolBar itemSeparator="line" >
+							<!-- COMANDOS BASICOS -->
+							<rich:toolBarGroup >
+		
+								<rich:menuItem title="Salvar" value="Salvar" submitMode="ajax" action="#{configuracoesJSFBean.actionSalvarEmpresa()}"  reRender="pnlGrowl,pnlDadosConta,validadorDados">
+									<f:facet name="icon">
+										<h:graphicImage value="/img/Save_32.png" />
+									</f:facet>
+									<rich:toolTip value="Salvar Alterações" showDelay="1000" />
+								</rich:menuItem>
+
+							</rich:toolBarGroup>
+						</rich:toolBar>
+							
+						
+						<rich:spacer height="10"  width="500" ></rich:spacer>
+						 
+						<rich:graphValidator id="validadorDados">
+							<h:panelGrid columns="3" id="pnlDadosConta">
+							
+								<h:outputText value="Nome/Razão Social da Empresa"/>
+								<h:inputText value="#{configuracoesJSFBean.empresaVO.nome}" id="nome" />
+								<rich:message for="nome" />
+				
+								<h:outputText value="Data de Inclusão"/>
+								<h:outputText value="#{configuracoesJSFBean.empresaVO.dtInc}">
+									<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+								</h:outputText>
+								<rich:message for="dtInc" />
+				
+								<h:outputText value="Data de Alteração"/>
+								<h:outputText value="#{configuracoesJSFBean.empresaVO.dtAlt}">
+									<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+								</h:outputText>
+								<rich:message for="dtAlt" />
+				
+								<h:outputText value="#{lblEmpresa.status}"/>
+								<rich:comboBox defaultLabel="Selecione..." value="#{configuracoesJSFBean.empresaVO.status}" selectFirstOnUpdate="false" id="status" >
+									<f:selectItems value="#{configuracoesJSFBean.statusList}"  />
+								</rich:comboBox>
+								<rich:message for="status" />
+							 
+								<h:outputText value="Logotipo da Empresa" />
+								<rich:panel>
+									<h:panelGrid columns="1" id="pnlLogo">
+										<a4j:commandLink value="Alterar Imagem Logotipo" action="#" reRender="mdlUploadLogo" oncomplete="Richfaces.showModalPanel('mdlUploadLogo')" />
+										<rich:toolTip showDelay="500" >
+											<h:outputText value="Tamanho redimensionado para demonstração. Para ver a imagem em tamanho real clique com o
+											botão direito do mouse sobre a imagem e selecione a opção de salvar/baixar imagem de seu browser." />
+										</rich:toolTip>
+										<p:graphicImage value="#{configuracoesJSFBean.streamEmpresaLogo()}" cache="false" id="imgEmpresaLogo" width="160" height="100"/>
+									</h:panelGrid>
+								</rich:panel>
+								<rich:message for="logoEmpresa" />
+							
+							</h:panelGrid>
+						</rich:graphValidator>
+						
+					</rich:tab>
+
+
+					<rich:tab label="Relatórios" >
+
+						<rich:toolBar itemSeparator="line" >
+							<!-- COMANDOS BASICOS -->
+							<rich:toolBarGroup >
+								<rich:menuItem title="Salvar" value="Salvar" submitMode="ajax" action="#{configuracoesJSFBean.actionSalvarEmpresa()}"  reRender="pnlGrowl,pnlRelatorios,validadorDados">
+									<f:facet name="icon">
+										<h:graphicImage value="/img/Save_32.png" />
+									</f:facet>
+									<rich:toolTip value="Salvar Alterações" showDelay="1000" />
+								</rich:menuItem>
+								
+								
+								<rich:menuItem title="Adicionar Relatório" value="Adicionar Relatório" submitMode="ajax" action="#{configuracoesJSFBean.addNewRelatorio()}"  reRender="pnlGrowl,pnlRelatorios,validadorDados">
+									<f:facet name="icon">
+										<h:graphicImage value="/img/menu/newReport.png" />
+									</f:facet>
+									<rich:toolTip value="Adiciona Novo Relatório" showDelay="1000" />
+								</rich:menuItem>
+								
+								
+								
+								<rich:menuItem title="Cancelar" value="Cancelar" submitMode="ajax" action="#{configuracoesJSFBean.setEmpresaVO(null)}"  reRender="pnlGrowl,pnlRelatorios,validadorDados">
+									<f:facet name="icon">
+										<h:graphicImage value="/img/Cancel_32.png" />
+									</f:facet>
+									<rich:toolTip value="Cancela Alterações" showDelay="1000" />
+								</rich:menuItem>
+								
+								<rich:menuItem title="Ajuda" value="Ajuda" submitMode="none" >
+									<f:facet name="icon">
+										<h:graphicImage value="/img/menu/ico_help_32.png" />
+									</f:facet>
+									<rich:toolTip showDelay="500" >
+										A alteração destas informações só pode ser realizada por técnicos especializados, com domínio em<br/>
+										programação e edição de relatórios JasperReports.<br/><br/>
+										
+										Cada relatório pode conter um ou mais arquivos Jasper (JasperReports). Cada arquivo Jasper recebe um<br/> 
+										"Nome Referência" e este nome é utilizado no momento do processamento do relatório.<br/><br/>
+										
+										Um dos arquivos deve receber o "Nome Referência"="principal" para ser definido como relatório pai! <br/><br/>
+
+										Os demais arquivos serão considerados sub-relatórios e serão carregados em memória como <br/> 
+										parâmetros e adicionados ao mapa de parâmetros na chamada do relatório principal. O nome de cada<br/> 
+										parâmetro será o "Nome Referência" atribuído aos arquivos nesta tela.<br/><br/>
+										
+									</rich:toolTip>
+								</rich:menuItem>
+								
+								
+								
+								
+								
+							</rich:toolBarGroup>
+						</rich:toolBar>
+						
+						<rich:spacer height="10"  width="500" ></rich:spacer>
+						 
+						<h:panelGrid columns="2" id="pnlRelatorios" > 
+						
+							<rich:graphValidator >
+								<rich:dataTable value="#{configuracoesJSFBean.empresaVO.relatorioVOs}"  var="relatorio" rows="2" >
+									<f:facet name="footer">
+										<rich:datascroller/>
+									</f:facet>
+								
+									<rich:column >
+										<f:facet name="header">
+											Descrição
+										</f:facet>
+										<h:inputTextarea value="#{relatorio.description}" cols="65" rows="3" >
+											<a4j:support event="onchange" ajaxSingle="true" reRender="pnlGrowl"/>
+										</h:inputTextarea>
+									</rich:column>
+									
+									<rich:column >
+										<f:facet name="header">
+											Tipo
+										</f:facet>
+										
+										<h:selectOneRadio value="#{relatorio.tipoRelatorio}"   >
+											<f:selectItems value="#{configuracoesJSFBean.reportTypes}" />
+											<a4j:support event="onchange" ajaxSingle="true"/>
+										</h:selectOneRadio>
+									</rich:column>
+									
+								
+								
+									
+									
+									<rich:column>
+										<f:facet name="header">
+											Arquivos Jasper
+										</f:facet>
+											
+										<a4j:commandLink action="#{configuracoesJSFBean.addArquivoJasper(relatorio)}" reRender="mdlUploadRelatorio,pnlGrowl" oncomplete="Richfaces.showModalPanel('mdlUploadRelatorio')" >
+										Adicionar Arquivo Jasper
+										</a4j:commandLink>
+											
+										<rich:dataTable value="#{relatorio.jrFileVOs}" var="jrFileVO" >
+											<rich:column width="200">
+												<f:facet name="header">Nome Referência</f:facet>
+												<h:outputText value="#{jrFileVO.nome}" >
+												</h:outputText>											
+											</rich:column>
+											
+											<rich:column>
+												<f:facet name="header">Download</f:facet>
+												<h:commandLink action="#{configuracoesJSFBean.downloadLayoputFile(jrFileVO)}"  >
+												download
+												</h:commandLink>
+											</rich:column>
+											
+											<rich:column>
+												<f:facet name="header">&nbsp;</f:facet>
+												<a4j:commandLink action="#{configuracoesJSFBean.excluirJrFile(relatorio,jrFileVO)}" reRender="pnlGrowl,pnlRelatorios" >
+													<h:graphicImage value="/img/Delete_16.png" />
+												</a4j:commandLink>
+											</rich:column>
+											
+										</rich:dataTable>
+																		
+									</rich:column>
+									
+									
+									
+									<rich:column >
+										<f:facet name="header">
+											&nbsp;
+										</f:facet>
+										<a4j:commandLink action="#{configuracoesJSFBean.deleteRelatorio(relatorio)}" reRender="pnlRelatorios,pnlGrowl">
+											<h:graphicImage value="/img/Delete_16.png" />Excluir
+										</a4j:commandLink>
+									</rich:column>									
+									
+								</rich:dataTable>
+							</rich:graphValidator>							
+						</h:panelGrid>
+					</rich:tab>
+					
+					<rich:tab label="Pagamentos / Fatura">
+					
+										
+
+					
+					</rich:tab>					
+					
+					
+				</rich:tabPanel>
+			</rich:panel>
+			
+		<h:panelGroup layout="block" >
+		</h:panelGroup>
+
+	</ui:define>
+	
+
+
+	<!-- PAINEL COM CAMPOS PARA PESQUISA -->
+	<ui:define name="mainToolbar"></ui:define>
+	<ui:define name="mainTogglePanel"></ui:define>
+	<ui:define name="accessDenied"></ui:define>
+	<ui:define name="mainConfirmDialog" ></ui:define>
+	<ui:define name="faceletMdlManutencao"></ui:define>
+
+
+	<ui:define name="noFormModals">
+	
+		<rich:modalPanel id="mdlUploadRelatorio" autosized="true"  >
+			<f:facet name="header">Selecione um Arquivo Jasper</f:facet>
+	
+			<rich:toolBar itemSeparator="line" >
+				<!-- COMANDOS BASICOS -->
+				<rich:menuItem title="Sair" value="Cancelar / Fechar" submitMode="none" onclick="Richfaces.hideModalPanel('mdlUploadRelatorio')" >
+					<f:facet name="icon">
+						<h:graphicImage value="/img/Cancel_32.png" />
+					</f:facet>
+					<rich:toolTip value="Fechar tela" showDelay="1000" />
+				</rich:menuItem>
+			</rich:toolBar>
+			
+			<a4j:form >
+			
+				<rich:panel  rendered="#{configuracoesJSFBean.selectedRelatorio==null}" >
+					Este relatório já foi utilizado num exame! Seus arquivos não podem ser alterados!
+				</rich:panel>
+			
+				<h:panelGrid columns="1" rendered="#{configuracoesJSFBean.selectedRelatorio!=null}" >
+					<h:outputText value="Nome Jasper" >
+						<rich:toolTip value="Se este arquivo for um subreport, ele será carregado numa variável sob este nome e esta será enviada como parâmetro para chamada do relatório principal." showDelay="500" />
+					</h:outputText>
+					<h:inputText value="#{configuracoesJSFBean.jrUpload.nome}" />
+				
+					<rich:fileUpload 
+						id="uploadRelatorio"
+						listHeight="100"
+						listWidth="300" 
+						fileUploadListener="#{configuracoesJSFBean.handleUploadRelatorio}" 
+						autoclear="true"  
+						allowFlash="false"
+						maxFilesQuantity="1"
+						cancelEntryControlLabel="Cancelar"
+						immediateUpload="false"
+						acceptedTypes="jasper"
+						onerror="alert('Erro ao tentar carregar arquivo! Por favor, tente novamente!')">
+						<a4j:support event="onuploadcomplete"  reRender="pnlGrowl,pnlRelatorios" oncomplete="Richfaces.hideModalPanel('mdlUploadRelatorio')"/>
+					</rich:fileUpload>			
+				</h:panelGrid>
+			</a4j:form>
+		</rich:modalPanel>		
+	
+		<rich:modalPanel id="mdlUploadLogo" autosized="true"  >
+			<f:facet name="header">Selecione um Novo Logo</f:facet>
+
+			<rich:toolBar itemSeparator="line" >
+				<!-- COMANDOS BASICOS -->
+				<rich:menuItem title="Sair" value="Cancelar / Fechar" submitMode="none" onclick="Richfaces.hideModalPanel('mdlUploadLogo')" >
+					<f:facet name="icon">
+						<h:graphicImage value="/img/Cancel_32.png" />
+					</f:facet>
+					<rich:toolTip value="Fechar tela" showDelay="1000" />
+				</rich:menuItem>
+			</rich:toolBar>
+
+			<a4j:form id="frmLogoChange">
+				<rich:fileUpload 
+					id="uploadLogo"
+					listHeight="150"
+					listWidth="300" 
+					fileUploadListener="#{configuracoesJSFBean.actionLogoImgUpload}" 
+					autoclear="true"  
+					allowFlash="false"
+					maxFilesQuantity="1"
+					cancelEntryControlLabel="Cancelar"
+					immediateUpload="false"
+					acceptedTypes="jpg, gif, tif, png, bmp"
+					onerror="alert('Erro ao tentar carregar imagem! Por favor, tente novamente!');Richfaces.hideModalPanel('mdlUploadLogo')">
+					<a4j:support event="onuploadcomplete"  reRender="pnlDadosConta,pnlGrowl"  oncomplete="Richfaces.hideModalPanel('mdlUploadLogo')"/>
+				</rich:fileUpload>				
+			</a4j:form>
+		</rich:modalPanel>
+	
+	</ui:define>	
+	
+</ui:composition>
+

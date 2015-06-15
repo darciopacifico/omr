@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- For JSR-250 annotations such as @Resource -->
+	<!--
+		bean
+		class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/
+	-->
+
+	<!--
+		Registers Spring's standard post-processors for annotation-based
+		configuration like @Repository <context:annotation-config />
+	-->
+	<!--
+		From this package on down is what Spring will scan for its annotations
+		like @Repository <context:component-scan
+		base-package="br.com.dlp.jazzomr" />
+	-->
+
+
+
+	<!-- 
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	-->
+
+
+	<bean id="jazzDS" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/jazzomr" />
+		<property name="username" value="root" />
+		<property name="password" value="CelularCinza" />
+	</bean>
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="jazzDS" />
+		<property name="annotatedClasses">
+			<list>
+				<value>br.com.dlp.jazzomr.tiporequisito.TipoRequisitoVO</value>
+				<value>br.com.dlp.jazzomr.produto.ProdutoVO</value>
+				<value>br.com.dlp.jazzomr.usuariojazz.UsuarioJazzVO</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<!--
+		<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="configLocation">
+		<value>classpath:/hibernate.cfg.xml</value> </property> <property
+		name="packagesToScan"> <list> <value>br.com.dlp.jazzomr</value> </list>
+		</property> </bean>
+	-->
+
+	<!--
+		<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" /> <property
+		name="nestedTransactionAllowed" value="true" /> </bean> <bean
+		id="txManager"
+		class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="transactionManagerName"
+		value="java:/TransactionManager" /> <property
+		name="userTransactionName" value="UserTransaction" /> <property
+		name="transactionManager" ref="txManager" /> </bean>
+	-->
+
+	<!--
+		For @Transactional <tx:annotation-driven
+		transaction-manager="txManager" />
+	-->
+
+	<!--
+		Translates native resource exceptions to Spring's DataAccessException
+		hierarchy
+	-->
+	<!--
+		bean
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/
+	-->
+
+</beans>

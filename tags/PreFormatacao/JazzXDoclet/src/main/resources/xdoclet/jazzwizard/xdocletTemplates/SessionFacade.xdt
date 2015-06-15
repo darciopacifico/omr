@@ -1,0 +1,57 @@
+package <XDtPackage:packageName/>;
+
+import java.rmi.RemoteException;
+import br.com.dlp.framework.exception.BaseTechnicalError;
+import javax.ejb.CreateException;
+import javax.ejb.EJBException;
+import javax.ejb.SessionBean;
+import javax.ejb.SessionContext;
+
+import br.com.dlp.framework.business.J2EECMTFacade;
+
+/** 
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+ * 	
+ * Extensao de <XDtWj2eeClass:facadeImplClassName/> para criaaao de um EJB
+ * 	
+ * @ejb.bean description="value"
+ *           display-name="<XDtWj2eeClass:moduleId/>"
+ *           jndi-name="<XDtWj2eeClass:jdniModule/>"
+ *           local-jndi-name="<XDtWj2eeClass:jdniModule/>Local"
+ *           local-business-interface="<XDtPackage:packageName/>.<XDtWj2eeClass:facadeClassName/>"
+ *           remote-business-interface="<XDtPackage:packageName/>.<XDtWj2eeClass:facadeClassName/>"
+ *           name="<XDtWj2eeClass:ejbModule/>"
+ *           type="Stateless"
+ *           view-type="local"
+ * 
+ * @ejb.transaction type = "Required"
+ */
+
+<XDtClass:modifiers/> class <XDtWj2eeClass:sessionFacadeClassName/> extends <XDtWj2eeClass:facadeImplClassName/> implements J2EECMTFacade, SessionBean {
+	/**
+	 * Controle de versao para classes serializaveis
+	 */
+	private static final long serialVersionUID = <XDtWj2eeClass:classSerialVersionUID/>
+	
+	private SessionContext sessionContext;
+	
+	public void ejbActivate() throws EJBException {
+	}
+	public void ejbPassivate() throws EJBException {
+	}
+	public void ejbRemove() throws EJBException {
+	}
+
+	public SessionContext getSessionContext() throws EJBException{
+		return sessionContext;
+	}
+	public void setSessionContext(SessionContext ctx) throws EJBException {
+		sessionContext = ctx;
+	}
+	
+  /**
+   * @ejb.create-method view-type = "remote"
+   **/
+	public void ejbCreate()throws CreateException {
+  }
+}

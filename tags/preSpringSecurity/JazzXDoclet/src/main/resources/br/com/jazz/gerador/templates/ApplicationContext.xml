@@ -1,0 +1,331 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+	<!-- Configuração abstrata para beans de templateRules -->
+	<bean name="abstractConfig" class="br.com.jazz.codegen.FreemarkerTemplateRules"
+		abstract="true">
+		<property name="templateEncoding" value="UTF-8" />
+		<property name="outputEncoding" value="UTF-8" />
+
+		<!-- AÇÃO PADRÃO PARA CASO O ARQUIVO A SER GERADO JÁ EXISTA -->
+		<!-- OVERWRITE, ASK_USER, NOT_OVERWRITE, CREATE_TEMP_FILE 
+		-->
+		<property name="fileExistingAction" value="CREATE_TEMP_FILE" />
+
+		<property name="regexRules">
+			<map merge="true">
+				<entry key="abstract" value="false" /> <!-- por padrao, não serão gerados templates para classes abstratas.-->
+				<entry key="interface" value="false" />
+				<!--
+					por padrao, não serão gerados templates para interfaces.
+				-->
+			</map>
+		</property>
+		<property name="properties">
+			<map merge="true">
+				<entry key="fileNamePattern" value="(.+)(VO)" /> 	<!-- Padrao de nome das classes candidatas a entidades do sistema -->
+
+				<!--
+					Compoe diretório ou pacote de destino do componente a ser gerado
+				-->
+				<entry key="destDirRegexFrom" value="\." /> 			<!-- Expressão regular para capturar o nome do pacote da entidade -->
+				<entry key="destDirRegexDestination" value="/" />
+				<!--
+					Expressão regular de destino para compor o nome do pacote do
+					componente a ser gerado. Normalmente, troca-se os pontos do nome
+					completo do pacote por barras ex: br.com.dlp.jazzomr.produto
+					br/com/dlp/jazzomr/produto Uso: String filePath =
+					packageName.replaceAll(destDirRegexFrom, destDirRegexDestination);
+				-->
+			</map>
+		</property>
+		<property name="annotationRules">
+			<!--
+				Regras para anotações e atributos de anotações. Obrigatórias para
+				uma classe ser eleita entidade do sistema e passar pelo gerador
+			-->
+			<map merge="true">
+				<entry key="JazzClass" value=".*" />
+				<!--
+					tem que ser uma classe marcada com XDoclet JazzClass	-->
+				<entry key="JazzClass.voMestre" value="^.*DefaultDummyVO.*$" />
+				<!--
+					DefaultDummyVO representa valor null, já que em annotations null
+					não pode ser valor default: nao pode ser um vo escravo
+				-->
+			</map>
+		</property>
+		<property name="requiredAnnotationRules">
+			<!--
+				Annotacoes que devem estar presentes para uma entidade ser candidata
+				ao gerador
+			-->
+			<list>
+				<value>JazzClass</value>
+			</list>
+		</property>
+	</bean>
+
+
+
+
+
+
+	<!--
+		Configuraçao para template de arquivo propertie para
+		internacionalização
+	-->
+	<bean name="abstractConfigFilesConfig" parent="abstractConfig"
+		abstract="true">
+		<!-- AÇÃO PADRÃO PARA CASO O ARQUIVO A SER GERADO JÁ EXISTA -->
+		<!-- OVERWRITE, ASK_USER, NOT_OVERWRITE, CREATE_TEMP_FILE 
+		-->
+		<property name="fileExistingAction" value="OVERWRITE" />
+	</bean>
+
+
+
+
+
+
+
+
+
+	<!-- TEMPLATES PARA ARQUIVOS DOS MÓDULOS -->
+
+	<!-- Configuraçao para template de geracao de daos -->
+	<bean name="DAO" parent="abstractConfig">
+		<!-- 
+		<property name="fileExistingAction" value="ASK_USER"/>
+		 -->
+		<property name="properties">
+			<map merge="true">
+				<entry key="extends" value="IJazzOMRDAO" />
+				<!--
+					Determinar que esta classe ou interface deve especializar IDAO. ex:
+					TipoRequisitoDAO extends IDAO
+				-->
+				<!--
+					^^^^
+
+			-->
+				<entry key="extendsParamTypes" value="VO" />
+				<!--
+					Usado para determinar os paramTypes nas especializações de classes
+					Genéricas do framework. Podem ser informados diversos metatipos
+					separando-os por vírgula
+				-->
+				<!--
+					TipoRequisitoBusiness extends IBusiness<TipoRequisitoPK,
+					TipoRequisitoVO>
+				-->
+				<!--
+					^^ ^^
+				-->
+				<entry key="destDirConfig" value="/br/com/dlp/jazzomr/" />
+				<!--
+					Diretório onde os arquivos de configuração e constantes devem ser
+					gerados.
+				-->
+				<entry key="regexFileDestReplacement" value="$0DAO.java" />
+				<!--
+					Expressao regular para determinar o nome do componente. $0 = nome
+					da entidade ex: ProdutoDAO
+				-->
+				<entry key="propBaseDirSufix" value="bsn/src{0}/main/java" />
+				<!--
+					{0}=Ponto onde o sufixo "tmp" será colocado, caso o
+					FILE_EXISTING_ACTIONS = CREATE_TEMP_FILE
+				-->
+			</map>
+		</property>
+	</bean>
+
+	<!-- Configuraçao para template de geracao de daos -->
+	<bean name="HibernateDAOImpl" parent="abstractConfig">
+		<property name="properties">
+			<map merge="true">
+				<entry key="extends" value="AbstractJazzOMRHibernateDAO" />
+				<entry key="extendsParamTypes" value="VO" />
+				<entry key="destDirConfig" value="/br/com/dlp/jazzomr/" />
+				<entry key="regexFileDestReplacement" value="$0HibernateDAOImpl.java" />
+				<entry key="propBaseDirSufix" value="bsn/src{0}/main/java" />
+			</map>
+		</property>
+	</bean>
+
+	<!--
+		Configuraçao para PKs e VOs: Não há geracao de clases de PK e VO, mas
+		estas configurações são necessárias para que as referências às PKs e
+		VOs do projeto possam ser determinadas. Ex: Só é possível montar a
+		assinatura das classes DAO do projeto sabendo como determinar os nomes
+		das PKs e VOs: public interface TipoRequisitoDAO extends
+		IDAO<TipoRequisitoPK, TipoRequisitoVO> ^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^
+	-->
+	<bean name="PK" parent="abstractConfig">
+		<property name="properties">
+			<map merge="true">
+				<entry key="regexFileDestReplacement" value="$0PK.java" />
+			</map>
+		</property>
+	</bean>
+
+	<!--
+		Configuraçao para PKs e VOs: Não há geracao de clases de PK e VO, mas
+		estas configurações são necessárias para que as referências às PKs e
+		VOs do projeto possam ser determinadas. Ex: Só é possível montar a
+		assinatura das classes DAO do projeto sabendo como determinar os nomes
+		das PKs e VOs: public interface TipoRequisitoDAO extends
+		IDAO<TipoRequisitoPK, TipoRequisitoVO> ^^^^^^^^^^^^^^^ ^^^^^^^^^^^^^^^
+	-->
+	<bean name="VO" parent="abstractConfig">
+		<property name="properties">
+			<map merge="true">
+				<entry key="regexFileDestReplacement" value="$0VO.java" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- Configuraçao para template de geracao de Business -->
+	<bean name="Business" parent="abstractConfig">
+		<property name="properties">
+			<map merge="true">
+				<entry key="extends" value="IJazzOMRBusiness" />
+				<entry key="extendsParamTypes" value="VO" />
+				<entry key="destDirConfig" value="/br/com/dlp/jazzomr/" />
+				<entry key="regexFileDestReplacement" value="$0Business.java" />
+				<entry key="propBaseDirSufix" value="bsn/src{0}/main/java" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- Configuraçao para template de geracao de daos -->
+	<bean name="BusinessImpl" parent="abstractConfig">
+		<property name="properties">
+			<map merge="true">
+				<entry key="extends" value="AbstractJazzOMRBusinessImpl" />
+				<entry key="extendsParamTypes" value="VO" />
+				<entry key="destDirConfig" value="/br/com/dlp/jazzomr/" />
+				<entry key="regexFileDestReplacement" value="$0BusinessImpl.java" />
+				<entry key="propBaseDirSufix" value="bsn/src{0}/main/java" />
+			</map>
+		</property>
+	</bean>
+
+	<!--
+		Configuraçao para template de geracao de Controller Beans para JSF
+	-->
+	<bean name="JSFBean" parent="abstractConfig">
+
+		<!-- AÇÃO PADRÃO PARA CASO O ARQUIVO A SER GERADO JÁ EXISTA -->
+		<!-- OVERWRITE, ASK_USER, NOT_OVERWRITE, CREATE_TEMP_FILE -->
+		<property name="fileExistingAction" value="CREATE_TEMP_FILE" />
+
+		<property name="properties">
+			<map merge="true">
+				<entry key="extends" value="AbstractPaginatedJSFBeanImpl" />
+				<entry key="extendsParamTypes" value="VO" />
+				<entry key="destDirConfig" value="/br/com/dlp/jazzomr/" />
+				<entry key="regexFileDestReplacement" value="$0JSFBean.java" />
+				<entry key="propBaseDirSufix" value="portlet/src{0}/main/java" />
+			</map>
+		</property>
+	</bean>
+
+	<!--
+		Configuraçao para template de geracao de página JSF padrão RichFaces
+	-->
+	<bean name="RichFacesJSP" parent="abstractConfig">
+
+		<!--
+			OVERWRITE, ASK_USER, NOT_OVERWRITE, CREATE_TEMP_FILE 
+		-->
+		<property	name="fileExistingAction" value="CREATE_TEMP_FILE" />
+
+		<property name="properties">
+			<map merge="true">
+				<entry key="destDirConfig" value="/" />
+				<!--Pega o último nome de diretório do pacote e atribui ao grupo 1 -->
+				<entry key="destDirRegexFrom" value="^.*\.(.*$)" />
+				<!--Recupera o grupo 1, contendo o último nome do pacote-->
+				<entry key="destDirRegexDestination" value="$1" />
+				<entry key="regexFileDestReplacement" value="$0CRUD.xhtml" />
+				<entry key="propBaseDirSufix" value="portlet/src{0}/main/webapp" />
+			</map>
+		</property>
+	</bean>
+
+	<!--
+		Configuraçao para template de arquivo propertie para
+		internacionalização
+	-->
+	<bean name="DomainBundle" parent="abstractConfig">
+
+		<!--
+			OS ARQUIVOS PROPERTIE PARA INTERNACIONALIZAÇÃO SÃO OS ÚNICOS A
+			UTILIZAREM ISO-8859-1 COMO PADRÃO DE ENCODING
+		-->
+		<property name="outputEncoding" value="ISO-8859-1" />
+
+
+		<property name="properties">
+			<map merge="true">
+				<entry key="destDirConfig" value="/br/com/dlp/jazzomr/" />
+				<entry key="regexFileDestReplacement" value="$0.properties" />
+				<entry key="propBaseDirSufix" value="portlet/src{0}/main/resources" />
+			</map>
+		</property>
+	</bean>
+
+
+
+	<!-- TEMPLATES PARA ARQUIVOS DE CONFIGURACAO -->
+
+	<!-- Configuração para template de geracao de configMenu.html -->
+	<bean name="ConfigMenu" parent="abstractConfigFilesConfig">
+		<property name="outputEncoding" value="ISO-8859-1" />
+		<property name="properties">
+			<map merge="true">
+				<entry key="destDirConfig" value="./" />
+				<entry key="fileNameConfig" value="index.html" />
+				<entry key="propBaseDirSufix" value="portlet/src{0}/main/webapp" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- Configuração para template de geracao de classe de Constantes -->
+	<bean name="Constants" parent="abstractConfigFilesConfig">
+		<property name="properties">
+			<map merge="true">
+				<entry key="destDirConfig" value="br/com/dlp/jazzomr/" />
+				<entry key="fileNameConfig" value="Constants.java" />
+				<entry key="propBaseDirSufix" value="core/src{0}/main/java" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- Configuração para template de geracao de faces-config.xml -->
+	<bean name="faces-config" parent="abstractConfigFilesConfig">
+		<property name="properties">
+			<map merge="true">
+				<entry key="destDirConfig" value="./" />
+				<entry key="fileNameConfig" value="faces-config.xml" />
+				<entry key="propBaseDirSufix" value="portlet/src{0}/main/webapp/WEB-INF" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- Configuração para template de geracao de ResourceBundles -->
+	<bean name="ResourceBundles" parent="abstractConfigFilesConfig">
+		<property name="properties">
+			<map merge="true">
+				<entry key="destDirConfig" value="./" />
+				<entry key="fileNameConfig" value="ResourceBundles.properties" />
+				<entry key="propBaseDirSufix" value="portlet/src{0}/main/resources" />
+			</map>
+		</property>
+	</bean>
+</beans>

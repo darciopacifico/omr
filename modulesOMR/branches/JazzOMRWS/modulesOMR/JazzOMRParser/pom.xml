@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>Jazz</groupId>
+		<version>1.0</version>
+		<artifactId>Jazz</artifactId>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>JazzOMR</groupId>
+	<artifactId>JazzOMRParser</artifactId>
+	<packaging>pom</packaging>
+	<name>JazzOMRParser</name>
+
+	<properties>
+		<cxf.version>2.7.3</cxf.version>
+	</properties>
+
+	<modules>
+		<module>parser</module>
+		<module>ws</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-databinding-aegis</artifactId>
+				<version>2.7.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>3.5.1-Final</version>
+				<exclusions>
+
+					<exclusion>
+						<groupId>javax.transaction</groupId>
+						<artifactId>jta</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>dom4j</groupId>
+						<artifactId>dom4j</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>xml-apis</groupId>
+						<artifactId>xml-apis</artifactId>
+					</exclusion>
+				</exclusions>
+
+
+			</dependency>
+
+
+			<dependency>
+				<groupId>asm</groupId>
+				<artifactId>asm</artifactId>
+				<version>3.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.sun.facelets</groupId>
+				<artifactId>jsf-facelets</artifactId>
+				<version>1.1.15</version>
+			</dependency>
+
+			<dependency>
+				<groupId>Jazz</groupId>
+				<artifactId>JazzFramework</artifactId>
+				<version>1.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.4</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>jboss</groupId>
+				<artifactId>jboss-client</artifactId>
+				<version>4.0.2</version>
+				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>jboss</groupId>
+				<artifactId>jboss-j2ee</artifactId>
+				<version>4.0.2</version>
+				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-api</artifactId>
+				<version>2.7.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-databinding-xmlbeans</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxws</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-core</artifactId>
+				<version>3.1.4.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>3.1.4.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>3.1.4.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-ldap</artifactId>
+				<version>3.1.4.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-acl</artifactId>
+				<version>3.1.4.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>xerces</groupId>
+				<artifactId>xercesImpl</artifactId>
+				<version>2.11.0</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-transcoder</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-bridge</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-util</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-svg-dom</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-svggen</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-awt-util</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-css</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-dom</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-ext</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-extension</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-gui-util</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-gvt</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-parser</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-script</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-swing</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-xml</artifactId>
+				<version>1.6</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.ejb</groupId>
+				<artifactId>ejb-api</artifactId>
+				<version>3.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate.javax.persistence</groupId>
+				<artifactId>hibernate-jpa-2.0-api</artifactId>
+				<version>1.0.0.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>jta</artifactId>
+				<version>1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.faces</groupId>
+				<artifactId>jsf-api</artifactId>
+				<version>${jsf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.6.6</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>core</artifactId>
+				<version>2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>javase</artifactId>
+				<version>2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>jazz</groupId>
+			<artifactId>JazzJRDataSource</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>Jazz</groupId>
+			<artifactId>JazzAnnotations</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+		</dependency>
+
+
+		<!-- FORCAR A VERSAO 1.8.2. O RICHFACES 3.3.3 DEPENDE DA VERSAO 1.8.0, 
+			MAS A VERSAO 1.8.0 TEM UM BUG QUE TENTA ATRIBUIR STRING A UMA PROPRIEDADE 
+			OBJETO QUANDO � INFORMADO NULL COMO VALOR VER: br.com.dlp.framework.jsf.AbstractJSFBeanImpl 
+			(204) -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+		</dependency>
+
+
+		<!-- REFERENCIADO INDIRETAMENTE -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<!-- REFERENCIADO INDIRETAMENTE -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>Jazz</groupId>
+			<artifactId>JazzFramework</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+
+</project>

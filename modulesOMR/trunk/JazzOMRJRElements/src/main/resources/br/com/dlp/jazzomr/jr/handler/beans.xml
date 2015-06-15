@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="ohlohExportHandlerBundle" class="net.sf.jasperreports.engine.export.DefaultElementHandlerBundle">
+		
+		<property name="namespace" value="http://jazzomr.com.br/jazzomr" />
+				
+		<property name="elementHandlers">
+			<map>
+				<entry key="jazzomr">
+					<map>
+						<entry key="net.sf.jasperreports.xml">
+							<ref local="jazzOMRXMLHandler" />
+						</entry>
+						<entry key="net.sf.jasperreports.pdf">
+							<ref local="jazzOMRPDFHandler" />
+						</entry>
+					</map>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="jazzOMRXMLHandler" class="br.com.dlp.jazzomr.jr.handler.JazzOMRXMLHandler"/>
+	<bean id="jazzOMRPDFHandler" class="br.com.dlp.jazzomr.jr.handler.JazzOMRPDFHandler"/>
+
+</beans>

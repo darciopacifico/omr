@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags" 
+	xmlns:c="http://java.sun.com/jstl/core" >
+
+<f:view>
+
+	<head>
+		<title>teste</title>
+	</head>
+
+	<body>
+
+
+		<h:form>
+
+				<h:outputText value="Email" />
+				<h:inputText value="#{anuncioBean.pessoaVO.email}" id="txtResetMail" />
+				<h:message for="txtResetMail" />
+
+
+				<h:commandButton value="Redefinir Senha" event="click" action="#{anuncioBean.resetSenha()}" execute="txtResetMail">
+					<a4j:ajax render="growReset" />
+				</h:commandButton>
+
+
+			<p:growl id="growReset"></p:growl>
+
+
+
+		</h:form>
+
+
+
+	</body>
+
+</f:view>
+
+</html>

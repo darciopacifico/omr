@@ -1,0 +1,178 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:t="http://myfaces.apache.org/tomahawk" 
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:c="http://java.sun.com/jstl/core">
+	
+<head>
+		<!-- revisar estilo e layout de paginas-->
+    <style>
+        img {
+            border-width: 0;
+        }
+    </style>
+</head>
+
+<f:loadBundle var="msg" basename="br.com.dlp.jazzqa.ResourceBundle" />
+<f:loadBundle var="lblPessoa" basename="br.com.dlp.jazzqa.pessoa.Pessoa" />
+
+<f:view>
+	<head>
+			<title><h:outputText value="#{lblPessoa.pnlPessoa}"/></title>
+	</head>
+	<body>
+
+	<h:form>
+		<rich:panel>
+
+			<f:facet name="header">
+				<h:outputText value="#{lblPessoa.pnlPessoa}"/>
+			</f:facet>
+
+			<!--FORMULARIO DE PESQUISA-->
+			<h:panelGrid columns="2">
+				<h:outputText value="#{lblPessoa.login}"/>
+				<h:inputText     value="#{pessoaJSFBean.login}"/>
+				
+ 				<h:outputText value="#{lblPessoa.email}"/>
+				<h:inputText     value="#{pessoaJSFBean.email}"/>
+				
+ 				<h:outputText value="#{lblPessoa.nome}"/>
+				<h:inputText     value="#{pessoaJSFBean.nome}"/>
+				
+ 				<h:outputText value="#{lblPessoa.telefone}"/>
+				<h:inputText     value="#{pessoaJSFBean.telefone}"/>
+				
+ 				<h:outputText value="#{lblPessoa.dtInc}"/>
+				<h:inputText     value="#{pessoaJSFBean.dtInc}"/>
+				
+ 				<h:outputText value="#{lblPessoa.dtAlt}"/>
+				<h:inputText     value="#{pessoaJSFBean.dtAlt}"/>
+				
+ 				<h:outputText value="#{lblPessoa.status}"/>
+				<h:inputText     value="#{pessoaJSFBean.status}"/>
+				
+			</h:panelGrid>
+
+			<!--BARRA DE BOTOES -->
+			<rich:toolBar height="26" itemSeparator="grid">
+				<rich:toolBarGroup>
+
+					<a4j:commandLink action="#{pessoaJSFBean.actionNovo}"   title="#{msg.btnNovo}"   reRender="campos">
+						<h:graphicImage value="../img/create_doc.gif" alt="Criar Novo Registros" />
+					</a4j:commandLink>
+
+					<a4j:commandLink action="#{pessoaJSFBean.actionSalvar}" title="#{msg.btnSalvar}" reRender="campos,resultadoDG" >
+						<h:graphicImage value="../img/save.gif" alt="Salvar Alterações" />
+					</a4j:commandLink>
+
+					<a4j:commandLink action="#{pessoaJSFBean.actionPesquisar}" title="#{msg.btnPesquisar}" reRender="resultadoDG" >
+						<h:graphicImage value="../img/find.gif" alt="Pesquisar" />
+					</a4j:commandLink>
+
+				</rich:toolBarGroup>    
+			</rich:toolBar>
+
+			<rich:spacer height="30px;" />
+
+			<!--TABELA DE RESULTADOS-->
+			<rich:dataTable value="#{pessoaJSFBean.resultados}" var="resultado" id="resultadoDG" >
+				<f:facet name="header">Resultados Consulta</f:facet>
+				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblPessoa.login}"/></f:facet>
+					<h:outputText value="#{resultado.login}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblPessoa.email}"/></f:facet>
+					<h:outputText value="#{resultado.email}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblPessoa.nome}"/></f:facet>
+					<h:outputText value="#{resultado.nome}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblPessoa.telefone}"/></f:facet>
+					<h:outputText value="#{resultado.telefone}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblPessoa.dtInc}"/></f:facet>
+					<h:outputText value="#{resultado.dtInc}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblPessoa.dtAlt}"/></f:facet>
+					<h:outputText value="#{resultado.dtAlt}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblPessoa.status}"/></f:facet>
+					<h:outputText value="#{resultado.status}"/>
+				</rich:column>
+				
+
+				<rich:column>
+					<f:facet name="header">&nbsp;</f:facet>
+					<a4j:commandButton action="#{pessoaJSFBean.actionUpdate(resultado)}" value="#{msg.btnAlterar}" reRender="campos" />
+				</rich:column>
+			
+				<rich:column>
+					<f:facet name="header">&nbsp;</f:facet>
+					<a4j:commandButton action="#{pessoaJSFBean.actionDelete(resultado)}" value="#{msg.btnExcluir}" reRender="campos,resultadoDG" />
+				</rich:column>
+			
+			</rich:dataTable>
+
+
+			<!--CAMPOS MANUTENCAO-->
+			<h:panelGrid columns="3" id="campos">
+				<h:outputText value="#{lblPessoa.login}"/>
+				<h:inputText     value="#{pessoaJSFBean.tmpVO.login}"/>
+				<rich:message for="login" />
+				
+ 				<h:outputText value="#{lblPessoa.email}"/>
+				<h:inputText     value="#{pessoaJSFBean.tmpVO.email}"/>
+				<rich:message for="email" />
+				
+ 				<h:outputText value="#{lblPessoa.nome}"/>
+				<h:inputText     value="#{pessoaJSFBean.tmpVO.nome}"/>
+				<rich:message for="nome" />
+				
+ 				<h:outputText value="#{lblPessoa.telefone}"/>
+				<h:inputText     value="#{pessoaJSFBean.tmpVO.telefone}"/>
+				<rich:message for="telefone" />
+				
+ 				<h:outputText value="#{lblPessoa.dtInc}"/>
+				<h:inputText     value="#{pessoaJSFBean.tmpVO.dtInc}"/>
+				<rich:message for="dtInc" />
+				
+ 				<h:outputText value="#{lblPessoa.dtAlt}"/>
+				<h:inputText     value="#{pessoaJSFBean.tmpVO.dtAlt}"/>
+				<rich:message for="dtAlt" />
+				
+ 				<h:outputText value="#{lblPessoa.status}"/>
+				<h:inputText     value="#{pessoaJSFBean.tmpVO.status}"/>
+				<rich:message for="status" />
+				
+			</h:panelGrid>
+
+		</rich:panel>
+	</h:form>
+	</body>
+</f:view>
+</html>
+
+
+
+
+
+
+

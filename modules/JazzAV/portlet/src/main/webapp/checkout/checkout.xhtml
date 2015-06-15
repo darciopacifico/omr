@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich" xmlns:p="http://primefaces.org/ui"
+    xmlns:t="http://myfaces.apache.org/tomahawk" template="/templates/template.xhtml">
+
+    <style>
+    <!--
+    #gridPrincipal * {
+        font-size: 40px;
+        size: 30px;
+    }
+    -->
+    </style>
+
+
+    <ui:define name="headInsert">
+        <script type="text/javascript">
+        <!--
+        jQuery(function($){$("#txtCep").mask("99999-999");});
+        //-->
+        </script>
+    </ui:define>
+
+    <ui:define name="body">
+        <h:form prependId="false" styleClass="wufoo topLabel page1">
+
+            <h2>
+                Usuário Logado:
+                <h:outputText value="#{anuncioBean.anuncioVO.pessoaVO.nome}" />
+            </h2>
+            <div>This is my form. Please fill it out. It's awesome!</div>
+
+
+
+            <h:panelGrid columns="2" id="gridPrincipal">
+                <h:panelGrid columns="3" id="pnlCheckout">
+                    <f:facet name="header">Informações de Entrega e Pagamento</f:facet>
+
+                    <h:outputLabel value="Email" />
+                    <h:outputText value="#{anuncioBean.anuncioVO.pessoaVO.email}" />
+                    <h:message for="txtNome" />
+
+                    <h:outputLabel value="Nome" />
+                    <h:outputText value="#{anuncioBean.anuncioVO.pessoaVO.nome}" id="txtNome" />
+                    <h:message for="txtNome" />
+
+                    <h:outputLabel value="CEP" />
+                    <h:panelGroup>
+
+                        <h:inputText value="#{anuncioBean.anuncioVO.pessoaVO.enderecoVO.cep}" id="txtCep" size="8" maxlength="10">
+                            <a4j:ajax event="change" execute="txtCep" render="gridPrincipal growlPrincipal" listener="#{anuncioBean.completarEndereco}"
+                                oncomplete="txtEndereco.focus();jQuery(function($){$('#txtCep').mask('99999-999');});" />
+                                
+                            
+                        </h:inputText>
+                        <p:spacer width="7"/>
+                        <h:commandLink  value="Completar Endereço" >
+                            <a4j:ajax event="click" execute="txtCep" render="gridPrincipal growlPrincipal" listener="#{anuncioBean.completarEndereco}"
+                                oncomplete="txtEndereco.focus();jQuery(function($){$('#txtCep').mask('99999-999');});" />
+                        </h:commandLink>
+
+                    </h:panelGroup>
+                    <h:message for="txtCep" />
+
+
+                    <h:outputLabel value="Endereço " />
+                    <h:panelGroup>
+                        <h:inputText value="#{anuncioBean.anuncioVO.pessoaVO.enderecoVO.logradouro}" id="txtEndereco">
+                            <p:watermark value="Rua Xxx xxx, yy" for="txtEndereco" />
+                        </h:inputText>
+                        <h:outputText value=" n." />
+                        <h:inputText value="#{anuncioBean.anuncioVO.pessoaVO.enderecoVO.numero}" maxlength="10" id="txtNumero" size="3" />
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <h:message for="txtEndereco" />
+                        <h:message for="txtNumero" />
+                    </h:panelGroup>
+
+
+                    <h:outputLabel value="Complemento " />
+                    <h:panelGroup>
+                        <h:inputText value="#{anuncioBean.anuncioVO.pessoaVO.enderecoVO.complemento}" id="txtComplemento">
+                            <p:watermark value="5. andar, apto 53" for="txtComplemento" />
+                        </h:inputText>
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <h:message for="txtComplemento" />
+                    </h:panelGroup>
+
+
+                    <h:outputLabel value="Estado " />
+                    <h:selectOneMenu value="#{anuncioBean.anuncioVO.pessoaVO.enderecoVO.uf}" id="cboEstado">
+                        <f:selectItems value="#{anuncioBean.listaEstados()}" />
+                    </h:selectOneMenu>
+                    <h:message for="cboEstado" />
+
+
+                    <h:outputLabel value="Cidade " />
+                    <h:inputText value="#{anuncioBean.anuncioVO.pessoaVO.enderecoVO.cidade}" id="txtCidade" label="Cidade"/>
+                    <h:message for="txtCidade" />
+
+
+					
+                    <h:outputLabel value="DDD/Telefone 1" />
+                    <h:panelGroup>
+	                    <h:inputText value="#{anuncioBean.anuncioVO.pessoaVO.ddd1}" id="txtDDD1" size="2" maxlength="2" />
+	                    <h:inputText value="#{anuncioBean.anuncioVO.pessoaVO.telefone1}" id="txtTelefone1" size="16" maxlength="50" label="Telefone 1" >
+	                    	<f:validateLength minimum="7" maximum="9"/>
+	                    </h:inputText>
+                    </h:panelGroup>
+                    
+                    <h:panelGroup>
+	                    <h:message for="txtDDD1" />
+	                    <h:message for="txtTelefone1"  /> 
+                    </h:panelGroup>
+
+
+                    <h:outputLabel value="DDD/Telefone 2" />
+                    <h:panelGroup>
+	                    <h:inputText value="#{anuncioBean.anuncioVO.pessoaVO.ddd2}" id="txtDDD2" size="2" maxlength="2" />
+	                    <h:inputText value="#{anuncioBean.anuncioVO.pessoaVO.telefone2}" id="txtTelefone2" size="16" maxlength="50" />
+                    </h:panelGroup>
+					<h:panelGroup>
+	                    <h:message for="txtDDD2" />
+	                    <h:message for="txtTelefone2" />
+					</h:panelGroup>
+
+                </h:panelGrid>
+
+                <h:panelGrid columns="1" layout="block">
+
+                    <h:panelGrid id="pnlSampleAnuncio" columns="1">
+                        <a4j:mediaOutput id="imgSample" styleClass="classAdesPrincipal" element="img" cacheable="false" style="width:492px;height:369px;" session="false"
+                            createContent="#{anuncioBean.paintModeloAnuncio}" value="" mimeType="image/png" />
+                    </h:panelGrid>
+
+
+                    <h:panelGroup style="text-align: center; border-style:none; width: 100%;">
+
+                        <a4j:commandLink style="text-decoration: none; height: 40px;" action="#{anuncioBean.efetuarPagamento()}" execute="pnlCheckout" render="pnlCheckout">
+
+                            <div style="">
+                                <div>
+                                    <img src="../img/empty_cart.png" /> <span style="text-shadow: 1px 1px gray; font-size: 20px; font-weight: bolder;">Comprar</span>
+
+                                </div>
+
+                                <div>
+
+                                    <span style="color: #066814; text-shadow: 3px 3px 7px gray; font-size: 40px; font-family: freeSans; font-weight: bolder;">R$30,00</span>
+                                </div>
+
+                                <div>
+
+                                    <img src="../img/2ades.png" /> <span style="text-shadow: 1px 1px gray; font-size: 20px; font-weight: bolder;">2 Adesivos + Anúncio com fotos</span>
+
+                                </div>
+
+                            </div>
+
+
+
+
+                        </a4j:commandLink>
+
+
+                    </h:panelGroup>
+
+                </h:panelGrid>
+
+            </h:panelGrid>
+
+
+
+            <p:growl id="growlPrincipal" />
+
+        </h:form>
+    </ui:define>
+</ui:composition>

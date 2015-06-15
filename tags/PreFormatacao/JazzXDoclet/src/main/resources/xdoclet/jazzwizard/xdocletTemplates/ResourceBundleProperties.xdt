@@ -1,0 +1,22 @@
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ResourceBundle.properties' generateMergedFile='true'>
+</XDtMerge:merge>
+<XDtClass:forAllClasses>
+
+
+#########################################################################
+##### LABELS PARA <XDtWj2eeClass:moduleId/> #####
+<XDtWj2eeClass:multiLinguaNomeKey/>=<XDtWj2eeClass:multiLinguaNomevalue/>
+<XDtWj2eeClass:multiLinguaDescricaoKey/>=<XDtWj2eeClass:multiLinguaDescricaovalue/>
+##### LABELS PARA AS DESCRICOES DOS ATRIBUTOS <XDtWj2eeClass:moduleId/> #####
+	<XDtWj2eeMethod:forAllMethods superclasses="false" sort="true">
+		<XDtMethod:ifIsGetter>
+<XDtWj2eeMethod:multiLinguaLabelKey/>=<XDtWj2eeMethod:multiLinguaLabelValue/>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>
+##### LABELS PARA AS DICAS DOS ATRIBUTOS DE <XDtWj2eeClass:moduleId/> #####
+	<XDtWj2eeMethod:forAllMethods superclasses="false" sort="true">
+		<XDtMethod:ifIsGetter>
+<XDtWj2eeMethod:multiLinguaDicaKey/>=<XDtWj2eeMethod:multiLinguaDicaValue/>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>
+</XDtClass:forAllClasses>

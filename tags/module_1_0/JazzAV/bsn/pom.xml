@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>JazzAV</groupId>
+	<artifactId>JazzAV.bsn</artifactId>
+	<packaging>jar</packaging>
+	<name>BSN - Componentes de Negocio</name>
+	<parent>
+		<groupId>JazzAV</groupId>
+		<artifactId>JazzAV</artifactId>
+		<version>1.0</version>
+	</parent>
+	<dependencies>
+
+		<dependency>
+			<!-- incluido para permitir que exceções de negócio sejam marcadas com @ApplicationException -->
+		    <groupId>javax.ejb</groupId>
+		    <artifactId>ejb-api</artifactId>
+		    <version>3.0</version>
+		   	<scope>provided</scope>
+		</dependency>
+
+
+
+		<dependency>
+			<!-- 
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.1</version>
+			 --> 
+		  <groupId>com.sun.faces</groupId>
+		  <artifactId>jsf-impl</artifactId>
+		  <version>2.1.7</version>
+		</dependency>
+		
+		
+		
+
+
+
+		<!-- 
+		<dependency>
+    		<groupId>org.icepdf</groupId>
+    		<artifactId>icepdf-core</artifactId>
+    		<version>4.2.0</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.icepdf</groupId>
+    		<artifactId>icepdf-viewer</artifactId>
+    		<version>4.2.0</version>
+		</dependency>
+		 -->
+
+
+
+
+
+		<!-- tentativa de utilizar barcode4j, gerando datamatrix ao inves de zxing gerando qrcode -->
+
+		
+		
+		
+		  
+		
+		  
+		
+		  
+		
+		  
+		
+		  
+		  <!-- 
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-anim</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		   -->
+		
+		  
+		
+		  <!-- 
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-codec</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		   -->
+		
+		  
+		
+		  
+		
+		  
+		
+		  
+		
+		  
+		
+		  
+		
+		<!-- 
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-js</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		 -->  
+		
+		  
+		
+		  
+		
+		<!-- 
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-slideshow</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		 -->
+		
+		  
+		
+		  
+		
+		  
+		
+		
+
+
+
+
+		<!-- 
+	
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>1.6-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>1.6-SNAPSHOT</version>
+		</dependency>
+		 -->
+
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
+
+		
+		<!-- 
+		
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>imagej</groupId>
+			<artifactId>ij</artifactId>
+			<version>1.43</version>
+		</dependency>
+
+		
+		 -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>JazzAV</groupId>
+			<artifactId>JazzAV.core</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<configuration>
+					<generateClient>true</generateClient>
+					<clientExcludes>
+						<clientExcludes>**/ejb-jar.xml</clientExcludes>
+						<clientExcludes>**/jboss.xml</clientExcludes>
+						<clientExcludes>**/*Ejb.class</clientExcludes> <!-- VERIFIQUE O SUFIXO DAS IMPLEMENTACOES DOS EJB -->
+						<clientExcludes>**/*Bean.class</clientExcludes> <!-- VERIFIQUE O SUFIXO DAS IMPLEMENTACOES DOS EJB -->
+					</clientExcludes>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+
+				<!-- <version>2.2</version>  DEPOIS TESTE SE É NECESSARIO MANTER ESTE VERSION. ACHO QUE NAO MAIS.... -->
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+						<manifestEntries>
+							<mode>development</mode>
+							<url>${pom.url}</url>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<excludeDefaultDirectories>true</excludeDefaultDirectories>
+					<filesets>
+						<fileset>
+							<directory>${project.build.directory}</directory>
+							<excludes>
+								<exclude>generated-resources/eclipse/**</exclude>
+							</excludes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

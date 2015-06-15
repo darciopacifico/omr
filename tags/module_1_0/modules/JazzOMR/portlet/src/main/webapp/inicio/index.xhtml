@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/template/crud/crudTemplate.xhtml">
+
+	<ui:param name="tituloModulo" value="Página Inicial" />
+	<ui:param name="iconeModulo" value="/img/menu/home.png" />
+	<ui:param name="menuUrlPrefix" value="../"  />
+		
+	<ui:param name="myMBean" value="#{pessoaJSFBean}" />
+
+
+
+	<!-- DEFINICOES GLOBAIS DO MÓDULO -->
+	<ui:define name="repGlobal">
+		<f:loadBundle var="msg" basename="br.com.dlp.jazzomr.ResourceBundle" />
+	</ui:define>
+	
+	<!-- PAINEL COM CAMPOS PARA PESQUISA -->
+	<ui:define name="mainToolbar">
+	</ui:define>
+	
+	<ui:define name="mainTogglePanel">
+	</ui:define>
+	<ui:define name="accessDenied">
+	</ui:define>
+	
+	
+	
+	<ui:define name="mainResultTables" >    
+
+		<p:carousel rows="1" circular="true" itemStyle="height:410px;width:800px;" animate="false" effect="easeInStrong" autoPlayInterval="20000"  value="teste"  >
+			<f:facet name="header">teste</f:facet>
+		
+			<p:tab title="Passo 1">
+				<h:panelGroup layout="block"  style="width:600px;">
+					<rich:spacer height="20" width="700"></rich:spacer>
+					<h:graphicImage value="/img/presentation/passo1.png" />
+				</h:panelGroup>				 
+			</p:tab>
+			<p:tab title="Passo 2">
+				<rich:spacer height="20" width="700"></rich:spacer>
+				<h:graphicImage value="/img/presentation/passo2.png" />
+			</p:tab>
+			<p:tab title="Passo 3">
+				<rich:spacer height="20" width="700"></rich:spacer>
+				<h:graphicImage value="/img/presentation/passo3.png" />
+			</p:tab>
+			<p:tab title="Passo 4">
+				<rich:spacer height="20" width="700"></rich:spacer>
+				<h:graphicImage value="/img/presentation/passo4.png" />
+			</p:tab>
+		</p:carousel>
+		
+	</ui:define>
+	
+	<ui:define name="mainConfirmDialog" >
+	</ui:define>
+	
+	<ui:define name="faceletMdlManutencao">
+	</ui:define>
+	
+</ui:composition>
+

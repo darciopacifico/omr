@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1400"
+   height="604"
+   id="svg2985"
+   version="1.1"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="corretorLogo.svg">
+  <defs
+     id="defs2987">
+    <linearGradient
+       id="linearGradient4388">
+      <stop
+         id="stop4390"
+         offset="0"
+         style="stop-color:#ffffff;stop-opacity:1;" />
+      <stop
+         id="stop4392"
+         offset="1"
+         style="stop-color:#ffffff;stop-opacity:0.64197528;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5998">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop6000" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop6002" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5219"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#445500;stop-opacity:1;"
+         offset="0"
+         id="stop5221" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5998"
+       id="linearGradient6004"
+       x1="54.782478"
+       y1="300.0892"
+       x2="689.24713"
+       y2="300.0892"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4388"
+       id="linearGradient4286"
+       x1="393.14661"
+       y1="123.40502"
+       x2="1310.312"
+       y2="123.40502"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4388"
+       id="linearGradient4400"
+       x1="382.73212"
+       y1="260.01801"
+       x2="1275.6014"
+       y2="260.01801"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       id="filter4938">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.77287164"
+         id="feGaussianBlur4940" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4388-0"
+       id="linearGradient4286-4"
+       x1="393.14661"
+       y1="123.40502"
+       x2="1310.312"
+       y2="123.40502"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient4388-0">
+      <stop
+         id="stop4390-4"
+         offset="0"
+         style="stop-color:#ffffff;stop-opacity:1;" />
+      <stop
+         id="stop4392-4"
+         offset="1"
+         style="stop-color:#ffffff;stop-opacity:0.64197528;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4388-0"
+       id="linearGradient4969"
+       x1="393.14661"
+       y1="123.40502"
+       x2="1310.312"
+       y2="123.40502"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient4971">
+      <stop
+         id="stop4973"
+         offset="0"
+         style="stop-color:#ffffff;stop-opacity:1;" />
+      <stop
+         id="stop4975"
+         offset="1"
+         style="stop-color:#ffffff;stop-opacity:0.64197528;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4388-0"
+       id="linearGradient4400-5"
+       x1="382.73212"
+       y1="260.01801"
+       x2="1275.6014"
+       y2="260.01801"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient4978">
+      <stop
+         id="stop4980"
+         offset="0"
+         style="stop-color:#ffffff;stop-opacity:1;" />
+      <stop
+         id="stop4982"
+         offset="1"
+         style="stop-color:#ffffff;stop-opacity:0.64197528;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4388-0"
+       id="linearGradient4984"
+       x1="382.73212"
+       y1="260.01801"
+       x2="1275.6014"
+       y2="260.01801"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient4986">
+      <stop
+         id="stop4988"
+         offset="0"
+         style="stop-color:#ffffff;stop-opacity:1;" />
+      <stop
+         id="stop4990"
+         offset="1"
+         style="stop-color:#ffffff;stop-opacity:0.64197528;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4388"
+       id="linearGradient5083"
+       gradientUnits="userSpaceOnUse"
+       x1="393.14661"
+       y1="123.40502"
+       x2="1310.312"
+       y2="123.40502" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4388"
+       id="linearGradient5085"
+       gradientUnits="userSpaceOnUse"
+       x1="382.73212"
+       y1="260.01801"
+       x2="1275.6014"
+       y2="260.01801" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4388"
+       id="linearGradient5093"
+       gradientUnits="userSpaceOnUse"
+       x1="382.73212"
+       y1="260.01801"
+       x2="1275.6014"
+       y2="260.01801"
+       gradientTransform="translate(-237.16438,13.3616)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#033548"
+     bordercolor="#2b315d"
+     borderopacity="1"
+     inkscape:pageopacity="0.70980392"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.47847559"
+     inkscape:cx="875.63125"
+     inkscape:cy="558.43005"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-global="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid5254"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata2990">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(0,4)">
+    <text
+       xml:space="preserve"
+       style="font-size:69.90116882px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#3b3b3b;fill-opacity:0.82733824;stroke:none;filter:url(#filter4938);font-family:Helvetica;-inkscape-font-specification:Helvetica"
+       x="388.42035"
+       y="161.9671"
+       id="text5067"
+       sodipodi:linespacing="125%"
+       transform="matrix(1.0373066,0,0,0.96403512,-246.70652,16.539825)"
+       inkscape:export-filename="/home/darcio/workspace/modules/JazzOMR/portlet/src/main/imgSource/corretorLogo.png"
+       inkscape:export-xdpi="30.428619"
+       inkscape:export-ydpi="30.428619"><tspan
+         sodipodi:role="line"
+         id="tspan5069"
+         x="388.42035"
+         y="161.9671"
+         style="font-size:107.4152832px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:344.99988556%;fill:#3b3b3b;fill-opacity:0.82733824;font-family:Helvetica;-inkscape-font-specification:Helvetica">AdesivoVende-se</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:66.8710022px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#3b3b3b;fill-opacity:0.82733824;stroke:none;font-family:Sans"
+       x="147.65691"
+       y="289.72427"
+       id="text5071"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0655332,0.93849727)"
+       inkscape:export-filename="/home/darcio/workspace/modules/JazzOMR/portlet/src/main/imgSource/corretorLogo.png"
+       inkscape:export-xdpi="30.428619"
+       inkscape:export-ydpi="30.428619"><tspan
+         sodipodi:role="line"
+         id="tspan5073"
+         x="147.65691"
+         y="289.72427"
+         style="font-size:44.83306122px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:344.99988556%;fill:#3b3b3b;fill-opacity:0.82733824;stroke:none;font-family:Helvetica;-inkscape-font-specification:Helvetica">Elaborar e corrigir provas ficou mais fácil!</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:46.23646545px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#3b3b3b;fill-opacity:0.82733824;stroke:none;font-family:Sans"
+       x="162.10129"
+       y="87.075829"
+       id="text5075"
+       sodipodi:linespacing="125%"
+       transform="scale(0.99316868,1.0068783)"
+       inkscape:export-filename="/home/darcio/workspace/modules/JazzOMR/portlet/src/main/imgSource/corretorLogo.png"
+       inkscape:export-xdpi="30.428619"
+       inkscape:export-ydpi="30.428619"><tspan
+         sodipodi:role="line"
+         id="tspan5077"
+         x="162.10129"
+         y="87.075829"
+         style="font-size:30.99881554px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:344.99988556%;fill:#3b3b3b;fill-opacity:0.82733824;font-family:Helvetica;-inkscape-font-specification:Helvetica">www.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:47.11246872px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#3b3b3b;fill-opacity:0.82733824;stroke:none;font-family:Sans"
+       x="985.56171"
+       y="209.91263"
+       id="text5079"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0129083,0.98725621)"
+       inkscape:export-filename="/home/darcio/workspace/modules/JazzOMR/portlet/src/main/imgSource/corretorLogo.png"
+       inkscape:export-xdpi="30.428619"
+       inkscape:export-ydpi="30.428619"><tspan
+         sodipodi:role="line"
+         id="tspan5081"
+         x="985.56171"
+         y="209.91263"
+         style="font-size:31.58612251px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:344.99988556%;fill:#3b3b3b;fill-opacity:0.82733824;font-family:Helvetica;-inkscape-font-specification:Helvetica">.com.br</tspan></text>
+    <text
+       inkscape:export-ydpi="30.428619"
+       inkscape:export-xdpi="30.428619"
+       inkscape:export-filename="/home/darcio/workspace/modules/JazzOMR/portlet/src/main/imgSource/corretorLogo.png"
+       transform="matrix(1.0373066,0,0,0.96403512,-252.70652,12.539825)"
+       sodipodi:linespacing="125%"
+       id="text3076"
+       y="161.9671"
+       x="388.42035"
+       style="font-size:69.90116882px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient5083);fill-opacity:1;stroke:none;filter:url(#filter4938);font-family:Helvetica;-inkscape-font-specification:Helvetica"
+       xml:space="preserve"><tspan
+         style="font-size:107.4152832px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:344.99988556%;fill:url(#linearGradient5083);fill-opacity:1;font-family:Helvetica;-inkscape-font-specification:Helvetica"
+         y="161.9671"
+         x="388.42035"
+         id="tspan3078"
+         sodipodi:role="line">AdesivoVende-se</tspan></text>
+    <text
+       inkscape:export-ydpi="30.428619"
+       inkscape:export-xdpi="30.428619"
+       inkscape:export-filename="/home/darcio/workspace/modules/JazzOMR/portlet/src/main/imgSource/corretorLogo.png"
+       transform="scale(1.0655332,0.93849727)"
+       sodipodi:linespacing="125%"
+       id="text3080"
+       y="285.46213"
+       x="142.02592"
+       style="font-size:66.8710022px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:url(#linearGradient5093);fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:44.83306122px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:344.99988556%;fill:url(#linearGradient5093);fill-opacity:1;stroke:none;font-family:Helvetica;-inkscape-font-specification:Helvetica"
+         y="285.46213"
+         x="142.02592"
+         id="tspan3082"
+         sodipodi:role="line">Elaborar e corrigir provas ficou mais fácil!</tspan></text>
+    <text
+       inkscape:export-ydpi="30.428619"
+       inkscape:export-xdpi="30.428619"
+       inkscape:export-filename="/home/darcio/workspace/modules/JazzOMR/portlet/src/main/imgSource/corretorLogo.png"
+       transform="scale(0.99316868,1.0068783)"
+       sodipodi:linespacing="125%"
+       id="text3084"
+       y="83.103157"
+       x="156.06"
+       style="font-size:46.23646545px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:30.99881554px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:344.99988556%;fill:#ffffff;fill-opacity:1;font-family:Helvetica;-inkscape-font-specification:Helvetica"
+         y="83.103157"
+         x="156.06"
+         id="tspan3086"
+         sodipodi:role="line">www.</tspan></text>
+    <text
+       inkscape:export-ydpi="30.428619"
+       inkscape:export-xdpi="30.428619"
+       inkscape:export-filename="/home/darcio/workspace/modules/JazzOMR/portlet/src/main/imgSource/corretorLogo.png"
+       transform="scale(1.0129083,0.98725621)"
+       sodipodi:linespacing="125%"
+       id="text3088"
+       y="205.86099"
+       x="979.63824"
+       style="font-size:47.11246872px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ececec;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:31.58612251px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:344.99988556%;fill:#ececec;fill-opacity:1;font-family:Helvetica;-inkscape-font-specification:Helvetica"
+         y="205.86099"
+         x="979.63824"
+         id="tspan3090"
+         sodipodi:role="line">.com.br</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2993"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion2995"><rect
+           id="rect2997"
+           width="639.93164"
+           height="128.45773"
+           x="83.674301"
+           y="225.2334" /></flowRegion><flowPara
+         id="flowPara2999" /></flowRoot>  </g>
+</svg>

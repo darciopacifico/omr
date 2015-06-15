@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>  
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>JazzQA</groupId>  
+	<artifactId>JazzQA.ear</artifactId>
+	<packaging>ear</packaging>
+
+	<name>EAR - Enterprise Archive</name> 
+	<parent>
+		<groupId>JazzQA</groupId>
+		<artifactId>JazzQA</artifactId>
+		<version>1.0</version>
+	</parent>
+	<dependencies>
+		<!-- 
+		-->
+		<dependency>
+			<groupId>JazzQA</groupId>
+			<artifactId>JazzQA.ejb</artifactId>
+			<type>ejb</type>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>JazzQA</groupId>
+			<artifactId>JazzQA.web</artifactId>
+			<version>${project.parent.version}</version>
+			<type>war</type>
+		</dependency>
+
+	<!-- 
+		<dependency>
+			<groupId>org.docs.richfaces</groupId>
+			<artifactId>jsf-app</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+	 -->
+
+
+
+
+		<dependency>
+			<groupId>JazzQA</groupId>
+			<artifactId>JazzQA.core</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<wtpmanifest>true</wtpmanifest>
+					<wtpapplicationxml>true</wtpapplicationxml>
+					<wtpversion>2.0</wtpversion>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jboss-packaging-maven-plugin
+				</artifactId>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+
+					<modules>
+
+						<!--
+							<ejbModule> <groupId>JazzQA</groupId>
+							<artifactId>JazzQA.ejb</artifactId> </ejbModule> <webModule>
+							<groupId>JazzQA</groupId> <artifactId>JazzQA.web</artifactId>
+							</webModule> <jarModule> <groupId>JazzQA</groupId>
+							<artifactId>JazzQA.core</artifactId> </jarModule>
+						-->
+
+					</modules>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.geronimo.buildsupport
+				</groupId>
+				<artifactId>geronimo-maven-plugin</artifactId>
+				<version>2.1.1</version>
+
+				<configuration>
+
+					<assemblies>
+						<assembly>
+							<id>jetty</id>
+							<groupId>org.apache.geronimo.assemblies
+							</groupId>
+							<artifactId>geronimo-jetty6-jee5</artifactId>
+							<version>2.0.2</version>
+							<classifier>bin</classifier>
+							<type>zip</type>
+						</assembly>
+					</assemblies>
+					<defaultAssemblyId>jetty</defaultAssemblyId>
+
+					<optionSets>
+						<optionSet>
+							<id>default</id>
+							<options>
+								<option>-Xdebug</option>
+								<option>
+									-Xrunjdwp:transport=dt_socket,address=4142,server=y,suspend=n
+								</option>
+							</options>
+						</optionSet>
+					</optionSets>
+				</configuration>
+			</plugin>
+
+			<!--
+				<plugin> <groupId>org.apache.geronimo.plugins</groupId>
+				<artifactId>geronimo-maven-plugin</artifactId> <execution>
+				<id>deploy-ears</id> <goals> <goal>deploy-module</goal> </goals>
+				<configuration> <modules> <module> <groupId>JazzQA</groupId>
+				<artifactId>JazzQA.ear</artifactId> <version>1.0</version>
+				<type>ear</type> </module> </modules> </configuration> </execution>
+				</plugin>
+			-->
+
+
+
+
+		</plugins>
+	</build>
+</project>

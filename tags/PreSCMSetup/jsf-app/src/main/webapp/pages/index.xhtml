@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:t="http://myfaces.apache.org/tomahawk" 
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:c="http://java.sun.com/jstl/core">
+
+<ui:composition template="/pages/layout/crudDefault.xhtml">
+
+	<ui:define name="titleName">Teste titulo dinamico</ui:define>
+
+	<ui:define name="body">
+		<f:view>
+			<h:form>
+				<rich:panel>
+					<f:facet name="header">
+						<h:outputText value="#{msg.pnlTipoRelacionamento} teste alterando" />
+					</f:facet>
+					<rich:toolBar height="26" itemSeparator="grid">
+
+						<rich:toolBarGroup>
+							<h:commandButton image="/img/create_doc.gif" action="#{moduloBean.actionNovo}" value="Novo (Submit)"
+								title="Criar Novo Registro" />
+						</rich:toolBarGroup>
+
+						<rich:toolBarGroup>
+							<a4j:commandButton action="#{moduloBean.actionPesquisar}" value="Pesquisar12345" reRender="campos,resultadoDG" />
+						</rich:toolBarGroup>
+
+						<rich:toolBarGroup location="right">
+							<a4j:commandButton action="#{moduloBean.actionNovo}" value="#{msg.btnNovo}XXX" reRender="campos,resultadoDG" />
+							<a4j:status id="commonstatus" startText="In progress..." stopText="Complete" />
+						</rich:toolBarGroup>
+					</rich:toolBar>
+
+					<rich:spacer height="30px;" />
+
+					<rich:dataTable value="#{moduloBean.resultadoConsulta}" var="resultado" id="resultadoDG">
+						<f:facet name="header">Resultados Consulta 123</f:facet>
+
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.lblId}" />
+							</f:facet>
+							<h:outputText value="#{resultado.id}" />
+						</rich:column>
+
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.lblDescricao}" />
+							</f:facet>
+
+							<a4j:commandLink action="#{moduloBean.showDetail(resultado)}" reRender="mdlEdit"
+								oncomplete="Richfaces.showModalPanel('mdlEdit',{width:450, top:200})">
+                    			show
+			               </a4j:commandLink>
+
+						</rich:column>
+
+					</rich:dataTable>
+ 
+					<f:facet name="footer">
+						<h:outputText value="#{msg.pnlTipoRelacionamento}" />
+					</f:facet>
+				</rich:panel>
+
+
+
+
+				<rich:modalPanel id="mdlEdit">
+
+					<f:facet name="header">
+						<h:panelGroup>
+							<h:outputText value="Editar Objeto XYZ" />
+						</h:panelGroup>
+					</f:facet>
+
+					<f:facet name="controls">
+						<h:panelGroup>
+							<h:graphicImage value="/img/close.png" style="cursor:pointer" onclick="Richfaces.hideModalPanel('mdlEdit')" />
+						</h:panelGroup>
+					</f:facet>
+
+					<h:panelGrid id="gridCamposModal" columns="2">
+
+						<h:outputText value="ID" />
+						<h:inputText value="#{moduloBean.moduloVO.id}" />
+
+						<h:outputText value="Descricao" />
+						<h:inputText value="#{moduloBean.moduloVO.descricao}" />
+
+					</h:panelGrid>
+
+					<f:facet name="footer">
+						<h:outputText value="Rodapé do modal editor" />
+					</f:facet>
+				</rich:modalPanel>
+
+
+				<h:outputLink value="#" id="link">
+			        Abrir Modal
+			        <rich:componentControl for="mdlEdit" attachTo="link" operation="show" event="onclick" />
+				</h:outputLink>
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>

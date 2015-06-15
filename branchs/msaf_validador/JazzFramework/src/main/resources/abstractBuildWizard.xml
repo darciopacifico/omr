@@ -1,0 +1,518 @@
+<!-- NAO EXECUTE ESTE BUILD MANUALMENTE !!!!! -->
+<project default="processarTemplates" name="Roda Meus Templates XDoclet" 
+	xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+	<!-- basedir é setado automaticamente pelo plugin -->
+	<property file="buildWizard.properties" />
+	<property file="build.properties" />
+
+	
+	<artifact:dependencies filesetid="FS_XDoclet_Dependencies">
+		<dependency groupid="xjavadoc" 	artifactid="xjavadoc" 		version="1.1" 			scope="compile" />
+		<dependency groupid="xdoclet" 	artifactid="xdoclet" 		version="1.2.3" 		scope="compile"	/>
+		<dependency groupId="Jazz" 		artifactId="JazzFramework" 	version="1.1" 	scope="compile"/>
+		<dependency groupId="Jazz" 		artifactId="JazzXDoclet" 	version="1.0-SNAPSHOT" 	scope="compile"/>
+				
+		
+		
+		
+	</artifact:dependencies>
+	
+	<path id="pathPadraoXDoclet">
+		<!-- DARCIO 23/11/2008 FIXME: TODO: INFELIZMENTE NAO CONSEGUI RESOLVER A DEPENDENCIA DE XDOCLET APENAS
+		COM MAVEN2. FOI NECESSARIO BAIXAR O XDOCLET E REFERENCIAR O DIRETORIO LIB. 
+		RESOLVER DE MANEIRA MAIS ELEGANTE MAIS TARDE!!! -->
+		<fileset dir="C:\darcio\appInstall\xdoclet-1.2.3\lib" >
+			<include name="**\*.jar"/>
+		</fileset>
+
+		<fileset refid="FS_XDoclet_Dependencies"/>
+		
+		<!--
+		<fileset dir="C:\Users\Darcio\.m2\repository\xdoclet\xdoclet\1.2.3" >
+			<include name="**\*.jar"/>
+		</fileset>
+		-->
+		
+	</path>
+		
+	<property environment="env" />
+
+	<taskdef name="xdoclet" classname="xdoclet.DocletTask" classpathref="pathPadraoXDoclet" />
+
+
+	<target name="TOUCH">
+		<touch>
+			<fileset dir=".">
+				<include name="**\*.*"/>
+			</fileset>
+		</touch>
+	</target>
+
+	<target name="processarTemplatesGeral" 
+		description="Cria os arquivos únicos como classes de constantes, 
+		html para menu de telas, HibernateDAO.properties etc">
+		
+		<fileset dir="../../java" id="modeloDeVOs">
+			<include name="**/PedValidacaoVO.*" />
+			<include name="**/ClienteVO.*" />
+		</fileset>
+	
+		<!-- Cria os tiles-defs.xml do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<fileset refid="modeloDeVOs" />
+			<wizardj2ee 
+				camada="view"
+				acceptabstractclasses="false" 
+				acceptinterfaces="false" 
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}tiles-defs.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/web/src/main/webapp/WEB-INF" 
+				destinationfile="tiles-defs.xml">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria a classe de Constantes do Sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true" >
+			<fileset refid="modeloDeVOs" />
+			<configparam name="constantClass" value="${CONSTANT_CLASS}" />
+			<configparam name="packageUtil" value="${NOME_PACKAGE_UTIL}" />
+			<wizardj2ee 
+				camada="model"
+				acceptabstractclasses="false" 
+				acceptinterfaces="false" 
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}Constantes.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/core/src/main/java/${DIR_CONSTANT_CLASS}" 
+				destinationfile="${CONSTANT_CLASS}.java">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Menu do Desenvolvedor -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<fileset refid="modeloDeVOs" />
+			<wizardj2ee 
+				camada="view"
+				gerarParaModuloEscravo="false"
+				acceptabstractclasses="false" 
+				acceptinterfaces="false" 
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}indexDesenvolvimento.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/web/src/main/webapp" 
+				destinationfile="index.html">
+			</wizardj2ee>
+		</xdoclet>
+
+
+		<!-- Cria os HibernateDAO.Properties do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<fileset refid="modeloDeVOs" />
+			<wizardj2ee 
+				camada="model"
+				acceptabstractclasses="false"
+				acceptinterfaces="false" 
+				havingclasstag="wj2ee"
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}HibernateDAOProperties.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/core/src/main/resources/${DIR_DAOFACTORY_CLASS}" 
+				destinationfile="${DAOFACTORY_CLASS}.properties">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os ServiceLocator.Properties do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<fileset refid="modeloDeVOs" />
+			<wizardj2ee 
+				camada="model"
+				acceptabstractclasses="false" 
+				acceptinterfaces="false" 
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}ServiceLocatorProperties.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/core/src/main/resources/${DIR_SERVICELOCATOR_CLASS}" 
+				destinationfile="${SERVICELOCATOR_CLASS}.properties">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria ResourceBundleProperties do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<fileset refid="modeloDeVOs" />
+			<wizardj2ee 
+				acceptabstractclasses="false" 
+				acceptinterfaces="false" 
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}ResourceBundleProperties.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/core/src/main/resources/${PROJECT_BASE_DIR}" 
+				destinationfile="ResourceBundle.properties">
+			</wizardj2ee>
+		</xdoclet>
+
+	</target>
+
+	<target name="processarTemplates" description="Processa as classes e outros 
+		artefatos criados para cada módulo (DAO, Facade, Action, Form etc)">
+		<fileset dir="../../java" id="VO">
+			<include name="**/PedValidacaoVO.*" />
+			<include name="**/ClienteVO.*" />
+		</fileset>
+
+
+		<!-- Cria os VOWrapper do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+
+			<configparam name="baseVOWrapperClass" value="${PARAM_BASEVOWRAPPERCLASS}" />
+			<configparam name="classSerialVersionUID" value="${CLASS_SERIALVERSION_UID}" />
+
+			<fileset refid="VO" />
+
+			<wizardj2ee
+				camada="wrapper"
+				havingclasstag="wj2ee"
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}VOWrapper.xdt"
+				destdir="${DIR_RAIZ_PROJETO}/core/src/main/java"
+				destinationfile="{0}VOWrapper.java">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os ActionForms do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<configparam name="baseActionFormClass" value="${PARAM_BASEACTIONFORMCLASS}" />
+			<configparam name="classSerialVersionUID" value="${CLASS_SERIALVERSION_UID}" />
+			<configparam name="constantClass" value="${CONSTANT_CLASS}" />
+
+			<fileset refid="VO" />
+			<wizardj2ee 
+				camada="controller"
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}ActionForm.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/web/src/main/java" 
+				destinationfile="{0}Form.java">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os Actions do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<configparam name="baseActionClass" value="${PARAM_BASEACTIONCLASS}" />
+			<configparam name="constantClass" value="${CONSTANT_CLASS}" />
+			<fileset refid="VO" />
+			<wizardj2ee 
+				camada="controller"
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}Action.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/web/src/main/java" 
+				destinationfile="{0}Action.java">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os Facades do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<configparam name="baseFacade" value="${PARAM_BASEFACADE}" />
+
+			<fileset refid="VO" />
+			<wizardj2ee 
+				camada="model"
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}Facade.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/core/src/main/java" 
+				destinationfile="{0}Facade.java">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os FacadesImpl do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<configparam name="baseFacadeImpl" value="${PARAM_BASEFACADEIMPL}" />
+			<configparam name="constantClass" value="${CONSTANT_CLASS}" />
+
+			<fileset refid="VO" />
+			<wizardj2ee 
+				camada="model"
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}FacadeImpl.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/ejb/src/main/java" 
+				destinationfile="{0}FacadeImpl.java">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os SessionFacades do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<fileset refid="VO" />
+			<configparam name="classSerialVersionUID" value="${CLASS_SERIALVERSION_UID}" />
+			<wizardj2ee 
+				acceptabstractclasses="false" 
+				acceptinterfaces="false" 
+				camada="model"
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}SessionFacade.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/ejb/src/main/java" 
+				destinationfile="{0}SessionFacade.java">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os VLHFacades do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<configparam name="baseVLHFacade" value="${PARAM_BASEVLHFACADE}" />
+
+			<fileset refid="VO" />
+			<wizardj2ee 
+				acceptabstractclasses="true" 
+				camada="model"
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}VLHFacade.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/core/src/main/java" 
+				destinationfile="{0}VLHFacade.java">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os VLHFacadesImpl do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<configparam name="baseVLHFacadeImpl" value="${PARAM_BASEVLHFACADEIMPL}" />
+			<configparam name="constantClass" value="${CONSTANT_CLASS}" />
+
+			<fileset refid="VO" />
+			<wizardj2ee 
+				acceptabstractclasses="true" 
+				camada="model"
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}VLHFacadeImpl.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/ejb/src/main/java" 
+				destinationfile="{0}VLHFacadeImpl.java">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os VLHSessionFacades do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<fileset refid="VO" />
+			<configparam name="classSerialVersionUID" value="${CLASS_SERIALVERSION_UID}" />
+			<wizardj2ee 
+				acceptabstractclasses="false" 
+				acceptinterfaces="false" 
+				camada="model"
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}VLHSessionFacade.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/ejb/src/main/java" 
+				destinationfile="{0}VLHSessionFacade.java">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os DAOs do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<configparam name="baseDAO" value="${PARAM_BASEDAO}" />
+
+			<fileset refid="VO" />
+			<wizardj2ee 
+				camada="model"
+				havingclasstag="wj2ee" 
+				acceptabstractclasses="true" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}DAO.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/ejb/src/main/java" 
+				destinationfile="{0}DAO.java">
+			</wizardj2ee>
+		</xdoclet>
+
+
+		<!-- Cria os HibernateDAOs do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<configparam name="baseHibernateDAO" value="${PARAM_BASEHIBERNATEDAO}" />
+
+			<fileset refid="VO" />
+			<wizardj2ee 
+				acceptabstractclasses="true"
+				camada="model"
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}HibernateDAO.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/ejb/src/main/java" 
+				destinationfile="{0}HibernateDAO.java">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os JDBCOracleDAOs do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<configparam name="baseJDBCDAO" value="${PARAM_BASEJDBCDAO}" />
+
+			<fileset refid="VO" />
+			<wizardj2ee 
+				camada="model"
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}JDBCOracleDAO.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/ejb/src/main/java" 
+				destinationfile="{0}JDBCOracleDAO.java">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os JSPs de cadastro do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<packagesubstitution 
+				packages="${PARAM_PKG_RAIZ}.${NOME_PACKAGE}" 
+				substitutewith="" 
+				useFirst="true"/>
+
+			<fileset refid="VO" />
+			<wizardj2ee 
+				camada="view"
+				acceptabstractclasses="false" 
+				acceptinterfaces="false" 
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}CadastroJsp.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/web/src/main/webapp" 
+				destinationfile="cadastro{0}.jsp">
+			</wizardj2ee>
+		</xdoclet>
+
+
+		<!-- Cria os JSPs de consulta do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<packagesubstitution 
+				packages="${PARAM_PKG_RAIZ}.${NOME_PACKAGE}" 
+				substitutewith="" 
+				useFirst="true"/>
+
+			<fileset refid="VO" />
+			<wizardj2ee 
+				camada="wrapper" 
+				acceptabstractclasses="false" 
+				acceptinterfaces="false" 
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}ConsultaJsp.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/web/src/main/webapp" 
+				destinationfile="consulta{0}.jsp">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria os JSPs de pesquisa do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<packagesubstitution 
+				packages="${PARAM_PKG_RAIZ}.${NOME_PACKAGE}" 
+				substitutewith="" 
+				useFirst="true"/>
+			<fileset refid="VO" />
+			<wizardj2ee 
+				camada="view"
+				gerarParaModuloEscravo="false"
+				acceptabstractclasses="false" 
+				acceptinterfaces="false" 
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}PesquisaJsp.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/web/src/main/webapp" 
+				destinationfile="pesquisa{0}.jsp">
+			</wizardj2ee>
+		</xdoclet>
+
+		<!-- Cria o arquivo JS para o módulo -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true">
+			<packagesubstitution 
+				packages="${PARAM_PKG_RAIZ}.${NOME_PACKAGE}" 
+				substitutewith="" 
+				useFirst="true"/>
+
+			<fileset refid="VO" />
+
+			<wizardj2ee 
+				camada="view"
+				gerarParaModuloEscravo="true"
+				acceptabstractclasses="false" 
+				acceptinterfaces="false" 
+				havingclasstag="wj2ee" 
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}JSFile.xdt" 
+				destdir="${DIR_RAIZ_PROJETO}/web/src/main/webapp" 
+				destinationfile="javaScript{0}.js">
+			</wizardj2ee>
+		</xdoclet>
+	</target>
+	
+
+	<target name="processarTemplatesTeste" description="Processa as classes e outros 
+		artefatos criados para cada módulo (DAO, Facade, Action, Form etc)">
+		<fileset dir="../../java" id="VO">
+			<include name="**/Dire*VO.*" />
+			<include name="**/TipoHistoricoVO.*" />
+			<!-- -->
+		</fileset>
+		
+		<!-- Cria os VOWrapper do sistema -->
+		<xdoclet destdir="." mergedir="${MERGE_DIR}" verbose="true" >
+
+			<configparam name="baseVOWrapperClass" value="${PARAM_BASEVOWRAPPERCLASS}" />
+			<configparam name="classSerialVersionUID" value="${CLASS_SERIALVERSION_UID}" />
+
+			<fileset refid="VO" />
+
+			<wizardj2ee
+				camada="wrapper"
+				havingclasstag="wj2ee"
+				wj2eeTemplateFile="${LOCAL_TEMPLATES}VOWrapper.xdt"
+				destdir="${DIR_RAIZ_PROJETO}/core/src/main/java"
+				destinationfile="{0}VOWrapper.java">
+			</wizardj2ee>
+		</xdoclet>
+
+	</target>
+
+	<target name="U_processarTemplates" description="Desfaz o trabalho gerado pelo XDoclet">
+		<!--
+		<copy todir="c:\\darcio\\lixo">
+		-->
+			
+		<delete>
+			
+			<fileset dir="${DIR_RAIZ_PROJETO}/JazzQA/../">
+				<exclude name="**/base/*" />
+				<exclude name="**/JazzFramework/*" />
+				
+				<include name="**/*Action.*" />
+				<include name="**/*VOWrapper.*" />
+				<include name="**/*Form.*" />
+				<include name="**/*BusinessDelegate.*" />
+				<include name="**/*DAO.*" />
+				<include name="**/*HibernateDAO.*" />
+				<include name="**/*Facade.*" />
+				<include name="**/*FacadeImpl.*" />
+				<include name="**/*SessionFacade.*" />
+				<include name="**/*EJB.*" />
+				<include name="**/*EJBHome.*" />
+				<include name="**/*EJBLocal.*" />
+				<include name="**/*EJBLocalHome.*" />
+				<exclude name="${PARAM_DIR_RAIZ}/${NOME_PACKAGE}/util/**/*.*" />
+				<exclude name="${PARAM_DIR_RAIZ}/${NOME_PACKAGE}/daofactory/**/*.*" />
+				<exclude name="${PARAM_DIR_RAIZ}/${NOME_PACKAGE}/testcase/**/*.*" />
+				<exclude name="${PARAM_DIR_RAIZ}/${NOME_PACKAGE}/base/**/*.*" />
+			</fileset>
+		</delete>
+		<!--
+		</copy>
+		-->
+		
+		
+		
+		
+	</target>
+
+
+	<target name="U_processarTemplatesGeral" description="Desfaz o trabalho gerado pelo XDoclet">
+		<delete>
+			<fileset dir="${DIR_RAIZ_PROJETO}/core/src/main/java">
+				<include name="**/*Constants.java" />
+			</fileset>
+			<fileset dir="${DIR_RAIZ_PROJETO}/core/src/main/resources">
+				<include name="**/*ServiceLocator.properties" />
+				<include name="**/*DAOFactory.properties" />
+				<include name="**/*.cfg.xml" />
+				<include name="**/ResourceBundle.properties" />
+			</fileset>
+			<fileset dir="${DIR_RAIZ_PROJETO}/web/src/main/webapp">
+				<include name="**/tiles-defs.xml" />
+				<include name="**/index.html" />
+			</fileset>
+		</delete>
+	</target>
+
+	
+	<target name="testeLibMavenXdoclet">
+		<mkdir dir="c:\darcio\lixo\testeJarsMaven"/>
+		
+		<copy todir="c:\darcio\lixo\testeJarsMaven" flatten="true"  >
+			<fileset refid="FS_XDoclet_Dependencies" ></fileset>
+		
+		</copy>
+	
+	</target>
+	
+</project>
+
+

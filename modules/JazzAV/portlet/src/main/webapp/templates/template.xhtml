@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:a4j="http://richfaces.org/a4j" 
+xmlns:rich="http://richfaces.org/rich"
+>
+
+<h:outputStylesheet target="head" library="css" name="index.css" />
+
+<h:head>
+	<title>Adesivo Vende-se</title>
+
+			<h:outputScript library="js" name="jqueryNumericOnly.js" target="head" />
+			<h:outputScript library="js" name="jquery.maskedinput-1.3.min.js" target="head" />
+
+			<h:outputScript library="js" name="jquery-ui-1.8.18.custom.min.js" target="head" />
+			<h:outputStylesheet library="css" name="smoothness/jquery-ui-1.8.18.custom.css" target="head" />
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+	<ui:insert name="headInsert" />
+
+
+	<style>
+	
+	<ui:insert name="styleInsert" />	
+<!--
+#gridPrincipal input[type="text"] {
+	font-size: 15px;
+}
+
+.cboAno {
+	font-size: 35px;
+	font-weight: bolder;
+}
+
+.txtCustom {
+	resize: none;
+	font-size: 20px;
+	text-align: center;
+}
+
+.rf-dg-c {
+	border-bottom-width: 0px;
+	border-right-width: 0px;
+}
+
+.ui-accordion .ui-accordion-content-active {
+	height: 155px;
+}
+
+.ui-accordion .ui-accordion-content {
+	padding: 0px;
+	border-top: 1px;
+	margin-top: 0px;
+	position: relative;
+	top: 0px;
+	margin-bottom: 0px;
+	overflow: auto;
+	zoom: 1;
+}
+
+.ui-accordion .ui-accordion-header a {
+	padding-bottom: 3px;
+	padding-top: 3px;
+}
+
+form li div label,form li span label {
+	white-space: nowrap;
+}
+
+.ui-state-active .ui-icon,.ui-state-hover .ui-icon,.ui-state-focus .ui-icon,.ui-state-default .ui-icon
+	{
+	background-image:
+		url(../resources/css/smoothness/images/ui-icons_454545_256x240.png);
+}
+
+.gridModelos {
+	border-style: none;
+}
+
+.notranslate {
+	width: 30px;
+}
+
+.notranslate,label {
+	padding: 0px;
+	padding-top: 5px;
+}
+
+.listaOpcionais {
+	width: 200px;
+	clear: both;
+	float: left;
+}
+
+#gridPrincipal td {
+	vertical-align: top;
+}
+
+#gridPrincipal #pnlFormAdesivo ul {
+	background-color: #eeeeee;
+}
+
+.tabDivisora input[type=checkbox] {
+	width: 10px;
+	height: 10px;
+}
+
+.tabDivisora,.tabDivisora tr,.tabDivisora tr td {
+	padding: 0px;
+	border-width: 0px;
+	padding-right: 0px;
+	border-right-width: 0px;
+	white-space: nowrap;
+}
+
+.classAdesPrincipal {
+	border-style: dashed;
+	border-width: 1px;
+	border-color: #dddddd;
+}
+
+.imgAdesLaterais {
+	border-style: dashed;
+	border-width: 1px;
+	border-color: #dddddd;
+}
+
+.tabDivisora tr td label {
+	padding: 0px;
+}
+
+.tabDivisora tr td p {
+	padding: 0px;
+	margin: 0px;
+}
+
+
+#tbBreadCrumb{
+	
+}
+
+#tbBreadCrumb td{
+	background: yellow;
+}
+
+#tbBreadCrumb .checked{
+}
+
+#tbBreadCrumb .unchecked{
+}
+
+#tbBreadCrumb .label{
+}
+
+-->
+</style>
+
+</h:head>
+
+<h:body onload="#{paramOnLoad}">
+	
+	
+	<div id="container" style="width: 960px;">
+		
+		<div style="width: 100%; height: 50px; background-color: red" class="centerCont">
+		<p><a href="../j_spring_security_logout">Logout</a></p>
+		
+		</div>
+		
+		<div style="width: 100%; height: 50px; background-color: gray" class="centerCont">
+			
+			<table id="tbBreadCrumb">
+				<tr>
+					<td>
+						<span class="checked">V</span>
+						<span class="unchecked">-</span>
+						<span class="label">Edição</span>
+					</td>
+					<td>
+						<span class="checked">V</span>
+						<span class="unchecked">-</span>
+						<span class="label">Entrega/Faturamento</span>
+					</td>
+					<td>
+						<span class="checked">V</span>
+						<span class="unchecked">-</span>
+						<span class="label">Conclusão</span>
+					</td>
+				</tr>
+			</table>
+			
+		</div>
+		
+		<ui:insert name="body" />
+
+	</div>
+
+</h:body>
+</html>

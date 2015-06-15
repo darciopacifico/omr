@@ -1,0 +1,18 @@
+function salvar(){
+	elementService = document.getElementById("paramService");
+	
+	if (elementService != null){
+		elementService.value = "<XDtWj2eeClass:servicoSalvarItem/>";
+	}
+	elementService.form.submit();
+}
+
+function fechar(){
+	elementService = document.getElementById("paramService");
+	
+	if (elementService != null){
+		elementService.value = "<XDtWj2eeClass:servicoFecharItem/>";
+	}
+	elementService.form.submit();
+}
+

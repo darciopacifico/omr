@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<faces-config>
+
+	<application>
+	
+		
+			<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+		
+			<!-- 
+		    <view-handler>org.ajax4jsf.application.AjaxViewHandler</view-handler>  
+			<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>	
+			 -->
+			<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+	
+	<!-- tirei isso pq nao serve p nada 300611 23:50 -->
+	<navigation-rule> 
+	 	<from-view-id>*</from-view-id> 
+		<navigation-case>  
+		    <from-outcome>registeredSuccess</from-outcome>  
+		    <to-view-id>/selfservice/SelfServiceRegisterSuccess.jsf</to-view-id>           
+		</navigation-case>  
+	</navigation-rule> 
+
+
+
+
+
+	<converter>
+		<converter-id>relatorioConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.person.RelatorioJSONConverter</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-id>authoritiesConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.person.AuthoritiesEnumConverter</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-id>genericErrorConverter</converter-id>
+		<converter-class>br.com.dlp.framework.jsf.GenericErrorSerializableConverter</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-id>empresaJSONConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.person.EmpresaJSONConverter</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-id>BaseVOConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.converter.IBaseVOConverter</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-id>hibernateBaseVOConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.converter.HibernateIBaseVOConverter</converter-class>
+	</converter>
+
+	<converter>
+		<converter-id>questionnaireJSONConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.exam.QuestionnaireJSONConverter</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-id>pessoaJSONConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.person.PessoaJSONConverter</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-id>grupoJSONConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.person.GrupoJSONConverter</converter-class>
+	</converter>	
+	
+	<converter>
+		<converter-id>examJSONConverter</converter-id>
+		<converter-class>br.com.dlp.jazzomr.exam.ExamJSONConverter</converter-class>
+	</converter>		
+</faces-config>

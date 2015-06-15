@@ -1,0 +1,95 @@
+.grayHead{
+	background-color:#e1e1e1;
+	background-image:none;
+	height:17px;
+	font-family: sans-serif;
+	color:#000000;
+	font-size: 10px;
+}
+
+.fontToolBar{
+	font-family: sans-serif;
+	color:#ffffff;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.fontHeaderTable{
+	height:10px;
+	font-family: sans-serif;
+	color:#000000;
+	font-size: 10px;
+	font-stretch: normal;
+	font-weight: normal;
+}
+
+.fontContentTable{
+	height:10px;
+	font-family: sans-serif;
+	color:#000000;
+	font-size: 10px;
+	font-stretch: normal;
+	font-weight: normal;
+	cursor:pointer;
+}
+
+.font10{
+	font-family: sans-serif;
+	color:#000000;
+	font-size: 10px;
+}
+
+.inputTypes{
+	width:120px;
+	height:17px;
+	font-family: sans-serif;
+	color:#000000;
+	font-size:10px;
+	border: 1px solid #c0c0c0;
+}
+
+.tableClass{
+	border-color: #e1e1e1;
+}
+
+.linhaTabela{
+ height:10px;
+ font-family: sans-serif;
+ color:#000000;
+ font-size: 10px;
+}
+
+.colunaTabela{
+height:10px;
+}
+
+.toolBarHeader{
+	background-image: url(../img/bg/bg_header1.png);
+	background-repeat: repeat-x;
+	height:29px;
+	font-family:sans-serif;
+	color:#ffffff;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+.fontLinkHeader{
+	font-family:sans-serif;
+	color:#ffffff;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+.errorMessage{
+	font-family:sans-serif;
+	color:#980000;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.sucessMessage{
+	font-family:sans-serif;
+	color:#136a05;
+	font-size: 12px;
+	font-weight: bold;
+}

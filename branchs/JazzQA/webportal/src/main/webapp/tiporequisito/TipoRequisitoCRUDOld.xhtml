@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:rich="http://richfaces.org/rich" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk" xmlns:c="http://java.sun.com/jstl/core" xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../template/crud/crudTemplate.xhtml">
+
+	<!-- PARAMETROS DO MODULO -->
+	<ui:param name="myMBean" value="#{tipoRequisitoJSFBean}" />
+	<ui:param name="tituloModulo" value="#{lblTipoRequisito.pnlTipoRequisito}" />
+
+
+	<!-- DEFINICOES GLOBAIS DO MÓDULO -->
+	<ui:define name="repGlobal">
+		<f:loadBundle var="lblTipoRequisito" basename="br.com.dlp.jazzqa.tiporequisito.TipoRequisito" />
+		<f:loadBundle var="msg" basename="br.com.dlp.jazzqa.ResourceBundle" />
+	</ui:define>
+
+	<!-- DEFINICAO DE PAINEL DE FORMULARIO DE PESQUISA PESQUISA -->
+	<ui:define name="repPesquisa">
+		<h:panelGrid columns="2">
+
+			<h:outputText value="#{lblTipoRequisito.dtInclusao}" />
+			<rich:calendar value="#{myMBean.dtInclusaoFrom}" />
+
+			<h:outputText value="#{lblTipoRequisito.dtInclusao}" />
+			<rich:calendar value="#{myMBean.dtInclusaoTo}"  />
+
+			<h:outputText value="#{lblTipoRequisito.descricao}" />
+			<h:inputTextarea value="#{myMBean.descricao}" rows="3" cols="40" />
+
+			<h:outputText value="#{lblTipoRequisito.nome}" />
+			<h:inputText value="#{tipoRequisitoJSFBean.nome}" />
+
+			<h:outputText value="#{lblTipoRequisito.dummyVO}" />
+			<h:outputText value="#{myMBean.dummyVO}" />
+
+		</h:panelGrid>
+	</ui:define>
+
+
+	<!-- DEFINICAO DOS CAMPOS PARA PESQUISA INSTANTANEA -->
+	<ui:define name="repInstantSearch">
+		<h:inputText value="#{myMBean.nome}" style="width:150px;">
+			<a4j:support action="#{myMBean.invalidateRowCountCache}" ajaxSingle="true" reRender="resultadoDG, pnlPesquisa" event="onchange" />
+			<rich:toolTip value="Pesquisa pelo nome..." showDelay="500" />
+		</h:inputText>
+	</ui:define>
+
+
+	<!--COLUNAS EXIBIDAS NA PESQUISA-->
+	<ui:define name="repCamposResultado">
+
+		<!-- COLUNA DTINC COM SUPORTE AA ORDENACAO -->
+		<rich:column width="120">
+			<f:facet name="header">
+				<a4j:commandLink action="#{myMBean.dataModel.extraArgumentsDTO.processOrderChoice('dtInclusao')}"
+					value="Inclusão #{myMBean.dataModel.getOrderLabel('dtInclusao')}" reRender="resultadoDG" ajaxSingle="true">
+					<rich:toolTip value="Ordenar resultados por data de inclusão" showDelay="1000" />
+				</a4j:commandLink>
+			</f:facet>
+			<h:outputText value="#{resultado.dtInclusao}" />
+		</rich:column>
+
+		<!-- COLUNA DESCRICAO -->
+		<rich:column width="200">
+			<f:facet name="header">
+				<h:outputText value="#{lblTipoRequisito.descricao}" />
+			</f:facet>
+			<h:outputText value="#{resultado.descricao}" />
+		</rich:column>
+
+		<!-- COLUNA NOME COM SUPORTE AA ORDENACAO -->
+		<rich:column width="100">
+			<f:facet name="header">
+				<a4j:commandLink action="#{myMBean.dataModel.extraArgumentsDTO.processOrderChoice('nome')}"
+					value="Nome #{myMBean.dataModel.getOrderLabel('nome')}" reRender="resultadoDG" ajaxSingle="true">
+					<rich:toolTip value="Ordenar resultados por nome" showDelay="1000" />
+				</a4j:commandLink>
+			</f:facet>
+			<h:outputText value="#{resultado.nome}" />
+		</rich:column>
+
+		<!-- COLUNA DUMMYVO-->
+		<rich:column width="100">
+			<f:facet name="header">
+				<h:outputText value="#{lblTipoRequisito.dummyVO}" />
+			</f:facet>
+			<h:outputText value="#{resultado.dummyVO.nome}" />
+		</rich:column>
+	</ui:define>
+
+
+	<!--CAMPOS MANUTENCAO-->
+	<ui:define name="repCamposManutencao">
+
+		<h:outputText value="#{lblTipoRequisito.dtInclusao}" />
+		<rich:calendar value="#{myMBean.tmpVO.dtInclusao}" disabled="#{myMBean.tmpVO==null}" id="calManutDtInc" />
+		<rich:message for="calManutDtInc" />
+
+		<h:outputText value="#{lblTipoRequisito.descricao}" />
+		<h:inputTextarea value="#{myMBean.tmpVO.descricao}" rows="2" cols="40" disabled="#{myMBean.tmpVO==null}" id="txtManutDescricao" />
+		<rich:message for="txtManutDescricao" />
+
+		<h:outputText value="#{lblTipoRequisito.nome}" />
+		<h:inputText value="#{myMBean.tmpVO.nome}" disabled="#{myMBean.tmpVO==null}" id="txtManutNome" />
+		<rich:message for="txtManutNome" />
+
+		<h:outputText value="#{lblTipoRequisito.dummyVO}" />
+		<a4j:commandLink action="#{myMBean.pesquisaDummies()}" id="dummyVO" oncomplete="Richfaces.showModalPanel('dummyPopUp')" reRender="dummyPopUp"
+			ajaxSingle="true" disabled="#{myMBean.tmpVO==null}">
+			<h:outputText value="#{myMBean.tmpVO.dummyVO.nome}" rendered="#{myMBean.tmpVO.dummyVO != null}" />
+			<h:outputText value="Escolha" rendered="#{myMBean.tmpVO.dummyVO == null}" />
+		</a4j:commandLink>
+		<rich:message id="msgDummy" for="dummyVO" />
+
+	</ui:define>
+
+	<!-- DEFINICOES DE POPOUPS -->
+	<ui:define name="repPopups">
+		<rich:modalPanel id="dummyPopUp" width="500" height="300">
+
+			<f:facet name="header">
+				<h:panelGroup>
+					<h:outputText value="Select a Dummy VO"></h:outputText>
+				</h:panelGroup>
+			</f:facet>
+
+			<f:facet name="controls">
+				<h:panelGroup>
+					<h:graphicImage value="/img/close.png" style="cursor:pointer" styleClass="hidelink" id="hidelink" alt="Fechar" />
+					<rich:componentControl for="dummyPopUp" attachTo="hidelink" operation="hide" event="onclick" />
+				</h:panelGroup>
+			</f:facet>
+
+			<rich:dataGrid columns="4" value="#{myMBean.dummyVOs}" var="dummy">
+				<a4j:commandLink action="#{myMBean.tmpVO.setDummyVO(dummy)}" reRender="dummyVO" oncomplete="Richfaces.hideModalPanel('dummyPopUp')"
+					ajaxSingle="true">
+					<h:outputText value="#{dummy.nome}" />
+				</a4j:commandLink>
+			</rich:dataGrid>
+			<h:outputText value="#{myMBean.tmpVO.dummyVO.nome}" />
+
+		</rich:modalPanel>
+	</ui:define>
+
+</ui:composition>

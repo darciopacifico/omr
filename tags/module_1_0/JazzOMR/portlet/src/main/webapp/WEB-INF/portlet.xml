@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<portlet-app >
+	<portlet>
+		<portlet-name>Pessoa</portlet-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		
+		<instanceable>false</instanceable>
+		<render-weight>1</render-weight>
+		<ajaxable>true</ajaxable>
+				
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/person/PessoaCRUD.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.preserveActionParams</name>
+			<value>true</value>
+		</init-param>
+		<expiration-cache>-0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>Pessoa</title>
+		</portlet-info>
+		<container-runtime-option>
+			<name>org.gatein.pc.remotable</name>
+			<value>false</value>
+		</container-runtime-option>
+	</portlet>
+	
+	
+	
+	
+	<portlet>
+		<portlet-name>Grupo</portlet-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		
+		<instanceable>false</instanceable>
+		<render-weight>1</render-weight>
+		<ajaxable>true</ajaxable>
+		
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/person/GrupoCRUD.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.preserveActionParams</name>
+			<value>true</value>
+		</init-param>
+		<expiration-cache>-0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>Grupo</title>
+		</portlet-info>
+		<container-runtime-option>
+			<name>org.gatein.pc.remotable</name>
+			<value>false</value>
+		</container-runtime-option>
+	</portlet>
+	
+	
+	
+		
+	
+	
+	<portlet>
+		<portlet-name>Questionario</portlet-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		
+		<instanceable>false</instanceable>
+		<render-weight>1</render-weight>
+		<ajaxable>true</ajaxable>
+		
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/exam/QuestionnaireCRUD.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.preserveActionParams</name>
+			<value>true</value>
+		</init-param>
+		<expiration-cache>-0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>Questionario</title>
+		</portlet-info>
+		<container-runtime-option>
+			<name>org.gatein.pc.remotable</name>
+			<value>false</value>
+		</container-runtime-option>
+	</portlet>
+	
+	
+	
+		
+	
+	<portlet>
+		<portlet-name>Exame</portlet-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		
+		<instanceable>false</instanceable>
+		<render-weight>1</render-weight>
+		<ajaxable>true</ajaxable>
+		
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/exam/ExamCRUD.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.preserveActionParams</name>
+			<value>true</value>
+		</init-param>
+		<expiration-cache>-0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>Exame</title>
+		</portlet-info>
+		<container-runtime-option>
+			<name>org.gatein.pc.remotable</name>
+			<value>false</value>
+		</container-runtime-option>
+	</portlet>
+	
+	
+	
+			
+	
+	<portlet>
+		<portlet-name>Evento</portlet-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		
+		<instanceable>false</instanceable>
+		<render-weight>1</render-weight>
+		<ajaxable>true</ajaxable>
+		
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/event/EventCRUD.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.preserveActionParams</name>
+			<value>true</value>
+		</init-param>
+		<expiration-cache>-0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>Evento</title>
+		</portlet-info>
+		<container-runtime-option>
+			<name>org.gatein.pc.remotable</name>
+			<value>false</value>
+		</container-runtime-option>
+	</portlet>
+	
+	
+				
+	
+	<portlet>
+		<portlet-name>ImageProcessing</portlet-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		
+		<instanceable>false</instanceable>
+		<render-weight>1</render-weight>
+		<ajaxable>true</ajaxable>
+		
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/event/EventImageProcessCRUD.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.preserveActionParams</name>
+			<value>true</value>
+		</init-param>
+		<expiration-cache>-0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>ImageProcessing</title>
+		</portlet-info>
+		<container-runtime-option>
+			<name>org.gatein.pc.remotable</name>
+			<value>false</value>
+		</container-runtime-option>
+	</portlet>
+	
+	
+					
+	
+	<portlet>
+		<portlet-name>EventRevision</portlet-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		
+		<instanceable>false</instanceable>
+		<render-weight>1</render-weight>
+		<ajaxable>true</ajaxable>
+		
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/event/EventCorrection.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.preserveActionParams</name>
+			<value>true</value>
+		</init-param>
+		<expiration-cache>-0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>VIEW</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>EventRevision</title>
+		</portlet-info>
+		<container-runtime-option>
+			<name>org.gatein.pc.remotable</name>
+			<value>false</value>
+		</container-runtime-option>
+	</portlet>
+	
+	
+	
+	
+</portlet-app>

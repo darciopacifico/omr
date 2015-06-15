@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>UpLoad Arquivos</title>	
+<script language="javascript">
+//Identificador de seleção do tr
+var trSelecionado       = false;
+var trObjetoSelecionado = null;
+
+//Funções globais
+function mudaCor( trElemento, ligarCor ) {
+	if( trSelecionado ) return;
+}
+
+function mudarCorTR(modificaElemento, ligarCor) {
+
+	//Somente efetua a modificação se o elemento não estiver selecionado
+	if( trSelecionado ) return;
+
+	//Variaveis
+	var cor = "";
+
+	//Verifica qual a cor a selecionar
+	if( ligarCor )	cor = "#E5E9EC";
+	else			cor = "";
+	
+	//Monta a cor do elemento conforme a solicitação
+	for( x = 0; x < modificaElemento.cells.length; x++ )
+		modificaElemento.cells(x).style.backgroundColor = cor;
+}
+
+function sincronizarScrollTB(dvOrigemTB, tbScrollResize) {
+	tbScrollResize.style.width = parseInt(dvOrigemTB.style.width) - 15;
+}
+
+function doUploadECotacao(){
+  elementService = document.getElementById("dispatchMethod");
+    if (elementService != null){
+       elementService.value = "doUploadECotacao";
+    }
+  elementService.form.submit();
+}
+function doProcessamento(){
+  elementService = document.getElementById("dispatchMethod");
+    if (elementService != null){
+       elementService.value = "doProcessamento";
+    }
+  elementService.form.submit();
+}
+</script>
+
+
+
+<link href="estilo.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><form name="uploadArquivosForm" method="post" action="/msaf.validador.web/UploadArquivosAction.do" enctype="multipart/form-data">
+      <TABLE width="100%" border=1 align="center" cellPadding=0 cellSpacing=0 bordercolor="#003366">
+        <TR>
+          <TD height=30 class="title1"><div align="left">upload do arquivo</div></TD>
+        </TR>
+        <TR>
+          <TD height=30><div align="center">
+                <table width="489" border="0" align="center" cellpadding="1" cellspacing="0">
+                  <tr>
+                    <td colspan="3">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp; Por favor, escolha o arquivo para ser analisdo</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3">&nbsp;&nbsp;&nbsp;<input type="hidden" name="dispatchMethod" id="dispatchMethod" value="" />
+                    <input type="file" name="arquivo" value="" class="efe" title="Arquivo Excel"></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td width="170"><input type="checkbox" name="tipoSelecionado" value="Sintegra">
+                    Sintegra</td>
+                    <td width="170"><input type="checkbox" name="tipoSelecionado" value="Receita Federal">
+                    Receita Federal</td>
+                    <td width="170"><input type="checkbox" name="tipoSelecionado2" value="testeDecricao">
+                    testeDecricao</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="tipoSelecionado2" value="Sintegra">
+                    Sintegra</td>
+                    <td><input type="checkbox" name="tipoSelecionado2" value="Receita Federal">
+                    Receita Federal</td>
+                    <td><input type="checkbox" name="tipoSelecionado2" value="testeDecricao">
+                    testeDecricao</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="tipoSelecionado2" value="Sintegra">
+                    Sintegra</td>
+                    <td><input type="checkbox" name="tipoSelecionado2" value="Receita Federal">
+                    Receita Federal</td>
+                    <td><input type="checkbox" name="tipoSelecionado2" value="testeDecricao">
+                    testeDecricao</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="tipoSelecionado2" value="Sintegra">
+                    Sintegra</td>
+                    <td><input type="checkbox" name="tipoSelecionado2" value="Receita Federal">
+                    Receita Federal</td>
+                    <td><input type="checkbox" name="tipoSelecionado2" value="testeDecricao">
+                    testeDecricao</td>
+                  </tr>
+                  </table>
+                <p>
+                  <input type="button" id="01" value="   Fazer Or&ccedil;amento   " class="ef" onClick="doUploadECotacao();" />
+                  <br>
+                  <br>
+                </p>
+                </div></TD>
+          </TR>
+        </TABLE>
+        <br>
+      <TABLE width="100%" border=1 align="center" cellPadding=0 cellSpacing=0 bordercolor="#003366">
+        <TR>
+          <TD height=30><TABLE borderColor=#003366 cellSpacing=0 cellPadding=5 width="100%" border=0>
+            <TR vAlign=center align=middle >
+              <td colspan="3" class="title1"><div align="left">or&ccedil;amento</div></td>
+              </tr>
+            <TR vAlign=center align=middle borderColor=#cccccc>
+              <td class="title2"> <div align="center">Quantidade de registros </div></td>
+              <td class="title2"> <div align="center">Valor </div></td>
+              <td class="title2">&nbsp;</td>
+            </tr>
+            <TR>
+              <td> <div align="center">-- </div></td>
+              <td> <div align="center">-- </div></td>
+              <td height="30"><div align="center">
+                <input type="button" id="02" value="   Aprovar Or&ccedil;amento   " class="ef" onClick="doProcessamento();" disabled />
+                </div></td>
+            </TR>
+            </TABLE></TD>
+        </TR>
+        </TABLE>
+        <br>
+      <div align="center">
+      <TABLE width="100%" border=1 align="center" cellPadding=0 cellSpacing=0 bordercolor="#003366">
+        <TR>
+          <TD height=30><TABLE width="600" border=0 align="center" cellPadding=5 cellSpacing=0 borderColor=#003366>
+                <TR vAlign=center align=middle borderColor=#cccccc>
+                  <TD colspan="6" bordercolor="#003366" class="title1"><div align="left">registros</div></TD>
+                <TR valign=center align=middle>
+                  <TD class="title2"><div align="center">ID</div></TD>
+                  <TD class="title2">status</TD>
+                  <TD class="title2"><div align="center">QTD REGISTRO</div></TD>
+                  <TD class="title2"><div align="center">DATA SOLICITACAO</div></TD>
+                  <TD class="title2"><div align="center">ID_CLIENTE</div></TD>
+                  <TD class="title2"><div align="center">PROCESSO</div></TD>
+                <TR style="cursor:hand;" onMouseOver="mudarCorTR(this, true);" onMouseOut="mudarCorTR(this, false);"> <a href="/msaf.validador.web/UploadArquivosAction.do?dispatchMethod=doDownload&idPedValidacao=161">
+                  <TD> 161 </TD>
+                  <TD><div align="center"><span class="legenda"><img src="processando.gif" width="16" height="16" border="0"></span></div></TD>
+                  <TD>99</TD>
+                  <TD>2009-02-19</TD>
+                  <TD>cliente01MasterSat</TD>
+                    </a>
+                  <TD><div align="center">
+                      <input type="button" id="022" value="   Verificar   " class="ef" onClick="doProcessamento();" />
+                      </div></TD>
+                </TR>
+                <TR style="cursor:hand;" onMouseOver="mudarCorTR(this, true);" onMouseOut="mudarCorTR(this, false);"> <a href="/msaf.validador.web/UploadArquivosAction.do?dispatchMethod=doDownload&idPedValidacao=161">
+                  <TD> 161 </TD>
+                  <TD><div align="center"><span class="legenda"><img src="finalizado.gif" width="16" height="16" border="0"></span></div></TD>
+                  <TD>99</TD>
+                  <TD>2009-02-19</TD>
+                  <TD>cliente01MasterSat</TD>
+                    </a>
+                  <TD><img src="loading.gif" width="79" height="17" /></TD>
+                </TR>
+                <TR style="cursor:hand;" onMouseOver="mudarCorTR(this, true);" onMouseOut="mudarCorTR(this, false);"> <a href="/msaf.validador.web/UploadArquivosAction.do?dispatchMethod=doDownload&idPedValidacao=161">
+                  <TD> 161 </TD>
+                  <TD><div align="center"><span class="legenda"><img src="erro.gif" width="16" height="16" border="0"></span></div></TD>
+                  <TD>99</TD>
+                  <TD>2009-02-19</TD>
+                  <TD>cliente01MasterSat</TD>
+                    </a>
+                  <TD><div align="center">
+                      <input type="button" id="022" value="   Verificar   " class="ef" onClick="doProcessamento();" />
+                      </div></TD>
+                </TR>
+                <TR>
+                  <TD height="5" colspan="6" align="right" valign="middle"><img src="spacer.gif" width="1" height="5"></TD>
+                </TR>
+                <TR>
+                  <TD colspan="6" align="right" valign="middle" class="title1"><div align="right">LEGENDA</div></TD>
+                </TR>
+                <TR>
+                  <TD colspan="6" align="right" valign="middle"><div align="right" class="legenda"><img src="processando.gif" width="16" height="16"> Processando <img src="finalizado.gif" width="16" height="16"> Finalizado <img src="erro.gif" width="16" height="16"> Erro</div></TD>
+                </TR>
+            </TABLE></TD>
+          </TR>
+        </TABLE>
+    </form></td>
+  </tr>
+  
+  
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h3><BR>
+</h3>
+</body>
+</html>
+</html>

@@ -1,0 +1,8 @@
+   <!-- NAO ALTERAR MOVIDO PARA xdoclet/jazzwizard/mergeDir  ========== Message Resources Definitions =================================== -->
+
+   <!--
+      Define your resources bundles in a file called struts-message-resources.xml
+      and place it in your merge directory.
+    -->
+
+   <message-resources parameter="br.com.dlp.jazzqa.ResourceBundle" null="false" />

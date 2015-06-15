@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:rich="http://richfaces.org/rich" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk" xmlns:c="http://java.sun.com/jstl/core" xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../template/crud/crudTemplate.xhtml">
+
+
+
+	<!-- PARAMETROS DO MODULO -->
+	<ui:param name="myMBean" value="#{empresaJSFBean}" />
+	<ui:param name="tituloModulo" value="#{lblEmpresa.pnlEmpresa}" />
+	<ui:param name="iconeModulo" value="/img/menu/company_128.png" />
+	<ui:param name="menuUrlPrefix" value="../" />
+	
+
+	<!-- DEFINICOES GLOBAIS DO MÓDULO -->
+	<ui:define name="repGlobal">
+		<f:loadBundle var="lblEmpresa" basename="br.com.dlp.jazzomr.empresa.Empresa" />
+		<f:loadBundle var="msg" basename="br.com.dlp.jazzomr.ResourceBundle" />
+		
+	</ui:define>
+
+
+		<!-- DEFINICAO DE PAINEL DE FORMULARIO DE PESQUISA PESQUISA -->
+		<ui:define name="repPesquisa">
+			<h:panelGrid columns="2">
+
+				<h:outputText value="#{lblEmpresa.nome}"/>
+				<h:inputText value="#{empresaJSFBean.nome}" />
+				
+ 				<h:outputText value="#{lblEmpresa.dtIncFrom}"/>
+				<rich:calendar value="#{empresaJSFBean.dtIncFrom}" />
+				
+ 				<h:outputText value="#{lblEmpresa.dtIncTo}"/>
+				<rich:calendar value="#{empresaJSFBean.dtIncTo}" />
+				
+ 				<h:outputText value="#{lblEmpresa.dtAltFrom}"/>
+				<rich:calendar value="#{empresaJSFBean.dtAltFrom}" />
+				
+ 				<h:outputText value="#{lblEmpresa.dtAltTo}"/>
+				<rich:calendar value="#{empresaJSFBean.dtAltTo}" />
+				
+ 				<h:outputText value="#{lblEmpresa.status}"/>
+				<h:inputText value="#{empresaJSFBean.status}" />
+				
+			</h:panelGrid>
+		</ui:define>
+
+
+
+	<!-- DEFINICAO DOS CAMPOS PARA PESQUISA INSTANTANEA -->
+	<ui:define name="repInstantSearch">
+
+     	</ui:define>
+
+
+	<!--COLUNAS EXIBIDAS NA PESQUISA-->
+	<ui:define name="repCamposResultado">
+	
+
+ 			<rich:column >
+				<f:facet name="header">
+						<h:outputText value="#{lblEmpresa.nome}"/>
+				</f:facet>
+				<h:outputText value="#{resultado.nome}"/>
+			</rich:column>
+	
+
+ 			<rich:column >
+				<f:facet name="header">
+						<h:outputText value="#{lblEmpresa.dtInc}"/>
+				</f:facet>
+				<h:outputText value="#{resultado.dtInc}"/>
+			</rich:column>
+	
+
+ 			<rich:column >
+				<f:facet name="header">
+						<h:outputText value="#{lblEmpresa.dtAlt}"/>
+				</f:facet>
+				<h:outputText value="#{resultado.dtAlt}"/>
+			</rich:column>
+	
+
+ 			<rich:column >
+				<f:facet name="header">
+						<h:outputText value="#{lblEmpresa.status}"/>
+				</f:facet>
+				<h:outputText value="#{resultado.status}"/>
+			</rich:column>
+	
+
+	
+
+	
+
+	
+
+	
+
+	</ui:define>
+
+
+	<!--CAMPOS MANUTENCAO-->
+	<ui:define name="repCamposManutencao">
+				<h:outputText value="#{lblEmpresa.nome}"/>
+				<h:inputText value="#{empresaJSFBean.tmpVO.nome}"  disabled="#{myMBean.tmpVO==null}" />
+				<rich:message for="nome" />
+
+				<h:outputText value="#{lblEmpresa.dtInc}"/>
+				<h:outputText value="#{empresaJSFBean.tmpVO.dtInc}"/>
+				<rich:message for="dtInc" />
+
+				<h:outputText value="#{lblEmpresa.dtAlt}"/>
+				<h:outputText value="#{empresaJSFBean.tmpVO.dtAlt}"/>
+				<rich:message for="dtAlt" />
+
+				<h:outputText value="#{lblEmpresa.status}"/>
+				<h:inputText value="#{empresaJSFBean.tmpVO.status}"  disabled="#{myMBean.tmpVO==null}" />
+				<rich:message for="status" />
+
+	</ui:define>
+
+	<!-- DEFINICOES DE POPOUPS -->
+	<ui:define name="repPopups">
+
+
+	</ui:define>
+
+</ui:composition>
+

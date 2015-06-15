@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" >
+
+
+	<h:head>
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+		
+		<script type="text/javascript">
+			function zub(){alert('zub');}
+		</script>
+		
+		<style>
+			* {
+				margin:auto;
+			}
+		
+			span, a{
+				font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;
+			}
+		
+			span{
+				
+			}
+		
+			.divReg {
+				position:relative; height: 570px; width: 794px; 
+				background: #91b1c7 url('../img/menu/repearVertical.png'); background-repeat: repeat-y; margin: auto; top:30px;
+			}
+			
+			.divReg form {
+				position: relative; top: 10%; text-align: center;
+			}
+			
+			.divReg fieldset {
+				width: 650px; position: inherit;margin: auto;
+			}
+			
+			.divReg legend {
+				font-family: Arial, sans-serif; color: #eeeeee; font-size: 12px; font-weight: bold;
+			}
+
+			.divReg table {
+				margin:auto;
+			}
+			
+			.divReg td {
+				text-align: left;
+				font-family: Arial, sans-serif; 
+				font-size: 12px;
+				color: white;
+			}
+			
+			.divReg label {
+				font-family: Arial, sans-serif; color: #eeeeee;
+			}
+			
+		</style>
+
+		<title>Registre-se</title>
+	</h:head>
+
+	<h:body style="background: #eeeeee url('../img/menu/examCenterGray.png'); background-repeat: repeat;" >
+	
+		<div class="divReg">
+		
+			<img src="../img/menu/examCenterLogo.png" />
+	
+
+			<a4j:outputPanel id="pnlGrowl">
+				growl
+			</a4j:outputPanel>
+
+
+			<h:panelGroup rendered="#{!selfRegBean.isSuccess()}" id="pnlSelfReg" style="margin:auto;">
+			<fieldset >
+				<legend >Formulário de Registro</legend>
+				
+				<h:form id="frmSelfReg" >
+
+					<rich:graphValidator profiles="#{selfRegBean.validationGroups}">
+					<h:panelGrid columns="3" id="pnlCamposReg"> 
+						
+						
+						<h:outputText value="Nome Empresa" />
+						<h:inputText value="#{selfRegBean.empresaVO.nome}" size="40" id="nomeEmpresa" >
+							<f:ajax event="change" render="msgNomeEmpresa" />
+						</h:inputText>
+						<rich:message for="nomeEmpresa" id="msgNomeEmpresa"/>
+	
+	
+						<h:outputText value="Nome Usuário" />
+						<h:inputText value="#{selfRegBean.pessoaVO.nome}"  maxlength="150"  size="40" id="nomePessoa" >
+							<f:ajax event="change" render="msgNomePessoa" />
+						</h:inputText>
+						<rich:message id="msgNomePessoa" for="nomePessoa" />						
+						
+	
+						<h:outputText value="E-mail" />
+						<h:inputText value="#{selfRegBean.pessoaVO.email}"  maxlength="150"  size="40" id="email" >
+							<f:ajax event="change" render="msgMail" />							
+						</h:inputText>
+						<rich:message for="email" id="msgMail"/>						
+	
+						<h:outputText value="DDD-Telefone" />
+						<h:inputText value="#{selfRegBean.pessoaVO.telefone}"  maxlength="30"  size="40" id="telefone" >
+							<f:ajax event="change" render="msgTelefone" />							
+						</h:inputText>
+						<rich:message for="telefone" id="msgTelefone"/>						
+						
+
+						<h:outputText value="Login" />
+						<h:inputText value="#{selfRegBean.pessoaVO.login}" maxlength="20" id="loginPessoa" >
+							<f:ajax event="change" render="msgForLogin" />
+						</h:inputText>
+						<h:panelGroup id="groupLogin">
+							<h:outputText value=" #{selfRegBean.pessoaVO.msgCriticLogin}" id="msgLoginOK" />
+							<rich:message for="loginPessoa" id="msgForLogin"  />						
+						</h:panelGroup>
+							
+						
+						<h:outputText value="Senhaaaaa" />
+						<h:inputText value="#{selfRegBean.pessoaVO.senha}" id="senha" >
+							<f:ajax event="change" render="msgSenha" />
+						</h:inputText>					
+						<rich:message for="senha" id="msgSenha" />
+			
+	
+						<h:outputText value="Senha (confirme)" />
+						<h:inputSecret value="#{selfRegBean.pessoaVO.senhaConfirm}"  maxlength="20" id="senhaConfirm" >
+							<f:ajax event="change" render="msgSenhaConfirm" />
+						</h:inputSecret>
+						<rich:message for="senhaConfirm" id="msgSenhaConfirm"/>
+						
+						<h:outputLink target="#" value="http://pt.wikipedia.org/wiki/CAPTCHA" style="color:#eeeeee;" id="captchaLabel" >
+						<rich:tooltip showDelay="400" style="color:black;">Evita que "robôs" criem usuários automaticamente no sistema.</rich:tooltip>
+						Captcha (Por que?)
+						</h:outputLink>
+						
+						captcha
+						<rich:message for="captchaSelfReg" />
+						
+					</h:panelGrid>
+					
+					</rich:graphValidator>
+					
+						
+					<h:commandButton value="Confirma" action="#{selfRegBean.actionSalvar}"  reRender="frmSelfReg,pnlSelfReg" process="pnlCamposReg" />
+				</h:form>
+				<br/>
+				<span style="color: #eeeeee;" >* Os dados inseridos neste sistema não serão publicados pela LinkCompany e seus parceiros e sócios.</span>
+				<br/>
+			</fieldset>
+			
+			<span style="position:relative; left:120px; font-family: Arial;font-size:12px; color:white;">LinkCompany Consultoria em TI - contato@linkcompany.com.br</span>
+			
+			</h:panelGroup>
+			
+			<br/><br/><br/><br/><br/>
+			<h:panelGroup rendered="#{selfRegBean.isSuccess()}">
+			
+			<fieldset style="margin: auto;">
+				<legend >Sucesso!</legend>
+			
+				<h:panelGrid columns="2">
+					<h:graphicImage value="../img/checkGrande.png" />
+					
+					<h:panelGrid columns="1" style="margin:auto;" >
+						<h:outputText style="font-size:23px; font-family: Arial, sans-serif; color: #eeeeee;" value="Registro criado com sucesso!" />
+
+						
+						
+						<h:panelGroup rendered="false"><!-- NAO SERA ENVIADO EMAIL POR ENQUANTO -->
+							<h:graphicImage value="../img/checkMail.png" />
+							<h:outputText style="font-size:13px; font-family: Arial, sans-serif; color: #eeeeee;" value=" Um e-mail lhe foi enviado! " />
+							<h:outputText style="font-size:13px; font-family: Arial, sans-serif; color: #eeeeee;" value="Por favor, confirme o recebimento deste e-mail clicando no link contido na mensagem." />
+						</h:panelGroup>
+						<a style="font-size:15px;" href="../inicio/index.jsf">Clique aqui para acessar o sistema!</a>
+					</h:panelGrid>
+				</h:panelGrid>
+			</fieldset>
+			<br/>
+			</h:panelGroup>
+			
+			
+
+		</div>
+	</h:body>
+
+</html>

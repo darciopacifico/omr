@@ -1,0 +1,49 @@
+/**
+ * Gerado por XDoclet, nao edite!!
+ **/
+package <XDtPackage:packageName/>;
+
+import br.com.dlp.framework.dao.QueryOrder;
+import java.rmi.RemoteException;
+
+import br.com.dlp.framework.business.ValueListHandlerException;
+/**
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+ *
+ * Fachada para o componente <XDtWj2eeClass:moduleVLHId/>
+ *
+ **/
+<XDtClass:modifiers/> interface <XDtWj2eeClass:vlhFacadeClassName/> extends <XDtWj2eeClass:extendedVlhFacadeClassName/>{
+
+<XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>
+	/**
+	 * Atualiza as paginas do VLH com esta pesquisa
+	 */
+	public void <XDtWj2eeClass:metodoMecanismoPesquisaVLH/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>			
+		)throws ValueListHandlerException ;
+		
+	/**
+	 * Atualiza as paginas do VLH com esta pesquisa (com ordenaaao)
+	 */
+	public void <XDtWj2eeClass:metodoMecanismoPesquisaVLH/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>, QueryOrder[] queryOrders
+		)throws ValueListHandlerException ;
+		
+</XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>	
+
+
+}
+

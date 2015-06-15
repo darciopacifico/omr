@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx.xsd
+           http://cxf.apache.org/jaxws 
+           http://cxf.apache.org/schemas/jaxws.xsd">
+
+
+<!-- -
+    <jaxws:client id="calcPrecoPrazoWS" name="calcPrecoPrazoWS"
+                  serviceClass="org.tempuri.CalcPrecoPrazoWS"
+                  address="http://ws.correios.com.br/calculador/CalcPrecosPrazo.asmx?wsdl" />
+ -->
+
+
+
+
+	<bean id="jazzDS" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/jazzav" />
+		<property name="username" value="root" />
+		<property name="password" value="CelularCinza" />
+	</bean>
+
+
+	<context:annotation-config />
+	<context:component-scan base-package="br.com.dlp.jazzomr" />
+	<context:component-scan base-package="br.com.dlp.jazzav" />
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	
+
+	<!--
+	 -->
+	<bean name="namingStrategy" class="br.com.dlp.framework.hibernate.namingstrategy.JazzNamingStrategy"/>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+			
+		<property name="dataSource" ref="jazzDS" />
+		<property name="namingStrategy" ref="namingStrategy" />
+		<property name="packagesToScan" value="br.com.dlp.jazzav"/>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+
+				<prop key="hibernate.order_updates">true</prop>
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+				
+				<prop key="hibernate.generate_statistics">true</prop>
+				<!-- 
+				 -->
+				
+			</props>
+		</property>
+	</bean>
+	
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	<!-- 
+	<tx:jta-transaction-manager />
+	<tx:annotation-driven  />
+	 -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="nestedTransactionAllowed" value="true" />
+	</bean>
+	
+
+</beans>

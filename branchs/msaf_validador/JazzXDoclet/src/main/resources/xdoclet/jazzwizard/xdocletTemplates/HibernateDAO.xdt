@@ -1,0 +1,203 @@
+/**
+ * Gerado por XDoclet, não edite!!
+ **/
+package <XDtPackage:packageName/>;
+
+import java.util.ArrayList;
+import java.util.List;
+import br.com.dlp.framework.exception.BaseTechnicalError;
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.criterion.Expression;
+import br.com.dlp.framework.dao.DAOException;
+import org.hibernate.expression.MatchMode;
+import br.com.dlp.framework.dao.QueryOrder;
+import br.com.dlp.framework.servicelocator.ServiceLocatorException;
+import br.com.dlp.framework.util.FrameworkAcheUtil;
+import br.com.dlp.framework.vo.ICadastroBaseVO;
+import br.com.dlp.framework.vo.IPK;
+
+
+
+/**
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+ *
+ * Implementação de <XDtWj2eeClass:daoClassName/> para HibernateDAO
+ *
+ **/
+<XDtClass:modifiers/> class <XDtWj2eeClass:hibernateDAOClassName/> 
+	extends <XDtWj2eeClass:extendedHibernateDAOClassName /> 
+	implements <XDtWj2eeClass:daoClassName/>{
+
+	public Class getMappedClass() {
+		return <XDtWj2eeClass:voClassName/>.class;
+	}
+
+<XDtClass:ifIsClassNotAbstract>
+	public ICadastroBaseVO findByPrimaryKey(IPK chave) throws DAOException, BaseTechnicalError {
+    <XDtWj2eeClass:pkClassName/> modulePk = (<XDtWj2eeClass:pkClassName/>) chave;
+    
+		Class voClass = getMappedClass();
+		if(logger.isDebugEnabled()){
+			logger.debug("EXECUTANDO findByPrimaryKey... ");
+		}
+		Session session = null;
+		ICadastroBaseVO cadastroBaseVO;
+		try {
+			session = getHibernateSession();
+			Criteria criteria = session.createCriteria(voClass);
+
+
+<XDtWj2eeMethod:forAllMethods sort="true">
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPk>
+			<XDtWj2eeMethod:hibernateDAOCriteriaExpressionFindByPK/>
+		</XDtWj2eeMethod:ifIsPk>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>
+
+			
+			
+			cadastroBaseVO = (ICadastroBaseVO) criteria.uniqueResult();
+			
+		} catch (HibernateException e) {
+			throw new DAOException("Não foi possível executar o findByPrimaryKey para a classe "+voClass,e);
+			
+		} catch (ServiceLocatorException e) {
+			throw new DAOException(e);
+			
+		} catch (Exception e) {
+			throw new DAOException(e);
+			
+		}finally{
+			closeSession(session);
+		}
+		if(logger.isDebugEnabled()){
+			logger.debug("... findByPrimaryKey executado com sucesso !!");
+		}
+		return cadastroBaseVO;
+  }
+</XDtClass:ifIsClassNotAbstract>  
+  
+
+<XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>
+	/**
+	 * Implementacao de <XDtWj2eeClass:metodoMecanismoPesquisa/> para Hibernate
+	 */
+	public List <XDtWj2eeClass:metodoMecanismoPesquisa/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>,
+		QueryOrder[] queryOrders	
+		) throws DAOException, BaseTechnicalError{
+		
+		Class voClass = getMappedClass();
+		if(logger.isDebugEnabled()){
+			logger.debug("EXECUTANDO <XDtWj2eeClass:metodoMecanismoPesquisa/>... ");
+		}
+		Session session = null;
+		List list = new ArrayList();
+		try {
+			session = getHibernateSession();
+			Criteria criteria = session.createCriteria(voClass);
+			
+
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+			if(!FrameworkAcheUtil.isNullOrEmptyOrZero(<XDtWj2eeMethod:nomeAtributoParaPesquisa/>)){
+				<XDtWj2eeMethod:hibernateDAOCriteriaExpression/>
+			}
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>
+			
+			configureOrderCriteria(criteria,queryOrders);
+			list = criteria.list();
+			
+		} catch (HibernateException e) {
+			throw new DAOException("Não foi possível executar o <XDtWj2eeClass:metodoMecanismoPesquisa/> para a classe "+voClass,e);
+			
+		} catch (ServiceLocatorException e) {
+			throw new DAOException(e);
+			
+		} catch (Exception e) {
+			throw new DAOException(e);
+			
+		}finally{
+			closeSession(session);
+			
+		}
+		if(logger.isDebugEnabled()){
+			logger.debug("... <XDtWj2eeClass:metodoMecanismoPesquisa/> executado com sucesso ("+list.size()+" registros)!!");
+		}
+		return list;
+	}
+	
+	/**
+	 * Implementacao de <XDtWj2eeClass:metodoMecanismoPesquisa/> para Hibernate
+	 */
+	public List <XDtWj2eeClass:metodoMecanismoPesquisa/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>
+		) throws DAOException, BaseTechnicalError{
+		
+		
+		List list = <XDtWj2eeClass:metodoMecanismoPesquisa/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>,new QueryOrder[]{}
+		);
+		
+		return list;
+	}	
+	
+</XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>	
+		
+	<XDtMethod:forAllMethods superclasses="false" >
+		<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+			<XDtMethod:ifIsGetter>
+				<XDtWj2eeMethod:ifIsCriarMecanismoDeFindUmParaMuitos recursivamente="true">
+				/*Implementação de find para recuperar todos os registros de <XDtMethod:methodName/>*/
+				public List findAll<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>() throws DAOException, BaseTechnicalError{
+					
+			    Class voClass = <XDtWj2eeMethod:voClassName/>.class;
+			
+			    Session session = null;
+			    List list = new ArrayList();
+			    try {
+			      session = getHibernateSession();
+			
+			      Criteria criteria = session.createCriteria(voClass);
+			
+			      list = criteria.list();
+			
+			    } catch (HibernateException e) {
+			      throw new DAOException("Não foi possível executar o findAll. Classe " + voClass, e);
+			    } catch (ServiceLocatorException e) {
+			      throw new DAOException(e);
+			    } finally {
+			      closeSession(session);
+			    }
+			    return list;
+
+				}
+				</XDtWj2eeMethod:ifIsCriarMecanismoDeFindUmParaMuitos>
+			</XDtMethod:ifIsGetter>
+		</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+	</XDtMethod:forAllMethods>
+}

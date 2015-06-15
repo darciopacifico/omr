@@ -1,0 +1,19 @@
+package <XDtConfig:configParameterValue paramName="packageUtil" />;
+
+/**
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+ *
+ * Classe de constantes do projeto
+ *
+ **/
+public final class <XDtConfig:configParameterValue paramName="constantClass" /> {
+	private <XDtConfig:configParameterValue paramName="constantClass" />(){} 
+
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/SistemaConstantes.java.txt'></XDtMerge:merge>
+
+<XDtClass:forAllClasses>
+	public static final String <XDtWj2eeClass:moduleConstant/>="<XDtWj2eeClass:moduleId/>";
+	public static final String <XDtWj2eeClass:moduleVLHConstant/>="<XDtWj2eeClass:moduleVLHId/>";
+</XDtClass:forAllClasses>
+
+}

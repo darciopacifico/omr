@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="packageModulo" name="Wizard - XDoclet Module">
+	<property environment="env" />
+	<property file="build.properties" />
+	<property name="nomeJarModulo" value="xdoclet-wizardj2ee-module-2.0.jar"/>
+	
+	<path id="pathPadraoXDoclet">
+		<fileset dir="${dir.lib}" >
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${dir.xdocletLib}" includes="**/*.jar" />
+	</path>
+
+	<taskdef name="xdoclet" classname="xdoclet.DocletTask" classpathref="pathPadraoXDoclet" />
+
+	<target name="criarXdocletXML" description="builds XML descriptor for module">
+		<!-- Define the xdoclet task -->
+		<property name="xdoclet-xml.dir" value="src/META-INF" />
+		<mkdir dir="${xdoclet-xml.dir}" />
+		<xdoclet destdir="${xdoclet-xml.dir}">
+			<fileset dir="src">
+				<include name="**/*SubTask.java" />
+        		<include name="**/*Handler.java" />
+			</fileset>
+			<template templateFile="src/xdoclet/jazzwizard/xdocletTemplates/xdoclet-xml.xdt" destinationFile="xdoclet.xml" />
+		</xdoclet>
+	</target>
+
+	<target name="packageModulo" depends="criarXdocletXML" >
+		<jar  destfile="${dir.Project.deploy}\${nomeJarModulo}">
+			<fileset dir="bin" >
+				<include name="**/*.*" />
+			</fileset>
+			<fileset dir="."  >
+				<include name="xdocletTemplates/**/*.*" />
+			</fileset>
+		</jar>
+		
+		<copy todir="${dir.xdocletLib}">
+			<fileset dir="${dir.Project.deploy}" >
+				<include name="${nomeJarModulo}"/>
+			</fileset>			
+		</copy>
+	</target>
+	
+</project>

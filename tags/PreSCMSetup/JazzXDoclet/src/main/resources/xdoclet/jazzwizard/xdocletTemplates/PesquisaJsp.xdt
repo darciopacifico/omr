@@ -1,0 +1,197 @@
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%> 
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%> 
+<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles"%> 
+<%@page import="org.apache.struts.taglib.html.Constants" %>
+<html:form action="<XDtWj2eeClass:actionPath/>" > 
+
+
+
+	<%-- coloca baseCadastroFormVLH no escopo para o funcionamento do VLH --%>
+	<bean:define toScope="request" id="baseCadastroFormVLH" name="<XDtWj2eeClass:actionFormName/>" />
+
+	<%-- coloca o form atual no id de request formTelaPesquisa para o 
+	funcionamento da tela de pesquisa generica--%>
+	<bean:define toScope="request" id="formTelaPesquisa" name="<XDtWj2eeClass:actionFormName/>" />
+	<%-- Guarda a pagina atual do VLH --%>
+	<html:hidden property="paginaVLH"/>
+
+<%-- Guarda o status atual da area de pesquisa --%>
+<%
+String statusAreaPesquisa = request.getParameter("statusAreaPesquisa");
+if ( statusAreaPesquisa==null)
+	statusAreaPesquisa="block"; 
+%>
+<input type="hidden" name="statusAreaPesquisa" id="statusAreaPesquisa" value="<%=statusAreaPesquisa%>"/>
+	<tiles:insert page="/tilesTemplate/base/baseCadastroFormAtributos.jsp"/>
+	
+
+	<tr >
+		<td><img src="imagens/transp.gif" width="1" height="7px"></td>
+	</tr>
+	<tr>
+		<td class="verAz11b"><%
+if ( statusAreaPesquisa.equals("block") ) { %>
+	  <img border='0' id="imgExpand" style='cursor:hand' src="../assets/menosVermelho.gif" alt="Ocultar area de pesquisa"  onclick="javascript:ocultaPesquisa();"></img>
+<%} else { %>
+	  <img border='0' id="imgExpand" style='cursor:hand' src="../assets/maisVermelho.gif"  alt="Expandir area de pesquisa" onclick="javascript:ocultaPesquisa();"></img>
+<%} %>
+	  &nbsp;Filtro para pesquisa
+</td>
+	</tr>
+	<tr bgcolor="#FFCC66">
+		<td><img src="imagens/transp.gif" width="1" height="1"></td>
+	</tr>
+
+	<tr>
+	 <td class="neutro">
+
+ <div border="0" id="areaPesquisa" style="width:100%; height:100%; overflow-x:auto; overflow-y:auto; display:<%=statusAreaPesquisa%>;">
+
+	  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+		
+		
+<XDtWj2eeMethod:forAllMethods sort="true">
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+
+			<XDtWj2eeMethod:ifIsControlSufix controlSufix="De">
+				<tr>
+					<td class="tt2R" nowrap="nowrap" width="30%" title="<bean:message key="<XDtWj2eeMethod:multiLinguaDicaKey/>"/>" >
+						<bean:message key="<XDtWj2eeMethod:multiLinguaLabelKey/>"/> :
+					</td>
+					<td class="tt3L"  width="70%"  nowrap="nowrap" title="<bean:message key="<XDtWj2eeMethod:multiLinguaDicaKey/>"/>"> 
+						<bean:message key="pesquisa.padrao.labelDe"/>
+						<XDtWj2eeMethod:renderControl tipoControle="pesquisa" />
+			</XDtWj2eeMethod:ifIsControlSufix>
+			<XDtWj2eeMethod:ifIsControlSufix controlSufix="Ate">
+						<bean:message key="pesquisa.padrao.labelAte"/>
+						<XDtWj2eeMethod:renderControl tipoControle="pesquisa" />
+					</td>
+				</tr>
+			</XDtWj2eeMethod:ifIsControlSufix>
+
+			<XDtWj2eeMethod:ifIsControlSufix controlSufix="">
+				<tr>
+					<td class="tt2R"  width="30%"  nowrap="nowrap" title="<bean:message key="<XDtWj2eeMethod:multiLinguaDicaKey/>"/>" >
+						<bean:message key="<XDtWj2eeMethod:multiLinguaLabelKey/>"/> :
+					</td>
+					<td class="tt3L"  width="70%"  nowrap="nowrap" title="<bean:message key="<XDtWj2eeMethod:multiLinguaDicaKey/>"/>" >
+						<XDtWj2eeMethod:renderControl tipoControle="pesquisa" />
+					</td>
+				</tr>
+			</XDtWj2eeMethod:ifIsControlSufix>
+
+
+		</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>
+
+		<tr>
+			<td colspan="2" class="tt1R"  nowrap="nowrap" title="<bean:message key="<XDtWj2eeMethod:multiLinguaDicaKey/>"/>">
+				<html:button property="btnPesquisar" styleClass="bb1" onclick="javascript:pesquisar();travarBotao(this);"  accesskey="p" >
+					<bean:message key="pesquisa.padrao.btnpesquisar"/>
+				</html:button>
+			</td>
+		</tr>
+	  </table>
+</div>
+
+	 </td>
+	</tr>
+	<tr>
+	 <td class="neutro">
+	  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+		<tr>
+		<td class="tt0L" width="1%">
+			&nbsp;<!--botao alterar-->
+		</td>
+		<td class="tt0L" width="1%">
+			&nbsp;<!--botao excluir-->
+		</td>
+		<td class="tt0L" width="1%">
+			&nbsp;<!--botao consultar-->
+		</td>
+
+<XDtWj2eeMethod:forAllMethods sort="true">
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPropriedadeListavel>
+		<td class="tt0L" nowrap="nowrap" title="<bean:message key="<XDtWj2eeMethod:multiLinguaDicaKey/>"/>" >
+			<bean:message key="<XDtWj2eeMethod:multiLinguaLabelKey/>"/>
+			<XDtWj2eeMethod:ifIsPropriedadeOrdenavel>
+	    <html:hidden property='IVOWrapper.webQueryOrder[<XDtWj2eeMethod:indexId/>].campo' styleId='IVOWrapper.webQueryOrder[<XDtWj2eeMethod:indexId/>].campo'  value='<XDtWj2eeMethod:propertyName/>' />
+			<html:hidden property='IVOWrapper.webQueryOrder[<XDtWj2eeMethod:indexId/>].tipoOrdenacao' styleId='IVOWrapper.webQueryOrder[<XDtWj2eeMethod:indexId/>].tipoOrdenacao' />
+			<img border='0' style='cursor:hand' 
+				src='../assets/ordenacao/ordenacao_<bean:write name="<%=Constants.BEAN_KEY%>" property="IVOWrapper.webQueryOrder[<XDtWj2eeMethod:indexId/>].tipoOrdenacao"/>.GIF'
+				alt='<bean:message key="pesquisa.padrao.ordenacao"/>'
+				onclick='javascript:ordenar(<XDtWj2eeMethod:indexId/>,this);'>
+				
+				<XDtWj2eeMethod:incrementIndexId/>
+			</XDtWj2eeMethod:ifIsPropriedadeOrdenavel>
+		</td>
+		</XDtWj2eeMethod:ifIsPropriedadeListavel>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>
+
+	</tr>
+	
+	<tr bgcolor="#FFCC66">
+		<td colspan="50" ><img src="imagens/transp.gif" width="1" height="1"></td>
+	</tr>
+	
+	<%-- INCREMENTADOR PARA ID ITEM SELECIONADO --%>
+	<%int i=0;%>
+	<logic:iterate id="basevo" name="formTelaPesquisa"  property="resultadoPesquisa" >
+		
+	<tr>
+		<td class="tt2C"  nowrap="nowrap">
+			<img 
+			border='0' 
+			style='cursor:hand' 
+			src="../assets/img_e.gif" 
+			alt="Editar" 
+			onclick="javascript:preparaAlterar(<%=i%>);"></img>
+		</td>								
+		<td class="tt2C"  nowrap="nowrap">
+			<img 
+			border='0' 
+			style='cursor:hand' 
+			src="../assets/img_x.gif" 
+			alt="Excluir" 
+			onclick="javascript:excluir(<%=i%>);"></img>
+		</td>
+		<td class="tt2C" nowrap="nowrap">
+			<img 
+			border='0' 
+			style='cursor:hand' 
+			src="../assets/img_c.gif" 
+			alt="Consultar" 
+			onclick="javascript:preparaConsultar(<%=i%>);"></img>
+		</td>								
+		
+<XDtWj2eeMethod:forAllMethods sort="true">
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPropriedadeListavel>
+		<td class="tt2L"  nowrap="nowrap">
+			<XDtWj2eeMethod:conteudoColunaListagemTelaPesquisa/>
+		</td >
+		</XDtWj2eeMethod:ifIsPropriedadeListavel>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>
+
+	</tr>
+	<%i++;%>
+	</logic:iterate>
+
+		</tr>
+	  </table>
+	 </td>
+    </tr>
+
+    <script language="javascript">
+    var firstElement = document.<XDtWj2eeClass:actionFormNameMestre/>.elements["<XDtWj2eeClass:primeiroElementoPesquisa/>"];
+    firstElement.focus();
+    </script>
+
+
+</html:form>

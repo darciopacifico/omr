@@ -1,0 +1,12 @@
+#/**
+# * Gerado por XDoclet, não edite!!
+# **/
+
+# TODO Setar aqui qual é a implementação de VOs que a factory deve instanciar
+# ie :
+# ClassificacaoAtividade=br.com.dlp.projetonovo.classificacaoatividade.ClassificacaoAtividadeHibernateDAO
+# ClassificacaoAtividade=br.com.dlp.projetonovo.classificacaoatividade.ClassificacaoAtividadeOracleDAO
+
+<XDtClass:forAllClasses >
+<XDtWj2eeClass:moduleId/>=<XDtWj2eeClass:hibernateDAOFullClassName/>
+</XDtClass:forAllClasses>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<project>
+	<parent>
+		<artifactId>msaf.validador</artifactId>
+		<groupId>msaf.validador</groupId>
+		<version>1.0</version>
+	</parent>
+
+	<name>msaf.validador.portal Maven Webapp</name>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>msaf.validador</groupId>
+	<artifactId>msaf.validador.portal</artifactId>
+	<packaging>war</packaging>
+
+	<url>http://maven.apache.org</url>
+
+	<build>
+		<finalName>msaf.validador.portal</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<version>7.0.0.pre4</version>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<configuration>
+					<argLine>-Xmx1024M -Xdebug -Xnoagent -Djava.compiler=NONE
+						-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=4144
+					</argLine>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="" name="Packaging Produção Manutencao Templates">
+
+	<property file="build.properties" />
+	
+	<import file="../${name.framework}/abstractBuildToJars.xml"/>
+	
+	<target name="PackageExternalJars" description="Empacota de copia Jars de outros sistemas para dentro deste projeto">
+		
+		<ant inheritrefs="false" 
+			 inheritall="false" 
+			 dir="../${name.framework}" 
+			 antfile="../${name.framework}/build.xml" 
+			 target="Package" />
+
+		
+		<ant inheritrefs="false" 
+			 inheritall="false" 
+			 dir="../${name.project.projetoficticio}" 
+			 antfile="../${name.project.projetoficticio}/buildToJars.xml" 
+			 target="PackageComum" />
+
+	</target>
+
+</project>

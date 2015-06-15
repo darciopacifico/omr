@@ -1,0 +1,92 @@
+/**
+ * Gerado por XDoclet, nao edite!!
+ **/
+package <XDtPackage:packageName/>;
+
+import java.rmi.RemoteException;
+import java.util.List;
+
+import br.com.dlp.framework.dao.DAOException;
+import br.com.dlp.framework.dao.DAOFactoryException;
+import br.com.dlp.framework.dao.QueryOrder;
+import br.com.dlp.framework.exception.BaseBusinessException;
+import br.com.dlp.framework.exception.BaseTechnicalError;
+
+/**
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+ *
+<XDtClass:ifIsClassNotAbstract>
+ * Fachada para o componente <XDtWj2eeClass:moduleId/>
+</XDtClass:ifIsClassNotAbstract>
+<XDtClass:ifIsClassAbstract>
+ * Fachada abstrata para o componente <XDtWj2eeClass:moduleId/>
+</XDtClass:ifIsClassAbstract>
+ *
+ **/
+<XDtClass:modifiers/> interface <XDtWj2eeClass:facadeClassName/> extends <XDtWj2eeClass:extendedFacadeClassName/>{
+
+	/*****************************************/
+	/*CONSTANTES PARA ORDENACAO DE REGISTROS */
+<XDtWj2eeMethod:forAllMethods sort="true" superclasses="false">
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPropriedadeOrdenavel>
+		public static final String <XDtWj2eeMethod:constanteParaOrdenacao nome="<XDtWj2eeMethod:propertyName/>"/> ="orderBy<XDtWj2eeMethod:methodNameWithoutPrefix/>";
+		</XDtWj2eeMethod:ifIsPropriedadeOrdenavel>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>
+	/*CONSTANTES PARA ORDENACAO DE REGISTROS */
+	/*****************************************/
+
+<XDtMethod:forAllMethods superclasses="false" >
+	<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsCriarMecanismoDeFind recursivamente="true">
+			/*classe:<XDtClass:className/>  method:<XDtMethod:methodName/>*/
+			public List findAll<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>() throws BaseBusinessException, BaseTechnicalError;
+			</XDtWj2eeMethod:ifIsCriarMecanismoDeFind>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+</XDtMethod:forAllMethods>
+
+<XDtMethod:forAllMethods superclasses="false" >
+	<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsCriarMecanismoDeFindUmParaMuitos recursivamente="true">
+			/*findAll classe:<XDtClass:className/>  method:<XDtMethod:methodName/>*/
+			public List findAll<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>() throws BaseBusinessException, BaseTechnicalError;
+			</XDtWj2eeMethod:ifIsCriarMecanismoDeFindUmParaMuitos>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+</XDtMethod:forAllMethods>
+
+<XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>
+	/**
+	 * Pesquisa genarica 
+	 */
+	public List <XDtWj2eeClass:metodoMecanismoPesquisa/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>			
+		)throws BaseBusinessException, BaseTechnicalError ;
+		
+	/**
+	 * Pesquisa genarica com Ordenaaao
+	 */
+	public List <XDtWj2eeClass:metodoMecanismoPesquisa/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>, QueryOrder[] queryOrders
+		)throws BaseBusinessException, BaseTechnicalError ;
+		
+</XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>	
+
+}
+

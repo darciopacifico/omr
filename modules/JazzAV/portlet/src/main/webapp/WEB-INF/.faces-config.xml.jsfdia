@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#checkout#checkout.jsf"
+  PATH="/checkout/checkout.jsf" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="resetConfirm::#senhaResetConfirm.jsf"
+    NAME="output" PATH="/senhaResetConfirm.jsf"
+    TARGET="rules:#senhaResetConfirm.jsf" TITLE="resetConfirm" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::1" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::1" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="checkout::#checkout#checkout.jsf"
+    NAME="output" PATH="/checkout/checkout.jsf"
+    TARGET="rules:#checkout#checkout.jsf" TITLE="checkout" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#anuncio#anuncio.jsf"
+  PATH="/anuncio/anuncio.jsf" SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules::2" SHAPE="32,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::2" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="anuncio::#anuncio#anuncio.jsf" NAME="output"
+    PATH="/anuncio/anuncio.jsf" TARGET="rules:#anuncio#anuncio.jsf"
+    TITLE="anuncio" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#senhaResetConfirm.jsf"
+  PATH="/senhaResetConfirm.jsf" SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

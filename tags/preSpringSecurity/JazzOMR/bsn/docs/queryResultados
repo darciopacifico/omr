@@ -1,0 +1,115 @@
+select
+
+qre.pk qre_pk,
+alr.pk alr_pk,
+alr.checked alr_checked,
+alt.score alt_score, 
+alt.description a_resumo,
+aco.pk ac_pk,
+
+
+pes.pk pes_pk, 
+pes.email pes_email, 
+pes.login pes_login, 
+pes.nome pes_nome, 
+pes.telefone pes_telefone,
+
+
+
+exa.pk exa_pk, 
+exa.description exa_description, 
+exa.report_resource_as_stream exa_report_resource_as_stream , 
+exa.total_pages exa_total_pages,
+
+
+qtn.description qr_description,
+qtn.pk qtn_pk,
+aco.x 
+aco_x,
+aco.y 
+aco_y,
+eve.pk 	eve_pk,
+par.pk 	par_pk,
+pes.pk	pes_pk,
+eve.description  e_description,
+pes.login pe_login,
+pes.nome pe_nome,
+
+qco.question_order,
+aco.alternative_order,
+
+qco.pk	qco_pk,
+aco.pk	aco_pk,
+
+exv.pk	exv_pk,
+qco.pk	qco_pk,
+que.pk	que_pk,
+alt.pk	alt_pk,
+
+exv.pk exv_pk,
+que.pk q_pk,
+alt.pk a_pk,
+
+exv.question_enum_model,
+exv.alternative_enum_model,
+
+que.description q_wiki,
+que.question_type,
+qco.pk qc_pk
+
+
+    from
+        tb_event eve 
+
+    left outer join
+        tb_participation par 
+            on eve.pk=par.fk_event 
+
+		left outer join
+			tb_pessoa pes
+				on pes.pk = par.fk_pessoa
+	
+
+    left outer join
+        tb_exam_variant exv 
+            on par.fk_examvariant=exv.pk 
+		
+	left outer join
+		tb_question_coordinate qco
+			on qco.fk_exam_variant = exv.pk
+
+		left outer join 
+			tb_question que
+				on que.pk = qco.fk_question
+		
+
+    left outer join
+		tb_exam exa
+			on exa.pk = exv.fk_exam
+			
+    left outer join tb_alternative_coordinate aco
+			on aco.fk_question_coordinates = qco.pk
+
+		left outer join 
+			tb_alternative alt
+				on alt.pk = aco.fk_alternative
+		
+	left outer join
+		tb_question_result qre 
+			on qre.fk_questioncoordinate = qco.pk
+
+	left outer join
+		tb_alternative_result alr
+			on alr.fk_alternativecoordinate = aco.pk
+
+		left join tj_examvo_questionnaires tjeq
+			on 	tjeq.fk_exam = exa.pk	and
+				tjeq.fk_questionnaires_questionnaire = 
+				(
+					select max(fk_questionnaire) 
+					from tj_questionnairevo_questions 
+					where fk_questions_question = que.pk
+				) 
+		left join tb_questionnaire qtn
+			on qtn.pk = tjeq.fk_questionnaires_questionnaire
+			

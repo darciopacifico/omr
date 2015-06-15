@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployments>
+   <deployment>
+     <parent-ref>default</parent-ref>
+     <if-exists>overwrite</if-exists>
+     <page>
+   <page-name>RichFacesEchoPortlet</page-name>
+        <window>
+            <window-name>RichFacesEchoPortletWindow</window-name>
+            <instance-ref>RichFacesEchoPortletInstance</instance-ref>
+            <region>left</region>
+            <height>0</height>
+            <initial-window-state>maximized</initial-window-state>
+            <properties>
+               <property>
+                  <name>theme.renderSetId</name>
+                  <value>emptyRenderer</value>
+                </property>
+            </properties>
+      </window>
+    </page>
+  </deployment>
+</deployments>

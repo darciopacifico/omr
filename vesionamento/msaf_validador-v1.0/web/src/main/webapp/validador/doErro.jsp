@@ -1,0 +1,1 @@
+Usuário não autorizado!  

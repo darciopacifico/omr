@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:p="http://primefaces.prime.com.tr/ui" 
+	xmlns:c="http://java.sun.com/jstl/core" >
+
+<f:view>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+		
+		<style>
+			* {
+				margin:auto;
+			}
+		
+			span, a{
+				font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;
+			}
+		
+			span{
+				
+			}
+		
+			.divReg {
+				position:relative; height: 540px; width: 724px; 
+				background: #91b1c7 url('../img/menu/repearVertical.png'); background-repeat: repeat-y; margin: auto; top:30px;
+			}
+			
+			.divReg form {
+				position: relative; top: 10%; text-align: center;
+			}
+			
+			.divReg fieldset {
+				width: 650px; position: inherit;margin: auto;
+			}
+			
+			.divReg legend {
+				font-family: Arial, sans-serif; color: #eeeeee; font-size: 12px; font-weight: bold;
+			}
+
+			.divReg table {
+				margin:auto;
+			}
+			
+			.divReg td {
+				text-align: left;
+				font-family: Arial, sans-serif; 
+				font-size: 12px;
+				color: white;
+			}
+			
+			.divReg label {
+				font-family: Arial, sans-serif; color: #eeeeee;
+			}
+			
+		</style>
+
+		<title>Registre-se</title>
+		<p:resources />
+	</head>
+
+	<body style="background: #eeeeee url('../img/menu/examCenterGray.png'); background-repeat: repeat;" >
+	
+		<div class="divReg">
+		
+			<img src="../img/menu/examCenterLogo.png" />
+
+			<h:panelGroup >
+			
+			<fieldset style="margin: auto; height: 300px;">
+				<legend >Sucesso!</legend>
+			
+				<h:panelGrid columns="2">
+					<h:graphicImage value="../img/checkGrande.png" />
+					
+					<h:panelGrid columns="1" style="margin:auto;" >
+						<h:outputText style="font-size:23px; font-family: Arial, sans-serif; color: #eeeeee;" value="Registro criado com sucesso!" />
+						<rich:spacer height="10" />
+
+						<h:outputText style="font-size:13px; font-family: Arial, sans-serif; color: #eeeeee;" 
+						value="- Para testar, imprima a prova demo contida da opção 'Agendar Provas'." />
+						
+						<h:outputText style="font-size:13px; font-family: Arial, sans-serif; color: #eeeeee;" 
+						value="- Após preencher a prova com caneta preta ou azul, digitalize as folhas e envie para o sistema através da opção 'Corrigir Provas'." />
+						
+						<h:outputText style="font-size:13px; font-family: Arial, sans-serif; color: #eeeeee;" 
+						value="- Os resultados estarão disponíveis em " />
+						
+						
+						
+						<h:panelGroup rendered="false"><!-- nao sera enviado email por enquanto -->
+							<h:graphicImage value="../img/checkMail.png" />
+							<h:outputText style="font-size:13px; font-family: Arial, sans-serif; color: #eeeeee;" value=" Um e-mail lhe foi enviado! " />
+							<h:outputText style="font-size:13px; font-family: Arial, sans-serif; color: #eeeeee;" value="Por favor, confirme o recebimento deste e-mail clicando no link contido na mensagem." />
+						</h:panelGroup>
+						<rich:spacer height="10" />
+						<a style="font-size:15px;" href="../inicio/index.jsf">Clique aqui para acessar o sistema!</a>
+					</h:panelGrid>
+				</h:panelGrid> 
+			</fieldset>
+			<br/>
+			</h:panelGroup>
+
+		</div>
+	</body>
+</f:view>
+
+</html>

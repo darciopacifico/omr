@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Menu do Desenvolvedor</title>
+</head>
+	
+<body>
+	
+	
+	<b>Menu do Sistema - Empacotamento de "Desenvolvimento"<br>
+	Este arquivo não deve fazer parte do empacotamento de "Produção" do Sistema</b>
+	<br>
+	<br>
+	<table border='0'>
+	<XDtClass:forAllClasses>
+		<XDtWj2eeClass:ifIsGerarView>
+			<XDtClass:ifIsClassNotAbstract>
+				<XDtWj2eeClass:ifIsNotRenderer renderer="moduloescravo">
+				<tr>
+					<td>
+						<XDtWj2eeClass:className/>
+					</td>
+					<td>
+						UC<XDtWj2eeClass:moduleUc/>
+					</td>
+					<td>
+						<a href='.<XDtWj2eeClass:actionPath/>.do' title="<XDtWj2eeClass:moduleDescription/>" >
+							 <XDtWj2eeClass:moduleNome/>
+						</a>
+					</td>
+				</tr>
+				</XDtWj2eeClass:ifIsNotRenderer>
+			</XDtClass:ifIsClassNotAbstract>
+		</XDtWj2eeClass:ifIsGerarView>
+	</XDtClass:forAllClasses>
+	</table>
+</body>
+</html>
+

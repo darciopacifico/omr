@@ -1,0 +1,145 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:t="http://myfaces.apache.org/tomahawk" 
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:c="http://java.sun.com/jstl/core">
+	
+<head>
+		<!-- revisar estilo e layout de paginas-->
+    <style>
+        img {
+            border-width: 0;
+        }
+    </style>
+</head>
+
+<f:loadBundle var="msg" basename="br.com.dlp.jazzqa.ResourceBundle" />
+<f:loadBundle var="lblProduto" basename="br.com.dlp.jazzqa.produto.Produto" />
+
+<f:view>
+	<head>
+			<title><h:outputText value="#{lblProduto.pnlProduto}"/></title>
+	</head>
+	<body>
+
+	<h:form>
+		<rich:panel>
+
+			<f:facet name="header">
+				<h:outputText value="#{lblProduto.pnlProduto}"/>
+			</f:facet>
+
+			<!--FORMULARIO DE PESQUISA-->
+			<h:panelGrid columns="2">
+				<h:outputText value="#{lblProduto.dsAreaProduto}"/>
+				<h:inputText     value="#{produtoJSFBean.dsAreaProduto}"/>
+				
+ 				<h:outputText value="#{lblProduto.dtInclusao}"/>
+				<rich:calendar value="#{produtoJSFBean.dtInclusaoFrom}" />
+				
+ 				<h:outputText value="#{lblProduto.dtInclusao}"/>
+				<rich:calendar value="#{produtoJSFBean.dtInclusaoTo}" />
+				
+ 				<h:outputText value="#{lblProduto.nome}"/>
+				<h:inputText     value="#{produtoJSFBean.nome}"/>
+				
+ 				<h:outputText value="#{lblProduto.obs}"/>
+				<h:inputText     value="#{produtoJSFBean.obs}"/>
+				
+			</h:panelGrid>
+
+			<!--BARRA DE BOTOES -->
+			<rich:toolBar height="26" itemSeparator="grid">
+				<rich:toolBarGroup>
+
+					<a4j:commandLink action="#{produtoJSFBean.actionNovo}"   title="#{msg.btnNovo}"   reRender="campos">
+						<h:graphicImage value="../img/create_doc.gif"/>
+					</a4j:commandLink>
+
+					<a4j:commandLink action="#{produtoJSFBean.actionSalvar}" title="#{msg.btnSalvar}" reRender="campos,resultadoDG" >
+						<h:graphicImage value="../img/save.gif" />
+					</a4j:commandLink>
+
+					<a4j:commandLink action="#{produtoJSFBean.actionPesquisar}" title="#{msg.btnPesquisar}" reRender="resultadoDG" >
+						<h:graphicImage value="../img/find.gif"  />
+					</a4j:commandLink>
+
+				</rich:toolBarGroup>    
+			</rich:toolBar>
+
+			<rich:spacer height="30px;" />
+
+			<!--TABELA DE RESULTADOS-->
+			<rich:dataTable value="#{produtoJSFBean.resultados}" var="resultado" id="resultadoDG" >
+				<f:facet name="header">Resultados Consulta</f:facet>
+				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblProduto.dsAreaProduto}"/></f:facet>
+					<h:outputText value="#{resultado.dsAreaProduto}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblProduto.dtInclusao}"/></f:facet>
+					<h:outputText value="#{resultado.dtInclusao}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblProduto.nome}"/></f:facet>
+					<h:outputText value="#{resultado.nome}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblProduto.obs}"/></f:facet>
+					<h:outputText value="#{resultado.obs}"/>
+				</rich:column>
+				
+
+				<rich:column>
+					<f:facet name="header">&nbsp;</f:facet>
+					<a4j:commandButton action="#{produtoJSFBean.actionUpdate(resultado)}" value="#{msg.btnAlterar}" reRender="campos" />
+				</rich:column>
+			
+				<rich:column>
+					<f:facet name="header">&nbsp;</f:facet>
+					<a4j:commandButton action="#{produtoJSFBean.actionDelete(resultado)}" value="#{msg.btnExcluir}" reRender="campos,resultadoDG" />
+				</rich:column>
+			
+			</rich:dataTable>
+
+
+			<!--CAMPOS MANUTENCAO-->
+			<h:panelGrid columns="3" id="campos">
+				<h:outputText value="#{lblProduto.dsAreaProduto}"/>
+				<h:inputText     value="#{produtoJSFBean.tmpVO.dsAreaProduto}"/>
+				<rich:message for="dsAreaProduto" />
+				
+ 				<h:outputText value="#{lblProduto.dtInclusao}"/>
+				<rich:calendar value="#{produtoJSFBean.tmpVO.dtInclusao}" />
+				<rich:message for="dtInclusao" />
+				
+ 				<h:outputText value="#{lblProduto.nome}"/>
+				<h:inputText     value="#{produtoJSFBean.tmpVO.nome}"/>
+				<rich:message for="nome" />
+				
+ 				<h:outputText value="#{lblProduto.obs}"/>
+				<h:inputText     value="#{produtoJSFBean.tmpVO.obs}"/>
+				<rich:message for="obs" />
+				
+			</h:panelGrid>
+
+		</rich:panel>
+	</h:form>
+	</body>
+</f:view>
+</html>
+
+
+
+
+
+
+

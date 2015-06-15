@@ -1,0 +1,1048 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../template/crud/crudTemplate.xhtml">
+	
+	<ui:define name="insideScriptElement">
+		
+		function setTransp(){
+			var transp = document.getElementById('frmCorrDetail:sldTranspInput').value;
+			var divCorrection = document.getElementById('divCorrection');
+			divCorrection.style.opacity=transp/100;	
+			
+			divCorrection.style.filter="alpha(opacity = "+transp+")";
+		}
+
+	</ui:define>
+	
+	
+	<ui:define name="insideStyleElement">
+	    
+	    #divCorrection {
+	    	display: table; 
+	    	width: 1px; 
+		    position: relative; 
+		    top: 20px; 
+		    left: 20px; 
+		     
+		     
+		    background: white;
+		    overflow: visible;  
+		    background:transient;
+ 			opacity:0.8;
+	    }
+
+	    #divCorrection div{
+		    background: white;
+		    display: table-cell;  
+	    }
+	    
+		.backgroundImage div{
+			overflow: auto;
+			height:455px; 
+			width:720px; 
+			background: gray url('../img/backGroundImg.gif');background-repeat: repeat; 
+		}
+	
+		.scrollPanel{
+			overflow: auto; 
+			padding: 0px;
+			border: 0px;
+		}
+	
+		.scrollPanel div{
+			padding: 0px;			
+			border: 0px;
+		}
+	
+		.topAlign {
+			vertical-align: top;
+		}
+		.topAlign td {
+			vertical-align: top;
+		}
+		
+		.labelSuperior{
+			color: gray;
+			font-weight: bolder; 
+			font-size:8px;
+			padding-bottom: 0px;
+			font-variant: small-caps; 
+			text-decoration: underline; 
+		}
+		
+		
+	</ui:define>
+	
+	<!-- PARAMETROS DO MODULO -->
+	<ui:param name="myMBean" value="#{eventProcJSFBean}" />
+	<ui:param name="tituloModulo" value="Upload de Resultados e Correção" />
+	<ui:param name="iconeModulo" value="/img/menu/uploadCorrection.png"/>
+	<ui:param name="menuUrlPrefix" value="../" />
+
+	<!-- DEFINICOES GLOBAIS DO MÓDULO -->
+	<ui:define name="repGlobal">
+		<f:loadBundle var="lblEvent" basename="br.com.dlp.jazzomr.event.Event" />
+		<f:loadBundle var="msg" basename="br.com.dlp.jazzomr.ResourceBundle" />
+
+		<script type="text/javascript">
+
+			function resize(id, coeff) {
+				var pic = document.getElementById(id); 
+				
+				var w = Math.round(pic.width * coeff);
+				var h = Math.round(pic.height * coeff);
+				
+				pic.width = w;
+				pic.heigth = h;
+			}
+			
+			function enlarge(id){
+				resize(id, 1.1);
+			}
+			
+			function decrease(id){
+				resize(id, 0.9);
+			}
+		</script>
+	</ui:define>
+
+
+	<!-- DEFINICAO DE PAINEL DE FORMULARIO DE PESQUISA PESQUISA -->
+	<ui:define name="repPesquisa">
+		<h:panelGrid columns="2">
+
+			<h:outputText value="#{lblEvent.description}" />
+			<h:inputText value="#{eventProcJSFBean.description}" />
+
+			<h:outputText value="#{lblEvent.dtFimFrom}" />
+			<rich:calendar value="#{eventProcJSFBean.dtFimFrom}" />
+
+			<h:outputText value="#{lblEvent.dtFimTo}" />
+			<rich:calendar value="#{eventProcJSFBean.dtFimTo}" />
+
+			<h:outputText value="#{lblEvent.dtInicioFrom}" />
+			<rich:calendar value="#{eventProcJSFBean.dtInicioFrom}" />
+
+			<h:outputText value="#{lblEvent.dtInicioTo}" />
+			<rich:calendar value="#{eventProcJSFBean.dtInicioTo}" />
+
+			<h:outputText value="#{lblEvent.dtIncFrom}" />
+			<rich:calendar value="#{eventProcJSFBean.dtIncFrom}" />
+
+			<h:outputText value="#{lblEvent.dtIncTo}" />
+			<rich:calendar value="#{eventProcJSFBean.dtIncTo}" />
+
+			<h:outputText value="#{lblEvent.dtAltFrom}" />
+			<rich:calendar value="#{eventProcJSFBean.dtAltFrom}" />
+
+			<h:outputText value="#{lblEvent.dtAltTo}" />
+			<rich:calendar value="#{eventProcJSFBean.dtAltTo}" />
+
+			<h:outputText value="#{lblEvent.status}" />
+			<rich:comboBox defaultLabel="Selecione..." value="#{eventProcJSFBean.status}" selectFirstOnUpdate="false" >
+				<f:selectItems value="#{eventProcJSFBean.statusList}"  />
+			</rich:comboBox>
+
+		</h:panelGrid>
+	</ui:define>
+
+
+
+	<!-- DEFINICAO DOS CAMPOS PARA PESQUISA INSTANTANEA -->
+	<ui:define name="repInstantSearch">
+	</ui:define>
+
+
+	<!--COLUNAS EXIBIDAS NA PESQUISA-->
+	<ui:define name="repCamposResultado">
+
+		<rich:column>
+			<f:facet name="header">
+				<a4j:commandLink
+					action="#{myMBean.dataModel.extraArgumentsDTO.processOrderChoice('description')}"
+					value="#{lblEvent.description} #{myMBean.dataModel.getOrderLabel('description')}"
+					reRender="resultadoDG" ajaxSingle="true">
+					<rich:toolTip
+						value="Ordenar resultados por #{lblEvent.description}"
+						showDelay="1000" />
+				</a4j:commandLink>
+			</f:facet>
+			<h:outputText value="#{resultado.description}" />
+		</rich:column>
+
+
+		<rich:column>
+			<f:facet name="header">
+				<h:outputText value="#{lblEvent.dtInc}" />
+			</f:facet>
+			<h:outputText value="#{resultado.dtInc}" >
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+			</h:outputText>
+		</rich:column>
+
+
+		<rich:column>
+			<f:facet name="header">
+				<h:outputText value="Digitalização %" />
+			</f:facet>
+
+			<h:outputText value="#{resultado.percDigitalizacao}"  id="lblDigitalizacao" >
+				<f:convertNumber pattern="0.0%"/>
+			</h:outputText>
+
+		</rich:column>
+
+		<rich:column>
+			<f:facet name="header">
+				<h:outputText value="Correção %" />
+			</f:facet>
+			
+					
+
+			
+			
+			<h:outputText value="#{ ((resultado.altResult+resultado.disResult) / (resultado.altTotais+resultado.disTotais))}"  id="lblStatusProc">
+				<f:convertNumber pattern="0.0% Concluído"/>
+				
+				<rich:toolTip showDelay="1000" >
+				
+					<h:panelGrid columns="2" >
+
+						<h:outputText value="Alternativas" />
+						<h:outputText value="#{(resultado.altResult/resultado.altTotais)}" rendered="#{resultado.altTotais!=null and resultado.altTotais>0}" >
+							<f:convertNumber pattern="0.0% Concluído" />
+						</h:outputText>
+						<h:outputText value="(não possui)" rendered="#{resultado.altTotais==0}" />
+						
+						
+						<h:outputText value="Dissertativas" />
+						<h:outputText value="#{(resultado.disResult/resultado.disTotais)}" rendered="#{resultado.disTotais!=null and resultado.disTotais>0}" >
+							<f:convertNumber pattern="0.0% Concluído" />
+						</h:outputText>
+						<h:outputText value="(não possui)" rendered="#{resultado.disTotais==0}" />
+						
+						
+						<h:outputText value="Disponíveis para Revisão" />
+						<h:outputText value="#{resultado.disResDisp} " >
+							<f:convertNumber pattern="0"/>
+						</h:outputText>
+						
+					</h:panelGrid>
+				
+					<rich:spacer height="10"></rich:spacer>
+					<rich:separator lineType="dotted" height="1" ></rich:separator>
+					<rich:spacer height="10"></rich:spacer>
+					
+					<h:outputText value="Faça o upload das imagens."/><br/>
+					<h:outputText value="Caso haja alguma questão dissertativa nestas, "/><br/>
+					<h:outputText value="será monstrada como pendente de revisão na coluna ao lado." />	
+				
+				</rich:toolTip>
+				
+				
+			</h:outputText>
+			
+			
+		</rich:column>
+		
+
+		<rich:column >
+			<f:facet name="header" >
+				Dissertativas <br/>Pendentes de Correção
+			</f:facet>
+
+
+			<h:outputText value="#{resultado.disResDisp} " /><rich:spacer width="10"></rich:spacer>
+			<a4j:commandLink action="#{eventProcJSFBean.detailEvent(resultado)}" reRender="mdlCorrection" id="lnkCorrecao" 
+			oncomplete="Richfaces.showModalPanel('mdlCorrection')"  >Corrigir Dissertações</a4j:commandLink >
+			
+			
+			<rich:toolTip value="Iniciar Roteiro de Correção de Critérios Dissertativos" showDelay="3000" />
+		</rich:column>
+
+
+		<rich:column id="colDetalhes" width="80">
+			<rich:toolTip value="Ver detalhes do andamento do processamento deste evento" showDelay="2000" />
+			<f:facet name="header">
+				<h:outputText value="Resultados" />
+			</f:facet>
+			
+			<a4j:commandLink action="#{eventProcJSFBean.detailEvent(resultado)}" reRender="mdlEventDetail" id="lnkDetail" oncomplete="Richfaces.showModalPanel('mdlEventDetail')" >
+				<rich:toolTip value="Ver detalhes deste evento" showDelay="3000" />
+				Resultados
+			</a4j:commandLink >
+		</rich:column>
+
+
+		
+		<rich:column id="colResults" rendered="false">
+			<rich:toolTip value="Baixar arquivo PDF contendo tabela de resultados" showDelay="2000" />
+			<f:facet name="header">
+				<h:outputText value="Resultados PDF" />
+			</f:facet>
+			
+			<h:commandLink action="#{eventProcJSFBean.downloadResults(resultado)}" reRender="pnlGrowl" id="lnkResults" >
+				<rich:toolTip value="Baixar resultados deste evento" showDelay="3000" />
+				<h:graphicImage value="/img/checkList32.png" />
+			</h:commandLink >
+		</rich:column>
+
+
+
+	</ui:define>
+	
+	
+	<ui:define name="postTesultadoDG">
+		<!-- ESPACADOR -->
+		<rich:spacer width="1" height="10" />
+		<rich:separator height="1" lineType="dotted" />
+		<rich:spacer width="1" height="10" />
+
+			<rich:dataTable value="#{myMBean.payloadDataModel}" var="resultado" onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
+				onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" id="tbPendingCharges" rows="#{myMBean.payloadLinhasPorPagina}" width="788" >
+				
+				<!-- CABECALHO DA TABELA -->
+				<f:facet name="header">
+					<h:outputText value="Arquivos Pendentes de Processamento" />
+				</f:facet>
+
+
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{resultado.PK}" />
+				</rich:column>
+
+
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Descrição" />
+					</f:facet>
+					<h:outputText value="#{resultado.descricao}" />
+				</rich:column>
+
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Tamanho" />
+					</f:facet>
+					<h:outputText value="#{resultado.size/1000}" >
+						<f:convertNumber pattern=" 0'KB'" />
+					</h:outputText>
+				</rich:column>
+
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Hash" />
+					</f:facet>
+					<h:outputText value="#{resultado.preProcessImgHash}" />
+				</rich:column>
+
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Mensagem" />
+					</f:facet>
+					<h:outputText value="#{resultado.messageState}" />
+				</rich:column>
+
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Status" />
+					</f:facet>
+					<h:outputText value="#{resultado.processingState}" />
+				</rich:column>
+
+				
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Detalhe" />
+					</f:facet>
+					
+					<!-- 
+					oncomplete="Richfaces.showModalPanel('mdlPayload')" -->
+					
+					<a4j:commandLink action="#{myMBean.setSelPayloadVO(resultado)}" style="text-decoration: none;" reRender="resultadoDG,mdlPayload"  oncomplete="Richfaces.showModalPanel('mdlPayload')">
+						<h:graphicImage value="/img/Edit_16.png" />
+						<h:outputText value="Detalhe" />
+						<rich:toolTip value="Clique aqui para ver os detalhes desta imagem" showDelay="1000" />
+					</a4j:commandLink>					
+				</rich:column>
+
+				
+
+				<!-- 
+	private List<ImageVO> imageVOs = new ArrayList<ImageVO>(2);
+	private String fullMessageState;
+	private EProcessingState processingState=EProcessingState.CREATED;
+				 -->
+
+
+
+
+
+				<!-- RODAPE DA TABELA DE RESULTADOS -->
+				<f:facet name="footer">
+					<rich:toolBar>
+
+						<!-- LABEL DE RESULTADOS POR PAGINA + COMBO DE ALTERACAO DE RESULTADOS POR PAGINA -->
+						<rich:toolBarGroup location="left">
+							<h:outputLabel value="Registros por Página:" style="font-size: xx-small;" />
+						</rich:toolBarGroup>
+
+						<!-- DATA SCROLLER / PAGINADOR -->
+						<rich:toolBarGroup location="left">
+							<rich:datascroller id="dtScroller" ajaxSingle="true" fastControls="hidden" style="width: 300px;" maxPages="7" />
+						</rich:toolBarGroup>
+
+						<!-- LABEL DE RESULTADOS ENCONTRADOS -->
+						<rich:toolBarGroup location="right">
+							<h:outputText value="Registros Encontrados: #{myMBean.payloadLinhasTotais}" style="font-size: xx-small;" />
+						</rich:toolBarGroup>
+
+					</rich:toolBar>
+				</f:facet>
+			</rich:dataTable>
+			
+
+	</ui:define>
+	
+	
+	<ui:define name="repComandosAltDel"></ui:define>
+	
+
+	<!--CAMPOS MANUTENCAO-->
+	<ui:define name="repCamposManutencao">
+		<h:panelGroup id="flagSaved" >
+			<!-- hidden para controle de abertura por javascript do modal de participacoes -->
+			<input id="hiddenIsEventVOSaved" type="hidden" value="#{eventProcJSFBean.eventVOSaved}"/>
+		</h:panelGroup>
+	</ui:define>
+
+	<ui:define name="botaoNovo">
+		<rich:menuItem title="Upload" submitMode="none" onclick="Richfaces.showModalPanel('mdlUpload')" value="Upload" >
+			<f:facet name="icon">
+				<h:graphicImage value="/img/folder_upload.png" />
+			</f:facet>
+			<rich:toolTip value="(Upload de Imagens) Enviar imagens de exames digitalizados para processamento no portal" showDelay="1000" />
+		</rich:menuItem>
+	</ui:define>
+
+
+	<ui:define name="noFormModals">
+
+		<rich:modalPanel id="mdlCorrection" style="overflow: auto;" resizeable="true" width="600" height="500" >
+			<f:facet name="header">
+				<h:outputText value="Evento #{eventProcJSFBean.tmpVO.PK} - #{eventProcJSFBean.tmpVO.description}" />
+			</f:facet>
+			
+			<a4j:form>
+						
+				<rich:toolBar> 
+					<rich:menuItem  value="Concluir/Sair" submitMode="ajax" onclick="Richfaces.hideModalPanel('mdlCorrection')" reRender="tbResultadoDG">
+						<rich:toolTip value="Fecha tela de detalhe de evento" showDelay="2000" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/Cancel_32.png" />
+						</f:facet>
+					</rich:menuItem>
+
+					<rich:menuItem ajaxSingle="true" submitMode="ajax" reRender="tbResultadoDG,tbCriterion" id="btnRefresh" value="Atualizar" >
+						<f:facet name="icon">
+							<h:graphicImage value="/img/refresh_32.png" />
+						</f:facet>
+						<rich:toolTip value="Atualiza roteiro de correção." showDelay="2500"/>
+					</rich:menuItem>					
+					
+					
+					
+				</rich:toolBar>
+				
+
+					<rich:dataTable value="#{eventProcJSFBean.criterionDataModel}"  var="crit" id="tbCriterion" rows="13" width="580">
+					
+
+						<rich:column width="20">
+							<f:facet name="header">
+								Nota
+							</f:facet>
+							<h:outputText value= "#{crit.criterionResultVO.pontuacao}" rendered="#{crit.criterionResultVO.isReviewed()}"/>
+							<h:outputText value="--" rendered="#{!crit.criterionResultVO.isReviewed()}"/>
+						</rich:column>
+
+
+						<rich:column width="20">
+							<f:facet name="header">
+								Obs.
+							</f:facet>
+							
+							<h:graphicImage value="/img/dissertative.png"  rendered="#{crit.criterionResultVO.isCriticized()}" id="imgTipObs">
+								<rich:toolTip value="#{crit.criterionResultVO.observacao}" style="width:400px;" />
+							</h:graphicImage>
+							
+							<h:outputText value="---" rendered="#{!crit.criterionResultVO.isCriticized()}">
+								<rich:toolTip value="Não há nenhum crítica registrada!" />
+							</h:outputText>
+						</rich:column>
+
+						<rich:column>
+							<f:facet name="header">
+								Corrigir
+							</f:facet>
+							
+							<a4j:commandLink value="Correção"  action="#{eventProcJSFBean.iniciarRoteiroCorrecao(crit)}"  
+								reRender="radioNota,pnlObs,tbCriterion,mdlCorrDetail" oncomplete="Richfaces.showModalPanel('mdlCorrDetail')"  >
+							</a4j:commandLink>
+							
+							<h:outputText value=" &#x261A;" style="font-size: 16px" rendered="#{crit.equals(eventProcJSFBean.criterionDetailDTO)}" />
+							
+						</rich:column>
+						
+											
+					
+						<rich:column>
+							<f:facet name="header">
+
+								<a4j:commandLink
+									action="#{eventProcJSFBean.criterionDataModel.extraArgumentsDTO.processOrderChoice('pes.nome')}"
+									value="Participação #{eventProcJSFBean.criterionDataModel.getOrderLabel('pes.nome')}"
+									reRender="tbCriterion" ajaxSingle="true">
+									<rich:toolTip
+										value="Ordenar resultados por Participação/Pessoa"
+										showDelay="1000" />
+								</a4j:commandLink>
+							</f:facet>
+					
+							<h:outputText value="#{crit.participationVO.pessoaVO.nome}" />
+							
+						</rich:column>
+												
+						<rich:column>
+							<f:facet name="header">
+								<a4j:commandLink
+									action="#{eventProcJSFBean.criterionDataModel.extraArgumentsDTO.processOrderChoice('que.PK')}"
+									value="Questão #{eventProcJSFBean.criterionDataModel.getOrderLabel('que.PK')}"
+									reRender="tbCriterion" ajaxSingle="true">
+									<rich:toolTip
+										value="Ordenar resultados por Questão"
+										showDelay="1000" />
+								</a4j:commandLink>
+							</f:facet>
+							<h:outputText value="#{crit.questionVO.PK}" styleClass="" >
+								<f:convertNumber pattern="00"/>
+							</h:outputText>
+							<h:outputText value=" - #{crit.questionVO.description}" />
+						</rich:column>						
+					
+						<rich:column>
+							<f:facet name="header">
+							
+								<a4j:commandLink
+									action="#{eventProcJSFBean.criterionDataModel.extraArgumentsDTO.processOrderChoice('abc.PK')}"
+									value="Critério #{eventProcJSFBean.criterionDataModel.getOrderLabel('abc.PK')}"
+									reRender="tbCriterion" ajaxSingle="true">
+									<rich:toolTip
+										value="Ordenar resultados por Critério"
+										showDelay="1000" />
+								</a4j:commandLink>
+							</f:facet>
+							<h:outputText value="#{crit.criterionVO.PK}" >
+								<f:convertNumber pattern="00"/>
+							</h:outputText>
+							<h:outputText value=" - #{crit.criterionVO.description}" />
+						</rich:column>
+
+
+					
+						<f:facet name="footer">
+							<rich:datascroller ajaxSingle="true" fastControls="hidden" style="width: 300px;" maxPages="7" for="tbCriterion"/>
+						</f:facet>
+					
+					</rich:dataTable>		
+
+			</a4j:form>
+		</rich:modalPanel>
+		
+		
+		<rich:modalPanel id="mdlCorrDetail" width="900" height="550" >
+			<f:facet name="header" >
+				<h:outputText value="Correção da Questão / Critério  -  #{eventProcJSFBean.criterionDetailDTO.questionVO.description} / #{eventProcJSFBean.criterionDetailDTO.criterionVO.description}" id="lblMdlCorr"/>
+			</f:facet>
+					
+			
+			<a4j:form id="frmCorrDetail" >
+			
+				<rich:toolBar> 
+					<rich:menuItem 
+						
+						action="#{eventProcJSFBean.saveActualCriterion()}" ajaxSingle="true" submitMode="ajax" reRender="tbCriterion"
+						title="Concluir/Sair" value="Concluir/Sair" oncomplete="Richfaces.hideModalPanel('mdlCorrDetail')"
+						process="frmCorrDetail"
+						>
+						
+						<rich:toolTip value="Salva últimas alterações e fecha tela de detalhe de evento" showDelay="2000" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/Cancel_32.png" />
+						</f:facet>
+					</rich:menuItem>
+					
+					<rich:menuItem action="#{eventProcJSFBean.zoomIn()}" ajaxSingle="true" submitMode="ajax" reRender="pnlCorr" >
+						<rich:toolTip value="Aumenta Zoom da Imagem" showDelay="2000" />
+						<h:graphicImage value="/img/zoom-in.png" />
+					</rich:menuItem>
+					
+					<rich:menuItem action="#{eventProcJSFBean.zoomOut()}" ajaxSingle="true" submitMode="ajax" reRender="pnlCorr" >
+						<rich:toolTip value="Diminui Zoom da Imagem" showDelay="2000" />
+						<h:graphicImage value="/img/zoom-out.png" />
+					</rich:menuItem>
+					
+					
+
+
+
+					<rich:toolBarGroup location="right">
+					 
+						<rich:inputNumberSlider value="80" showInput="false" id="sldTransp" minValue="5" maxValue="100" onslide="setTransp()"  onmousemove="setTransp()" onchange="setTransp()" oninputmousemove="setTransp()" ></rich:inputNumberSlider>
+						<h:outputText value="Transparência" />
+					
+					</rich:toolBarGroup>
+					
+
+					
+				</rich:toolBar>
+							
+
+
+				
+				<h:panelGrid columns="1">
+					
+					
+					<rich:panel style="overflow: auto; height: 540px; width: 875px;background: gray url('../img/backGroundImg.gif');background-repeat: repeat;" >
+					
+					
+						<h:panelGroup>
+							<h:outputText value="A imagem referente a esta Questão/Critério não foi carregada!" rendered="#{!eventProcJSFBean.criterionDetailDTO.isLoaded()}" style="font-size: 20px; font-weight: bold; background: white;"/>
+						</h:panelGroup>
+					
+							<h:panelGroup id="pnlCorr">
+					
+								<p:graphicImage value="#{eventProcJSFBean.criterionDetailDTO.streamExamImg()}" cache="false"   
+								id="imgQuestionImg" usemap="#exampagemap" height="#{eventProcJSFBean.screenImgHeight}" 
+								 rendered="#{eventProcJSFBean.criterionDetailDTO.isLoaded()}"/>
+							 
+								<div id="divCorrection" style="position:relative; width:382px; height:#{eventProcJSFBean.criterionDetailDTO.correctionBoxHeight}px; background: red; background-color: gray; top:#{eventProcJSFBean.criterionDetailDTO.correctionPopupYPosition(eventProcJSFBean.screenImgHeight)}px; left:90px;">
+									<fieldset >
+										<legend>Observações e Avaliação</legend>
+										
+										<h:panelGroup id="pnlObs" >
+										
+											<h:panelGrid columns="1">
+												<span style="text-decoration: underline; font-size: 9px; font-weight:bolder;">Questão: </span>
+												<h:panelGrid columns="2">
+													<textarea cols="60" rows="2" readonly="readonly" style="resize:none; background: #adadad;" >#{eventProcJSFBean.criterionDetailDTO.questionVO.description} </textarea>
+													<textarea cols="20" rows="2" style="resize:none; background: #adadad;">#{eventProcJSFBean.criterionDetailDTO.criterionVO.description}</textarea>
+												</h:panelGrid>
+												
+											</h:panelGrid>
+	
+											<h:panelGrid columns="1">
+												<h:panelGrid columns="1">
+													<h:inputTextarea id="txtObservacao" value="#{eventProcJSFBean.criterionDetailDTO.criterionResultVO.observacao}" style="resize:none;" cols="90" rows="2" />
+												</h:panelGrid>
+											</h:panelGrid>
+										</h:panelGroup>
+		
+										<h:panelGrid columns="3" >
+											<span style="text-decoration: underline; font-size: 8px; font-weight:bolder; " >Nota:</span>
+											<h:selectOneRadio id="radioNota" value="#{eventProcJSFBean.criterionDetailDTO.criterionResultVO.pontuacao}"  >
+												<f:selectItems value="#{eventProcJSFBean.getNotas(eventProcJSFBean.criterionDetailDTO.criterionVO)}"  />
+											</h:selectOneRadio>								
+		
+											<h:panelGroup>
+												
+												<a4j:commandButton value="Previous" action="#{eventProcJSFBean.stepRoteiro(-1)}"  ajaxSingle="true" process="radioNota,pnlObs" submitMode="ajax" reRender="pnlCorr" />
+															
+												<a4j:commandButton value="Next" action="#{eventProcJSFBean.stepRoteiro(1)}"  ajaxSingle="true" process="radioNota,pnlObs" submitMode="ajax" reRender="pnlCorr" />
+																									
+											</h:panelGroup>
+										</h:panelGrid>
+						
+									</fieldset>
+								</div>
+							</h:panelGroup>
+			
+					
+					</rich:panel>
+				
+				</h:panelGrid>
+			</a4j:form>
+		</rich:modalPanel>
+			
+	
+	
+	
+		<rich:modalPanel id="mdlParticipationDetail" style="overflow: auto;" resizeable="true" width="900" height="600" >
+	
+			<f:facet name="header">
+				<h:outputText value="Participation #{eventProcJSFBean.selParticipationVO.PK} - #{eventProcJSFBean.selParticipationVO.pessoaVO.nome} - #{eventProcJSFBean.selParticipationVO.examVariantVO.examVO.description}" />
+			</f:facet>
+
+			<a4j:form id="frmPartDetail">
+			<a4j:region renderRegionOnly="true">
+				<rich:toolBar> 
+					
+					<rich:menuItem title="Concluir/Sair" value="Concluir/Sair" submitMode="none" onclick="Richfaces.hideModalPanel('mdlParticipationDetail')">
+						<rich:toolTip value="Fecha tela de detalhe de participante" showDelay="2000" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/Cancel_32.png" />
+						</f:facet>
+					</rich:menuItem>
+					
+					<rich:menuItem title="Salvar" value="Salvar" action="#{eventProcJSFBean.salvarCorrecoes}" submitMode="ajax"  eventsQueue="dlp" reRender="pnlGrowlUpload,pnlGrowl,growlGeralUpload"  >
+						<rich:toolTip value="Salva dados de correções" showDelay="2000" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/Save_32.png" />
+						</f:facet>
+					</rich:menuItem>
+					
+					<rich:toolBarGroup location="right">
+						<rich:inputNumberSlider value="90" showInput="false" id="sldTransp" minValue="5" maxValue="100" onslide="setTransp()"  onmousemove="setTransp()" onchange="setTransp()" oninputmousemove="setTransp()" ></rich:inputNumberSlider>
+						<h:outputText value="Transparência" />
+					</rich:toolBarGroup>
+					
+				</rich:toolBar>			
+				
+				
+				<h:panelGrid columns="2" styleClass="topAlign" >
+					
+					<h:panelGrid columns="1">
+						<rich:panel>
+							<h:panelGrid columns="1" >
+							
+								<h:outputText value="ID Participação:" styleClass="labelSuperior" />
+								<h:outputText value="#{eventProcJSFBean.selParticipationVO.PK}" />
+				
+								<h:outputText value="Pessoa:" styleClass="labelSuperior" />
+								<h:outputText value="#{eventProcJSFBean.selParticipationVO.pessoaVO.nome}" />
+				
+								<h:outputText value="Exame/Variante:" styleClass="labelSuperior"  />
+								<h:outputText value="#{eventProcJSFBean.selParticipationVO.examVariantVO.examVO.description} / #{eventProcJSFBean.selParticipationVO.examVariantVO.PK}"  style="font-size: 9px; " />
+							</h:panelGrid>				
+						</rich:panel>
+					</h:panelGrid>
+	
+				</h:panelGrid>
+
+		        <a4j:jsFunction name="updateCriterionCoord" reRender="pnlHeaderDetail" ajaxSingle="true"   eventsQueue="dlp" requestDelay="300">
+		            <a4j:actionparam name="critCoordPK" assignTo="#{eventProcJSFBean.selCriterionCoordinateVO}"  />                  
+		        </a4j:jsFunction>
+
+				<a4j:queue id="dlp" name="dlp" onerror="alert('erro')"  />
+				
+			</a4j:region>
+			</a4j:form> 
+		</rich:modalPanel> 
+	
+		
+		
+	
+	
+		<rich:modalPanel id="mdlEventDetail" style="overflow: auto;" resizeable="true" width="880" height="650" >
+			<f:facet name="header">
+				<h:outputText value="Evento #{eventProcJSFBean.tmpVO.PK} - #{eventProcJSFBean.tmpVO.description}" />
+			</f:facet>
+			
+			<a4j:form id="frmEventDetail">
+				<rich:toolBar> 
+					<rich:menuItem title="Concluir/Sair" value="Concluir/Sair" submitMode="none" onclick="Richfaces.hideModalPanel('mdlEventDetail')">
+						<rich:toolTip value="Fecha tela de detalhe de evento" showDelay="2000" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/Cancel_32.png" />
+						</f:facet>
+					</rich:menuItem>
+				</rich:toolBar>
+			
+				<rich:panel style="height:500px; width:800px; overflow:auto;"  >
+				
+					<h:panelGrid columns="2" >
+						<h:outputText value="ID" />
+						<h:outputText value="#{eventProcJSFBean.tmpVO.PK}" />
+
+						<h:outputText value="Descrição" />
+						<h:outputText value="#{eventProcJSFBean.tmpVO.description}" />
+
+						<h:outputText value="Início" />
+						<h:outputText value="#{eventProcJSFBean.tmpVO.dtInicio}" >
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+						</h:outputText>
+					
+						<h:outputText value="Fim" />
+						<h:outputText value="#{eventProcJSFBean.tmpVO.dtFim}"  >
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+						</h:outputText>
+					</h:panelGrid>
+					
+					<rich:spacer height="2"></rich:spacer>
+					<rich:separator height="1" lineType="dotted" ></rich:separator>
+					<rich:spacer height="2" ></rich:spacer>
+					
+					<rich:dataTable id="tbParticipacoes" value="#{eventProcJSFBean.tmpVO.participations}" var="part" rows="10" width="700" >
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column >
+									<h:outputText value="Participação" />
+								</rich:column>
+								<rich:column >
+									<h:outputText value="Questionário" />
+								</rich:column>
+								<rich:column >
+									<h:outputText value="Questão" />
+								</rich:column>
+								<rich:column >
+									<h:outputText value="Critério" />
+								</rich:column>									
+								<rich:column >
+									<h:outputText value="Resposta" />
+								</rich:column>									
+								<rich:column >
+									<h:outputText value="Corrigido" />
+								</rich:column>									
+								<rich:column >
+									<h:outputText value="Nota" style="font-size: 14px; font-weight: bold;"/>
+								</rich:column>									
+							</rich:columnGroup>
+						</f:facet>
+					
+						<rich:column colspan="5">
+							<h:outputText value="#{part.PK} - #{part.pessoaVO.nome} - #{part.examVariantVO.examVO.description}" style="font-weight: bold;"/>
+						</rich:column>
+						
+						<rich:column colspan="1">
+							
+							<h:outputText value="#{part.percCorrection}" style="color: red; font-weight: bold;"  rendered="#{1>part.percCorrection}" >
+								<f:convertNumber pattern="0.0%"/>
+							</h:outputText>
+							
+							<h:outputText value="#{part.percCorrection}" style="color: green; "  rendered="#{part.percCorrection>=1}" >
+								<f:convertNumber pattern="0.0%"/>
+							</h:outputText>
+
+							
+						</rich:column>
+
+						<rich:column colspan="1">
+							<h:outputText value="#{part.nota}" style="font-size: 14px; color: blue; font-weight: bold;" >
+								<f:convertNumber pattern="0.00"/>
+							</h:outputText>
+						</rich:column>
+					
+
+						<rich:subTable value="#{part.examVariantVO.examVO.questionnaires}" var="qtn" >
+							<rich:column colspan="1" >
+							</rich:column>
+							<rich:column colspan="5">
+								<f:facet name="footer" >
+									<rich:spacer></rich:spacer>
+								</f:facet>
+								<h:outputText value="#{qtn.description}"  style="font-weight: bold;"/>
+							</rich:column>
+							<rich:column colspan="1">
+								<h:outputText value=""  />
+							</rich:column>
+							
+							
+							<rich:subTable value="#{qtn.questions}" var="que" >
+								<rich:column colspan="2" style="text-align: right;">
+									<h:outputText value="Questão:"  style="font-weight: bold;"/>
+								</rich:column>
+								<rich:column colspan="3">
+									<h:outputText value="#{que.description}"  />
+								</rich:column>
+							
+								<rich:column colspan="1">
+									
+									<h:outputText value="#{que.getPercCorrecao(part)}" style="color: red; font-weight: bold;"  rendered="#{1>que.getPercCorrecao(part)}"    >
+										<f:convertNumber pattern="0.0%"/>
+									</h:outputText>
+									<h:outputText value="#{que.getPercCorrecao(part)}" style="color: green; "  rendered="#{que.getPercCorrecao(part)>=1}"  >
+										<f:convertNumber pattern="0.0%"/>
+									</h:outputText>
+									
+																	
+								</rich:column>
+							
+								<rich:column colspan="1">
+									<h:outputText value="#{que.getNota(part)}" style="color: blue; font-weight: bold;" />								
+								</rich:column>
+							
+							
+								<rich:subTable value="#{que.criterionVOList}" var="abc" >
+
+									<rich:column colspan="3"> </rich:column>
+									<rich:column colspan="1">
+										<f:facet name="footer" >
+											<rich:spacer></rich:spacer>
+										</f:facet>
+
+										<h:outputText value="#{abc.description}" />
+									</rich:column>									
+									<rich:column  >
+										<h:panelGroup id="resAlternative" rendered="#{abc.isAlternative and part.resultMap[abc]!=null}">
+											
+											
+											<h:graphicImage value="/img/correct_16.png" rendered="#{abc.score=='CORRECT'}" id="correctOption">
+												<rich:toolTip value="Opção correta"/>
+											</h:graphicImage>
+											<h:graphicImage value="/img/arrow_red_l.png" rendered="#{abc.score=='WRONG' and part.resultMap[abc].checked }"/>
+											<h:graphicImage value="/img/arrow_green_l.png" rendered="#{abc.score=='CORRECT' and part.resultMap[abc].checked }"/>
+											
+											<h:outputText value="opção marcada" rendered="#{part.resultMap[abc].checked }"/>
+											
+										</h:panelGroup>
+										
+										<h:panelGroup id="resDissertative" rendered="#{abc.isDissertative and part.resultMap[abc]!=null and part.resultMap[abc].pontuacao!=null }" >
+											<h:outputText value="Ver Observações" id="txtVerResp" >
+												<rich:toolTip showDelay="500" >
+													<h:outputText value="Observações do Professor: #{part.resultMap[abc].observacao}" />
+												</rich:toolTip>
+											</h:outputText>
+										</h:panelGroup>
+										
+
+									</rich:column>									
+									
+									<rich:column>
+										
+										<h:panelGroup id="resNotProc" rendered="#{part.resultMap[abc]==null or (abc.isDissertative and part.resultMap[abc].pontuacao==null  )}" >
+											Não
+										</h:panelGroup>
+										
+										<h:panelGroup id="resProc" rendered="#{part.resultMap[abc]!=null and ((abc.isDissertative and part.resultMap[abc].pontuacao!=null)  or abc.isAlternative ) }" >
+											Sim
+										</h:panelGroup>
+									</rich:column>
+																	 
+									<rich:column>
+										
+										<h:outputText value="#{part.resultMap[abc].pontuacao}" rendered="#{abc.isDissertative}"  style="color: blue; font-weight: bold;" />
+										
+										<h:outputText value="1" rendered="#{abc.isAlternative and part.resultMap[abc].checked and abc.score=='CORRECT' }"  style="color: blue; font-weight: bold;" />
+										<h:outputText value="0" rendered="#{abc.isAlternative and part.resultMap[abc].checked and abc.score=='WRONG'  }"  style="color: blue; font-weight: bold;" />
+										
+									</rich:column>								 
+								 								 
+								</rich:subTable>
+							</rich:subTable>
+						</rich:subTable>
+
+						<f:facet name="footer">
+							<rich:datascroller/>
+						</f:facet>
+					
+					</rich:dataTable>
+					
+					<rich:spacer height="2"></rich:spacer>
+					<rich:separator height="1" lineType="dotted" ></rich:separator>
+					<rich:spacer height="2" ></rich:spacer>
+									
+				</rich:panel>
+			</a4j:form>			
+		</rich:modalPanel>
+		
+	
+		<rich:modalPanel id="mdlPayload" style="overflow: auto;" keepVisualState="true" resizeable="true" width="823" height="600" >
+			<f:facet name="header">
+				<h:outputText value="(Payload) Imagem #{eventProcJSFBean.selPayloadVO.PK} - #{eventProcJSFBean.selPayloadVO.processingState}" />
+			</f:facet>
+			
+			<a4j:form id="frmPayloadImage">
+				<rich:toolBar> 
+					
+					<rich:menuItem submitMode="none" onclick="enlarge('frmPayloadImage:imgExam')">
+						<rich:toolTip value="Aumentar Zoom" showDelay="2000" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/zoom-in.png" />
+						</f:facet>
+					</rich:menuItem>
+					
+					<rich:menuItem submitMode="none" onclick="decrease('frmPayloadImage:imgExam')">
+						<rich:toolTip value="Diminuir Zoom" showDelay="2000" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/zoom-out.png" />
+						</f:facet>
+					</rich:menuItem>
+					
+					<rich:menuItem title="Concluir/Sair" value="Concluir/Sair" submitMode="none" onclick="Richfaces.hideModalPanel('mdlPayload')">
+						<rich:toolTip value="Fecha tela de detalhe de imagem" showDelay="2000" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/Cancel_32.png" />
+						</f:facet>
+					</rich:menuItem>
+					
+				</rich:toolBar>
+			
+				<rich:panel style="height:500px; width:800px; overflow:auto; background-color: gray;"  >
+					<p:graphicImage value="#{eventProcJSFBean.drawPayloadImage(eventProcJSFBean.selPayloadVO)}" cache="false" id="imgExam"  width="770" />
+				</rich:panel>
+				
+			</a4j:form>
+		</rich:modalPanel>
+	
+	
+	
+		<rich:modalPanel id="waitPanel" autosized="true"  width="400">
+			<f:facet name="header">  Por favor aguarde.</f:facet>
+			<h:panelGrid columns="2" >
+				<h:graphicImage value="/img/sendingImagesUp3.gif" />
+				<h:outputText value="  	Enviando imagens para o sistema..." style="font-size: large;" />
+			</h:panelGrid>
+		</rich:modalPanel>
+	
+	
+		<!-- MODAL DE MANUTENCAO/INCLUSAO. VALIDACAO INTEGRADA COM HIBERNATE VALIDATOR -->
+		<rich:modalPanel id="mdlUpload" style="overflow: auto;" keepVisualState="true" autosized="true">
+			<f:facet name="header">
+				Upload de Imagens  
+			</f:facet>
+		
+			<h:form id="frmUpload" target=""  >
+				
+				<!-- Barra de ferramentas do modal mdlManutencao -->
+				<rich:toolBar> 
+					<rich:menuItem title="Concluir/Sair" value="Concluir/Sair" submitMode="none" onclick="Richfaces.hideModalPanel('mdlUpload')">
+						<rich:toolTip value="Fecha popup de upload de arquivos de imagens" showDelay="2000" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/Cancel_32.png" />
+						</f:facet>
+					</rich:menuItem>
+				</rich:toolBar>
+				
+				<rich:spacer height="6" />
+				
+				<rich:fileUpload fileUploadListener="#{eventProcJSFBean.actionHandleFileUpload}" autoclear="true"  
+					allowFlash="false" listHeight="398" maxFilesQuantity="200" id="upload" immediateUpload="false" acceptedTypes="jpg, gif, tif, png, bmp, zip, tar.gz, pdf"
+					onupload="Richfaces.showModalPanel('waitPanel')" onerror="alert('Erro ao tentar processar imagens!');Richfaces.hideModalPanel('waitPanel')">
+					<a4j:support event="onuploadcomplete"  reRender="resultadoDG,pnlGrowlUpload"  oncomplete="Richfaces.hideModalPanel('waitPanel')"/>
+					<a4j:support event="onerror"  reRender="resultadoDG,pnlGrowlUpload"  oncomplete="Richfaces.hideModalPanel('waitPanel')"/>
+				</rich:fileUpload>
+
+				<a4j:outputPanel id="pnlGrowlUpload">
+					<p:growl life="4000" id="growlGeralUpload"/>
+				</a4j:outputPanel>
+
+			</h:form>
+		</rich:modalPanel>
+	</ui:define>
+
+	<ui:define name="faceletMdlManutencao"><!-- DEIXAR VAZIO --></ui:define>
+
+
+</ui:composition>
+

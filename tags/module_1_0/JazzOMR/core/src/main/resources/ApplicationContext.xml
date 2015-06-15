@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
+           
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+
+    <security:http use-expressions="true"  >
+
+        <security:form-login login-page="/login.jsp" default-target-url="/inicio/index.jsf" authentication-failure-url="/login.jsp?loginFailed=true"  />
+        <security:remember-me  />
+        
+         
+        <!--
+        
+        
+        
+        <security:form-login login-page="/login.jsp" default-target-url="/inicio/index.jsf" authentication-failure-url="/login.jsp?loginFailed=true" />  
+        -->
+        
+        <security:logout />
+        
+        <security:intercept-url pattern="/selfservice/*" access="permitAll" />
+
+        <security:intercept-url pattern="/index.jsf" 	access="isFullyAuthenticated()" />
+        <security:intercept-url pattern="/inicio/index.xhtml" 	access="isAuthenticated()" />
+        <security:intercept-url pattern="/inicio/index.jsf" 	access="isAuthenticated()" />
+        <security:intercept-url pattern="/index.xhtml" 	access="isAuthenticated()" />
+        <security:intercept-url pattern="/empresa/*" 	access="isAuthenticated()" />
+        <security:intercept-url pattern="/event/*" 		access="isAuthenticated()" />
+        <security:intercept-url pattern="/exam/*" 		access="isAuthenticated()" />
+        <security:intercept-url pattern="/person/*" 	access="isAuthenticated()" />
+
+        <security:intercept-url pattern="/configuracoes/*" 	access="hasRole('MASTER_ADM')" />
+
+        <security:intercept-url pattern="/*" 			access="permitAll" />
+        <!-- 
+        hasRole('MASTER')
+         -->
+		
+        <security:intercept-url pattern="/**" access="permitAll" />
+		
+    </security:http>
+
+	
+	<!-- 
+    <http use-expressions="true">
+        
+        <intercept-url pattern="/secure/**" access="isAuthenticated()" />
+        <intercept-url pattern="/secure/extreme/**" access="hasRole('supervisor')" />
+        <intercept-url pattern="/listAccounts.html" access="isAuthenticated()" />
+        <intercept-url pattern="/post.html" access="isAuthenticated()" />
+        <intercept-url pattern="/**" access="denyAll" />
+    </http>
+	 -->
+
+	<!-- 
+	<bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+	 -->
+
+	<bean id="jazzOMRUserDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl" >
+	
+		<property name="dataSource" ref="jazzDS"/>
+	
+		<property name="usersByUsernameQuery" value="
+					select 
+						login		as username, 
+						senha 		as password, 
+						(status=1  or status is null) 	as enabled 
+					from tb_pessoa 
+					where 
+						login 	= ?			and 
+						length(login)>1 		and 
+						senha is not null 	and 
+						length(senha)>1 		
+		"/>
+
+		
+		<property name="authoritiesByUsernameQuery" value="
+					select 
+						p.login 			as username, 
+						pa.authorities 	as authority 
+					from tb_pessoa p
+				 		inner join tj_pessoa_autorities pa on p.pk = pa.fk_pessoa  
+				 	where 
+				 		p.login = ? and  
+				 		length(p.login)>1
+		"/>
+
+		
+		<property name="groupAuthoritiesByUsernameQuery" value="
+					select 
+						g.pk 			as id,
+						g.description 	as group_name,
+						ga.authorities 	as authority
+					
+					from tb_pessoa p 
+						inner join tj_grupovo_pessoas gp 	on gp.fk_pessoas_pessoa = p.pk 
+						inner join tj_grupo_autorities ga 	on ga.fk_grupo = gp.fk_grupo
+						inner join tb_grupo g 			on g.pk = gp.fk_grupo
+					where 
+						p.login = ? and  
+				 		length(p.login)>1
+						"/>
+
+		
+		<property name="enableGroups" value="true" />
+	</bean>
+
+	<security:authentication-manager >
+		<security:authentication-provider  user-service-ref="jazzOMRUserDetailsService"/>
+	</security:authentication-manager>
+
+
+	<util:map id="visitorMapping" value-type="br.com.dlp.jazzomr.event.IImageFileWalk" map-class="java.util.HashMap" >
+
+		<entry key="application/zip" value-ref="compressedFileWalk"/>
+		<entry key="application/x-zip-compressed" value-ref="compressedFileWalk"/>
+
+		<entry key="application/pdf" value-ref="pdfImageFileWalk"/>
+
+		<entry key="image/gif" 		value-ref="imageFileWalk" />
+		<entry key="image/jpeg" 	value-ref="imageFileWalk" />
+		<entry key="image/png" 		value-ref="imageFileWalk" />
+		<entry key="image/x-png" 	value-ref="imageFileWalk" />
+		<entry key="image/pjpeg" 	value-ref="imageFileWalk" />
+		<entry key="image/tiff" 	value-ref="imageFileWalk" />
+		<entry key="image/bmp" 		value-ref="imageFileWalk" />
+		
+		
+		<!-- 
+		<entry key="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+		<entry key="application/msword" value-ref="msWordImageFileWalk"/>
+		<entry key="application/x-tar" value-ref="compressedFileWalk"/>
+		<entry key="application/x-rar" value-ref="compressedFileWalk"/>
+		 -->
+	</util:map>
+
+
+
+
+	
+
+
+
+
+	
+	<!-- desabilitando para testar portlets 
+	<import resource="classpath:br/com/dlp/jazzomr/services/ApplicationContext_WebServices.xml"/>
+	 -->
+	
+	
+	<!-- 
+	<jaxws:endpoint id="tipoRequisito" implementor="#tipoRequisitoBusinessImpl" address="/tipoRequisito" />
+	<jaxws:endpoint id="usuarioJazz" implementor="#usuarioJazzBusinessImpl" address="/usuarioJazz" />
+	<jaxws:endpoint id="produto" implementor="#produtoBusinessImpl" address="/produto" />
+	 -->
+
+	<context:annotation-config />
+	<context:component-scan base-package="br.com.dlp.jazzomr" />
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	
+	<util:properties id="jazzOmrProperties" location="classpath:reportQueries.properties" />
+
+	
+	<!-- 
+	<bean id="jazzDS" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/jazzomr" />
+		<property name="username" value="root" />
+		<property name="password" value="CelularCinza" />
+	</bean>
+	 -->
+
+	<bean id="jazzDS" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>java:/JazzOMRDS</value>
+		</property>
+	</bean> 
+
+
+	<!--
+	 -->
+	<bean name="namingStrategy" class="br.com.dlp.framework.hibernate.namingstrategy.JazzNamingStrategy"/>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+			
+		<property name="dataSource" ref="jazzDS" />
+		<property name="namingStrategy" ref="namingStrategy" />
+		<property name="packagesToScan" value="br.com.dlp.jazzomr"/>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+
+				<prop key="hibernate.order_updates">true</prop>
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+
+				<!-- 
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+				
+				<prop key="hibernate.generate_statistics">true</prop>
+				 -->
+				
+			</props>
+		</property>
+	</bean>
+	
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	<tx:jta-transaction-manager />
+	<!-- 
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="nestedTransactionAllowed" value="true" />
+	</bean>
+	 -->
+	
+	<tx:annotation-driven  />
+
+</beans>

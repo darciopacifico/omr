@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/jee
+           http://www.springframework.org/schema/jee/spring-jee-2.5.xsd"
+       default-autowire="byName">
+    
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		
+	</bean>
+
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+    <!--
+    -->
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="persistenceUnitName" value="punitPepsico" />
+        <property name="jpaVendorAdapter">
+            <bean
+                class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="ORACLE" />
+                <property name="showSql" value="true" />
+                <!-- 
+                 -->
+                <property name="generateDdl" value="true" />
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />  
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory"  ref="entityManagerFactory" />
+    </bean>
+
+	<bean id="transactionAttributeSource" 
+		class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource">
+	    <property name="properties">
+	        <value>
+	            create*=PROPAGATION_REQUIRED,-Exception
+	            save*=PROPAGATION_REQUIRED,-Exception
+	            remove*=PROPAGATION_REQUIRED,-Exception
+	            get*=PROPAGATION_REQUIRED, -Exception, readOnly
+	        </value>
+	    </property>
+	</bean>
+	
+	<bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+		<property name="transactionAttributeSource">
+			<ref bean="transactionAttributeSource"/>
+		</property>
+	</bean>
+	
+	<bean id="autoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+	        <value>transactionInterceptor</value>
+		</property>
+		<property name="beanNames">
+			<list>
+				<value>*Bo</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="genericDao" class="br.com.mastersaf.util.HibernateDaoImpl">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<bean id="userMBean" class="br.com.mastersaf.teste.UserMBean" scope="request"></bean>
+	<!-- bean de controle do login -->
+	<bean id="loginMBean" class="br.com.mastersaf.controller.LoginController" scope="session"></bean>
+	
+	<!-- bean de controle da nfe -->
+	<bean id="nfeMBean" class="br.com.mastersaf.controller.NotaFiscalEletronicaController" scope="session"></bean> 
+	
+	<!--  bean de itens da nfe -->
+	<bean id="itemMBean" class="br.com.mastersaf.controller.ItemController" scope="session"></bean> 
+	
+	<!-- bean id="userBean" class="br.com.strutsandspring2.beans.UserBean" scope="prototype" />
+	<bean id="paisBean" class="br.com.strutsandspring2.beans.PaisBean" scope="singleton" />
+
+
+	<bean id="testBean" class="br.com.strutsandspring2.beans.test.TestBeanImpl" />
+	<bean id="testBean2" class="br.com.strutsandspring2.beans.test.AnotherTestBeanImpl" / -->
+
+	<!-- 
+	 -->
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/> 
+
+	<context:annotation-config/>
+	<context:property-placeholder location="/WEB-INF/jdbc.properties"/>
+    <context:component-scan base-package="br.com.mastersaf"/>
+    
+    
+</beans>

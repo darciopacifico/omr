@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp </welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>DownloadArquivoServlet</servlet-name>
+		<servlet-class>com.msaf.validador.integration.web.service.DownloadArquivoServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>PaginaRetornoServlet </servlet-name>
+		<servlet-class>com.msaf.validador.integration.web.service.PaginaRetornoServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>DownloadArquivoServlet</servlet-name>
+		<url-pattern>/downloadArquivoServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>PaginaRetornoServlet</servlet-name>
+		<url-pattern>/paginaRetornoServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	  <servlet-name>dwr-invoker</servlet-name>
+	  <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+		<init-param>
+		    <param-name>classes</param-name>
+		    <param-value>
+		      com.msaf.validador.ajax.PedidoValidacaoAjax
+			</param-value>
+		</init-param>
+   		<init-param>
+      		<param-name>debug</param-name>
+      		<param-value>true</param-value>
+    	</init-param>	  
+	  
+	</servlet>
+
+	<servlet-mapping>
+	  <servlet-name>dwr-invoker</servlet-name>
+	  <url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+
+
+	 <listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	 </listener>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>WEB-INF/action-servlet.xml</param-value>
+	</context-param>	
+	
+	
+	<taglib>
+		<taglib-uri>http://www.mastersaf.com.br/paginacao</taglib-uri>
+		<taglib-location>/WEB-INF/tld/paginacao-validador.tld</taglib-location>
+	</taglib>
+	
+	<!-- Struts Tag Library Descriptors -->
+	<taglib>
+		<taglib-uri>/tags/struts-bean</taglib-uri>
+		<taglib-location>/WEB-INF/tld/struts-bean.tld</taglib-location>
+	</taglib>
+	
+	<taglib>
+		<taglib-uri>/tags/struts-html</taglib-uri>
+		<taglib-location>/WEB-INF/tld/struts-html.tld</taglib-location>
+	</taglib>
+	
+	<taglib>
+		<taglib-uri>/tags/struts-logic</taglib-uri>
+		<taglib-location>/WEB-INF/tld/struts-logic.tld</taglib-location>
+	</taglib>
+	
+	<taglib>
+		<taglib-uri>/tags/struts-nested</taglib-uri>
+		<taglib-location>/WEB-INF/tld/struts-nested.tld</taglib-location>
+	</taglib>
+	
+	<taglib>
+		<taglib-uri>/tags/struts-tiles</taglib-uri>
+		<taglib-location>/WEB-INF/tld/struts-tiles.tld</taglib-location>
+	</taglib>
+	
+
+	
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>validador-realm</realm-name>
+		<form-login-config>
+			<form-login-page>/Site/index.jsp</form-login-page>
+			<form-error-page>/Site/erro_psm.html</form-error-page>
+		</form-login-config>
+	</login-config>
+	
+<!--	<security-constraint>-->
+<!--		<web-resource-collection>-->
+<!--			<web-resource-name>Secure Pages</web-resource-name>-->
+<!--			<url-pattern>/recursosSeguros/*</url-pattern>-->
+<!--			<url-pattern>/Site/jsp/*</url-pattern>-->
+<!--			<url-pattern>/UploadArquivosAction.do</url-pattern>-->
+<!--			<url-pattern>/TesteWebServiceAction.do</url-pattern>-->
+<!--			<http-method>GET</http-method>-->
+<!--			<http-method>POST</http-method>-->
+<!--		</web-resource-collection>-->
+<!--		<auth-constraint>-->
+<!--			<role-name>admin-role</role-name>-->
+<!--		</auth-constraint>-->
+<!--	</security-constraint>-->
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>protected_resources</web-resource-name>
+			<url-pattern>/Site/bemvindo.jsp</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin-role</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-role>
+		<role-name>admin-role</role-name>
+	</security-role>
+	
+</web-app>

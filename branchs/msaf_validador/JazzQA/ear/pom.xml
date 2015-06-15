@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>JazzQA</groupId>
+	<artifactId>JazzQA.ear</artifactId>
+	<packaging>ear</packaging>
+
+	<name>EAR - Enterprise Archive</name>
+	<parent>
+		<groupId>JazzQA</groupId>
+		<artifactId>JazzQA</artifactId>
+		<version>1.0</version>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>JazzQA</groupId>
+			<artifactId>JazzQA.ejb</artifactId>
+			<type>ejb</type>
+			<version>${project.parent.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.ejb</groupId>
+					<artifactId>ejb-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>JazzQA</groupId>
+			<artifactId>JazzQA.web</artifactId>
+			<version>${project.parent.version}</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>JazzQA</groupId>
+			<artifactId>JazzQA.core</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jboss-maven-plugin</artifactId>
+        <configuration>
+          <jbossHome>C:\darcio\appInstall\jboss-4.2.3.GA</jbossHome>
+        </configuration>
+      </plugin>
+
+
+		</plugins>
+	</build>
+</project>

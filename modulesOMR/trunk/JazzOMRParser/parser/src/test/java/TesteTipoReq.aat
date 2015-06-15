@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test>
+  <startPoint class="urlStartPoint">
+    <beginAt>http://localhost:8080/JazzOMR.portlet/</beginAt>
+    <outTransitions>
+      <simpleTransition>
+        <start class="urlStartPoint" reference="../../.."/>
+        <end class="page">
+          <children/>
+          <commons/>
+          <elements/>
+          <name>First Page</name>
+          <description></description>
+          <inTransition class="simpleTransition" reference="../.."/>
+          <outTransitions/>
+          <id>page4515253511299032205111</id>
+          <position>
+            <x>170</x>
+            <y>100</y>
+          </position>
+          <dimension>
+            <width>150</width>
+            <height>95</height>
+          </dimension>
+          <name defined-in="transitionNode"></name>
+        </end>
+      </simpleTransition>
+    </outTransitions>
+    <id>urlstartpoint17268494061299032205111</id>
+    <position>
+      <x>4</x>
+      <y>4</y>
+    </position>
+    <name>URL</name>
+  </startPoint>
+  <extensionPoints/>
+  <pages>
+    <page reference="../../startPoint/outTransitions/simpleTransition/end"/>
+    <page>
+      <children/>
+      <commons/>
+      <elements/>
+      <description></description>
+      <outTransitions/>
+      <id>page20639610841299032205111</id>
+      <position>
+        <x>0</x>
+        <y>400</y>
+      </position>
+      <dimension>
+        <width>0</width>
+        <height>0</height>
+      </dimension>
+      <name></name>
+    </page>
+  </pages>
+  <subTests/>
+  <transitions>
+    <simpleTransition reference="../../startPoint/outTransitions/simpleTransition"/>
+  </transitions>
+  <customTestSteps/>
+  <name>TesteTipoReq</name>
+  <description></description>
+  <id>test1299032205111</id>
+  <modelVersion>10</modelVersion>
+</test>

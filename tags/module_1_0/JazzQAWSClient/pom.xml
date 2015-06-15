@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>JazzQAWSClient</groupId>
+	<artifactId>JazzQAWSClient.clientws</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+
+	<name>Cliente WS</name>
+   	<distributionManagement>
+	    <repository> 
+	        <id>SBR001001-075</id>
+	        <name>SBR001001-075-releases</name>
+	        <url>http://sbr001001-075/artifactory/libs-releases-local</url>
+	    </repository>
+	    <snapshotRepository>
+	        <id>SBR001001-075</id>
+	        <name>SBR001001-075-snapshots</name>
+	        <url>http://sbr001001-075/artifactory/libs-snapshots-local</url>
+	    </snapshotRepository>
+	</distributionManagement>
+	<dependencies>
+
+
+
+		<dependency>
+			<groupId>JazzQA</groupId>
+			<artifactId>JazzQA.bsn</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>Jazz</groupId>
+			<artifactId>JazzWSI</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>2.5.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>2.5.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>2.5.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>5.12.1</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>2.2.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>2.2.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-databinding-aegis</artifactId>
+			<version>2.2.7</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- Trecho de pom.xml do projeto cliente do WebService de Produto. 
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<version>2.2.9</version>
+				<executions>
+					<execution>
+						<configuration>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>http://localhost:8080/JazzQA.portlet/cxf/produto?wsdl</wsdl>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			-->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<!--
+						<excludes> <exclude>**/*Point*.java</exclude> </excludes>
+					-->
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
+
+

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="modeloAdes1" pageWidth="800" pageHeight="600" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="794" leftMargin="3" rightMargin="3" topMargin="3" bottomMargin="3">
+	<property name="ireport.zoom" value="0.5634861006761833"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="linhaAno" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="linhaSubTitulo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="linhaOpcionais" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="linhaContatos" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="linhaLink" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="linhaPlaca" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="pk" class="java.lang.Long"/>
+	<field name="alterado_por" class="java.lang.String"/>
+	<field name="criado_por" class="java.lang.String"/>
+	<field name="dt_alt" class="java.sql.Timestamp"/>
+	<field name="dt_inc" class="java.sql.Timestamp"/>
+	<field name="status" class="java.lang.Integer"/>
+	<field name="ano_fab" class="java.lang.Integer"/>
+	<field name="ano_mod" class="java.lang.Integer"/>
+	<field name="cambio" class="java.lang.Integer"/>
+	<field name="cilindrada" class="java.lang.String"/>
+	<field name="combustivel" class="java.lang.Integer"/>
+	<field name="cor" class="java.lang.String"/>
+	<field name="custom_opc" class="java.lang.Boolean"/>
+	<field name="date_alt" class="java.sql.Timestamp"/>
+	<field name="date_inc" class="java.sql.Timestamp"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="placa" class="java.lang.String"/>
+	<field name="porta" class="java.lang.Integer"/>
+	<field name="quilometragem" class="java.lang.Long"/>
+	<field name="status_anuncio" class="java.lang.String"/>
+	<field name="str_custom_opc1" class="java.lang.String"/>
+	<field name="str_custom_opc2" class="java.lang.String"/>
+	<field name="valor" class="java.lang.Double"/>
+	<field name="fk_modeloadesivo" class="java.lang.Long"/>
+	<field name="fk_pessoa" class="java.lang.Long"/>
+	<field name="fk_produto" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="590" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="4" y="293" width="790" height="229" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="FreeSans" size="70" isBold="true" isItalic="false" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="64.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{linhaContatos}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="-157" y="-39" width="1109" height="266" isPrintInFirstWholeBand="true" forecolor="#010101"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font fontName="Purisa" size="105" isBold="true" isItalic="false" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["VENDO "+$P{linhaAno}+"\n"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="161" width="786" height="181"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="DejaVu Sans" size="52" isBold="true" isItalic="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{linhaOpcionais}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="96" width="790" height="91" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
+					<font fontName="DejaVu Sans" size="65" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{linhaSubTitulo}+"\n"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="4" y="391" width="790" height="197" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="html">
+					<font fontName="FreeSans" size="70" isBold="true" isItalic="false" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="64.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<br/><span style=\"font-size: 30px;\"></span>"+ "<span >"+$P{linhaLink}+"</span>"+ "<span style=\"font-family:License Plate;\">"+$P{linhaPlaca}+"</span>"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-19" y="189" width="819" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

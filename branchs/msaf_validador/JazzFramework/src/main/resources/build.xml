@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="Package" name="Jazz - Pgk Framework">
+	<property environment="env" />
+	
+	<property file="build.properties" />
+	
+	<target name="UnPackage" description="Apaga o jar do framework">
+		<delete file="${dir.framework.deploy}/${file.framework.jar}" />
+	</target>
+
+	<target name="TOUCH" description="Atualiza a data dos arquivos">
+		<touch>
+			<fileset dir=".">
+				<include name="**\*.*" />
+			</fileset>
+		</touch>
+	</target>
+
+	<target name="Package" description="Empacota o Framework no dir toDeploy e copia para o lib">
+		
+		<jar 
+			destfile="${dir.framework.deploy}/${file.framework.jar}" 
+			duplicate="preserve">
+			<fileset 
+				dir="${dir.framework.bin}" 
+				includes="**/*.*" />
+		</jar>
+		
+		<copy todir="../lib">
+			<fileset dir="${dir.framework.deploy}">
+				<include name="${file.framework.jar}"/>
+			</fileset>
+		</copy>
+	</target>
+</project>

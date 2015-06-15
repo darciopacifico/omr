@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+<!DOCTYPE xdoclet-module PUBLIC "-//XDoclet Team//DTD XDoclet Module 1.0//EN" "http://xdoclet.sourceforge.net/dtd/xdoclet-module_1_0.dtd">
+-->
+
+<xdoclet-module>
+    <!--
+    xdoclet.jazzwizard.subtask.Wj2eeSubTask
+    xdoclet.jazzwizard.tagshandler.Wj2eeMethodTagsHandler
+    xdoclet.jazzwizard.tagshandler.Wj2eeClassTagsHandler
+    -->
+
+    <taghandler
+        namespace="Wj2eeMethod"
+        class="xdoclet.jazzwizard.tagshandler.Wj2eeMethodTagsHandler"
+    />
+    <taghandler
+        namespace="Wj2eeClass"
+        class="xdoclet.jazzwizard.tagshandler.Wj2eeClassTagsHandler"
+    />
+
+    <subtask
+        name="wizardj2ee"
+        implementation-class="xdoclet.jazzwizard.subtask.Wj2eeSubTask"
+        parent-task-class="xdoclet.DocletTask"
+    />
+</xdoclet-module>

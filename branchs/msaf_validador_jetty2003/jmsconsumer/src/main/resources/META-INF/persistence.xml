@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	<persistence-unit name="persistenciaProject" transaction-type="RESOURCE_LOCAL">
+		<provider>oracle.toplink.essentials.PersistenceProvider</provider>
+		<!-- 
+		<mapping-file>META-INF/orm.xml</mapping-file>    
+		 -->
+
+		<class>com.msaf.validador.consultaonline.cliente.ClienteVO</class>
+		<class>com.msaf.validador.consultaonline.cliente.InstituicaoVO</class>
+		<class>com.msaf.validador.consultaonline.cliente.TarifaVO</class>
+		<class>com.msaf.validador.consultaonline.solicitacaovalidacao.DadosRetInstVO</class>
+		<class>com.msaf.validador.consultaonline.solicitacaovalidacao.PedValidacaoVO</class>
+		<class>com.msaf.validador.consultaonline.solicitacaovalidacao.PessoaVO</class>
+		<class>com.msaf.validador.consultaonline.solicitacaovalidacao.ResulConsVO</class>
+		<class>com.msaf.validador.consultaonline.solicitacaovalidacao.TpResultVO</class>
+		<class>com.msaf.validador.consultaonline.solicitacaovalidacao.TpValidVO</class>
+		<class>com.msaf.validador.core.dominio.UsuarioVO</class>
+
+
+		<properties>
+
+			<property name="toplink.jdbc.user" value="validador" />
+			<property name="toplink.jdbc.password" value="validador" />
+
+			<!-- 
+			<property name="toplink.jdbc.url" value="jdbc:oracle:thin:validador/admin@127.0.0.1:1521/XE" />
+			 -->
+			<property name="toplink.jdbc.url" value="jdbc:oracle:thin:validador/validador@192.168.1.6:1521/SAMWEB" />
+			
+			<property name="toplink.jdbc.driver" value="oracle.jdbc.OracleDriver" />
+			<property name="toplink.show_sql" value="true" />
+			<property name="toplink.cache.size.default" value="1"/>
+
+			<!-- 
+			<property name="toplink.ddl-generation" value="create-tables" />
+			<property name="toplink.cache.type.default" value="NONE" />
+			 -->
+		</properties>
+	</persistence-unit>
+
+
+</persistence>

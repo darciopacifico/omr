@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<description>RichFacesPortlet</description>
+
+
+	<!-- PARA EXECUTAR A APLICACAO NAO PORTLETIZADA COMENTE ESTE ELEMENTO CONTEXT-PARAM
+	<context-param>
+		<param-name>org.ajax4jsf.VIEW_HANDLERS</param-name>
+		<param-value>org.jboss.portletbridge.application.FaceletPortletViewHandler</param-value>
+	</context-param>
+	 -->
+	 
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<!-- 
+		<welcome-file>zubalele.html</welcome-file>
+		 -->
+			
+	</welcome-file-list>
+	 
+
+	<context-param> 
+		<param-name>org.richfaces.SKIN</param-name>
+		<param-value>blueSky</param-value> 
+	</context-param>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:ApplicationContext.xml</param-value>
+	</context-param>
+
+<!-- 
+ -->
+	<context-param>
+		<param-name>com.sun.faces.expressionFactory</param-name>
+		<param-value>org.jboss.el.ExpressionFactoryImpl</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value>/WEB-INF/faces-config.xml</param-value>
+	</context-param>
+
+
+	<context-param>
+		<param-name>org.richfaces.CONTROL_SKINNING</param-name>
+		<param-value>enable</param-value>
+	</context-param>
+
+	<!-- <context-param> <param-name>org.richfaces.CONTROL_SKINNING_CLASSES</param-name> 
+		<param-value>enable</param-value> </context-param> <context-param> <param-name>org.ajax4jsf.SKIN</param-name> 
+		<param-value>renewal</param-value> </context-param> -->
+
+
+	<context-param>
+		<param-name>javax.portlet.faces.RENDER_POLICY</param-name>
+		<param-value>ALWAYS_DELEGATE</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.ajax4jsf.RESOURCE_URI_PREFIX</param-name>
+		<param-value>rfRes</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.LoadStyleStrategy</param-name>
+		<param-value>ALL</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.ajax4jsf.DEFAULT_EXPIRE</param-name>
+		<param-value>31536000</param-value>
+	</context-param>
+
+
+
+
+	<!-- -->
+	<context-param>
+		<param-name>org.richfaces.LoadScriptStrategy</param-name>
+		<param-value>ALL</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.ajax4jsf.COMPRESS_SCRIPT</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<!--If using the push component, you must enable the following settings -->
+	<!--<context-param> -->
+	<!--<param-name>A4J.AJAX.Push.URL</param-name> -->
+	<!--<param-value>/richFacesPortlet/faces/a4j.push</param-value> -->
+	<!--</context-param> -->
+
+	<!--To handle exceptions on the client using javascript, enable the following -->
+	<context-param>
+		<param-name>org.ajax4jsf.handleViewExpiredOnClient</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<!-- JSF -->
+
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>facelets.DEVELOPMENT</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+
+	<filter>
+		<display-name>Ajax4jsf Filter</display-name>
+		<filter-name>ajax4jsf</filter-name>
+		<filter-class>org.ajax4jsf.Filter</filter-class>
+	     <init-param>
+	          <param-name>createTempFiles</param-name>
+	          <param-value>false</param-value>
+	     </init-param>
+	     <init-param>
+	          <param-name>maxRequestSize</param-name>
+	          <param-value>20000000</param-value>
+	     </init-param>		
+	</filter>
+	
+	<!-- 
+	<filter>
+		<filter-name>PrimeFaces FileUpload Filter</filter-name>
+		<filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+	</filter>
+
+	
+	<filter>
+		<filter-name>openSessionInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+		<init-param>
+			<param-name>singleSession</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>sessionFactoryBeanName</param-name>
+			<param-value>sessionFactory</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>openSessionInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<filter-mapping>
+		<filter-name>PrimeFaces FileUpload Filter</filter-name>
+		<servlet-name>FacesServlet</servlet-name>
+	</filter-mapping>
+	 -->
+
+	<filter-mapping>
+	     <filter-name>ajax4jsf</filter-name>
+	     <servlet-name>FacesServlet</servlet-name>
+	     <dispatcher>REQUEST</dispatcher>
+	     <dispatcher>FORWARD</dispatcher>
+	     <dispatcher>INCLUDE</dispatcher>
+	     <dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+
+
+	<servlet>
+		<servlet-name>FacesServlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+
+	<servlet>
+		<display-name>CXF Servlet</display-name>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>Resource Servlet</servlet-name>
+		<servlet-class>org.primefaces.resource.ResourceServlet</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>Resource Servlet</servlet-name>
+		<url-pattern>/primefaces_resource/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/cxf/*</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet-mapping>
+		<servlet-name>FacesServlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>FacesServlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+
+	<!--Pay attention to <location> element. It should contain proper path to 
+		error pages according to Faces Servlet mapping or exact viewId. -->
+
+	<!--<error-page> <exception-type>javax.servlet.ServletException</exception-type> 
+		<location>/faces/error.xhtml</location> </error-page> <error-page> <exception-type>javax.faces.application.ViewExpiredException</exception-type> 
+		<location>/faces/error.xhtml</location> </error-page> <error-page> <exception-type>javax.faces.FacesException</exception-type> 
+		<location>/faces/error.xhtml</location> </error-page> -->
+
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Area Restrita</web-resource-name>
+			<url-pattern>/*</url-pattern>		
+			<!-- 
+			<url-pattern>/exam/*</url-pattern>
+			<url-pattern>/person/*</url-pattern>
+			<url-pattern>/event/*</url-pattern>
+			 -->
+			<http-method>POST</http-method>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		
+		<auth-constraint>
+			<role-name>MASTER</role-name>
+			<role-name>COMMON</role-name>
+		</auth-constraint>
+	</security-constraint>	
+	
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>imagens</web-resource-name>
+			<url-pattern>/img/*</url-pattern>		
+			<http-method>POST</http-method>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+	</security-constraint>	
+	
+	
+	<!-- METODO DE LOGIN PARA VALIDACAO DE ACESSO -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+		<form-login-page>/login.html</form-login-page>
+		<form-error-page>/logine.html</form-error-page>
+		</form-login-config>
+	</login-config>
+
+
+	<!-- ROLES -->
+	<security-role>
+		<role-name>MASTER</role-name>
+	</security-role>
+	
+	<security-role>
+		<role-name>COMMON</role-name>
+	</security-role>
+
+
+</web-app>

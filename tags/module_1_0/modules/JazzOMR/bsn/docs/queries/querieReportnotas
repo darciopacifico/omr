@@ -1,0 +1,69 @@
+select 
+	eve.pk  			eve_pk ,
+	eve.description 	eve_description,
+
+	exa.pk 			exa_pk,
+	exa.description 	exa_description,
+
+	pes.pk 			pes_pk,
+	pes.nome 		pes_nome,
+		
+	que.pk 				que_pk,
+	que.description 		que_description,
+	que.resumo 			que_resumo,
+	cco.question_order 	cco_question_order,
+		
+	abc.pk 				abc_pk,
+	abc.description 		abc_description,
+	abc.crit_type 		abc_crit_type,
+	cco.alternative_order cco_alternative_order,
+
+	cre.pk 			cre_pk,
+	cre.checked 		cre_checked,
+	abc.score 		abc_score,
+
+	cre.pontuacao 	cre_pontuacao,
+	abc.max_ponto 	abc_max_ponto,
+
+	abc.required 		abc_required,
+	cre.observacao	cre_observacao
+
+
+ from 
+     tb_event eve  
+ inner join 
+     tb_participation par  on eve.pk=par.fk_event  
+ inner join 
+     tb_pessoa pes  on pes.pk=par.fk_pessoa  
+ inner join 
+     tb_exam_variant exv  	 on par.fk_examvariant=exv.pk  
+ inner join 
+     tb_exam exa   on exv.fk_exam=exa.pk  
+ inner join 
+     tb_criterion_coordinate cco   on exv.pk=cco.fk_exam_variant  
+ inner join 
+     tb_abstract_criterion abc   on cco.fk_abstractcriterion=abc.pk  
+ inner join 
+     tb_question que   on cco.fk_question=que.pk  
+
+
+ left outer join 
+     tb_criterion_result cre 	on  
+				cre.fk_participation=par.pk and  
+				cre.fk_criterion_coordinate = cco.pk 
+ where 
+     eve.pk 			in (4)
+
+
+
+/*
+select max(qtn.pk) from tb_questionnaire qtn
+	inner join tj_examvo_questionnaires qtne on 
+		qtne.fk_questionnaires_questionnaire 	= qtn.pk
+	inner join tj_questionnairevo_questions qtnq on
+		qtnq.fk_questionnaire 				= qtn.pk
+
+where 
+qtne.fk_exam = 2 and
+qtnq.fk_questions_question = 8
+*/

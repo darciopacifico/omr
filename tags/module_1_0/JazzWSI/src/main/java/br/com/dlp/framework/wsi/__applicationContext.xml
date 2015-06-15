@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://cxf.apache.org/jaxws 
+		http://cxf.apache.org/schemas/jaxws.xsd">
+		
+	<import resource="classpath:META-INF/mapfre/ws-security.xml" />
+
+	<bean id="clientPasswordCallback" class="br.com.mapfre.ws.security.PasswordCallbackClient" />
+
+	<jaxws:client id="pocClient" serviceClass="br.com.mapfre.ref.ws.poc.PocWS" address="http://127.0.0.1:8180/wsref/pocWS">
+		<jaxws:outInterceptors>
+			<bean class="br.com.mapfre.util.ws.security.util.WSSOutInterceptor">
+				<constructor-arg>
+					<value>1</value>
+				</constructor-arg>
+			</bean>
+		</jaxws:outInterceptors>
+	</jaxws:client>
+
+	<jaxws:client id="poc2Client" serviceClass="br.com.mapfre.ref.ws.poc.PocWS2" address="http://127.0.0.1:8180/wsref/pocWS2">
+		<jaxws:outInterceptors>
+			<bean class="br.com.mapfre.util.ws.security.util.WSSOutInterceptor">
+				<constructor-arg>
+					<value>2</value>
+				</constructor-arg>
+			</bean>
+		</jaxws:outInterceptors>
+	</jaxws:client>
+
+	<jaxws:client id="poc3Client" serviceClass="br.com.mapfre.ref.ws.poc.PocWS2" address="http://127.0.0.1:8180/wsref/pocWS2">
+		<jaxws:outInterceptors>
+			<bean class="br.com.mapfre.util.ws.security.util.WSSOutInterceptor">
+				<constructor-arg>
+					<value>1</value>
+				</constructor-arg>
+			</bean>
+		</jaxws:outInterceptors>
+	</jaxws:client>
+</beans>

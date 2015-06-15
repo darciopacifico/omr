@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:jbossts="http://www.mulesoft.org/schema/mule/jbossts" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:wmq="http://www.mulesoft.org/schema/mule/ee/wmq" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:jms="http://www.mulesoft.org/schema/mule/jms" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd
+http://www.mulesoft.org/schema/mule/ee/wmq http://www.mulesoft.org/schema/mule/ee/wmq/current/mule-wmq-ee.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/jbossts http://www.mulesoft.org/schema/mule/jbossts/current/mule-jbossts.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd">
+    <spring:beans>
+        <spring:bean id="omrGenerator2" name="omrGenerator2" class="br.com.dlp.omr.ws.OmrGenerator" scope="prototype"/>
+        <spring:import resource="classpath:ws/ApplicationContext.xml"/>
+    </spring:beans>
+    
+    <jms:activemq-xa-connector name="Active_MQZuba" username="admin" password="admin" brokerURL="tcp://localhost:61616" validateConnections="true"   doc:name="Active MQ" durable="true" maxRedelivery="3" persistentDelivery="true"/>
+    <asynchronous-processing-strategy name="Asynchronous_Processing_Strategy" doc:name="Asynchronous Processing Strategy"/>
+    <message-properties-transformer name="Message_Properties" doc:name="Message Properties" >
+        <add-message-property key="testet" value="testet"/>
+    </message-properties-transformer>
+
+    <flow name="JazzOMRParser.esbFlow1" doc:name="JazzOMRParser.esbFlow1" processingStrategy="synchronous">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" doc:name="HTTP" path="testeServico"/>
+        <cxf:jaxws-service serviceClass="br.com.dlp.omr.ws.IOmrGenerator" mtomEnabled="true" soapVersion="1.2" doc:name="SOAP">
+            <cxf:aegis-databinding/>
+        </cxf:jaxws-service>
+        <component doc:name="Java">
+            <logging-interceptor/>
+            <spring-object bean="omrGenerator2"/>
+        </component>
+    </flow>
+
+
+    
+</mule>

@@ -1,0 +1,41 @@
+
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>msaf.validador</groupId>
+	<artifactId>msaf.validador.webTeste</artifactId>
+	<packaging>war</packaging>
+	<name>Validador-WebTeste</name>
+	<parent>
+		<groupId>msaf.validador</groupId>
+		<artifactId>msaf.validador</artifactId>
+		<version>1.0</version>
+
+	</parent>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.3</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<version>7.0.0.pre4</version>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<configuration>
+					<argLine>-Xmx1024M -Xdebug -Xnoagent -Djava.compiler=NONE
+				-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=4144
+			</argLine>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

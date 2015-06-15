@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="PackageAll" name="Packaging GRAPI para Jars">
+
+	<property environment="env" />
+	<property file="build.properties" />
+	
+	<path id="pathPadraoXDoclet">
+		<fileset dir="${dir.xdocletLib}" includes="*.jar" />
+		<fileset dir="${dir.lib}"		 includes="**/*.jar" />
+		<fileset dir="./toDeploy" 		 includes="*.jar" />
+	</path>
+
+	<target name="PackageAll" depends="PackageComum,PackageEJB,PackageWAR" />
+
+	<target name="ReDeployEJB" depends="PackageEJB" description="Copia o EJBjar para o JBoss">
+		<delete file="${dir.deployJ2EEServer}/${file.project.ejbjar}" />
+		<!-- sleep seconds="5"/ -->
+
+		<copy todir="${dir.deployJ2EEServer}">
+			<fileset dir="./toDeploy" includes="${file.project.ejbjar}" />
+		</copy>
+	</target>
+
+	<target name="ReDeployWAR" depends="PackageWAR" description="Copia o WAR para o Tomcat">
+		<!-- deleta o arquivo War -->
+		<delete file="${dir.deployWebServer}/${file.project.war}" />
+
+		<!-- deleta o diretorio criado a partir do war (Somente para Tomcat) -->
+		<delete dir="${dir.deployWebServer.app}" />
+
+		<!-- sleep seconds="5"/ -->
+		<copy todir="${dir.deployWebServer}">
+			<fileset dir="./toDeploy" includes="${file.project.war}" />
+		</copy >
+
+	</target>
+
+
+	<target name="PackageComum" description="ComumDeploy" depends="PackageFramework,PackageExternalJars">
+		<jar destfile="${dir.Project.deploy}/${file.project.jar}" duplicate="preserve">
+
+			<!-- Os seguintes sufixos vão para o jar comum -->
+			<zipfileset dir="${dir.project.bin}" 
+				includes="**/*.*" />
+
+			<!-- Os seguintes sufixos vão para o jar comum -->
+			<zipfileset dir="src/" includes="
+		        **/*.xml,
+        		**/*.tld,
+		        **/*.properties,
+		        **/*.dtd" excludes="**/ejb-jar.xml,**/jboss.xml" />
+
+		</jar>
+		<copy todir="${dir.lib}">
+			<fileset dir="${dir.Project.deploy}" includes="${file.project.jar}" />
+		</copy>
+	</target>
+
+	<target name="PackageExternalJars" description="Empacota de copia Jars de outros sistemas para dentro deste projeto">
+		<ant 
+			inheritrefs="false" 
+			inheritall="false" 
+			dir="../${name.framework}" 
+			antfile="../${name.framework}/build.xml" 
+			target="Package" />
+	</target>
+
+
+	<target name="PackageFramework" description="Invoca o packaging do Framework e copia o jar para este projeto">
+		<ant 
+			inheritrefs="false" 
+			inheritall="false" 
+			dir="../${name.framework}" 
+			antfile="../${name.framework}/build.xml" 
+			target="Package" />
+
+	</target>
+
+	<target name="PackageEJB" description="PackageEJB" depends="PackageComum">
+		<jar destfile="${dir.Project.deploy}/${file.project.ejbjar}" duplicate="preserve">
+
+			<!-- META-INF DO EJB.JAR É O MESMO DO PROJETO  
+			-->
+			<zipfileset prefix="META-INF" dir="src/META-INF" />
+
+			<!-- O JAR COMUM VAI PARA O LIB DO EJB.JAR 
+			-->
+			<zipfileset prefix="META-INF/lib" dir="${dir.lib}">
+				<include name="*Comum.jar"/>
+				<include name="${file.framework.jar}"/>
+			</zipfileset>
+		</jar>
+	</target>
+
+	<target name="PackageWAR" description="PackageWAR" depends="PackageComum">
+		<jar 
+			casesensitive="yes" 
+			destfile="${dir.Project.deploy}/${file.project.war}" 
+			duplicate="preserve">
+
+			<!-- JSPs, IMAGENS, CSS, JS + DIRETORIO WEB-INF -->
+			<zipfileset dir="web" includes="**/*.*" excludes="WEB-INF/mergeDir/*.*" />
+
+			<!-- O JAR COMUM VAI PARA O LIB DO EJB.JAR 
+			-->
+			<zipfileset prefix="WEB-INF/lib" dir="${dir.lib}">
+				<include name="*Comum.jar"/>
+				<include name="${file.framework.jar}"/>
+			</zipfileset>
+
+		</jar>
+	</target>
+
+
+	<target name="UnPackageAll" depends="UnPackageComum,UnPackageEJB,UnPackageWAR">
+		<ant inheritrefs="false" inheritall="false" dir="${dir.framework}" antfile="${dir.framework}/build.xml" target="UnPackage" />
+	</target>
+
+
+	<target name="UnPackageWAR" description="UnPackageWAR">
+		<delete file="${dir.Project.deploy}/${file.project.war}" />
+	</target>
+	<target name="UnPackageEJB" description="UnPackageEJB">
+		<delete file="${dir.Project.deploy}/${file.project.ejbjar}" />
+	</target>
+	<target name="UnPackageComum" description="UnPackageComum">
+		<delete file="${dir.Project.deploy}/${file.project.jar}" />
+	</target>
+	
+
+	<target name="XDoclet_All" depends="XDoclet_EJB,XDoclet_Hibernate_AppServer,XDoclet_Hibernate_StandAlone,XDoclet_Web" description="Invoca todas as targets contendo processamento XDoclet" />
+
+	<target name="XDoclet_EJB" description="Gera interfaces dos EJBs + deployment descriptors">
+		<taskdef classpathref="pathPadraoXDoclet" classname="xdoclet.modules.ejb.EjbDocletTask" name="ejbdoclet" />
+
+		<ejbdoclet ejbSpec="2.1" excludedTags="@version,@author,@todo" destDir="src" verbose="true" addedTags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}">
+
+			<fileset dir="src" includes="**/*.java" />
+			<packageSubstitution packages="ejb" substituteWith="interfaces" />
+			<remoteinterface />
+			<localinterface />
+			<homeinterface />
+			<localhomeinterface />
+			<dataobject />
+			<deploymentdescriptor validateXML="true" destDir="src/META-INF" />
+			<jboss Version="4.2" destDir="src/META-INF" />
+			<weblogic version="8.1" createtables="Disabled" destDir="src/META-INF" />
+		</ejbdoclet>
+	</target>
+
+	<target name="XDoclet_Web" description="Gera deployment descriptors para Struts e Servlets">
+		<taskdef classpathref="pathPadraoXDoclet" classname="xdoclet.modules.web.WebDocletTask" name="webdoclet" />
+
+		<webdoclet excludedTags="@version,@author,@todo" destDir="web\WEB-INF" verbose="true" addedTags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}">
+
+			<fileset dir="src" includes="**/*.java" />
+			<strutsconfigxml Version="1.1" mergeDir="mergeDir">
+			</strutsconfigxml >
+			<strutsvalidationxml />
+			<weblogicwebxml version="8.1" destDir="web/WEB-INF" />
+		</webdoclet>
+	</target>
+
+	<target name="XDoclet_Hibernate_AppServer" description="Gera arquivos de mapeamento do Hibernate">
+		<taskdef classpathref="pathPadraoXDoclet" classname="xdoclet.modules.hibernate.HibernateDocletTask" name="hibernatedoclet" />
+
+		<hibernatedoclet excludedTags="@version,@author,@todo,@see" destDir="src" addedTags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}">
+			<fileset dir="src" includes="**/*.java">
+			</fileset>
+			<hibernate Version="2.0">
+			</hibernate>
+
+			<!-- CASA DARCIO
+			 -->
+			<hibernatecfg 
+				destDir="src/${PACOTE_RAIZ_DO_PROJETO}" 
+				destinationFile="hibernate.cfg.xml" 
+				transactionManagerStrategy="org.hibernate.transaction.CMTTransactionFactory" 
+				userTransactionName="java:comp/jta/UserTransaction" 
+				transactionManagerLookup="org.hibernate.transaction.JBossTransactionManagerLookup" 
+				showSql="True" 
+				jndiName="java:/${NOME_PROJETO}SessionFactory" 
+				dataSource="java:/jazzqa_ds" 
+				dialect="org.hibernate.dialect.Oracle10gDialect">
+			</hibernatecfg>
+
+		</hibernatedoclet>
+	</target>
+
+	<target name="XDoclet_Hibernate_StandAlone" description="Gera arquivos de mapeamento do Hibernate">
+		<taskdef classpathref="pathPadraoXDoclet" classname="xdoclet.modules.hibernate.HibernateDocletTask" name="hibernatedoclet" />
+
+		<hibernatedoclet excludedTags="@version,@author,@todo,@see" destDir="src" addedTags="@xdoclet-generated at ${TODAY},@copyright The XDoclet Team,@author XDoclet,@version ${version}">
+
+			<fileset dir="src" includes="**/*.java">
+			</fileset>
+			<hibernate Version="2.0">
+			</hibernate>
+
+			<!-- CASA DARCIO
+			-->
+			<hibernatecfg 
+				destDir="src/${PACOTE_RAIZ_DO_PROJETO}" 
+				destinationFile="hibernateLocal.cfg.xml" 
+				showSql="True" 
+				dialect="org.hibernate.dialect.Oracle10gDialect" 
+				jdbcUrl="jdbc:oracle:thin:validador/admin@localhost:1521/XE" 
+				driver="oracle.jdbc.OracleDriver" 
+				userName="validador" 
+				password="admin">
+			</hibernatecfg>
+		</hibernatedoclet>
+	</target>
+
+	<target name="AtualizarModelagemTabelas">
+		<!-- ESTA TASK UTILIZA UM PATH LIGEIRAMENTE DIFERENCIADO. É O MESMO Q
+			 'pathPadraoXDoclet' INCREMENTADO DAS CLASSES CONTIDAS EM / -->
+		<path id="HibernateConfigurationPath">
+			<path refid="pathPadraoXDoclet" />
+			<pathelement location="bin" />
+			<pathelement location="src" />
+			<fileset dir="../lib"			includes="**/*.jar" />			
+		</path>
+
+		<taskdef name="schemaupdate" 
+			classname="org.hibernate.tool.hbm2ddl.SchemaUpdateTask" 
+			classpathref="HibernateConfigurationPath" />
+
+		<echo level="warning">
+      ATENÇÃO!! POR MOTIVOS DE SEGURANÇA O ATRIBUTO 'text' DA SUBTASK schemaupdate
+      DEVE SER MANTIDO COM O VALOR 'true', O QUE FAZ COM Q OS COMANDOS DDL's NÃO
+      SEJAM EXECUTADOS NO BANCO DE DADOS E SIM APENAS APAREÇAM NA CONSOLE.
+		</echo>
+
+		<schemaupdate quiet="false" text="false" config="src/${PACOTE_RAIZ_DO_PROJETO}/hibernateLocal.cfg.xml">
+		</schemaupdate>
+	</target>
+
+</project>

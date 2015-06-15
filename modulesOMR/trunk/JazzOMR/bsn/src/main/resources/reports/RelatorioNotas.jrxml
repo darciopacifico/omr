@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioNotas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="events_pks" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[new Long(5)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NOT_CREATED" class="java.lang.Float" isForPrompting="false">
+		<defaultValueExpression><![CDATA[0f]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CREATED" class="java.lang.Float" isForPrompting="false">
+		<defaultValueExpression><![CDATA[0f]]></defaultValueExpression>
+	</parameter>
+	<parameter name="RUNNING" class="java.lang.Float" isForPrompting="false">
+		<defaultValueExpression><![CDATA[0f]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TERMINATED" class="java.lang.Float" isForPrompting="false">
+		<defaultValueExpression><![CDATA[0f]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FAILED" class="java.lang.Float" isForPrompting="false">
+		<defaultValueExpression><![CDATA[0f]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NO_PARTICIPATIONS" class="java.lang.Float" isForPrompting="false">
+		<defaultValueExpression><![CDATA[0f]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TOTAL_PAGINAS" class="java.lang.Float">
+		<defaultValueExpression><![CDATA[1f]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+
+eve_pk,
+e_description,
+
+par_pk,
+pes_nome,
+pes_pk,
+pes_login,
+
+exa_pk,
+exa_description,
+
+qtn_pk,
+qtn_description,
+
+100 Corrigidos,
+
+(10 * (sum(ifnull((alr_checked*alt_score),0)) / count(distinct que_pk))) nota
+
+ from vw_exam_correction
+
+
+where
+eve_pk in
+($P{events_pks})
+
+group by
+eve_pk,
+par_pk,
+qtn_pk,
+exa_pk]]>
+	</queryString>
+	<field name="eve_pk" class="java.lang.Long"/>
+	<field name="e_description" class="java.lang.String"/>
+	<field name="par_pk" class="java.lang.Long"/>
+	<field name="pes_nome" class="java.lang.String"/>
+	<field name="pes_pk" class="java.lang.Long"/>
+	<field name="pes_login" class="java.lang.String"/>
+	<field name="exa_pk" class="java.lang.Long"/>
+	<field name="exa_description" class="java.lang.String"/>
+	<field name="qtn_pk" class="java.lang.Long"/>
+	<field name="qtn_description" class="java.lang.String"/>
+	<field name="Corrigidos" class="java.lang.Long"/>
+	<field name="nota" class="java.math.BigDecimal"/>
+	<group name="Evento">
+		<groupExpression><![CDATA[$F{eve_pk}]]></groupExpression>
+		<groupHeader>
+			<band height="116">
+				<textField>
+					<reportElement x="11" y="78" width="530" height="20"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Resultados para Correção do Evento "+$F{eve_pk}+" - "+$F{e_description}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="11" y="100" width="100" height="15"/>
+					<textElement>
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[RGM - Nome aluno]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="256" y="101" width="60" height="15"/>
+					<textElement>
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Nota]]></text>
+				</staticText>
+				<image scaleImage="RealSize">
+					<reportElement x="11" y="10" width="84" height="26"/>
+					<imageExpression class="java.lang.String"><![CDATA["/home/darcio/workspace/modules/JazzOMR/bsn/src/main/resources/reports/logo-univ.jpg"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="111" y="10" width="234" height="20"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Universidade Paulista UNIP]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="345" y="100" width="132" height="15"/>
+					<textElement>
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Percentual Correção]]></text>
+				</staticText>
+				<textField isBlankWhenNull="false">
+					<reportElement x="494" y="32" width="47" height="20"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[(($P{TERMINATED}/$P{TOTAL_PAGINAS})*100f)+"%"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="494" y="52" width="47" height="20"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[(($P{FAILED}/$P{TOTAL_PAGINAS})*100f)+"%"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="373" y="32" width="121" height="20"/>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[Processados OK:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="373" y="52" width="121" height="20"/>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[Erros Processamento:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="participacao">
+		<groupExpression><![CDATA[$F{par_pk}]]></groupExpression>
+		<groupHeader>
+			<band height="39">
+				<textField>
+					<reportElement positionType="FixRelativeToBottom" x="40" y="22" width="372" height="15"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{pes_nome}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="11" y="37" width="530" height="1"/>
+					<graphicElement>
+						<pen lineWidth="0.25" lineStyle="Dotted"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="11" y="22" width="29" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.Long"><![CDATA[$F{pes_pk}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="questionario">
+		<groupExpression><![CDATA[$F{qtn_pk}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<textField>
+				<reportElement x="11" y="0" width="245" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{qtn_description}]]></textFieldExpression>
+			</textField>
+			<textField pattern="0 &apos;%&apos;">
+				<reportElement x="345" y="0" width="52" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{Corrigidos}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="256" y="0" width="60" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nota}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

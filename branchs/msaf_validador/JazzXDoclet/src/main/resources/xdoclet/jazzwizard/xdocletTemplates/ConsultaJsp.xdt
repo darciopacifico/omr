@@ -1,0 +1,40 @@
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%> 
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%> 
+<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles"%> 
+<%@page import="org.apache.struts.taglib.html.Constants" %>
+<%@page import="<XDtPackage:packageName/>.<XDtWj2eeClass:actionClassName/>" %>
+
+<%-- UTILIZADO NA ITERACAO DE LISTAS INDEXADAS --%>
+<%int index=0;%>
+
+<html:form action="<XDtWj2eeClass:actionPath/>" > 
+
+	<!-- INSERT PARA ATRIBUTOS DE BaseCadastroForm -->
+	<tiles:insert page="/tilesTemplate/base/baseCadastroFormAtributos.jsp"/>
+	<!-- INSERT PARA ATRIBUTOS DE BaseCadastroForm -->
+	<tr>
+	 <td class="neutro">
+	  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+<XDtWj2eeMethod:forAllMethods sort="true">
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPropriedadeTratavel>
+			<XDtWj2eeMethod:ifIsConsultavel>
+	   <tr>
+		<td class="tt2r" width="20%" nowrap title="<bean:message key="<XDtWj2eeMethod:multiLinguaDicaKey/>"/>">
+			<bean:message key="<XDtWj2eeMethod:multiLinguaLabelKey/>"/> :
+		</td>
+		<td class="tt3l" width="80%" title="<bean:message key="<XDtWj2eeMethod:multiLinguaDicaKey/>"/>" >&nbsp;
+			<XDtWj2eeMethod:renderControl tipoControle="consulta" />
+		</td>
+       </tr>		
+			</XDtWj2eeMethod:ifIsConsultavel>
+		</XDtWj2eeMethod:ifIsPropriedadeTratavel>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>
+
+	  </table>
+	 </td>
+	</tr>
+</html:form>

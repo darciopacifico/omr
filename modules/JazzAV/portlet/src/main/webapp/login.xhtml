@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich" xmlns:p="http://primefaces.org/ui"
+	xmlns:t="http://myfaces.apache.org/tomahawk" template="/templates/template.xhtml">
+
+
+
+
+<ui:param name="paramOnLoad" value="document.frmLogin.j_username.focus();"></ui:param>
+
+
+
+<ui:define name="headInsert">
+
+	<title>Exam Center - Login</title>
+
+	<style>
+* {
+	margin: auto;
+}
+
+span,a,label {
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.divReg {
+	position: relative;
+	height: 630px;
+	width: 724px;
+	background: #91b1c7 url('../img/menu/repearVertical.png');
+	background-repeat: repeat-y;
+	margin: auto;
+	top: 30px;
+}
+
+.divReg form {
+	position: relative;
+	top: 10%;
+}
+
+.divReg fieldset {
+	width: 650px;
+	position: inherit;
+	margin: auto;
+}
+
+.divReg legend,label {
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.divReg table {
+	margin: auto;
+}
+
+.divReg td {
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	color: white;
+}
+
+.divReg label {
+	font-family: Arial, sans-serif;
+	color: #eeeeee;
+}
+
+.divLoginReg {
+	height: 390px;
+	width: 530px;
+	background: url('./img/menu/repearVertical.png');
+	background-repeat: repeat;
+	margin: auto;
+	float: left;
+}
+</style>
+
+</ui:define>
+
+
+	<ui:define name="body">
+	
+
+
+
+
+
+
+	<div style="position: relative; height: 400px; width: 1110px; margin: auto; top: 300px;">
+
+
+
+		<div class="divLoginReg">
+
+
+
+			<fieldset style="width: 330px; position: inherit; margin: auto;">
+				<form id="frmLogin" name="frmLogin" method="post" action="j_spring_security_check" style="position: relative; top: 10%;">
+
+
+					<legend style="font-family: Arial, sans-serif; color: #eeeeee; font-size: 12px; font-weight: bold;">Autenticação</legend>
+					<table style="margin: auto;">
+						<tr>
+							<td style="text-align: right;"><label for="form-login" style="font-family: Arial, sans-serif; color: #eeeeee;">Login:</label></td>
+							<td><input type="text" name="j_username" id="form-login" /></td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><label for="form-senha" style="font-family: Arial, sans-serif; color: #eeeeee;">Senha:</label></td>
+							<td><input type="password" name="j_password" id="form-senha" /></td>
+						</tr>
+						<tr>
+							<td colspan="2" style="text-align: center;"><input type='checkbox' name='_spring_security_remember_me' id='rememberMe' /> <label for="rememberMe"
+								title="Armazena senha no seu browser">Lembrar minha senha.</label> <input type="submit" value="Enviar" /></td>
+						</tr>
+
+					</table>
+				</form>
+
+				<h:outputLink value="#" onclick="#{rich:component('pnlResetSenha')}.show(); return false;" style="color: black;">
+	                Redefinir Senha
+	            </h:outputLink>
+
+			</fieldset>
+
+
+		</div>
+
+
+
+
+
+		<div class="divLoginReg" style="width: 30px; background: none;"></div>
+
+
+		<div class="divLoginReg" style="left: 10px; text-align: none;">
+			<f:view>
+				<h:form>
+
+					<p:growl id="growl"  />
+
+					<fieldset style="width: 430px; position: inherit; margin: auto;">
+
+						<legend style="font-family: Arial, sans-serif; color: #eeeeee; font-size: 12px; font-weight: bold;">Registre-se</legend>
+
+
+						<h:panelGrid columns="3" id="pnlReg">
+
+							<h:outputLabel for="txtNome" value="Nome" />
+							<p:inputText id="txtNome" value="#{anuncioBean.pessoaVO.nome}" size="30" label="Nome" />
+							<h:message for="txtNome" />
+
+							<h:outputLabel for="txtEmail" value="Email" />
+							<p:inputText id="txtEmail" value="#{anuncioBean.pessoaVO.email}" size="30" label="E-mail" />
+							<h:message for="txtEmail" />
+
+							<h:outputLabel for="txtSenha" value="Senha" />
+							<h:inputSecret id="txtSenha" value="#{anuncioBean.pessoaVO.senha}" label="Senha" />
+							<h:message for="txtSenha" />
+
+							<h:outputLabel for="txtSenhaConfirm" value="Senha (confirmação)" />
+							<h:inputSecret id="txtSenhaConfirm" value="#{anuncioBean.pessoaVO.senhaConfirm}" label="Senha (Confirm)" />
+							<h:message for="txtSenhaConfirm" />
+
+						</h:panelGrid>
+
+
+					</fieldset>
+
+
+					<h:commandButton value="Salvar" action="#{anuncioBean.salvarPessoa}" >
+						<a4j:ajax event="click" render="pnlReg txtCaptcha growl pnlPassRecover" execute="pnlReg"  />
+					</h:commandButton>
+
+				</h:form>
+				
+				<rich:popupPanel id="pnlPassRecover" modal="true" autosized="true" >
+					<f:facet name="header">
+						<h:outputText value="Redefinição de Senha!" />
+					</f:facet>
+					
+					<h:form>
+						<h:commandLink value="Xwww" action="#" onclick="#{rich:component('pnlPassRecover')}.hide();" >
+						</h:commandLink>
+
+					Já existe um usuário registrado com o email!<br/>
+					
+					Não lembro minha senha. Quero redefiní-la!<br/>
+					
+					Este e-mail é meu e foi utilizado indevidamente!<br/>
+					
+					</h:form>	
+					
+					
+					<rich:messages></rich:messages>
+				</rich:popupPanel>
+			
+			</f:view>
+		</div>
+	</div>
+
+
+
+	<rich:popupPanel id="pnlResetSenha" modal="true" autosized="true">
+		<f:facet name="header">
+			<h:outputText value="Redefinição de Senha!" />
+		</f:facet>
+
+		<f:facet name="controls">
+			<h:outputLink value="#" onclick="#{rich:component('pnlResetSenha')}.hide(); return false;">X</h:outputLink>	
+		</f:facet>
+
+
+		<f:view>
+			<h:form>
+				<h:panelGroup id="pnlReset">
+					
+					<h:panelGrid columns="3" width="500" >
+
+
+						<h:outputLabel value="Email" for="txtResetMail"/>
+						<h:panelGroup>
+							<h:inputText value="#{anuncioBean.pessoaVO.email}" id="txtResetMail" />
+							<p:spacer width="20"></p:spacer>
+							<h:commandButton value="Enviar Código de Segurança" event="click" action="#{anuncioBean.resetSenha}">
+								<a4j:ajax render="growReset" execute="txtResetMail" />
+							</h:commandButton>
+						</h:panelGroup>
+						<h:message for="txtResetMail" />
+					
+
+						<h:outputLabel value="Codigo de Segurança" for="txtResetToken2"/>
+						<h:inputSecret value="#{anuncioBean.pessoaVO.resetToken}" id="txtResetToken" size="40">
+							<p:watermark for="txtResetToken" value="xxx-xxx-xxx-xxx" />
+						</h:inputSecret>
+						<h:message for="txtResetToken" />
+	
+	
+						<h:outputLabel value="Nova Senha"  for="txtNovaSenha"/>
+						<h:inputSecret value="#{anuncioBean.pessoaVO.senha}" id="txtNovaSenha" />
+						<h:message for="txtNovaSenha" />
+	
+	
+						<h:outputLabel value="Nova Senha (confirmação)"  for="txtNovaSenhaConfirm"/>
+						<h:inputSecret value="#{anuncioBean.pessoaVO.senhaConfirm}" id="txtNovaSenhaConfirm" label="Senha Confirmação" />
+						<h:message for="txtNovaSenhaConfirm" />
+	
+	
+					</h:panelGrid>
+
+					<h:commandButton action="#{anuncioBean.confirmReset()}" execute="pnlReset" render="pnlReset" />
+
+				</h:panelGroup>
+
+				<p:growl id="growReset"></p:growl>
+
+			</h:form>
+		</f:view>
+	</rich:popupPanel>
+
+	</ui:define>
+</ui:composition>
+

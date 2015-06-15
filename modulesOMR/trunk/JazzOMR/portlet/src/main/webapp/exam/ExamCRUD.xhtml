@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="../template/crud/crudTemplate.xhtml">
+
+
+
+	<!-- PARAMETROS DO MODULO -->
+	<ui:param name="myMBean" value="#{examJSFBean}" />
+	<ui:param name="tituloModulo" value="#{lblExam.pnlExam}" />
+	<ui:param name="iconeModulo" value="/img/menu/foldingExans.png"/>
+	<ui:param name="menuUrlPrefix" value="../" />
+
+	<!-- DEFINICOES GLOBAIS DO MÓDULO -->
+	<ui:define name="repGlobal">
+		<f:loadBundle var="lblExam" basename="br.com.dlp.jazzomr.exam.Exam" />
+		<f:loadBundle var="msg" basename="br.com.dlp.jazzomr.ResourceBundle" />
+	</ui:define>
+
+
+
+
+
+	<!-- DEFINICAO DE PAINEL DE FORMULARIO DE PESQUISA PESQUISA -->
+	<ui:define name="repPesquisa">
+
+		<h:panelGrid columns="2">
+			<h:outputText value="#{lblExam.description}" />
+			<h:inputText value="#{examJSFBean.description}" size="40" />
+
+			<h:outputText value="#{lblExam.dtIncFrom}" />
+			<rich:calendar value="#{examJSFBean.dtIncFrom}" />
+
+			<h:outputText value="#{lblExam.dtIncTo}" />
+			<rich:calendar value="#{examJSFBean.dtIncTo}" />
+
+			<h:outputText value="#{lblExam.dtAltFrom}" />
+			<rich:calendar value="#{examJSFBean.dtAltFrom}" />
+
+			<h:outputText value="#{lblExam.dtAltTo}" />
+			<rich:calendar value="#{examJSFBean.dtAltTo}" />
+
+			<h:outputText value="#{lblExam.status}" />
+			<rich:comboBox defaultLabel="Selecione..." value="#{examJSFBean.status}" selectFirstOnUpdate="false" >
+				<f:selectItems value="#{examJSFBean.statusList}"  />
+			</rich:comboBox>
+		</h:panelGrid>
+		
+	</ui:define>
+
+
+	<!-- DEFINICAO DOS CAMPOS PARA PESQUISA INSTANTANEA -->
+	<ui:define name="repInstantSearch">
+	</ui:define>
+
+
+	<!--COLUNAS EXIBIDAS NA PESQUISA-->
+	<ui:define name="repCamposResultado">
+		<rich:column>
+			<f:facet name="header">
+				<h:outputText value="#{lblExam.description}" />
+			</f:facet>
+			<h:outputText value="#{resultado.description}" />
+		</rich:column>
+
+		<rich:column>
+			<f:facet name="header">
+				<h:outputText value="#{lblExam.dtInc}" />
+			</f:facet>
+			<h:outputText value="#{resultado.dtInc}">
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>  
+			</h:outputText>
+		</rich:column>
+
+		<rich:column>
+			<f:facet name="header">
+				<h:outputText value="#{lblExam.dtAlt}" />
+			</f:facet>
+			<h:outputText value="#{resultado.dtAlt}" >
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>  
+			</h:outputText>
+		</rich:column>
+
+		<rich:column>
+			<f:facet name="header">
+				<h:outputText value="#{lblExam.status}" />
+			</f:facet>
+			<h:outputText value="#{resultado.status}" />
+		</rich:column>
+
+	</ui:define>
+
+
+
+	<!--CAMPOS MANUTENCAO-->
+	<ui:define name="repCamposManutencao">
+	
+		<h:outputText value="#{lblExam.description}" />
+		<h:inputText value="#{examJSFBean.tmpVO.description}" disabled="#{myMBean.tmpVO==null}" size="100"/>
+		<rich:message for="description" />
+		
+		
+		<h:outputText value="Modelo Exame" />
+		<h:selectOneMenu id="comboReport" value="#{examJSFBean.tmpVO.relatorioVO}" selectFirstOnUpdate="true"  width="300" converter="relatorioConverter">
+        		<f:selectItems value="#{examJSFBean.enterpriseReports}"  />
+		</h:selectOneMenu>
+		<rich:message for="comboReport" />
+		
+		
+		<h:outputText value="#{lblExam.status}" />
+		<rich:comboBox defaultLabel="Selecione..." value="#{examJSFBean.tmpVO.status}" disabled="#{myMBean.tmpVO==null}" selectFirstOnUpdate="false" >
+			<f:selectItems value="#{examJSFBean.statusList}"  />
+		</rich:comboBox>
+		<rich:message for="status" />
+
+		<h:outputText value="#{lblExam.dtInc}" />
+		<h:outputText value="#{examJSFBean.tmpVO.dtInc}" >
+			<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>  
+		</h:outputText>
+		<rich:message for="dtInc" />
+
+		<h:outputText value="#{lblExam.dtAlt}" />
+		<h:outputText value="#{examJSFBean.tmpVO.dtAlt}" >
+			<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>  
+		</h:outputText>
+		<rich:message for="dtAlt" />
+
+	</ui:define>
+
+
+	<ui:define name="repSubModulos">
+		<rich:separator height="1" />
+	
+		<p:pickList value="#{examJSFBean.quest}"  converter="questionnaireJSONConverter" var="q" itemLabel="#{q.description}" itemValue="#{q}"  >
+		
+			
+		</p:pickList>
+		
+	</ui:define>
+
+
+
+	<!-- DEFINICOES DE POPOUPS -->
+	<ui:define name="repPopups">
+	</ui:define>
+
+</ui:composition>
+

@@ -1,0 +1,56 @@
+package <XDtPackage:packageName/>;
+
+import java.rmi.RemoteException;
+import br.com.dlp.framework.exception.BaseTechnicalError;
+import javax.ejb.CreateException;
+import javax.ejb.EJBException;
+import javax.ejb.SessionBean;
+import javax.ejb.SessionContext;
+import br.com.dlp.framework.dao.DAOException;
+import br.com.dlp.framework.facade.J2EECMTFacade;
+
+/** 
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+ * 	
+ * Extensão de <XDtWj2eeClass:vlhFacadeImplClassName/> para criação de um EJB
+ * 	
+ * @ejb.bean description="value"
+ *           display-name="<XDtWj2eeClass:moduleVLHId/>"
+ *           jndi-name="<XDtWj2eeClass:jdniVLHModule/>"
+ *           name="<XDtWj2eeClass:ejbVLHModule/>"
+ *           type="Stateful"
+ *           view-type="remote"
+ * 						
+ * @ejb.interface extends="javax.ejb.EJBObject,<XDtPackage:packageName/>.<XDtWj2eeClass:vlhFacadeClassName/>"
+ * 
+ * @ejb.transaction type = "Required"
+ */
+
+public class <XDtWj2eeClass:vlhSessionFacadeClassName/> extends <XDtWj2eeClass:vlhFacadeImplClassName/> implements SessionBean {
+	/**
+	 * Controle de versão para classes serializáveis
+	 */
+	private static final long serialVersionUID = <XDtWj2eeClass:classSerialVersionUID/>
+
+	private SessionContext sessionContext;
+	
+	public void ejbActivate() throws EJBException, RemoteException {
+	}
+	public void ejbPassivate() throws EJBException, RemoteException {
+	}
+	public void ejbRemove() throws EJBException, RemoteException {
+	}
+
+	public SessionContext getSessionContext() throws EJBException,RemoteException {
+		return sessionContext;
+	}
+	public void setSessionContext(SessionContext ctx) throws EJBException, RemoteException {
+		sessionContext = ctx;
+	}
+	
+	/**
+	 * @ejb.create-method view-type = "remote"
+	 **/
+	public void ejbCreate()throws CreateException, RemoteException {
+	}
+}

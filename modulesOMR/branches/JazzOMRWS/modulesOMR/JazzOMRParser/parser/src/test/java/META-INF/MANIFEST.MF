@@ -1,0 +1,49 @@
+Manifest-Version: 1.0
+Class-Path: antlr-2.7.6.jar aopalliance-1.0.jar asm-3.1.jar aspectjrt-
+ 1.6.6.jar aspectjweaver-1.6.6.jar avalon-framework-impl-4.2.0.jar bar
+ code4j-2.0.jar batik-awt-util-1.6.jar batik-bridge-1.6.jar batik-css-
+ 1.6.jar batik-dom-1.6.jar batik-ext-1.6.jar batik-extension-1.6.jar b
+ atik-gui-util-1.6.jar batik-gvt-1.6.jar batik-parser-1.6.jar batik-sc
+ ript-1.6.jar batik-svg-dom-1.6.jar batik-svggen-1.6.jar batik-swing-1
+ .6.jar batik-transcoder-1.6.jar batik-util-1.6.jar batik-xml-1.6.jar 
+ bcmail-jdk14-138.jar bcmail-jdk14-1.38.jar bcprov-jdk14-138.jar bcpro
+ v-jdk14-1.38.jar bctsp-jdk14-1.38.jar bluecove-2.1.0.jar cas-client-c
+ ore-3.1.10.jar castor-1.2.jar cglib-2.2.jar commons-beanutils-1.8.2.j
+ ar commons-collections-3.2.1.jar commons-dbcp-1.2.2.jar commons-diges
+ ter-2.1.jar commons-lang-2.4.jar commons-logging-1.1.1.jar commons-po
+ ol-1.3.jar core-2.1.jar cxf-api-2.7.5.jar cxf-rt-bindings-soap-2.7.5.
+ jar cxf-rt-bindings-xml-2.7.5.jar cxf-rt-core-2.7.5.jar cxf-rt-databi
+ nding-aegis-2.7.5.jar cxf-rt-databinding-jaxb-2.7.5.jar cxf-rt-fronte
+ nd-jaxws-2.7.5.jar cxf-rt-frontend-simple-2.7.5.jar cxf-rt-transports
+ -http-2.7.5.jar cxf-rt-ws-addr-2.7.5.jar cxf-rt-ws-policy-2.7.5.jar c
+ xf-rt-ws-security-2.7.5.jar dom4j-1.6.1.jar ehcache-core-2.5.1.jar ej
+ b-api-3.0.jar fontbox-1.5.0.jar freemarker-2.3.15.jar geronimo-javama
+ il_1.4_spec-1.7.1.jar gson-1.7.1.jar hibernate-annotations-3.5.1-Fina
+ l.jar hibernate-commons-annotations-3.2.0.Final.jar hibernate-core-3.
+ 5.1-Final.jar hibernate-entitymanager-3.5.1-Final.jar hibernate-jmx-3
+ .5.1-Final.jar hibernate-jpa-2.0-api-1.0.0.Final.jar hibernate-valida
+ tor-4.1.0.Final.jar ij-1.43.jar itext-2.1.7.js2.jar jackson-annotatio
+ ns-2.0.5.jar jackson-core-2.0.5.jar jackson-databind-2.0.5.jar jasper
+ reports-5.1.2.jar javase-2.1.jar javassist-3.9.0.GA.jar JazzAnnotatio
+ ns.jar JazzFramework.jar JazzJRDataSource.jar JazzOMR.core.jar JazzOM
+ RJRElements.jar JazzXDoclet.jar jcommon-1.0.15.jar jdtcore-3.1.0.jar 
+ jempbox-1.5.0.jar jfreechart-1.0.12.jar joda-time-1.6.2.jar log4j-1.2
+ .16.jar neethi-3.0.2.jar opensaml-2.5.1-1.jar openws-1.4.2-1.jar pdfb
+ ox-1.5.0.jar primefaces-1.1.jar qdox-1.12.1.jar richfaces-api-3.3.3.F
+ inal.jar richfaces-impl-3.3.3.Final.jar richfaces-ui-3.3.3.Final.jar 
+ selenium-java-client-driver-1.0.1.jar selenium-java-testng-helper-1.0
+ .1.jar slf4j-api-1.6.1.jar slf4j-log4j12-1.6.1.jar spring-aop-3.0.5.R
+ ELEASE.jar spring-asm-3.0.5.RELEASE.jar spring-beans-3.0.5.RELEASE.ja
+ r spring-context-3.0.5.RELEASE.jar spring-core-3.0.5.RELEASE.jar spri
+ ng-expression-3.0.5.RELEASE.jar spring-jdbc-3.0.7.RELEASE.jar spring-
+ ldap-core-1.3.1.RELEASE.jar spring-orm-3.0.5.RELEASE.jar spring-secur
+ ity-acl-3.1.4.RELEASE.jar spring-security-cas-client-3.0.8.RELEASE.ja
+ r spring-security-config-3.1.4.RELEASE.jar spring-security-core-3.1.4
+ .RELEASE.jar spring-security-ldap-3.1.4.RELEASE.jar spring-security-w
+ eb-3.1.4.RELEASE.jar spring-test-3.0.5.RELEASE.jar spring-tx-3.0.7.RE
+ LEASE.jar spring-web-3.0.7.RELEASE.jar stax2-api-3.1.1.jar testng-5.8
+ -jdk15.jar validation-api-1.0.0.GA.jar woodstox-core-asl-4.2.0.jar ws
+ dl4j-1.6.3.jar wss4j-1.6.10.jar xercesImpl-2.11.0.jar xml-apis-1.4.01
+ .jar xml-resolver-1.2.jar xmlschema-core-2.0.3.jar xmlsec-1.5.4.jar x
+ mltooling-1.3.2-1.jar xpp3_min-1.1.3.4.O.jar xstream-1.2.2.jar
+

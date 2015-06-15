@@ -1,0 +1,155 @@
+<project>
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>msaf.validador</groupId>
+	<artifactId>msaf.validador.jmsconsumer</artifactId>
+	<packaging>jar</packaging>
+	
+	<name>Validador-JMSConsumer</name>
+	<parent>
+		<groupId>msaf.validador</groupId>
+		<artifactId>msaf.validador</artifactId>
+		<version>1.0</version>
+	</parent>
+	<dependencies>
+	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>2.5.6</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>2.5.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.5.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.5.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>msaf.validador</groupId>
+			<artifactId>msaf.validador.pesquisa</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>msaf.validador</groupId>
+			<artifactId>msaf.validador.ejb</artifactId>
+			<!-- Vamos considerar que o projeto EJB é um projeto de simples componentes de negócio POJOs 
+			<type>ejb</type>
+			 -->
+		</dependency>
+
+
+		<dependency>
+			<groupId>jboss</groupId>
+			<artifactId>jboss-j2ee</artifactId>
+			<!-- Vamos considerar que o projeto EJB é um projeto de simples componentes de negócio POJOs 
+			<type>ejb</type>
+			 -->
+			 <version>4.2.3.GA</version>
+			 <scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<!-- Vamos considerar que o projeto EJB é um projeto de simples componentes de negócio POJOs 
+			<type>ejb</type>
+			 -->
+			 <version>3.0</version>
+			 <scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>3.0.9</version>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<encoding>iso-8859-1</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<minmemory>128m</minmemory>
+					<maxmemory>512m</maxmemory>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive> 
+						<index>true</index>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+		            <descriptorRefs>
+		                  <descriptorRef>jar-with-dependencies</descriptorRef>
+		            </descriptorRefs>
+				</configuration>
+			</plugin>
+
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-dependency-plugin</artifactId>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <id>copy-dependencies</id>-->
+<!--            <phase>package</phase>-->
+<!--            <goals>-->
+<!--              <goal>copy-dependencies</goal>-->
+<!--            </goals>-->
+<!--            <configuration>-->
+<!--              <outputDirectory>../msaf.validador.ear</outputDirectory>-->
+<!--              <overWriteReleases>false</overWriteReleases>-->
+<!--              <overWriteSnapshots>false</overWriteSnapshots>-->
+<!--              <overWriteIfNewer>true</overWriteIfNewer>-->
+<!--            </configuration>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
+
+		</plugins>
+	</build>
+</project>

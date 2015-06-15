@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<process xmlns="http://drools.org/drools-5.0/process"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+         xs:schemaLocation="http://drools.org/drools-5.0/process drools-processes-5.0.xsd"
+         type="RuleFlow" name="flow" id="ExibirNome" package-name="br.com.dlp" >
+
+  <header>
+    <imports>
+      <import name="com.sample.JazzProp" />
+    </imports>
+    <globals>
+      <global identifier="prop" type="com.sample.JazzProp" />
+    </globals>
+    <variables>
+      <variable name="nome" >
+        <type name="org.drools.process.core.datatype.impl.type.StringDataType" />
+        <value>nome default?</value>
+      </variable>
+      <variable name="aceito" >
+        <type name="org.drools.process.core.datatype.impl.type.BooleanDataType" />
+        <value>false</value>
+      </variable>
+      <variable name="idade" >
+        <type name="org.drools.process.core.datatype.impl.type.IntegerDataType" />
+        <value>19</value>
+      </variable>
+    </variables>
+    <swimlanes>
+      <swimlane name="Convidado" />
+      <swimlane name="Acompanhante Maior" />
+    </swimlanes>
+  </header>
+
+  <nodes>
+    <start id="1" name="Start" x="16" y="97" width="48" height="48" />
+    <end id="2" name="End" x="688" y="107" width="48" height="48" />
+    <actionNode id="4" name="Autorizar Entrada" x="503" y="98" width="127" height="48" >
+        <action type="expression" dialect="java" >System.out.println("Entrada autorizada para: "+context.getVariable("nome"));</action>
+    </actionNode>
+    <split id="5" name="Gateway" x="96" y="97" width="49" height="49" type="2" >
+      <constraints>
+        <constraint toNodeId="7" toType="DROOLS_DEFAULT" name="constraint" priority="1" type="code" dialect="java" >return idade&gt;18;</constraint>
+        <constraint toNodeId="6" toType="DROOLS_DEFAULT" name="constraint" priority="1" type="code" dialect="java" >return idade&lt;18;</constraint>
+      </constraints>
+    </split>
+    <humanTask id="6" name="Aceitar Termo de Responsabilidade" x="85" y="254" width="205" height="48" swimlane="" >
+      <work name="Human Task" >
+        <parameter name="ActorId" >
+          <type name="org.drools.process.core.datatype.impl.type.StringDataType" />
+          <value>Maior de Idade</value>
+        </parameter>
+        <parameter name="Comment" >
+          <type name="org.drools.process.core.datatype.impl.type.StringDataType" />
+          <value>O maior de idade deve aceitar o termo de responsabilidade</value>
+        </parameter>
+        <parameter name="Content" >
+          <type name="org.drools.process.core.datatype.impl.type.StringDataType" />
+          <value>O maior de idade deve aceitar o termo de responsabilidade</value>
+        </parameter>
+        <parameter name="Priority" >
+          <type name="org.drools.process.core.datatype.impl.type.StringDataType" />
+          <value></value>
+        </parameter>
+        <parameter name="Skippable" >
+          <type name="org.drools.process.core.datatype.impl.type.StringDataType" />
+          <value>false</value>
+        </parameter>
+        <parameter name="TaskName" >
+          <type name="org.drools.process.core.datatype.impl.type.StringDataType" />
+          <value></value>
+        </parameter>
+      </work>
+      <mapping type="in" from="aceito" to="aceito" />
+      <mapping type="out" from="aceito" to="aceito" />
+    </humanTask>
+    <join id="7" name="Gateway" x="409" y="104" width="183" height="49" type="2" />
+    <split id="8" name="Gateway" x="374" y="225" width="49" height="49" type="2" >
+      <constraints>
+        <constraint toNodeId="9" toType="DROOLS_DEFAULT" name="constraint" priority="1" type="code" dialect="java" >return aceito;</constraint>
+        <constraint toNodeId="7" toType="DROOLS_DEFAULT" name="constraint" priority="1" type="code" dialect="java" >return !aceito;</constraint>
+      </constraints>
+    </split>
+    <actionNode id="9" name="Desautorizar Entrada" x="475" y="236" width="183" height="49" >
+        <action type="expression" dialect="mvel" >System.out.println("ENTRADA NAO AUTORIZADA PARA!"+context.getgetVariable("nome"));</action>
+    </actionNode>
+    <end id="10" name="End" x="718" y="244" width="48" height="48" />
+  </nodes>
+
+  <connections>
+    <connection from="4" to="2" />
+    <connection from="7" to="4" />
+    <connection from="1" to="5" />
+    <connection from="5" to="6" />
+    <connection from="5" to="7" />
+    <connection from="8" to="7" />
+    <connection from="6" to="8" />
+    <connection from="8" to="9" />
+    <connection from="9" to="10" />
+  </connections>
+
+</process>

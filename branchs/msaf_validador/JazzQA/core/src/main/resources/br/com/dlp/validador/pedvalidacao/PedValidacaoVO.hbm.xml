@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="br.com.dlp.validador.pedvalidacao.PedValidacaoVO"
+        lazy="false"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.Integer"
+        >
+            <generator class="increment">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-PedValidacaoVO.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <many-to-one
+            name="clienteVO"
+            class="br.com.dlp.validador.cliente.ClienteVO"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="clienteVO"
+        />
+
+        <property
+            name="dataDownload"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            column="dataDownload"
+        />
+
+        <property
+            name="dataSolicitacao"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            column="dataSolicitacao"
+        />
+
+        <property
+            name="dataTermino"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            column="dataTermino"
+        />
+
+        <property
+            name="qtdeRegistrosArq"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            column="qtdeRegistrosArq"
+        />
+
+        <property
+            name="qtdeRegistrosProc"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            column="qtdeRegistrosProc"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-PedValidacaoVO.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

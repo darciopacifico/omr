@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich" xmlns:p="http://primefaces.org/ui"
+	xmlns:t="http://myfaces.apache.org/tomahawk" xmlns:spring="http://www.springframework.org/tags" template="/templates/template.xhtml">
+
+    <ui:define name="body">
+
+        <h:form prependId="false" styleClass="wufoo topLabel page1">
+			
+			Pedido: ${acompanhamentopBean.anuncioVO.PK}, registrado em ${acompanhamentopBean.anuncioVO.dtInc}.
+			
+			<rich:dataGrid value="${acompanhamentopBean.anuncioVO.historicoStatus}" var="status" columns="3">
+				
+				<h:outputText value="${status.dtInc}" />
+				
+				<h:outputText value="${status.descString}" />
+				
+				<h:outputText value="${status.paymentStatus.desc}" />
+				
+			</rich:dataGrid>			
+            
+        </h:form>
+    </ui:define>
+</ui:composition>

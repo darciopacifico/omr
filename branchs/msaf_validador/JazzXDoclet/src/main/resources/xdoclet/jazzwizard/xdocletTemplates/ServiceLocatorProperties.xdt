@@ -1,0 +1,29 @@
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ServiceLocator.properties' generateMergedFile='true'>
+</XDtMerge:merge>
+<XDtClass:forAllClasses>
+#########################################################################
+############## CONFIGURACOES PARA O MODULO <XDtWj2eeClass:moduleId/> ############
+facade_<XDtWj2eeClass:moduleId/>=<XDtWj2eeClass:pacoteModulo/>.<XDtWj2eeClass:facadeClassName/>
+facadeimpl_<XDtWj2eeClass:moduleId/>=<XDtWj2eeClass:pacoteModulo/>.<XDtWj2eeClass:facadeImplClassName/>
+jndi_<XDtWj2eeClass:moduleId/>=<XDtWj2eeClass:jdniModule/>
+ejbhome_<XDtWj2eeClass:moduleId/>=<XDtWj2eeClass:ejbHomeModule/>
+stateful_<XDtWj2eeClass:moduleId/>=false
+
+facadeimpl_<XDtWj2eeClass:moduleVLHId/>=<XDtWj2eeClass:pacoteModulo/>.<XDtWj2eeClass:vlhFacadeImplClassName/>
+jndi_<XDtWj2eeClass:moduleVLHId/>=<XDtWj2eeClass:jdniVLHModule/>
+ejbhome_<XDtWj2eeClass:moduleVLHId/>=<XDtWj2eeClass:ejbVLHHomeModule/>
+pagesize_<XDtWj2eeClass:moduleVLHId/>=<XDtWj2eeClass:vlhPageSize/>
+stateful_<XDtWj2eeClass:moduleVLHId/>=true
+
+<XDtMethod:forAllMethods sort="true" >
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+			<XDtWj2eeMethod:ifIsSistemaExterno>
+############## CONFIGURACOES PARA O MODULO EXTERNO <XDtWj2eeMethod:moduleId/> DO SISTEMA <XDtWj2eeMethod:sistema/> ############
+sistemaext_<XDtWj2eeMethod:moduleId/>=<XDtWj2eeMethod:serviceLocatorFullClassName/>
+
+			</XDtWj2eeMethod:ifIsSistemaExterno>
+		</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+	</XDtMethod:ifIsGetter>
+</XDtMethod:forAllMethods>
+</XDtClass:forAllClasses>

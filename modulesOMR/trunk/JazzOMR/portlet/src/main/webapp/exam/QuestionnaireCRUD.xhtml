@@ -1,0 +1,636 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk" 
+	xmlns:c="http://java.sun.com/jstl/core" 
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions" 
+	template="../template/crud/crudTemplate.xhtml">
+
+	<!-- PARAMETROS DO MODULO -->
+	<ui:param name="myMBean" value="#{questionnaireJSFBean}" />
+	<ui:param name="tituloModulo" value="#{lblQuestionnaire.pnlQuestionnaire}" />
+	<ui:param name="iconeModulo" value="/img/menu/questionnaire_128.png" />
+	<ui:param name="menuUrlPrefix" value="../" />
+
+	<a style=""></a>
+
+	<ui:define name="insideStyleElement">
+		.pnlGridImgs img{
+			border-width: 1px;
+			border-style: dotted; 
+			border-color: gray;
+		}
+	
+	</ui:define>
+		
+		
+
+
+	<!-- DEFINICOES GLOBAIS DO MÓDULO -->
+	<ui:define name="repGlobal">
+		<f:loadBundle var="lblQuestionnaire" basename="br.com.dlp.jazzomr.exam.Questionnaire" />
+		<f:loadBundle var="msg" basename="br.com.dlp.jazzomr.ResourceBundle" />
+		
+	</ui:define>
+		
+		<!-- DEFINICAO DE PAINEL DE FORMULARIO DE PESQUISA PESQUISA -->
+		<ui:define name="repPesquisa">
+			<h:panelGrid columns="2">
+
+				<h:outputText value="#{lblQuestionnaire.description}"/>
+				<h:inputTextarea value="#{questionnaireJSFBean.description}" />
+				
+ 				<h:outputText value="#{lblQuestionnaire.dtIncFrom}"/>
+				<rich:calendar value="#{questionnaireJSFBean.dtIncFrom}" />
+				
+ 				<h:outputText value="#{lblQuestionnaire.dtIncTo}"/>
+				<rich:calendar value="#{questionnaireJSFBean.dtIncTo}" />
+				
+ 				<h:outputText value="#{lblQuestionnaire.dtAltFrom}"/>
+				<rich:calendar value="#{questionnaireJSFBean.dtAltFrom}" />
+				
+ 				<h:outputText value="#{lblQuestionnaire.dtAltTo}"/>
+				<rich:calendar value="#{questionnaireJSFBean.dtAltTo}" />
+
+ 				
+ 				<h:outputText value="#{lblQuestionnaire.status}"/>
+ 				<rich:comboBox defaultLabel="Selecione..." value="#{questionnaireJSFBean.status}" selectFirstOnUpdate="false" >
+ 					<f:selectItems value="#{questionnaireJSFBean.statusList}"  />
+ 				</rich:comboBox>
+ 				
+			</h:panelGrid>
+		</ui:define>
+
+
+
+	<!-- DEFINICAO DOS CAMPOS PARA PESQUISA INSTANTANEA -->
+	<ui:define name="repInstantSearch">
+
+     	</ui:define>
+
+
+	<!--COLUNAS EXIBIDAS NA PESQUISA-->
+	<ui:define name="repCamposResultado">
+	
+ 			<rich:column width="200" >
+				<f:facet name="header">
+						<a4j:commandLink action="#{myMBean.dataModel.extraArgumentsDTO.processOrderChoice('description')}"
+							value="Descrição/Tema #{myMBean.dataModel.getOrderLabel('description')}" reRender="resultadoDG" ajaxSingle="true">
+							<rich:toolTip value="Ordenar resultados por #{lblQuestionnaire.description}" showDelay="1000" />
+						</a4j:commandLink>
+				</f:facet>
+				<h:outputText value="#{resultado.description}"/>
+			</rich:column>
+	
+
+ 			<rich:column width="100"  >
+				<f:facet name="header">
+						<h:outputText value="#{lblQuestionnaire.dtInc}"/>
+				</f:facet>
+				<h:outputText value="#{resultado.dtInc}" >
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>  
+				</h:outputText>
+			</rich:column>
+	
+
+ 			<rich:column width="100" >
+				<f:facet name="header">
+						<h:outputText value="#{lblQuestionnaire.dtAlt}"/>
+				</f:facet>
+				<h:outputText value="#{resultado.dtAlt}" >
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>  
+				</h:outputText>
+			</rich:column>
+	
+
+ 			<rich:column width="70"  >
+				<f:facet name="header">
+						<h:outputText value="#{lblQuestionnaire.status}"/>
+				</f:facet>
+				<h:outputText value="#{resultado.status}"/>
+			</rich:column>
+	
+	</ui:define>
+
+
+
+
+	<ui:define name="pnlCamposManutencao">
+
+		<rich:panel id="campos"   >
+			<!--CAMPOS MANUTENCAO-->
+			<rich:graphValidator>
+				<h:panelGrid columns="3" id="camposManutencao">
+					<h:outputText value="Descrição/Tema" />
+					<h:inputTextarea value="#{questionnaireJSFBean.tmpVO.description}" disabled="#{myMBean.tmpVO==null}" cols="80" rows="2" id="questionnaireDesc" >
+						<rich:toolTip showDelay="2000" >Descreva brevemente o tema deste questionário.</rich:toolTip>
+						<a4j:support event="onchange" ajaxSingle="true" reRender="pnlAddQuestion"  />
+						<f:validateLength maximum="150" />
+					</h:inputTextarea>
+					<rich:message for="questionnaireDesc" />
+			
+					<h:outputText value="#{lblQuestionnaire.status}"/>
+					<rich:comboBox defaultLabel="Selecione..." value="#{questionnaireJSFBean.tmpVO.status}" disabled="#{myMBean.tmpVO==null}" id="status" converterMessage="Escolha uma opção válida!" selectFirstOnUpdate="false">
+						<f:selectItems value="#{questionnaireJSFBean.statusList}"  />
+					</rich:comboBox>
+					<rich:message for="status" />
+			
+					<h:outputText value="#{lblQuestionnaire.dtInc}" />
+					<h:outputText value="#{questionnaireJSFBean.tmpVO.dtInc}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/> 
+					</h:outputText>
+					<rich:message for="dtInc" />
+			
+					<h:outputText value="#{lblQuestionnaire.dtAlt}" />
+					<h:outputText value="#{questionnaireJSFBean.tmpVO.dtAlt}" >
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+					</h:outputText>
+					<rich:message for="dtAlt" />
+					
+				</h:panelGrid>
+			</rich:graphValidator>
+
+			<rich:spacer height="20" />
+
+			<a4j:region >
+				<!-- COMPONENTE DE MENSAGENS DO PRIMEFACES ESTILO MAC -->
+				<rich:graphValidator>
+					<a4j:outputPanel id="pnlGrowl">
+						<p:growl life="3000" id="growlGeral"/>
+					</a4j:outputPanel>
+					
+					 
+					<rich:dataTable id="tbQuestions" rows="6" listWidth="950" listHeight="600" value="#{questionnaireJSFBean.tmpVO.questions}" var="questao" rendered="#{questionnaireJSFBean.tmpVO!=null}"  >
+						
+						<!-- CABECALHO DA TABELA -->
+						<f:facet name="header">
+						
+							<h:panelGrid columns="7" >
+						
+								<h:outputText value="Questões " style="font-size: small;" />
+								<rich:spacer width="15"/>
+								
+								<h:panelGroup id="pnlAddQuestion">
+									<a4j:commandLink action="#{questionnaireJSFBean.newQuestion}" 
+										reRender="tbQuestions,mdlQuestionDetail" id="btnAddQuestion" oncomplete="Richfaces.showModalPanel('mdlQuestionDetail')"
+										rendered="#{questionnaireJSFBean.tmpVO.description!=null}" eventsQueue="none" >
+										<h:graphicImage value="/img/button_plus.png" />
+										<h:outputText value="Adicionar"/>
+										<rich:toolTip value="Clique para adicionar uma questão a este questionário..." showDelay="1200" />
+									</a4j:commandLink>
+								
+									<a4j:commandLink onclick="alert('Antes de incluir uma nova questão, por favor, dê uma descrição ao tema doquestionário!')" rendered="#{questionnaireJSFBean.tmpVO.description==null}" >
+										<h:graphicImage value="/img/button_plus_disabled.png" /> 
+										<h:outputText value="Adicionar" style="color:gray;"/>
+										<rich:toolTip value="Antes de incluir uma nova questão, por favor, dê uma descrição ao tema do questionário!"  />
+									</a4j:commandLink>
+								</h:panelGroup>
+							
+								<rich:spacer width="60"/>
+								<rich:datascroller for="tbQuestions" style="width:500;" ajaxSingle="true"  maxPages="6" stepControls="hide"/>
+				
+								<rich:spacer width="20"/>
+								<h:outputText value="#{fn:length(questionnaireJSFBean.tmpVO.questions)} Questões"/>					
+							</h:panelGrid>
+						</f:facet>
+			
+			
+						<rich:column style="text-align: center;"  width="40" id="colOrdem">
+							<f:facet name="header">Ordem</f:facet>
+							<rich:toolTip value="ID da questão = #{questao.PK}" showDelay="500"/>
+							<h:outputText value="#{questionnaireJSFBean.tmpVO.questions.indexOf(questao)+1}" />
+						</rich:column>						
+									
+			
+						<rich:column style="text-align: center;"  width="40">
+							<f:facet name="header">Ordem</f:facet>
+							<a4j:commandLink action="#{questionnaireJSFBean.downInList(questao,questionnaireJSFBean.tmpVO.questions)}"  ajaxSingle="true" reRender="tbQuestions" >
+								<h:graphicImage value="/img/arrow_up_16.png" />
+								<rich:toolTip value="Clique aqui para subir este registro uma posição" showDelay="1000" />
+							</a4j:commandLink>
+
+							<a4j:commandLink action="#{questionnaireJSFBean.upInList(questao,questionnaireJSFBean.tmpVO.questions)}"  ajaxSingle="true" reRender="tbQuestions" >
+								<h:graphicImage value="/img/arrow_down_16.png" />
+								<rich:toolTip value="Clique aqui para descer este registro uma posição" showDelay="1000" />
+							</a4j:commandLink>
+						</rich:column>						
+									
+			
+			 			<rich:column style="vertical-align: top;"  >
+							<f:facet name="header">
+								<h:outputText value="Enunciado Questões"/>
+							</f:facet>
+							<textarea cols="45" rows="1" readonly="readonly" style="resize: none; border-width: 0px; background: white;"  >#{questao.description}</textarea>
+						
+						</rich:column>
+			
+			
+			 			<rich:column style="text-align: left;vertical-align: top;" width="270" id="colAlternativas" >
+							<f:facet name="header">
+								<h:outputText value="Critérios - Alternativos / Dissertativos"/>
+							</f:facet>
+							<h:outputText value="#{questao.alternativeVOs.size()} Alternativos / #{questao.dissertativeVOs.size()} Dissertativos (passe o mouse)" id="lblAlternas" />
+			
+								<rich:toolTip style="vertical-align: top; " showDelay="200" >
+									<h:outputText value="Critérios - Alternativos / Dissertativos" style="font-weight: bold;"/>
+									<rich:spacer height="10" width="200"></rich:spacer>
+									<rich:separator height="1"  lineType="dotted"></rich:separator>
+								
+								
+									<h:panelGrid columns="2" style="vertical-align: top;">
+									
+										<rich:dataTable  value="#{questao.alternativeVOs}" var="alternative" id="tbAlternatives"  width="230">
+											
+											
+											<f:facet name="header">
+												<rich:columnGroup>
+													<rich:column colspan="2">
+														<h:outputText value="Alternativa" />
+													</rich:column>
+												</rich:columnGroup>
+											</f:facet>
+											
+											<rich:column width="230" >
+												<h:outputText value="#{alternative.description}" id="altDesc" />
+											</rich:column>
+											
+											<rich:column  >
+												<h:graphicImage value="/img/correct_16.png" rendered="#{alternative.score=='CORRECT'}" id="imgCorrect" >
+													<rich:toolTip value="Alternativa correta!" showDelay="500"/>
+												</h:graphicImage> 
+											</rich:column>
+											
+										</rich:dataTable>
+										
+										<rich:dataTable value="#{questao.dissertativeVOs}" var="dissertative" width="230">
+											<rich:column width="200">
+												<f:facet name="header"> Descrição Critério</f:facet>
+												<h:outputText value="#{dissertative.description}" />
+											</rich:column>
+											<rich:column width="30">
+												<f:facet name="header">Linhas</f:facet>
+												<h:outputText value="#{dissertative.qtdLinhas}" />
+											</rich:column>
+										</rich:dataTable>
+									</h:panelGrid>				
+								</rich:toolTip>
+						</rich:column>
+
+
+						
+						<rich:column style="text-align: center;"  width="80">
+							<f:facet name="header"></f:facet>
+							<a4j:commandLink action="#{questionnaireJSFBean.detailQuestion(questao)}"  ajaxSingle="true"
+								reRender="mdlQuestionDetail"
+								oncomplete="Richfaces.showModalPanel('mdlQuestionDetail')" >
+								
+								
+								<h:graphicImage value="/img/Edit_16.png" /> Edit
+								<rich:toolTip value="Clique aqui para excluir este registro" showDelay="1000" />
+							</a4j:commandLink>
+						</rich:column>
+						
+						<rich:column style="text-align: center;"  width="80">
+							<f:facet name="header"></f:facet>
+							<a4j:commandLink action="#{questionnaireJSFBean.setDeleteQuestion(questao)}" 
+								oncomplete="questDelConfirm.show()" style="text-decoration: none;" ajaxSingle="true" process="questDelConfirm" reRender="questDelConfirm" >
+								<h:graphicImage value="/img/Delete_16.png" /> Excluir
+								<rich:toolTip value="Clique aqui para excluir este registro" showDelay="1000" />
+							</a4j:commandLink>
+						</rich:column>
+						
+						
+					</rich:dataTable>					
+				</rich:graphValidator>
+			</a4j:region>
+				
+		</rich:panel>
+	</ui:define>
+
+
+		
+	<ui:define name="noFormModals">
+
+		<rich:modalPanel id="mdlQuestionDetail" width="980" height="550" >
+			<f:facet name="header">Edição Questão</f:facet>
+			<a4j:form id="frmQuestionDetail">
+				<a4j:outputPanel id="pnlGrowl">
+					<p:growl life="3000" id="growlGeral"/>
+				</a4j:outputPanel>			
+			
+				<rich:modalPanel id="waitModal" >
+					Aguarde processando...
+				</rich:modalPanel>			
+			
+				<rich:toolBar itemSeparator="line" >
+					<!-- COMANDOS BASICOS -->
+					<rich:toolBarGroup >
+						<rich:menuItem title="Salvar" value="Salvar" submitMode="ajax" action="#{myMBean.actionSalvarQuestao}"    reRender="tbResultadoDG,pnlGrowl,pnlEdicaoQuestao">
+							<f:facet name="icon">
+								<h:graphicImage value="/img/Save_32.png" />
+							</f:facet>
+							<rich:toolTip value="Salva Questão Atual" showDelay="1000" />
+						</rich:menuItem>
+
+						<rich:menuItem title="Salvar / Novo" value="Salvar / Novo" submitMode="ajax" action="#{myMBean.actionSalvarQuestaoNova}"    reRender="tbResultadoDG,pnlGrowl,pnlEdicaoQuestao">
+							<f:facet name="icon">
+								<h:graphicImage value="/img/Save_32_plus1.png" />
+							</f:facet>
+							<rich:toolTip value="Salva Questão Atual" showDelay="1000" />
+						</rich:menuItem>
+
+						<rich:menuItem title="Sair" value="Sair" action="#{myMBean.sairDetalheQuestao}" submitMode="ajax" 
+						oncomplete="Richfaces.hideModalPanel('mdlQuestionDetail')" reRender="tbQuestions"   >
+							<f:facet name="icon">
+								<h:graphicImage value="/img/Cancel_32.png" />
+							</f:facet>
+							<rich:toolTip value="Fechar tela" showDelay="1000" />
+						</rich:menuItem>
+
+
+					</rich:toolBarGroup>
+				</rich:toolBar>
+				
+				<h:panelGrid columns="3" id="pnlEdicaoQuestao">
+			
+					<h:panelGrid columns="1">
+					
+						<h:panelGrid columns="1" id="pnlEnunciado">
+							<h:outputText value="Enunciado Questão" style="font-weight:bold;"/>
+							<rich:separator  height="1" />
+							<h:inputTextarea value="#{questionnaireJSFBean.editQuestion.description}" id="txtEditQuestion" cols="55" rows="4" style="resize:none;" />
+							<rich:toolTip showDelay="1500">Descreva o enunciado da questão.</rich:toolTip>
+						</h:panelGrid>
+						
+						<h:outputText value="Imagens da Questão"  style="font-weight:bold;"/>
+						<rich:separator  height="1" />
+						
+						<h:panelGrid columns="1" id="pnlImgAdd">
+							
+							<rich:toolTip showDelay="2000">Adicione até 3 imagens ao enunciado da questão. Você também pode dar um título a cada imagem.</rich:toolTip>
+							
+							<h:panelGrid columns="3" id="pnlGridImgs" styleClass="pnlGridImgs" style="height: 100%;" >
+
+								<h:panelGrid id="img0" rendered="#{questionnaireJSFBean.editQuestion.imageVOs.size()>0}" >
+									<h:outputText value="Legenda 1"  style="text-decoration: underline;" />
+									<h:inputTextarea value="#{questionnaireJSFBean.editQuestion.imageVOs[0].titulo}"  cols="19" rows="1" style="resize:none;" />
+									<p:graphicImage value="#{questionnaireJSFBean.drawBufferedImage(questionnaireJSFBean.editQuestion.imageVOs.get(0).image)}" cache="false" height="100" width="120"/>
+									<a4j:commandLink action="#{questionnaireJSFBean.editQuestion.imageVOs.remove(questionnaireJSFBean.editQuestion.imageVOs.get(0))}" ajaxSingle="true" reRender="pnlGridImgs" >Remover</a4j:commandLink>
+								</h:panelGrid>
+
+								<h:panelGrid id="img1" rendered="#{questionnaireJSFBean.editQuestion.imageVOs.size()>1}" >
+									<h:outputText value="Legenda 2"  style="text-decoration: underline;" />
+									<h:inputTextarea value="#{questionnaireJSFBean.editQuestion.imageVOs[1].titulo}"  cols="19" rows="1" style="resize:none;" />
+									<p:graphicImage value="#{questionnaireJSFBean.drawBufferedImage(questionnaireJSFBean.editQuestion.imageVOs.get(1).image)}" cache="false" height="100" width="120" />
+									<a4j:commandLink action="#{questionnaireJSFBean.editQuestion.imageVOs.remove(questionnaireJSFBean.editQuestion.imageVOs.get(1))}" ajaxSingle="true" reRender="pnlGridImgs" >Remover</a4j:commandLink>
+								</h:panelGrid>
+
+								<h:panelGrid id="img2" rendered="#{questionnaireJSFBean.editQuestion.imageVOs.size()>2}" >
+									<h:outputText value="Legenda 3"  style="text-decoration: underline;" />
+									<h:inputTextarea value="#{questionnaireJSFBean.editQuestion.imageVOs[2].titulo}"  cols="19" rows="1" style="resize:none;" />
+									<p:graphicImage value="#{questionnaireJSFBean.drawBufferedImage(questionnaireJSFBean.editQuestion.imageVOs.get(2).image)}" cache="false" height="100" width="120" />
+									<a4j:commandLink action="#{questionnaireJSFBean.editQuestion.imageVOs.remove(questionnaireJSFBean.editQuestion.imageVOs.get(2))}" ajaxSingle="true" reRender="pnlGridImgs" >Remover</a4j:commandLink>									
+								</h:panelGrid>
+
+							</h:panelGrid>
+
+
+							<rich:spacer height="10" ></rich:spacer>
+
+							<h:outputText value="Carregar Imagens"  style="font-weight:bold;"/>
+							<rich:fileUpload listHeight="50" fileUploadListener="#{questionnaireJSFBean.actionHandleFileUpload}"  maxFilesQuantity="5" >
+								<a4j:support event="onfileuploadcomplete"  reRender="pnlGridImgs,pnlGrowl"/>
+							</rich:fileUpload>
+							
+							
+
+						</h:panelGrid>
+						
+					</h:panelGrid>
+				
+					<rich:separator width="1" height="400" lineType="dashed" ></rich:separator>
+				
+					<h:panelGroup>
+						<h:outputText value="Alternativas e Dissertação"  style="font-weight:bold;"/>	
+						<rich:separator height="1" lineType="dotted"></rich:separator>
+						
+						<rich:tabPanel id="tabCriterions" height="270" switchType="client">
+							<rich:tab label="Alternativas" style="overflow:auto;">
+						
+								<rich:dataTable  value="#{questionnaireJSFBean.editQuestion.alternativeVOs}" var="alternative" id="tbAlternatives"  width="500" rows="7">
+									<f:facet name="footer">
+										<rich:datascroller/>
+									</f:facet>
+									<f:facet name="header">
+									
+										<rich:columnGroup>
+
+											<rich:column colspan="3">
+												<a4j:commandLink action="#{questionnaireJSFBean.newAlternative()}" ajaxSingle="true" reRender="tbAlternatives" eventsQueue="none" >
+													<h:graphicImage value="/img/button_plus.png" /> Adicionar
+													<rich:toolTip value="Clique para adicionar uma alternativa a esta questão..." showDelay="1200"/>
+												</a4j:commandLink>
+												<rich:spacer width="80"/>
+												<h:outputText value="Alternativa" />
+											</rich:column>
+
+											<rich:column >
+												<h:outputText value="Correta" />
+											</rich:column>
+											<rich:column >
+												<h:outputText value="Excluir" />
+											</rich:column>
+
+										</rich:columnGroup>
+									</f:facet>
+									
+									<rich:column style="text-align: center;"  width="40" id="colOrdem">
+										<rich:toolTip value="ID da Alternativa = #{alternative.PK}" showDelay="500"/>
+										<h:outputText value="#{questionnaireJSFBean.editQuestion.alternativeVOs.indexOf(alternative)+1}" />
+									</rich:column>						
+												
+
+									<rich:column style="text-align: center;"  width="40">
+										<a4j:commandLink action="#{questionnaireJSFBean.downInList(alternative,questionnaireJSFBean.editQuestion.alternativeVOs)}"  ajaxSingle="true" reRender="tbAlternatives" >
+											<h:graphicImage value="/img/arrow_up_16.png" />
+											<rich:toolTip value="Clique aqui para subir este registro uma posição" showDelay="1000" />
+										</a4j:commandLink>
+			
+										<a4j:commandLink action="#{questionnaireJSFBean.upInList(alternative,questionnaireJSFBean.editQuestion.alternativeVOs)}"  ajaxSingle="true" reRender="tbAlternatives"  >
+											<h:graphicImage value="/img/arrow_down_16.png" />
+											<rich:toolTip value="Clique aqui para descer este registro uma posição" showDelay="1000" />
+										</a4j:commandLink>
+									</rich:column>		
+
+
+
+									<rich:column width="230" >
+										<h:inputTextarea value="#{alternative.description}" id="txtAltDesc" cols="45" rows="2" >
+											<rich:toolTip showDelay="1500">
+											Edite o texto desta alternativa.
+											</rich:toolTip>
+											<a4j:support event="onchange" ajaxSingle="true" eventsQueue="none" />
+										</h:inputTextarea>
+									</rich:column>
+									
+									<rich:column  width="30">
+										<h:selectBooleanCheckbox value="#{alternative.correct}" id="chkAlternativa" >
+											<a4j:support event="onchange" ajaxSingle="true" eventsQueue="none"/>
+											<rich:toolTip showDelay="1500">Marque esta caixa caso esta seja a alternativa correta.</rich:toolTip>
+										</h:selectBooleanCheckbox>
+									</rich:column>
+									
+									<rich:column  width="10">
+
+										<a4j:commandLink action="#{questionnaireJSFBean.editQuestion.criterionVOs.remove(alternative)}" ajaxSingle="true" reRender="tbAlternatives"  >
+											<rich:toolTip value="Clique aqui para exluir esta alternativa..." showDelay="2000"/>
+											<h:graphicImage value="/img/Delete_16.png" />
+										</a4j:commandLink>
+									</rich:column>
+									
+								</rich:dataTable>
+												
+							
+							</rich:tab>
+							
+							<rich:tab label="Dissertação">
+
+								
+								<rich:dataTable value="#{questionnaireJSFBean.editQuestion.dissertativeVOs}" var="dissertative" id="tbDissertative" rows="10">
+							 	
+									<f:facet name="footer">
+										<rich:datascroller/>
+									</f:facet>
+									<f:facet name="header">
+									
+										<rich:columnGroup>
+
+											<rich:column colspan="3" >
+											
+												<a4j:commandLink action="#{questionnaireJSFBean.newDissertative()}" ajaxSingle="true" reRender="tbDissertative" eventsQueue="none"  >
+													<h:graphicImage value="/img/button_plus.png" /> Adicionar
+													<rich:toolTip value="Clique para adicionar um critério a esta questão..." showDelay="1200"/>
+												</a4j:commandLink>
+												
+												<rich:spacer width="20"/>
+		
+												<h:outputText value="Enunciado Critério Dissertativo" />
+											</rich:column>
+
+											<rich:column >
+												<h:outputText value="Linhas" />
+											</rich:column>
+
+											<rich:column >
+												<h:outputText value="Pontos" />
+											</rich:column>
+
+											<rich:column >
+												<h:outputText value="Obrig" id="lblColObrig" >
+													<rich:toolTip value="Marque para que este critério seja de preenchimento obrigatório." showDelay="500" />
+												</h:outputText>
+												
+											</rich:column>
+
+											<rich:column >
+												<h:outputText value="" />
+											</rich:column>
+
+										</rich:columnGroup>
+									</f:facet>
+
+									<rich:column style="text-align: center;"  width="40" id="colOrdem">
+										<rich:toolTip value="ID do Criterio = #{dissertative.PK}" showDelay="500"/>
+										<h:outputText value="#{questionnaireJSFBean.editQuestion.dissertativeVOs.indexOf(dissertative)+1}" />
+									</rich:column>										
+
+									<rich:column style="text-align: center;"  width="50">
+										<a4j:commandLink action="#{questionnaireJSFBean.downInList(dissertative,questionnaireJSFBean.editQuestion.dissertativeVOs)}"  ajaxSingle="true" reRender="tbDissertative"   >
+											<h:graphicImage value="/img/arrow_up_16.png" />
+											<rich:toolTip value="Clique aqui para subir este registro uma posição" showDelay="1000" />
+										</a4j:commandLink>
+			
+										<a4j:commandLink action="#{questionnaireJSFBean.upInList(dissertative,questionnaireJSFBean.editQuestion.dissertativeVOs)}"  ajaxSingle="true" reRender="tbDissertative"  >
+											<h:graphicImage value="/img/arrow_down_16.png" />
+											<rich:toolTip value="Clique aqui para descer este registro uma posição" showDelay="1000" />
+										</a4j:commandLink>
+									</rich:column>		
+								
+									<rich:column>
+										<h:inputTextarea value="#{dissertative.description}" id="critDesc" rows="1" cols="50" >
+											<rich:toolTip showDelay="1000">
+											Descreva o critério dissertativo. Por exemplo:<br/>
+											- "Comente sua resposta"<br/>
+											- "Justifique sua resposta"<br/>
+											- "Descreva o como chegou a este resultado"<br/>
+											
+											</rich:toolTip>
+											<a4j:support event="onchange" ajaxSingle="true" eventsQueue="none" />
+										</h:inputTextarea>
+										<rich:message for="critDesc"/>
+									</rich:column>
+									
+									
+									<rich:column>
+										<rich:inputNumberSpinner value="#{dissertative.qtdLinhas}" minValue="1" maxValue="9999" inputSize="1" id="spinQtdLinhas">
+											<a4j:support event="onchange" ajaxSingle="true" eventsQueue="none"/>
+											<rich:toolTip value="Selecione a quantidade de linhas para a dissertação da resposta." showDelay="1500" />
+										</rich:inputNumberSpinner>
+									</rich:column>
+									
+									<rich:column>
+										<rich:inputNumberSpinner value="#{dissertative.maxPonto}" minValue="1" inputSize="1" id="spinMaxPonto">
+											<a4j:support event="onchange" ajaxSingle="true" eventsQueue="none"/>
+											<rich:toolTip value="Selecione a pontuação máxima para este critério." showDelay="1500" />
+										</rich:inputNumberSpinner>
+									</rich:column>
+									
+									<rich:column>
+										<h:selectBooleanCheckbox value="#{dissertative.required}"  id="chkBoxReq">
+											<a4j:support event="onchange" ajaxSingle="true" eventsQueue="none"/>
+											<rich:toolTip value="Marque esta opção se este critério de resposta é obrigatório." showDelay="1500" />
+										</h:selectBooleanCheckbox>
+									</rich:column>
+												
+									<rich:column>
+										<a4j:commandLink action="#{questionnaireJSFBean.removeFromEditQuestion(dissertative)}" ajaxSingle="true" reRender="tbDissertative" >
+											<rich:toolTip value="Clique aqui para exluir este critério..." showDelay="2000"/>
+											<h:graphicImage value="/img/Delete_16.png" />
+										</a4j:commandLink>
+									</rich:column>
+								</rich:dataTable>								
+								
+								
+										
+							</rich:tab>
+							
+						
+						</rich:tabPanel>
+					</h:panelGroup>
+									
+				</h:panelGrid>
+			
+				
+			
+			
+			</a4j:form>
+		</rich:modalPanel>
+	</ui:define>
+	
+	
+
+	<!-- DEFINICOES DE POPOUPS -->
+	<ui:define name="repPopups">
+		<p:confirmDialog header="Confirme" id="idQuestDelConfirm" message="Tem certeza que deseja excluir esta questão?" hideEffect="explode" severity="alert" widgetVar="questDelConfirm" modal="true">
+			<a4j:commandButton value="Sim" oncomplete="questDelConfirm.hide()" action="#{questionnaireJSFBean.removeQuestion}" reRender="tbQuestions" ajaxSingle="true" />
+			<a4j:commandButton value="Não" oncomplete="questDelConfirm.hide()" reRender="tbQuestions" ajaxSingle="true" />
+		</p:confirmDialog>
+	</ui:define>
+
+</ui:composition>
+

@@ -1,0 +1,102 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation=
+			 "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="persistenciaProject" />
+	</bean>
+
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+
+	<tx:annotation-driven transaction-manager="jpaTransactionManager" />
+
+	<bean id="dadosRetornoInstituicaoDAO" class="com.msaf.validador.consultaonline.dao.impl.DadosRetornoInstituicaoDAOImpl">
+	</bean>
+	<bean id="registroPessoaDAO" class="com.msaf.validador.consultaonline.dao.impl.RegistroPessoaDAOImpl">
+	</bean>
+	<bean id="tipoResultadoDAO" class="com.msaf.validador.consultaonline.dao.impl.TipoResultadoDAOImpl">
+	</bean>
+	<bean id="pedidoValidacaoDAO" class="com.msaf.validador.consultaonline.dao.impl.PedidoValidacaoDAOImpl">
+	</bean>
+
+	<bean id="tipoValidacaoDAO" class="com.msaf.validador.consultaonline.dao.impl.TipoValidacaoDAOImpl">
+	</bean>
+	
+
+	<bean id="validadorFacade" class="com.msaf.validador.consultaonline.ValidadorFacadeImpl" >
+		<property name="dadosRetornoInstituicaoDAO"  	ref="dadosRetornoInstituicaoDAO" />
+		<property name="registroPessoaDAO"  					ref="registroPessoaDAO" />
+		<property name="tipoResultadoDAO"  						ref="tipoResultadoDAO" />
+		<property name="pedidoValidacaoDAO"  					ref="pedidoValidacaoDAO" />
+		<property name="tipoValidacaoDAO"  						ref="tipoValidacaoDAO" />
+	</bean>
+
+
+	<bean id="validadorFacadeFake" class="com.msaf.validador.consultaonline.ValidadorFacadeFakeImpl" >
+		<property name="dadosRetornoInstituicaoDAO"  	ref="dadosRetornoInstituicaoDAO" />
+		<property name="registroPessoaDAO"  					ref="registroPessoaDAO" />
+		<property name="tipoResultadoDAO"  						ref="tipoResultadoDAO" />
+		<property name="pedidoValidacaoDAO"  					ref="pedidoValidacaoDAO" />
+		<property name="tipoValidacaoDAO"  						ref="tipoValidacaoDAO" />
+	</bean>
+
+
+
+
+	<bean id="messageListener" class="com.msaf.validador.consumer.ValidadorJMSListener">
+	<!--  
+		<property name="validadorFacade" ref="validadorFacadeFake" >
+		</property>
+	-->
+	
+		<property name="validadorFacade" ref="validadorFacade" >
+		</property>
+		
+	</bean>
+
+
+	<bean id="validadorConsumidorBO" class="com.msaf.validador.consumer.JMSValidadorConsumidorBO">
+		<property name="messageListener" ref="messageListener"/>
+
+		<property name="jmsProviderURLList">
+			<list value-type="java.lang.String">
+				<value>tcp://localhost:61616?jms.prefetchPolicy.queuePrefetch=5000</value>
+				<value>tcp://localhost:61616</value>
+				<value>tcp://localhost:61616</value>
+			</list>
+		</property>
+
+		<property name="jmsContextFactory">
+			<value>org.apache.activemq.jndi.ActiveMQInitialContextFactory</value>
+		</property>
+
+		<property name="jmsConectionFactory">
+			<value>ConnectionFactory</value>
+		</property>
+
+		<property name="jmsRequestQueue">
+			<value>validadorOnLineRequest</value>
+		</property>
+	
+		
+				<!-- Propriedades de configuracao da DLL -->		
+		<property name="dllConfList">
+			<list value-type="java.lang.String">
+				<value>proxyHost:192.168.10.24,proxyAtivo:False,proxyUsuario:,proxySenha:,proxyPorta:8002,dllPath:C:\EV Server,evServer:C:\EV Server</value>
+			</list>
+		</property>
+		
+	</bean>
+
+</beans>

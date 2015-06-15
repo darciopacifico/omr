@@ -1,0 +1,251 @@
+package <XDtPackage:packageName/>;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import br.com.dlp.framework.vo.IBaseVO;
+import br.com.dlp.framework.vowrapper.VOWrapperException;
+
+/**
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+ *
+ * Implementacao de IVOWrapper para <XDtWj2eeClass:voClassName/>
+ **/
+<XDtClass:modifiers/> class <XDtWj2eeClass:voWrapperClassName/> extends <XDtWj2eeClass:extendedVOWrapperClassName/>{
+	/**
+	 * Controle de versao para classes serializaveis
+	 */
+	private static final long serialVersionUID = <XDtWj2eeClass:classSerialVersionUID/>
+
+<XDtMethod:forAllMethods  superclasses="false">
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoCollection>
+	/*LISTA DOS WRAPPERS PARA <XDtWj2eeMethod:propertyName/>*/
+	private List <XDtWj2eeMethod:propertyName/>;
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoCollection>
+		</XDtMethod:ifIsGetter>
+</XDtMethod:forAllMethods>
+
+<XDtMethod:forAllMethods  superclasses="false">
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+				<XDtWj2eeMethod:ifIsCriarMecanismoDeFind recursivamente="false">
+	/*mecanismo de indexOf para Encapsular o atributo <XDtWj2eeClass:voClassName/>.<XDtMethod:methodName/>() */
+	private List list<XDtMethod:methodNameWithoutPrefix/>s = new ArrayList();
+				</XDtWj2eeMethod:ifIsCriarMecanismoDeFind>
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+		</XDtMethod:ifIsGetter>
+</XDtMethod:forAllMethods>
+
+	/*********************************/
+	/*ATRIBUTOS PARA INVOCAR PESQUISA*/
+<XDtWj2eeMethod:forAllMethods sort="true" superclasses="true">
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelNaoTipoVO>
+	private <XDtMethod:methodType/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>;
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelNaoTipoVO>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+	/*POR PADRAO, O ITEM SELECIONADO INICIALMENTE a 'Todos' (-1 a o value do html:radio 'todos')*/
+	private int <XDtWj2eeMethod:nomeAtributoParaPesquisa/>=-1;
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+		</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>
+	/*ATRIBUTOS PARA INVOCAR PESQUISA*/
+	/*********************************/
+
+	/**
+	 * Construtor de '<XDtWj2eeClass:voWrapperClassName/>' que recebe o 
+	 * ResourceBundle contendo o padrao de formataaao de nameros e datas internacionalizado
+	 */
+	public <XDtWj2eeClass:voWrapperClassName/>(ResourceBundle resourceBundle){
+		super(resourceBundle);
+	}
+
+	/**
+	 * Recupera o '<XDtWj2eeClass:voClassName/>' encapsulado
+	 */
+	public <XDtWj2eeClass:voClassName/> get<XDtWj2eeClass:voClassName/>(){
+		return (<XDtWj2eeClass:voClassName/>)getBaseVO();
+	}
+
+	/****************************************************/
+	/*GETTER E SETTER DE ATRIBUTOS PARA INVOCAR PESQUISA*/
+<XDtWj2eeMethod:forAllMethods sort="true" superclasses="true">
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelNaoTipoVO>
+	
+	/**
+	 * Converte e RETORNA o atributo '<XDtWj2eeMethod:nomeAtributoParaPesquisa/>' de '<XDtMethod:methodType/>' para 'String'
+	 */
+  public String get<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:nomeAtributoParaPesquisa/>" />() {
+    String str = convert(this.<XDtWj2eeMethod:nomeAtributoParaPesquisa/>);
+    return str;
+  }
+  /**
+   * Converte e ATRIBUI o parametro '<XDtWj2eeMethod:nomeAtributoParaPesquisa/>' de 'String' para '<XDtMethod:methodType/>' 
+   */
+  public void set<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:nomeAtributoParaPesquisa/>" />(String string) {
+    <XDtMethod:methodType/> realValue = (<XDtMethod:methodType/>) convert(string,<XDtMethod:methodType/>.class);
+    this.<XDtWj2eeMethod:nomeAtributoParaPesquisa/> = realValue;
+  }
+	/**
+	 * Retorna o valor do atributo encapsulado para pesquisa '<XDtWj2eeMethod:nomeAtributoParaPesquisa/>' como '<XDtWj2eeMethod:methodType/>'
+	 */
+  public <XDtWj2eeMethod:methodType/> get<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:nomeAtributoParaPesquisa/>" /><XDtWj2eeMethod:methodType/>() {
+    return this.<XDtWj2eeMethod:nomeAtributoParaPesquisa/>;
+  }
+
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelNaoTipoVO>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+	/**
+	 * Retorna o andice do VO selecionado '<XDtWj2eeMethod:nomeAtributoParaPesquisa/>' da lista 'list<XDtMethod:methodNameWithoutPrefix/>s' 
+	 */
+  public int get<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:nomeAtributoParaPesquisa/>" />() {
+	  return this.<XDtWj2eeMethod:nomeAtributoParaPesquisa/>;
+  }
+  
+  /**
+   * Atribui o andice do VO selecionado da lista 'list<XDtMethod:methodNameWithoutPrefix/>s' 
+   */
+  public void set<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:nomeAtributoParaPesquisa/>" />(int index) {
+  	this.<XDtWj2eeMethod:nomeAtributoParaPesquisa/>=index;
+  }
+  
+  /**
+   * Recupera e retorna um IPK da lista 'list<XDtMethod:methodNameWithoutPrefix/>s' de acordo 
+   * com o andice armazenado em 'this.<XDtWj2eeMethod:nomeAtributoParaPesquisa/>'
+   */
+  public IPK get<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:nomeAtributoParaPesquisa/>" />IPK() {
+  	int index = get<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:nomeAtributoParaPesquisa/>" />();
+  	List list = getList<XDtMethod:methodNameWithoutPrefix/>s();
+  	
+  	if(list==null || list.size()==0 || index<0 || index >list.size() ){
+  	  return null;
+  	}
+  	
+  	ICadastroBaseVO cadastroBaseVO = (ICadastroBaseVO)list.get(index);
+
+  	IPK ipk = null;
+  	
+  	if(cadastroBaseVO!=null){
+	  	ipk = cadastroBaseVO.getIPK();
+  	}
+  	
+  	return ipk;
+  }
+  
+  
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+		</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>
+	/*GETTER E SETTER DE ATRIBUTOS PARA INVOCAR PESQUISA*/
+	/****************************************************/
+
+
+<XDtMethod:forAllMethods  superclasses="false">
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelNaoTipoVO>
+
+	/**
+	 * Getter que encapsula o <XDtMethod:methodNameWithoutPrefix/> do <XDtWj2eeClass:voClassName/> encapsulado
+	 */
+  public String get<XDtMethod:methodNameWithoutPrefix/>() {
+  	<XDtWj2eeClass:voClassName/> <XDtWj2eeClass:voClassName isVar="true"/> = get<XDtWj2eeClass:voClassName/>();
+  	
+    String str = null;
+		if(<XDtWj2eeClass:voClassName isVar="true"/>!=null){
+	    Object object = <XDtWj2eeClass:voClassName isVar="true"/>.get<XDtMethod:methodNameWithoutPrefix/>();
+			str = convert(object);
+		}
+  	
+    return str;
+  }
+
+	
+	<XDtWj2eeMethod:ifIsNotSomenteLeitura>
+	/**
+	 * Setter que encapsula o <XDtMethod:methodNameWithoutPrefix/> do <XDtWj2eeClass:voClassName/> encapsulado
+	 */
+  public void set<XDtMethod:methodNameWithoutPrefix/>(String string) {
+    <XDtMethod:methodType/> realValue = (<XDtMethod:methodType/>) convert(string,<XDtMethod:methodType/>.class);
+    get<XDtWj2eeClass:voClassName/>().set<XDtMethod:methodNameWithoutPrefix/>(realValue);
+  }
+	</XDtWj2eeMethod:ifIsNotSomenteLeitura>
+
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelNaoTipoVO>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+				/*mecanismos de relacionamento com a entidade <XDtMethod:methodNameWithoutPrefix/>*/
+				<XDtWj2eeMethod:ifIsCriarMecanismoDeFind recursivamente="false">
+
+	/**
+	 * Retorna a lista indexada do atributo '<XDtMethod:methodNameWithoutPrefix/>'
+	 */
+	public List getList<XDtMethod:methodNameWithoutPrefix/>s(){
+		return this.list<XDtMethod:methodNameWithoutPrefix/>s;
+	}
+
+	/**
+	 * Atribui a lista indexada do atributo '<XDtMethod:methodNameWithoutPrefix/>'
+	 */
+	public void setList<XDtMethod:methodNameWithoutPrefix/>s(List list){
+		this.list<XDtMethod:methodNameWithoutPrefix/>s=list;
+	}
+	
+	/**
+	 * Retorna o andice da lista de acordo com o VO contido em '<XDtWj2eeClass:voClassName/>.get<XDtMethod:methodNameWithoutPrefix/>()'
+   */
+  public int get<XDtMethod:methodNameWithoutPrefix/>() {
+    IBaseVO baseVO = get<XDtWj2eeClass:voClassName/>().get<XDtMethod:methodNameWithoutPrefix/>();
+    List list = getList<XDtMethod:methodNameWithoutPrefix/>s();
+    int indexOf = getIndexOf(list,baseVO);
+    return indexOf;
+  }
+
+	/**
+	 * Recupera um VO da lista 'list<XDtMethod:methodNameWithoutPrefix/>s' de acordo com o andice 'indexOf' e atribui no '<XDtWj2eeClass:voClassName/>' encapsulado
+   */
+  public void set<XDtMethod:methodNameWithoutPrefix/>(int indexOf) {
+    List list = getList<XDtMethod:methodNameWithoutPrefix/>s();
+    <XDtMethod:methodNameWithoutPrefix/> baseVO = null;
+    /*se indexOf for igual a -1, a pq o usuario nao selecionou nenhum item no combo*/
+	if(indexOf!=-1){
+	    baseVO = (<XDtMethod:methodNameWithoutPrefix/>) list.get(indexOf);
+    }
+    
+    <XDtWj2eeClass:voClassName/> <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voClassName/>"/> = get<XDtWj2eeClass:voClassName/>();
+    <XDtWj2eeMethod:denifirVariavelParaTipo tipo="<XDtWj2eeClass:voClassName/>"/>.set<XDtMethod:methodNameWithoutPrefix/>(baseVO);
+  }
+
+				</XDtWj2eeMethod:ifIsCriarMecanismoDeFind>
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+			<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoCollection>
+			
+	/**
+	 * Retorna uma listagem dos wrappers de <XDtMethod:propertyName/>
+	 */
+	public List get<XDtMethod:methodNameWithoutPrefix/>() throws VOWrapperException {
+		if(<XDtMethod:propertyName/>==null){
+			Collection originalList = get<XDtWj2eeClass:voClassName/>().get<XDtMethod:methodNameWithoutPrefix/>();
+			<XDtMethod:propertyName/> = generateVOWrapperList(originalList,<XDtWj2eeMethod:voWrapperClassName/>.class);
+		}
+		return <XDtMethod:propertyName/>;
+	}
+
+	/**
+	 * Atribui no wrapped VO <XDtWj2eeClass:voClassName/> a listagem de <XDtMethod:propertyName/>
+	 */
+  public void set<XDtMethod:methodNameWithoutPrefix/>(List <XDtMethod:propertyName/>) throws VOWrapperException {
+	  this.<XDtMethod:propertyName/> = <XDtMethod:propertyName/>;
+  }
+			</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoCollection>
+		</XDtMethod:ifIsGetter>
+</XDtMethod:forAllMethods>
+
+}

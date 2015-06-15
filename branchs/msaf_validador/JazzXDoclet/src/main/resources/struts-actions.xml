@@ -1,0 +1,5 @@
+   <!-- ========== Action Mapping Definitions =================================== -->
+
+   <!-- If you have non XDoclet actions, define them in a file called struts-actions.xml 
+        and place it in your merge directory. 
+    -->

@@ -1,0 +1,304 @@
+*{
+   /*Define a tamanho da fonte para todos os elementos */
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 10px
+}
+
+.tbrMenu
+{
+	border-top:white;
+	border-width: 1px;
+	width:100%;
+}
+
+.menuback
+{
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 10px;
+   font-style: normal;
+   text-decoration: none;
+   text-align: left;
+}
+
+.menu
+{
+   color: black;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 10px;
+   font-style: normal;
+   text-decoration: none;
+   text-align: left;
+}
+
+.menu:hover
+{
+   color: black;
+}
+
+.edit {
+	border: 1px solid #CCCCCC;
+	background-color: white;
+	color: #000000;
+}
+
+.editx {
+	border: 1px solid #CCCCCC;
+	background-color: white;
+	color: #000000;
+        visibility: hidden;
+}
+
+.edit2 {
+	border: 1px solid #CCCCCC;
+	background-color: #FFFFFF;
+	color: #000000;
+}
+
+.editLogin {
+	border: 1px solid #FFFFFF;
+	color: white;
+	font-size:12px;
+	background: transparent;
+}
+
+.cbbEmpresa {
+	color: white;
+	font-size:9px;
+	border-left-width: 1px;
+	border-left-style: outset;
+	padding-left:3px;
+}
+
+.cbbEmpresa2 {
+	border: 0px solid white;
+	width: 100px;
+	color: black;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+	background: white;
+}
+
+.lblUsuario {
+	color: white;
+	font-size:10px;
+	padding:4px;
+}
+
+.botoes {
+   border: 1px outset;
+   background-color: #517db9;
+   color: white;
+}
+
+.linkBotao {
+   border: 1px outset;
+   background-color: #517db9;
+   color: white;
+   text-decoration: none;
+   font-size: 10px;
+   font-weight: bold;
+   height: 22px;
+}
+
+.mensagemErro{
+   background-image: url(debug.gif);
+   background-position: top left;
+   background-repeat: no-repeat;
+   color: red;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 10px;
+   line-height: 14px;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 20px;
+   text-decoration: none
+}
+
+.mensagemErroSemImagem{
+   color: red;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 10px;
+   line-height: 14px;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 20px;
+   text-decoration: none
+}
+
+img {
+	border: none;
+}
+
+.standardTable {
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	background-color: #E1E1E1;
+}
+
+.standardTable_Header {
+   border: none;
+   font-size: 10px;
+   color: black;
+   font-weight: bolder;
+   text-align: center;
+   background-color: #E1E1E1;
+}
+
+.standardTable_Row {
+	background-color: #ffffff;
+        color: black;
+}
+.standardTable_Row:hover {
+	background-color: #F1F1F1;
+}
+
+.standardSubTable_Row {
+	background-color: #fbffd1;
+        color: black;
+}
+.standardSubTable_Row:hover {
+	background-color: #ececcd;
+}
+
+.standardTable_Column10 {
+   width: 10px;
+   text-align: center;
+   padding: 3px;
+}
+
+.standardTable_Column20 {
+   width: 20px;
+}
+
+.standardTable_Column {
+  padding-left: 4px;
+}
+
+.linkrow
+{
+   color: #000000;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 10px;
+   font-style: normal;
+   text-decoration: none   
+}
+
+.linkrow:visited
+{
+   color: #000000;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 10px;
+   font-style: normal;
+   text-decoration: none
+}
+
+.linkrow:hover
+{
+   color: #000000;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 10px;
+   font-style: normal;
+   text-decoration: underline
+}
+
+.alignRight
+{
+   text-align:right;
+}
+
+.alignLeft
+{
+   text-align:left;
+}
+
+.alignCenter
+{
+   text-align:center;
+}
+
+.painel {
+	color: #666666;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align: left;
+	margin: 5px;
+	font-weight: normal;
+}
+
+.colPainel {
+}
+
+.mensagemAviso{
+   background-position: top left;
+   background-repeat: no-repeat;
+   color: red;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 12px;
+   font-weight: bold;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   text-decoration: none;
+   text-align: left;
+}
+
+.mensagemAvisoGreen{
+   background-position: top left;
+   background-repeat: no-repeat;
+   color: green;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 12px;
+   font-weight: bold;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   text-decoration: none;
+   text-align: left;
+}
+
+.mensagemAvisoBlue{
+   background-position: top left;
+   background-repeat: no-repeat;
+   color: blue;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 12px;
+   font-weight: bold;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   text-decoration: none;
+   text-align: left;
+}
+
+.mensagemAlerta{
+   background-position: top left;
+   background-repeat: no-repeat;
+   color: yellow;
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 12px;
+   font-weight: bold;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   text-decoration: none;
+   text-align: left;
+}
+
+.standardTable_ColumnBold {
+  padding-left: 4px;
+  font-weight: bold;
+  text-align:right;
+}
+
+.captionDetalheItem{
+    color: #517db9;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.valorDetalheItem{
+    color: black;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+}

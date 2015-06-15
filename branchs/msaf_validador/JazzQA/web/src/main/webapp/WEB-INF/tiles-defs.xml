@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://struts.apache.org/dtds/tiles-config_1_1.dtd">
+ <tiles-definitions>
+
+
+
+
+  <definition name="layOutPadrao" path="/tilesTemplate/main.jsp">
+   <put name="title" 			value="Reescreva o titulo" />
+   <put name="header" 			value="/tilesTemplate/header.jsp" />
+   <put name="menu" 			value="/tilesTemplate/menu.jsp" />
+   <put name="body" 			value="" />
+   <put name="barraDeStatus" 	value="/tilesTemplate/barraDeStatus.jsp" />   
+   <put name="js" 				value="" />
+   <put name="footer" 			value="/tilesTemplate/footer.jsp" />
+   <put name="botoes" 			value="/tilesTemplate/base/baseCadastroFormBotoesPesquisa.jsp" />
+   <put name="erros" 			value="/tilesTemplate/inconsistenciasTela.jsp" />
+  </definition>
+
+
+
+
+
+  <definition name="layOutPopUP" path="/tilesTemplate/popUpGeral/popUpMain.jsp">
+   <put name="js" 				value="../js/popUp.js" />
+   <put name="header" 		value="/tilesTemplate/popUpGeral/popUpHeader.jsp" />
+   <put name="body" 			value="/tilesTemplate/popUpGeral/popUpBody.jsp" />
+   <put name="footer" 		value="/tilesTemplate/popUpGeral/popUpFooter.jsp" />
+   <put name="botoes" 		value="/tilesTemplate/popUpGeral/popUpBotoes.jsp" />
+   <put name="erros" 			value="/tilesTemplate/inconsistenciasTela.jsp" />
+  </definition>
+  <definition name="layOutPadraoPesquisa" extends="layOutPadrao">
+   <put name="botoes" 			value="/tilesTemplate/base/baseCadastroFormBotoesPesquisa.jsp" />
+   <put name="footer" 			value="/tilesTemplate/footerVLH.jsp" />
+  </definition>
+
+  <definition name="layOutPadraoCadastro" extends="layOutPadrao">
+   <put name="botoes" 			value="/tilesTemplate/base/baseCadastroFormBotoesCadastro.jsp" />
+  </definition>
+	<definition name="layOutPadraoConsulta" extends="layOutPadrao">
+   <put name="botoes" 			value="/tilesTemplate/base/baseCadastroFormBotoesConsulta.jsp" />
+  </definition>
+  <definition name="layOutPadraoReportForm" path="/reportTile/reportMain.jsp">
+    <put name="title"			 value="Painel de seleção"/>
+    <put name="reportForm"		 value=""/>
+    <put name="reportButtons"	 value="/tilesTemplate/reportTile/reportButtons.jsp"/>
+  </definition>
+
+  <!-- POPUP GERAL -->
+  <definition name="popUpGeral.tile" extends="layOutPopUP">
+  </definition>  
+  <!-- TRATAMENTO DE ERROS -->
+  <definition name="erro.tile" extends="layOutPadraoCadastro">
+	<put name="title" 	value="Erros" />
+   	<put name="body" 	value="/tilesTemplate/tratamentoErros.jsp" />
+   	<put name="js" 		value="tratamentoErros.js" />
+  </definition>  
+
+	<!-- Cliente -->
+	<definition name="cliente.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="Cliente" />
+		<put name="body" 	value="/cliente/cadastroCliente.jsp" />
+		<put name="js" 		value="javaScriptCliente.js" />
+	</definition>
+	<definition name="consultaCliente.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="Cliente (consulta)" />
+		<put name="body" 	value="/cliente/consultaCliente.jsp" />
+		<put name="js" 		value="javaScriptCliente.js" />
+	</definition>
+	<definition name="pesquisaCliente.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - Cliente" />
+		<put name="body" 	value="/cliente/pesquisaCliente.jsp" />
+		<put name="js" 		value="javaScriptCliente.js" />
+	</definition>  
+
+	<!-- PedValidacao -->
+	<definition name="pedvalidacao.tile" extends="layOutPadraoCadastro">
+		<put name="title" 	value="PedValidacao" />
+		<put name="body" 	value="/pedvalidacao/cadastroPedValidacao.jsp" />
+		<put name="js" 		value="javaScriptPedValidacao.js" />
+	</definition>
+	<definition name="consultaPedValidacao.tile" extends="layOutPadraoConsulta">
+		<put name="title" 	value="PedValidacao (consulta)" />
+		<put name="body" 	value="/pedvalidacao/consultaPedValidacao.jsp" />
+		<put name="js" 		value="javaScriptPedValidacao.js" />
+	</definition>
+	<definition name="pesquisaPedValidacao.tile" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - PedValidacao" />
+		<put name="body" 	value="/pedvalidacao/pesquisaPedValidacao.jsp" />
+		<put name="js" 		value="javaScriptPedValidacao.js" />
+	</definition>  
+
+</tiles-definitions>

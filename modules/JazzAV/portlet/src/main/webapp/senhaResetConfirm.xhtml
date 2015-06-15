@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich" xmlns:p="http://primefaces.org/ui"
+	xmlns:t="http://myfaces.apache.org/tomahawk" template="/templates/template.xhtml">
+
+
+<ui:define name="headInsert">
+
+	<style>
+	<!--
+	#gridPrincipal * {
+		font-size: 40px;
+		size: 30px;
+	}
+	
+	#divDialogMessage {
+		vertical-align: bottom;
+		text-align: center;
+		background-color: #aaaaaa;
+		height: 300px;
+		width: 400px;
+		margin: 0 auto;
+		top: 300px;
+	}
+
+	#divDialogMessage span, #divDialogMessage a{
+		font-size: 20px;
+	}
+	-->
+	</style>
+</ui:define>
+
+	<ui:define name="body">
+
+		<h:form style="margin: auto;">
+			<p:spacer height="100" width="700"></p:spacer>
+
+			<div id="divDialogMessage">
+				<p:spacer height="50" width="200"></p:spacer>
+				<br/>
+				
+				<span>Bem vindo de volta </span><span style="font-weight: bold;" ><h:outputText value="#{anuncioBean.anuncioVO.pessoaVO.nome}" /></span>
+				<br />
+				<br />
+				<span>Sua senha foi redefinida com sucesso!</span>
+				<br />
+				<br />
+				
+				<span>Você já está logado!</span>
+				<br />
+				<br />
+				
+				
+				<h:commandLink action="checkout">
+					Prosseguir com a Compra!	
+				</h:commandLink>
+
+			</div>
+
+			<p:spacer height="100" width="700"></p:spacer>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

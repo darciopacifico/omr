@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:t="http://myfaces.apache.org/tomahawk" 
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:c="http://java.sun.com/jstl/core">
+	
+<head>
+		<!-- revisar estilo e layout de paginas-->
+    <style>
+        img {
+            border-width: 0;
+        }
+    </style>
+</head>
+
+<f:loadBundle var="msg" basename="br.com.dlp.jazzqa.ResourceBundle" />
+<f:loadBundle var="lblStatus" basename="br.com.dlp.jazzqa.status.Status" />
+
+<f:view>
+	<head>
+			<title><h:outputText value="#{lblStatus.pnlStatus}"/></title>
+	</head>
+	<body>
+
+	<h:form>
+		<rich:panel>
+
+			<f:facet name="header">
+				<h:outputText value="#{lblStatus.pnlStatus}"/>
+			</f:facet>
+
+			<!--FORMULARIO DE PESQUISA-->
+			<h:panelGrid columns="2">
+				<h:outputText value="#{lblStatus.titulo}"/>
+				<h:inputText     value="#{statusJSFBean.titulo}"/>
+				
+ 				<h:outputText value="#{lblStatus.descricao}"/>
+				<h:inputTextarea value="#{statusJSFBean.descricao}" rows="3" cols="20" />
+				
+			</h:panelGrid>
+
+			<!--BARRA DE BOTOES -->
+			<rich:toolBar height="26" itemSeparator="grid">
+				<rich:toolBarGroup>
+
+					<a4j:commandLink action="#{statusJSFBean.actionNovo}"   title="#{msg.btnNovo}"   reRender="campos">
+						<h:graphicImage value="../img/create_doc.gif"/>
+					</a4j:commandLink>
+
+					<a4j:commandLink action="#{statusJSFBean.actionSalvar}" title="#{msg.btnSalvar}" reRender="campos,resultadoDG" >
+						<h:graphicImage value="../img/save.gif" />
+					</a4j:commandLink>
+
+					<a4j:commandLink action="#{statusJSFBean.actionPesquisar}" title="#{msg.btnPesquisar}" reRender="resultadoDG" >
+						<h:graphicImage value="../img/find.gif"  />
+					</a4j:commandLink>
+
+				</rich:toolBarGroup>    
+			</rich:toolBar>
+
+			<rich:spacer height="30px;" />
+
+			<!--TABELA DE RESULTADOS-->
+			<rich:dataTable value="#{statusJSFBean.resultados}" var="resultado" id="resultadoDG" >
+				<f:facet name="header">Resultados Consulta</f:facet>
+				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblStatus.titulo}"/></f:facet>
+					<h:outputText value="#{resultado.titulo}"/>
+				</rich:column>
+				
+ 				<rich:column>
+					<f:facet name="header"><h:outputText value="#{lblStatus.descricao}"/></f:facet>
+					<h:outputText value="#{resultado.descricao}"/>
+				</rich:column>
+				
+
+				<rich:column>
+					<f:facet name="header">&nbsp;</f:facet>
+					<a4j:commandButton action="#{statusJSFBean.actionUpdate(resultado)}" value="#{msg.btnAlterar}" reRender="campos" />
+				</rich:column>
+			
+				<rich:column>
+					<f:facet name="header">&nbsp;</f:facet>
+					<a4j:commandButton action="#{statusJSFBean.actionDelete(resultado)}" value="#{msg.btnExcluir}" reRender="campos,resultadoDG" />
+				</rich:column>
+			
+			</rich:dataTable>
+
+
+			<!--CAMPOS MANUTENCAO-->
+			<h:panelGrid columns="3" id="campos">
+				<h:outputText value="#{lblStatus.titulo}"/>
+				<h:inputText     value="#{statusJSFBean.tmpVO.titulo}"/>
+				<rich:message for="titulo" />
+				
+ 				<h:outputText value="#{lblStatus.descricao}"/>
+				<h:inputTextarea value="#{statusJSFBean.tmpVO.descricao}" rows="3" cols="20" />
+				<rich:message for="descricao" />
+				
+			</h:panelGrid>
+
+		</rich:panel>
+	</h:form>
+	</body>
+</f:view>
+</html>
+
+

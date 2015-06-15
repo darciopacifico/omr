@@ -1,0 +1,121 @@
+package <XDtPackage:packageName/>;
+
+import java.rmi.RemoteException;
+import java.util.List;
+
+import br.com.dlp.framework.dao.QueryOrder;
+import br.com.dlp.framework.exception.BaseBusinessException;
+import br.com.dlp.framework.exception.BaseTechnicalError;
+
+/**
+ *
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+<XDtClass:ifIsClassNotAbstract>
+ * BusinessDelegate para a fachada do componente <XDtWj2eeClass:moduleId/>
+</XDtClass:ifIsClassNotAbstract>
+<XDtClass:ifIsClassAbstract>
+ * BusinessDelegate abstrato para a fachada abstrata do componente <XDtWj2eeClass:moduleId/>
+</XDtClass:ifIsClassAbstract>
+ *
+ **/
+<XDtClass:modifiers/> class <XDtWj2eeClass:businessDelegateClassName/> extends <XDtWj2eeClass:extendedBusinessDelegateClassName/>{
+	public <XDtWj2eeClass:businessDelegateClassName/>() throws BaseTechnicalError{
+		super();
+	}
+
+
+<XDtMethod:forAllMethods superclasses="false">
+	<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsCriarMecanismoDeFind recursivamente="true" >
+	/** 
+	 * findAll para relacionamento com a entidade <XDtWj2eeMethod:entidadeDoMetodo/> 
+	 */
+	public List findAll<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>() throws BaseBusinessException, BaseTechnicalError{
+		
+		List list;
+		
+		try{
+			<XDtWj2eeClass:facadeClassName/> facade = (<XDtWj2eeClass:facadeClassName/>)getFacade();
+			list = facade.findAll<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>();
+		
+		} catch (RemoteException e) {
+			throw new BaseTechnicalError("Erro ao tentar invocar pesquisa em componente de negócio",e);
+		}
+		
+		return list;
+	}
+	
+			</XDtWj2eeMethod:ifIsCriarMecanismoDeFind>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+</XDtMethod:forAllMethods>
+
+<XDtClass:ifIsClassNotAbstract>	
+	/** Override do metodo getModuleId da superclasse */
+	public String getModuleId(){
+		String moduleId = <XDtConfig:configParameterValue paramName="constantClass" />.<XDtWj2eeMethod:moduleConstant/>;
+		return moduleId;
+	}
+	
+	/** Override do metodo getModuleId da superclasse */
+	public String getModuleVlhId(){
+		String moduleVlhId = <XDtConfig:configParameterValue paramName="constantClass" />.<XDtWj2eeMethod:moduleVLHConstant/>;
+		return moduleVlhId;
+	}
+</XDtClass:ifIsClassNotAbstract>		
+
+
+/**
+ * SOBRESCRITA DO MECANISMO DE PESQUISA ORIGINAL DA SUPERCLASSE
+ */
+<XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>
+	public void <XDtWj2eeClass:metodoMecanismoPesquisaVLH/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>			
+		) throws BaseBusinessException, BaseTechnicalError {
+		
+		this.<XDtWj2eeClass:metodoMecanismoPesquisaVLH/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+			<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>, new QueryOrder[]{});
+
+	}
+
+	public void <XDtWj2eeClass:metodoMecanismoPesquisaVLH/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>, QueryOrder[] queryOrders) throws BaseBusinessException, BaseTechnicalError {
+
+		<XDtWj2eeClass:vlhFacadeClassName/> vlhFacade = (<XDtWj2eeClass:vlhFacadeClassName/>)getCachedVLHFacade();
+		try {
+			vlhFacade.<XDtWj2eeClass:metodoMecanismoPesquisaVLH/>(
+<XDtWj2eeMethod:forAllMethods sort="true" >
+	<XDtMethod:ifIsGetter>
+		<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+			<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+		</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+	</XDtMethod:ifIsGetter>
+</XDtWj2eeMethod:forAllMethods>, queryOrders);
+		} catch (RemoteException e) {
+			throw new BaseTechnicalError(e);
+		}
+	}
+
+</XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>	
+
+}
+

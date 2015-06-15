@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+	<bean name="/UploadArquivosAction" class="com.msaf.validador.integration.web.action.UploadArquivosAction" >
+		<property name="pedidoValidacaoServer" ref="pedidoValidacaoServer"/>
+	</bean>
+	
+	<bean name="/TesteWebServiceAction" class="com.msaf.validador.integration.web.action.TesteWebServiceAction" >
+		<property name="webServiceServer" ref="webServiceServer"/>
+	</bean>
+
+	
+	<bean name="/Popup" class="com.msaf.validador.integration.web.action.UploadArquivosAction" >
+		<property name="pedidoValidacaoServer" ref="pedidoValidacaoServer"/>
+	</bean>
+	<bean name="/upload" class="com.msaf.validador.integration.web.action.UploadArquivosAction" >
+		<property name="pedidoValidacaoServer" ref="pedidoValidacaoServer"/>
+	</bean>
+	
+	<bean id="webServiceServer" class="com.msaf.validador.core.server.WebServiceServer">
+		<constructor-arg ref="consultaOnlineJNA"/>
+	</bean>
+	
+	<bean id="consultaOnlineJNA" class="com.msaf.validador.consultaonline.jna.ConsultaOnlineJNA"/>
+	
+	<bean id="pedidoValidacaoServer" class="com.msaf.validador.core.server.PedidoValidacaoServer">
+		<constructor-arg ref="repositorio"/>
+	</bean>
+	<bean id="usuarioServer" class="com.msaf.validador.core.server.UsuarioServer">
+		<constructor-arg ref="repositorio"/>
+	</bean>
+
+	<bean id="geradorXLSRetorno" class="com.msaf.validador.core.tratamentoxls.GeradorXLSRetorno">
+		<constructor-arg ref="repositorio"/>		
+		<property name="urlPaginaRetorno" value="http://200.189.181.70:8080/msaf.validador.web"/>
+	</bean>
+
+
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="persistenciaProject" />
+	</bean>
+
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+
+	<tx:annotation-driven transaction-manager="jpaTransactionManager" />
+
+
+	<bean id="pedValidacaoDAO" 		class="com.msaf.validador.integration.hibernate.impl.PedValidacaoHibernateDAO"></bean>
+	<bean id="clienteDAO" 				class="com.msaf.validador.integration.hibernate.impl.ClienteHibernateDAO"></bean>
+	<bean id="tpValidDAO" 				class="com.msaf.validador.integration.hibernate.impl.TpValidHibernateDAO"></bean>
+	<bean id="tpResultDAO" 				class="com.msaf.validador.integration.hibernate.impl.TpResultHibernateDAO"></bean>
+	<bean id="instituicaoDAO" 		class="com.msaf.validador.integration.hibernate.impl.InstituicaoHibernateDAO"></bean>
+	<bean id="tarifaDAO" 					class="com.msaf.validador.integration.hibernate.impl.TarifaHibernateDAO"></bean>
+	<bean id="dadosRetInstDAO" 		class="com.msaf.validador.integration.hibernate.impl.DadosRetInstHibernateDAO"></bean>
+	<bean id="pessoaDAO" 					class="com.msaf.validador.integration.hibernate.impl.PessoaHibernateDAO"></bean>
+	<bean id="usuarioDAO" 				class="com.msaf.validador.integration.hibernate.impl.UsuarioHibernateDAO"></bean>
+
+
+	<!-- Helper class para acesso aos DAOs -->
+	<bean id="repositorio" class="com.msaf.validador.integration.hibernate.Repositorio">
+		<property name="pedValidacaoDAO" 				ref="pedValidacaoDAO" />
+		<property name="clienteDAO"					 		ref="clienteDAO" />
+		<property name="tpValidDAO" 						ref="tpValidDAO" />
+		<property name="tpResultDAO" 						ref="tpResultDAO" />
+		<property name="instituicaoDAO" 				ref="instituicaoDAO" />
+		<property name="tarifaDAO" 							ref="tarifaDAO" />
+		<property name="pessoaDAO" 							ref="pessoaDAO" />
+		<property name="dadosRetInstDAO" 				ref="dadosRetInstDAO" />
+		<property name="usuarioDAO" 						ref="usuarioDAO" />
+		<property name="statusPedValidacaoJDBC" ref="statusPedValidacaoJDBC"/>
+	</bean>
+
+	<bean id="statusPedValidacaoJDBC" class="com.msaf.validador.integration.hibernate.jdbc.StatusPedValidacaoJDBC">
+		<constructor-arg ref="dataSource" />
+	</bean>
+	<!--JDBC PARA PESQUISA DE ESTATÍSTICAS DOS PROCESSOS-->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="oracle.jdbc.OracleDriver"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.1.6:1521:SAMWEB"/>
+		<!-- 
+			<property name="jdbcUrl" value="jdbc:oracle:thin:validador/admin@10.11.100.30:1521/orcl"/>
+	    <property name="jdbcUrl" value="jdbc:oracle:thin:validador/admin@10.11.100.30:1521/orcl" />
+		 -->
+		
+		<property name="user" value="validador"/>
+		<property name="password" value="validador"/>
+	</bean>
+ 
+
+
+</beans>
+

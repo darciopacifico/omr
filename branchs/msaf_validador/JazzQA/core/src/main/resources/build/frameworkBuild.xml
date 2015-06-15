@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="FrameWorkPackageAll" name="Merge Framework classes">
+
+	<property name="NOME_PROJETO" value="JazzQA" />
+	<property name="LOCAL_FRAMEWORK" value="../FrameworkAche/" />
+
+	<property environment="env" />
+	<property name="ComunDeployDir" value="${env.TEMP}\${NOME_PROJETO}Comun" />
+	<property name="EJBDeployDir" 	value="${env.JBOSS_HOME}\server\default\deploy\${NOME_PROJETO}EJB.jar" />
+	<property name="WARDeployDir" 	value="${env.CATALINA_HOME}\webapps\${NOME_PROJETO}" />
+
+	<target name="FrameWorkPackageAll" depends="FrameWorkPackageComun,FrameWorkPackageEJB,FrameWorkPackageWAR" />
+	
+	<target name="FrameWorkPackageComun" description="FrameWorkComunDeploy" >
+		<mkdir dir="${ComunDeployDir}" />
+		<copy todir="${ComunDeployDir}">
+			<fileset dir="${LOCAL_FRAMEWORK}src" includes="/br/com/dlp/framework/exception/*.properties"/>
+			<fileset dir="${LOCAL_FRAMEWORK}src" includes="/br/com/dlp/framework/security/*.properties"/>
+			<fileset dir="${LOCAL_FRAMEWORK}src" includes="/br/com/dlp/framework/security/client/*.properties"/>
+			<fileset dir="${LOCAL_FRAMEWORK}src" includes="/br/com/dlp/framework/util/*.properties"/>
+			<fileset dir="${LOCAL_FRAMEWORK}src" includes="/br/com/dlp/framework/util/converter/*.properties"/>
+			<fileset dir="${LOCAL_FRAMEWORK}src" includes="/br/com/dlp/framework/util/properties/*.properties"/>
+			
+			<fileset dir="${LOCAL_FRAMEWORK}bin" includes=
+				"**/*Facade.*,
+				**/*EJBHome.*, 
+				**/*DAO.*,
+				**/*SessionFacade.*,
+				**/*FacadeImpl.*,
+				**/*DAOFactory.*,
+				**/*Comparator.*,
+				**/*BusinessDelegate.*,
+				**/*Action.*,
+				**/*PopUpController.*,
+				**/*Servlet.*,
+				**/*Form.*,
+				**/*Predicate.*,
+				**/*VO.*,
+				**/*VOWrapper.*,
+				**/*PK.*,
+				**/*Exception.*,
+				**/*Error.*,
+				**/*EJB.*,
+				**/*Constants.*" excludes="**/*SessionFacade.*" />
+			<fileset dir="${LOCAL_FRAMEWORK}bin" includes="br/com/dlp/framework/util/**/*.*" />
+			<fileset dir="${LOCAL_FRAMEWORK}bin" includes="br/com/dlp/framework/invocationhandler/**/*.*" />
+			<fileset dir="${LOCAL_FRAMEWORK}bin" includes="br/com/dlp/framework/caching/**/*.*" />
+			<fileset dir="${LOCAL_FRAMEWORK}bin" includes="br/com/dlp/framework/servicelocator/**/*.*" />
+			<fileset dir="${LOCAL_FRAMEWORK}bin" includes="br/com/dlp/framework/transaction/**/*.*" />
+			<fileset dir="${LOCAL_FRAMEWORK}bin" includes="br/com/dlp/framework/errorhandling/**/*.*" />
+			<fileset dir="${LOCAL_FRAMEWORK}bin" includes="**/*QueryOrder.*" />
+		</copy>
+	</target>
+	
+	<target name="FrameWorkPackageEJB" description="FrameWorkPackageEJB" depends="FrameWorkPackageComun">
+		<mkdir dir="${EJBDeployDir}" />
+		<copy todir="${EJBDeployDir}">
+			<fileset dir="${LOCAL_FRAMEWORK}src" includes="/br/com/dlp/framework/dao/*.properties"/>
+			<fileset dir="${LOCAL_FRAMEWORK}src" includes="/br/com/dlp/framework/facade/*.properties"/>
+			<fileset dir="${LOCAL_FRAMEWORK}bin" includes="br/com/dlp/framework/delegate/*"/>
+		</copy>
+	</target>
+	
+	<target name="FrameWorkPackageWAR" description="FrameWorkPackageWAR" depends="FrameWorkPackageComun">
+		<mkdir dir="${WARDeployDir}" />
+		<copy todir="${WARDeployDir}/WEB-INF/classes" failonerror="true">
+			<fileset dir="${LOCAL_FRAMEWORK}src" includes="/br/com/dlp/framework/delegate/*.properties"/>
+			<fileset dir="${LOCAL_FRAMEWORK}src" includes="/br/com/dlp/framework/struts/action/*.properties"/>
+			<fileset dir="${LOCAL_FRAMEWORK}src" includes="/br/com/dlp/framework/struts/form/*.properties"/>
+			<fileset dir="${LOCAL_FRAMEWORK}bin" includes="br/com/dlp/framework/popup/**/*.*" />
+						
+		</copy>
+	</target>
+	
+</project>

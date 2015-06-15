@@ -1,0 +1,45 @@
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/InicioTiles-defs.txt' generateMergedFile="true">
+</XDtMerge:merge>
+
+<XDtClass:forAllClasses>
+	<XDtWj2eeClass:ifIsGerarView>
+		<XDtClass:ifIsClassNotAbstract>
+			<XDtWj2eeClass:ifIsRenderer renderer="modulo">
+
+	<!-- <XDtWj2eeClass:moduleId/> -->
+	<definition name="<XDtWj2eeClass:cadastroTileName/>" extends="layOutPadraoCadastro">
+		<put name="title" 	value="<XDtWj2eeClass:moduleNome/>" />
+		<put name="body" 	value="<XDtWj2eeClass:moduleWebDirectory/>/<XDtWj2eeClass:moduleCadastroJSPPage/>" />
+		<put name="js" 		value="<XDtWj2eeClass:moduleJavaScriptFile/>" />
+	</definition>
+	<definition name="<XDtWj2eeClass:consultaTileName/>" extends="layOutPadraoConsulta">
+		<put name="title" 	value="<XDtWj2eeClass:moduleNome/> (consulta)" />
+		<put name="body" 	value="<XDtWj2eeClass:moduleWebDirectory/>/<XDtWj2eeClass:moduleConsultaJSPPage/>" />
+		<put name="js" 		value="<XDtWj2eeClass:moduleJavaScriptFile/>" />
+	</definition>
+	<definition name="<XDtWj2eeClass:pesquisaTileName/>" extends="layOutPadraoPesquisa">
+		<put name="title"	value="Pesquisa - <XDtWj2eeClass:moduleNome/>" />
+		<put name="body" 	value="<XDtWj2eeClass:moduleWebDirectory/>/<XDtWj2eeClass:modulePesquisaJSPPage/>" />
+		<put name="js" 		value="<XDtWj2eeClass:moduleJavaScriptFile/>" />
+	</definition>  
+
+  				<XDtWj2eeClass:forTodosOsEscravos2 superclasses="true" recursivamente="true" sort="true">
+  					<XDtWj2eeClass:ifIsRenderer renderer="moduloescravo">
+	<!-- O madulo <XDtWj2eeClass:moduleId/> a escravo do madulo <XDtWj2eeClass:moduleIdMestre/> -->
+	<definition name="<XDtWj2eeClass:cadastroTileName/>" extends="layOutPadraoCadastro">
+		<put name="title" 	value="<XDtWj2eeClass:moduleNome/>" />
+		<put name="body" 	value="<XDtWj2eeClass:moduleWebDirectory/>/<XDtWj2eeClass:moduleCadastroJSPPage/>" />
+		<put name="js" 		value="<XDtWj2eeClass:moduleJavaScriptFile/>" />
+	</definition>
+	<definition name="<XDtWj2eeClass:consultaTileName/>" extends="layOutPadraoConsulta">
+		<put name="title" 	value="<XDtWj2eeClass:moduleNome/> (consulta)" />
+		<put name="body" 	value="<XDtWj2eeClass:moduleWebDirectory/>/<XDtWj2eeClass:moduleConsultaJSPPage/>" />
+		<put name="js" 		value="<XDtWj2eeClass:moduleJavaScriptFile/>" />
+	</definition>
+					</XDtWj2eeClass:ifIsRenderer>
+  				</XDtWj2eeClass:forTodosOsEscravos2 >
+			</XDtWj2eeClass:ifIsRenderer>
+		</XDtClass:ifIsClassNotAbstract>
+	</XDtWj2eeClass:ifIsGerarView>
+</XDtClass:forAllClasses>
+</tiles-definitions>

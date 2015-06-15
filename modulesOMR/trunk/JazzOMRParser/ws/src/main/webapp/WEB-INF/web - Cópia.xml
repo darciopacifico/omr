@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <description>JazzOMR</description>
+
+<!-- 
+ -->
+  <context-param>
+    <param-name>com.sun.faces.expressionFactory</param-name>
+    <param-value>org.jboss.el.ExpressionFactoryImpl</param-value>
+  </context-param>
+
+
+
+  <context-param>
+    <param-name>org.jboss.jbossfaces.WAR_BUNDLES_JSF_IMPL</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:ApplicationContext.xml</param-value>
+  </context-param>
+  <context-param>
+    <param-name>facelets.DEVELOPMENT</param-name>
+    <param-value>false</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.faces.CONFIG_FILES</param-name>
+    <param-value>/WEB-INF/faces-config.xml</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+    <param-value>.xhtml</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>org.ajax4jsf.DEFAULT_EXPIRE</param-name>
+    <param-value>31536000</param-value>
+  </context-param>
+  <context-param>
+    <param-name>org.ajax4jsf.RESOURCE_URI_PREFIX</param-name>
+    <param-value>rfRes</param-value>
+  </context-param>
+  
+  <context-param>  
+       <param-name>org.ajax4jsf.VIEW_HANDLERS</param-name>  
+       <param-value>com.sun.facelets.FaceletViewHandler</param-value>  
+  </context-param>  
+  <!-- 
+  
+  <context-param>
+    <param-name>org.ajax4jsf.handleViewExpiredOnClient</param-name>
+    <param-value>true</param-value>
+  </context-param>
+   -->
+  
+  <context-param>
+    <param-name>org.primefaces.component.captcha.PRIVATE_KEY</param-name>
+    <param-value>6Lf9yMUSAAAAAJt-OHUHW2lfwcQFb-F9-k2Sq8hD</param-value>
+  </context-param>
+  <context-param>
+    <param-name>org.primefaces.component.captcha.PUBLIC_KEY</param-name>
+    <param-value>6Lf9yMUSAAAAANhYavmmHYYaw6asN5qt1_e1_Twu</param-value>
+  </context-param>
+  <context-param>
+    <param-name>org.richfaces.CONTROL_SKINNING</param-name>
+    <param-value>enable</param-value>
+  </context-param>
+  <context-param>
+    <param-name>org.richfaces.SKIN</param-name>
+    <param-value>blueSky</param-value>
+  </context-param>
+  <context-param>
+    <param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
+    <param-value>6Lf9yMUSAAAAAJt-OHUHW2lfwcQFb-F9-k2Sq8hD</param-value>
+  </context-param>
+  <context-param>
+    <param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
+    <param-value>6Lf9yMUSAAAAANhYavmmHYYaw6asN5qt1_e1_Twu</param-value>
+  </context-param>
+  <!-- 
+  <filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+   -->
+  <filter>
+    <display-name>Ajax4jsf Filter</display-name>
+    <filter-name>ajax4jsf</filter-name>
+    <filter-class>org.ajax4jsf.Filter</filter-class>
+    <init-param>
+      <param-name>createTempFiles</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <init-param>
+      <param-name>maxRequestSize</param-name>
+      <param-value>100000000</param-value>
+    </init-param>
+  </filter>
+  <!-- 
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+   -->
+  <filter-mapping>
+    <filter-name>ajax4jsf</filter-name>
+    <servlet-name>FacesServlet</servlet-name>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>FacesServlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <display-name>CXF Servlet</display-name>
+    <servlet-name>CXFServlet</servlet-name>
+    <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>Resource Servlet</servlet-name>
+    <servlet-class>org.primefaces.resource.ResourceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Resource Servlet</servlet-name>
+    <url-pattern>/primefaces_resource/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CXFServlet</servlet-name>
+    <url-pattern>/cxf/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FacesServlet</servlet-name>
+    <url-pattern>/faces/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FacesServlet</servlet-name>
+    <url-pattern>*.jsf</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>18</session-timeout>
+  </session-config>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+
+
+</web-app>

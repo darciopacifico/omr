@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="JazzQA - PkgDes">
+	
+	<property environment="env"/>
+	<property file="./build.properties" />
+	
+	<property  file="${dir.framework}/src/main/resources/build.properties" />
+	<import    file="${dir.framework}/src/main/resources/abstractBuild.xml" />
+
+	
+	<!--
+	C:\Darcio\Projetos\JazzFramework\ArchStrut\JazzQA\core\src\main\resources\build
+	C:\Darcio\Projetos\JazzFramework\ArchStrut\JazzFramework\src\main\resources
+	-->
+	
+</project>

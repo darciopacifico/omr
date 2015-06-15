@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by www.serials.ws (www.serials.ws) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="jazzGeneratorConfig">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element name="module">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="component">
+								<xs:complexType>
+									<xs:attribute name="prefix" type="xs:string" use="required"/>
+									<xs:attribute name="generate" type="xs:boolean" use="optional" default="false"/>
+									<xs:attribute name="override" type="xs:boolean" use="optional" default="false"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+						<xs:attribute name="generate" type="xs:boolean" use="optional" default="false"/>
+						<xs:attribute name="override" type="xs:boolean" use="optional" default="false"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="generate" type="xs:boolean" use="optional" default="false"/>
+			<xs:attribute name="override" type="xs:boolean" use="optional" default="false"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

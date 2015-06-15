@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ExamReportDSP2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f22d25a7-512b-4f8e-8a36-939c2b074ead">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JazzOMRJRDataSourceProviderForDesign"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="PK" class="java.lang.Long"/>
+	<field name="altTotais" class="java.lang.Double"/>
+	<field name="alteradoPor" class="java.lang.String"/>
+	<field name="class" class="java.lang.Class"/>
+	<field name="countMap" class="java.util.Map"/>
+	<field name="criadoPor" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="disResDisp" class="java.lang.Double"/>
+	<field name="disResult" class="java.lang.Double"/>
+	<field name="disTotais" class="java.lang.Double"/>
+	<field name="endProc" class="java.util.Date"/>
+	<field name="new" class="java.lang.Boolean"/>
+	<field name="par.PK" class="java.lang.Long"/>
+	<field name="par.examVariant" class="java.lang.Integer"/>
+	<field name="par.alteradoPor" class="java.lang.String"/>
+	<field name="par.class" class="java.lang.Class"/>
+	<field name="par.countMap" class="java.util.Map"/>
+	<field name="par.countNotSendedPayloads" class="java.lang.Integer"/>
+	<field name="par.countSendedPages" class="java.lang.Integer"/>
+	<field name="par.criadoPor" class="java.lang.String"/>
+	<field name="par.dtAlt" class="java.util.Date"/>
+	<field name="par.dtInc" class="java.util.Date"/>
+	<field name="par.endProc" class="java.util.Date"/>
+	<field name="par.errors" class="java.lang.Float"/>
+	<field name="exa.PK" class="java.lang.Long"/>
+	<field name="exa.alteradoPor" class="java.lang.String"/>
+	<field name="exa.class" class="java.lang.Class"/>
+	<field name="exa.criadoPor" class="java.lang.String"/>
+	<field name="exa.description" class="java.lang.String"/>
+	<field name="exa.dtAlt" class="java.util.Date"/>
+	<field name="exa.dtInc" class="java.util.Date"/>
+	<field name="exa.new" class="java.lang.Boolean"/>
+	<field name="qnr.PK" class="java.lang.Long"/>
+	<field name="qnr.alteradoPor" class="java.lang.String"/>
+	<field name="qnr.class" class="java.lang.Class"/>
+	<field name="qnr.criadoPor" class="java.lang.String"/>
+	<field name="qnr.description" class="java.lang.String"/>
+	<field name="qnr.dtAlt" class="java.util.Date"/>
+	<field name="qnr.dtInc" class="java.util.Date"/>
+	<field name="qnr.new" class="java.lang.Boolean"/>
+	<field name="perg.PK" class="java.lang.Long"/>
+	<field name="perg.alteradoPor" class="java.lang.String"/>
+	<field name="perg.alternative" class="java.lang.Boolean"/>
+	<field name="perg.class" class="java.lang.Class"/>
+	<field name="perg.criadoPor" class="java.lang.String"/>
+	<field name="crt.PK" class="java.lang.Long"/>
+	<field name="crt.alteradoPor" class="java.lang.String"/>
+	<field name="crt.class" class="java.lang.Class"/>
+	<field name="crt.correct" class="java.lang.Boolean"/>
+	<field name="crt.criadoPor" class="java.lang.String"/>
+	<field name="crt.critType" class="java.lang.String"/>
+	<field name="crt.description" class="java.lang.String"/>
+	<field name="crt.dtAlt" class="java.util.Date"/>
+	<field name="crt.dtInc" class="java.util.Date"/>
+	<field name="crt.imageVOs" class="br.com.dlp.jazzomr.results.ImageVO"/>
+	<field name="crt.isAlternative" class="java.lang.Boolean"/>
+	<field name="crt.isDissertative" class="java.lang.Boolean"/>
+	<field name="crt.maxPonto" class="java.lang.Integer"/>
+	<field name="crt.new" class="java.lang.Boolean"/>
+	<field name="crt.ordem" class="java.lang.Double"/>
+	<field name="crt.qtdLinhas" class="java.lang.Integer"/>
+	<field name="crt.required" class="java.lang.Boolean"/>
+	<field name="crt.score" class="br.com.dlp.jazzomr.question.AlternativeScore"/>
+	<field name="crt.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="perg.description" class="java.lang.String"/>
+	<field name="perg.dissertative" class="java.lang.Boolean"/>
+	<field name="perg.dtAlt" class="java.util.Date"/>
+	<field name="perg.dtInc" class="java.util.Date"/>
+	<field name="perg.imageVOs" class="br.com.dlp.jazzomr.results.ImageVO"/>
+	<field name="perg.new" class="java.lang.Boolean"/>
+	<field name="perg.ordem" class="java.lang.Double"/>
+	<field name="perg.resumo" class="java.lang.String"/>
+	<field name="perg.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="qnr.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="exa.relatorioVO" class="br.com.dlp.jazzomr.empresa.RelatorioVO"/>
+	<field name="exa.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="par.fulfilled" class="java.lang.Float"/>
+	<field name="par.new" class="java.lang.Boolean"/>
+	<field name="par.notUploadedPages" class="java.lang.Integer"/>
+	<field name="par.nota" class="java.lang.Double"/>
+	<field name="par.percCorrection" class="java.lang.Double"/>
+	<field name="par.percentCountMap" class="java.util.Map"/>
+	<field name="pes.PK" class="java.lang.Long"/>
+	<field name="pes.alteradoPor" class="java.lang.String"/>
+	<field name="pes.class" class="java.lang.Class"/>
+	<field name="pes.criadoPor" class="java.lang.String"/>
+	<field name="pes.dtAlt" class="java.util.Date"/>
+	<field name="pes.dtInc" class="java.util.Date"/>
+	<field name="pes.email" class="java.lang.String"/>
+	<field name="pes.equalsSenha" class="java.lang.Boolean"/>
+	<field name="pes.login" class="java.lang.String"/>
+	<field name="pes.msgCriticLogin" class="java.lang.String"/>
+	<field name="pes.new" class="java.lang.Boolean"/>
+	<field name="pes.nome" class="java.lang.String"/>
+	<field name="pes.novo" class="java.lang.Boolean"/>
+	<field name="pes.senha" class="java.lang.String"/>
+	<field name="pes.senhaConfirm" class="java.lang.String"/>
+	<field name="pes.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="pes.telefone" class="java.lang.String"/>
+	<field name="pes.validSenha" class="java.lang.Boolean"/>
+	<field name="par.processTerminated" class="java.lang.Boolean"/>
+	<field name="par.resultMap" class="java.util.Map"/>
+	<field name="par.startProc" class="java.util.Date"/>
+	<field name="par.status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="par.timeSpent" class="java.lang.Long"/>
+	<field name="par.uniqueByPage" class="java.util.Map"/>
+	<field name="percDigitalizacao" class="java.lang.Double"/>
+	<field name="percentCountMap" class="java.util.Map"/>
+	<field name="processTerminated" class="java.lang.Boolean"/>
+	<field name="startProc" class="java.util.Date"/>
+	<field name="status" class="br.com.dlp.jazzomr.base.StatusEnum"/>
+	<field name="timeSpent" class="java.lang.Long"/>
+	<variable name="aco_key" class="java.lang.String">
+		<variableExpression><![CDATA["aco_Key-"+$F{par.PK}+"-"+$F{exa.PK}+"-"+$F{qnr.PK}+"-"+$F{perg.PK}+"-"+$F{crt.PK}+"-"+$F{par.examVariant}+"-"+$V{PAGE_NUMBER}+"-"+$F{crt.critType}]]></variableExpression>
+	</variable>
+	<group name="Participacao" isStartNewPage="true" isResetPageNumber="true">
+		<groupExpression><![CDATA[$F{par.PK}]]></groupExpression>
+		<groupHeader>
+			<band height="115" splitType="Immediate">
+				<textField>
+					<reportElement uuid="e3d0be9a-dd2c-4c14-aa8c-e9a0e7dca9fc" x="10" y="76" width="330" height="30"/>
+					<textElement markup="none">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Aluno: "+$F{pes.nome}]]></textFieldExpression>
+				</textField>
+				<componentElement>
+					<reportElement uuid="62facfef-7f2d-4079-9aac-cd4a8bef182c" x="440" y="0" width="76" height="76"/>
+					<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+						<jr:codeExpression><![CDATA[$F{par.PK}+"-"+$V{PAGE_NUMBER}]]></jr:codeExpression>
+					</jr:DataMatrix>
+				</componentElement>
+				<textField>
+					<reportElement uuid="57e4d593-fc5d-46f3-bcd2-ef1496ac7fec" x="422" y="70" width="117" height="20"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{par.PK}+"-"+$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="f33a3433-10cd-4143-9585-78aa8ac899e9" x="422" y="90" width="116" height="20"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Participação - Página]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="322f2ed2-51dd-40a3-91ec-03a39b19ce46" x="10" y="30" width="330" height="30"/>
+					<textElement markup="styled">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+				</textField>
+				<ellipse>
+					<reportElement uuid="14e6aee4-3fb5-4a39-8237-64e728023d70" key="OMRMark-top-right" x="525" y="0" width="30" height="30" backcolor="#010101">
+						<property name="OMRMark" value="top-right"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</ellipse>
+				<staticText>
+					<reportElement uuid="7b56d51b-a7e2-487c-8b85-018310714b83" x="17" y="10" width="313" height="20"/>
+					<textElement/>
+					<text><![CDATA[Template padrão]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Exam">
+		<groupExpression><![CDATA[$F{exa.PK}]]></groupExpression>
+		<groupHeader>
+			<band height="23">
+				<textField>
+					<reportElement uuid="39de42e7-4731-40a6-bab6-56660bfbcfdc" x="10" y="1" width="540" height="16"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{exa.description}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Questionario">
+		<groupExpression><![CDATA[$F{qnr.PK}]]></groupExpression>
+		<groupHeader>
+			<band height="26">
+				<textField>
+					<reportElement uuid="483db336-c4c2-4ee0-b99b-916006b060c9" x="20" y="0" width="530" height="20"/>
+					<textElement markup="none">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{qnr.description}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Pergunta">
+		<groupExpression><![CDATA[$F{perg.PK}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField>
+					<reportElement uuid="81dd7346-b1ac-47c3-9b93-d21cbc0551de" x="30" y="0" width="160" height="15">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{perg.PK} +"-"+ $F{perg.description}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="10">
+				<property name="local_mesure_unitheight" value="pixel"/>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<genericElement>
+				<reportElement uuid="f70fe281-105e-42af-b4f7-1d55988bd7f6" positionType="FixRelativeToBottom" x="39" y="3" width="9" height="9" isPrintWhenDetailOverflows="true">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA["A".equals($F{crt.critType})]]></printWhenExpression>
+				</reportElement>
+				<genericElementType namespace="http://jazzomr.com.br/jazzomr" name="jazzomr"/>
+				<genericElementParameter name="eqaKey">
+					<valueExpression><![CDATA[$V{aco_key}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="actualPage">
+					<valueExpression><![CDATA[$V{PAGE_NUMBER}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="crit_type">
+					<valueExpression><![CDATA[$F{crt.critType}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="qtd_linhas">
+					<valueExpression><![CDATA[$F{crt.qtdLinhas}]]></valueExpression>
+				</genericElementParameter>
+			</genericElement>
+			<textField>
+				<reportElement uuid="22ba6a2c-2e6e-4223-acb2-61b8689d842f" x="70" y="0" width="468" height="14">
+					<property name="local_mesure_unitheight" value="pixel"/>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{crt.description}+"||"+$V{aco_key}+" examVariant:"+$F{par.examVariant}]]></textFieldExpression>
+			</textField>
+			<genericElement>
+				<reportElement uuid="b352bbe6-6d56-4566-84e9-6be3c5d4299b" key="" stretchType="RelativeToBandHeight" x="0" y="0" width="3" height="14" isPrintWhenDetailOverflows="true" forecolor="#FF0000" backcolor="#FF0000">
+					<printWhenExpression><![CDATA["D".equals($F{crt.critType})]]></printWhenExpression>
+				</reportElement>
+				<genericElementType namespace="http://jazzomr.com.br/jazzomr" name="jazzomr"/>
+				<genericElementParameter name="eqaKey">
+					<valueExpression><![CDATA[$V{aco_key}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="actualPage">
+					<valueExpression><![CDATA[$V{PAGE_NUMBER}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="crit_type">
+					<valueExpression><![CDATA[$F{crt.critType}]]></valueExpression>
+				</genericElementParameter>
+				<genericElementParameter name="qtd_linhas">
+					<valueExpression><![CDATA[$F{crt.qtdLinhas}]]></valueExpression>
+				</genericElementParameter>
+			</genericElement>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="78a58e49-e595-4f05-ba5d-333089ac0d1a" stretchType="RelativeToTallestObject" x="442" y="1" width="100" height="12" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF">
+					<printWhenExpression><![CDATA["D".equals($F{crt.critType})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineColor="#FFFFFF"/>
+					<leftPen lineColor="#FFFFFF"/>
+					<bottomPen lineColor="#FFFFFF"/>
+					<rightPen lineColor="#FFFFFF"/>
+				</box>
+				<textElement>
+					<font size="17" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["."+(org.apache.commons.lang.StringUtils.repeat("\n ", $F{crt.qtdLinhas}==null?0:$F{crt.qtdLinhas}))+"."]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement uuid="3f8d6c6f-c461-4de4-8b43-6990c5a34f48" x="39" y="3" width="9" height="9" isPrintWhenDetailOverflows="true" forecolor="#808080">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA["A".equals($F{crt.critType})]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.3" lineStyle="Dashed"/>
+				</graphicElement>
+			</ellipse>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="38" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<ellipse>
+				<reportElement uuid="d249d488-f3af-47b2-a51e-fa24aefcd6b1" key="OMRMark-bottom-left" mode="Opaque" x="0" y="8" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#010101"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</ellipse>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</summary>
+</jasperReport>

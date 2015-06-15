@@ -1,0 +1,11 @@
+   <!-- NAO ALTERAR MOVIDO PARA xdoclet/jazzwizard/mergeDir  ========== Global Forward Definitions =================================== -->
+
+   <!--
+      Define your forwards in a file called global-forwards.xml and place
+      it in your merge directory.
+    -->
+
+   <global-forwards >
+      <forward name="reportRenderer" path="/reportRenderer/reportRenderer" redirect="false"/>
+      <forward name="globalPopUp"    path="popUpGeral.tile"/>
+   </global-forwards>

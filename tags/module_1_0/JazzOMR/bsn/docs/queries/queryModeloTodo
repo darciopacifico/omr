@@ -1,0 +1,72 @@
+
+drop VIEW vw_exam_correction ;
+
+CREATE VIEW vw_exam_correction AS
+
+select  
+alt.qtd_linhas,  
+alt.crit_type, 
+aco.x aco_x,
+aco.y aco_y,
+exa.pk exa_pk,
+exa.description exa_description,
+
+eve.pk 	eve_pk,
+par.pk 	par_pk,
+pes.pk	pes_pk,
+eve.description  e_description,
+pes.login pes_login,
+pes.nome pes_nome,
+
+qco.question_order,
+aco.alternative_order,
+aco.pk	aco_pk,
+
+qco.pk	qco_pk,
+que.pk	que_pk,
+alt.pk	alt_pk,
+
+exv.pk exv_pk,
+que.pk q_pk,
+alt.pk a_pk,
+
+
+exv.question_enum_model,
+exv.alternative_enum_model,
+
+que.description q_wiki,
+
+qco.pk qc_pk,
+
+qre.pk qre_pk,
+/*qtn.pk*/ 1 as qtn_pk,
+/*qtn.description*/ 'Questionario' as qtn_description,
+
+alt.description a_resumo,
+aco.pk ac_pk,
+
+cre.checked alr_checked,
+alt.score alt_score
+
+
+from tb_event eve
+	inner join tb_participation par 			on par.fk_event = eve.pk
+		inner join tb_pessoa pes 					on pes.pk = par.fk_pessoa
+	
+	inner join tb_exam_variant exv 			on exv.pk = par.fk_examvariant
+		inner join tb_exam exa on exv.fk_exam = exa.pk
+
+	inner join tb_question_coordinate qco		on qco.fk_exam_variant		= exv.pk
+	inner join tb_question que 				on que.pk 					= qco.fk_question
+	
+	inner join tb_criterion_coordinate aco	on aco.fk_question_coordinates = qco.pk
+
+
+	inner join tb_question_result qre on qre.fk_questioncoordinate = qco.pk
+	inner join tb_criterion_result cre on cre.fk_criterion_coordinate = aco.pk
+
+	inner join tb_abstract_criterion alt				on alt.pk 					= aco.fk_abstractcriterion
+
+ /*{0}*/
+
+  order by exv.pk, qco.question_order, alt.crit_type, aco.alternative_order, alt.pk

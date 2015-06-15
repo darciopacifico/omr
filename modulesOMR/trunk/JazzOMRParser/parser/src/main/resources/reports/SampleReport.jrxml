@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SampleReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9c6c01f8-4ab3-4f37-9977-342c4ed4dea6">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JazzOMRProvider"/>
+	<parameter name="qtdExamVars" class="java.lang.Integer" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[5000]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="class" class="java.lang.Class"/>
+	<field name="data" class="java.util.Date"/>
+	<field name="e.class" class="java.lang.Class"/>
+	<field name="e.nomeEmpresa" class="java.lang.String"/>
+	<field name="examVar" class="java.lang.Integer"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="p.class" class="java.lang.Class"/>
+	<field name="pa.class" class="java.lang.Class"/>
+	<field name="pa.nome" class="java.lang.String"/>
+	<variable name="examVarCod" class="java.lang.Integer">
+		<variableExpression><![CDATA[($V{REPORT_COUNT}%$P{qtdExamVars})+1]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="67" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement uuid="a5304c4a-793e-4a2d-bf60-fef620d670a4" x="30" y="0" width="111" height="26"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ffeeca88-160a-4ef2-bf99-9620d016db8b" x="150" y="0" width="120" height="26"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{qtdExamVars}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="18c2b54f-069e-404f-b13f-dce485b698b8" x="300" y="0" width="120" height="26"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{examVarCod}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

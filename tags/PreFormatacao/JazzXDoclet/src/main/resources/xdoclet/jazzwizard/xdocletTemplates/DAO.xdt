@@ -1,0 +1,71 @@
+/**
+ * Gerado por XDoclet, nao edite!!
+ **/
+package <XDtPackage:packageName/>;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.criterion.Expression;
+import org.hibernate.expression.MatchMode;
+import br.com.dlp.framework.dao.DAOException;
+import br.com.dlp.framework.dao.QueryOrder;
+import br.com.dlp.framework.exception.BaseTechnicalError;
+import br.com.dlp.framework.servicelocator.ServiceLocatorException;
+import br.com.dlp.framework.util.FrameworkAcheUtil;
+import br.com.dlp.framework.vo.ICadastroBaseVO;
+import br.com.dlp.framework.vo.IPK;
+
+/**
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+ *
+ * Contrado de DAO para o componente <XDtWj2eeClass:moduleId/>
+ *
+ **/
+<XDtClass:modifiers/> interface <XDtWj2eeClass:daoClassName/> extends <XDtWj2eeClass:extendedDaoClassName /> {
+
+	
+<XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>
+	/**
+	 * Contrato para pesquisa <XDtWj2eeClass:metodoMecanismoPesquisa/>
+	 */
+	public List <XDtWj2eeClass:metodoMecanismoPesquisa/>  (
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>)  throws DAOException, BaseTechnicalError;
+		
+	/**
+	 * Contrato para pesquisa <XDtWj2eeClass:metodoMecanismoPesquisa/>
+	 */
+	public List <XDtWj2eeClass:metodoMecanismoPesquisa/>  (
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>, QueryOrder[] queryOrders )  throws DAOException, BaseTechnicalError;
+		
+		
+	<XDtMethod:forAllMethods superclasses="false" >
+		<XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+			<XDtMethod:ifIsGetter>
+				<XDtWj2eeMethod:ifIsCriarMecanismoDeFindUmParaMuitos recursivamente="true">
+				/*Implementaaao de find para recuperar todos os registros de <XDtMethod:methodName/>*/
+				public List findAll<XDtWj2eeMethod:primeiraLetraMaiuscula nome="<XDtWj2eeMethod:propertyNameSemSufixoVO/>"/>() throws DAOException, BaseTechnicalError;
+				</XDtWj2eeMethod:ifIsCriarMecanismoDeFindUmParaMuitos>
+			</XDtMethod:ifIsGetter>
+		</XDtWj2eeMethod:ifIsPropriedadeTratavelTipoVO>
+	</XDtMethod:forAllMethods>
+		
+</XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>	
+
+}
+

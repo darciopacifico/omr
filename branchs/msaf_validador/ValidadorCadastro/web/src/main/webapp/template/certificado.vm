@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>MasterSaf</title>	
+		
+		<style type="text/css">
+			<!--
+			td.title0 {
+				height:30px;
+				
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 14px;
+				font-weight: bold;
+				color: #FFFFFF;
+				text-decoration: none;
+				text-align:left;
+				text-transform: uppercase;
+				text-indent: 10px;
+				
+				background-image:url(imagens/bg_title0.gif);
+				background-repeat: repeat-x;
+				
+			}
+			
+			td.title1 {
+				height:22px;
+				
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 12px;
+				font-weight: bold;
+				color: #FFF;
+				text-decoration: none;
+				text-transform: uppercase;
+				text-indent: 10px;
+				text-align: left;
+				
+				background-color:#003366;
+			}
+			
+			td.total {
+				border-top: 0px solid #C7D9FA;
+				border-right: 0px solid #C7D9FA;
+				border-bottom: 0px solid #C7D9FA;
+				border-left: 0px solid #C7D9FA;
+				
+				font-family: Verdana, Arial, Helvetica, sans-serif;
+				font-size: 10px;
+				font-weight: bold;
+				color: #003366;
+				text-decoration: none;
+				text-align:right;
+				
+				background-color:#EFFAFC;
+			}
+			
+			.opcoes {
+				border-right: 0px solid #fff;
+				border-top: 1px solid #fff;
+				border-left: 0px solid #fff;
+				border-bottom: 1px solid #C7D9FA;
+				
+				font-weight: normal;
+				font-size: 10px;
+				font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+				color: #6c6c6c;
+				text-align:left;
+			}
+			
+			a.registro01:link, a.registro01:visited, a.registro01:active {
+				font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+				font-size: 10px;
+				color: #000000;
+				text-align:left;
+				text-decoration: none;
+				
+				background-color: #FFFFFF;
+				
+				cursor: pointer;
+				cursor: hand;
+			}
+			
+			a.registro01:hover {
+				font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+				font-size: 10px;
+				color:#003399;
+				text-align:left;
+				text-decoration: none;
+				
+				background-color:#FFFFFF;
+			
+				cursor:pointer;
+				cursor:hand;
+			}
+
+			-->
+		</style>
+	</head>
+	
+<body>
+	
+	<table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+		<tr>
+			<td align="right" valign="top"><img src="imagens/logo_validador_pagerro.png" width="156" height="57"></td>
+		</tr>
+	
+		<tr>
+			<td valign="top">
+				<div align="center">
+					<table width="600" border=1 align="center" cellpadding=3 cellspacing=0 bordercolor=#003366>
+						<tr align=middle valign=center>
+							<td width="256" class="title0">certificados</td>
+						</tr>
+						<tr align=middle valign=center>
+							<td class="title1">detalhes dos certificados individuais</td>
+						</tr>
+						<tr align=middle valign=center>
+							<td class="total">N&uacute;mero de certificados: $certificados.size()</td>
+						</tr>
+ 
+						<tr>
+							<td align="center" class="opcoes">
+								<table width="95%" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#FFF" class="opcoes">
+								
+								#foreach ($item in $certificados)  
+									<tr>
+										<td width="8%" class="opcoes">
+											<a href="javascript:" onclick="window.open('${item.FileName}');">
+												<img src="imagens/certificado_lote1.png" alt="Download dos Certificados em Lote" width="28" height="33" border="0" title="Download dos Certificados em Lote">
+											</a>
+										</td>
+										<td width="92%" class="opcoes">
+											<a href="javascript:" onclick="window.open('${item.FileName}');" class="registro01">
+												${item.Label} - Certificado
+											</a>
+										</td>
+									</tr>
+								#end
+								  
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>	
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+
+</body>
+</html>

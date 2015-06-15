@@ -1,0 +1,112 @@
+/**
+ * Gerado por XDoclet, nao edite!!
+ **/
+package <XDtPackage:packageName/>;
+
+import java.rmi.RemoteException;
+import java.util.List;
+import br.com.dlp.framework.dao.QueryOrder;
+import br.com.dlp.framework.dao.DAOException;
+import br.com.dlp.framework.dao.DAOFactoryException;
+import br.com.dlp.framework.exception.BaseTechnicalError;
+import br.com.dlp.framework.business.ValueListHandlerException;
+
+/**
+<XDtMerge:merge file='xdoclet/jazzwizard/mergeDir/ComentarioGeralClasse.txt'></XDtMerge:merge>
+ *
+ * Implementaaao da fachada <XDtWj2eeClass:vlhFacadeClassName/>
+ **/
+<XDtClass:modifiers/> class <XDtWj2eeClass:vlhFacadeImplClassName/> extends <XDtWj2eeClass:extendedVlhFacadeImplClassName/> implements <XDtWj2eeClass:vlhFacadeClassName/> {
+<XDtClass:ifIsClassNotAbstract>
+	/**
+	 *Indica ao framework qual o id do Madulo
+	 */
+	public String getModuleId() {
+		return <XDtConfig:configParameterValue paramName="constantClass" />.<XDtWj2eeClass:moduleConstant/>;
+	}  
+
+	/**
+	 *Indica ao framework qual o id do VLH
+	 */
+	public String getModuleVLHId() {
+    	return <XDtConfig:configParameterValue paramName="constantClass" />.<XDtWj2eeClass:moduleVLHConstant/>;
+	}
+
+</XDtClass:ifIsClassNotAbstract>
+<XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>
+	/**
+	 * Atualiza as paginas do VLH com esta pesquisa
+	 */
+	public void <XDtWj2eeClass:metodoMecanismoPesquisaVLH/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>			
+		) throws ValueListHandlerException{
+
+
+	<XDtWj2eeClass:metodoMecanismoPesquisaVLH/>(
+		<XDtWj2eeMethod:forAllMethods sort="true" >
+			<XDtMethod:ifIsGetter>
+				<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+					<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+				</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+			</XDtMethod:ifIsGetter>
+		</XDtWj2eeMethod:forAllMethods>, new QueryOrder[]{});
+
+	}
+
+	/**
+	 * Atualiza as paginas do VLH com esta pesquisa
+	 */
+	public void <XDtWj2eeClass:metodoMecanismoPesquisaVLH/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:tipoAtributoParaPesquisa/> <XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>, QueryOrder[] queryOrders) throws ValueListHandlerException{
+
+
+		if(logger.isDebugEnabled()){
+			logger.debug("executando pesquisa pesquisando... ");
+		}
+
+		
+		<XDtWj2eeClass:daoClassName/> dao;
+		try {
+		
+			dao = (<XDtWj2eeClass:daoClassName/>)getDAO();
+			List result = dao.<XDtWj2eeClass:metodoMecanismoPesquisa/>(
+	<XDtWj2eeMethod:forAllMethods sort="true" >
+		<XDtMethod:ifIsGetter>
+			<XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+				<XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao>,</XDtWj2eeMethod:ifIsNotPrimeiroItemIteracao><XDtWj2eeMethod:nomeAtributoParaPesquisa/>
+			</XDtWj2eeMethod:ifIsPropriedadePesquisavel>
+		</XDtMethod:ifIsGetter>
+	</XDtWj2eeMethod:forAllMethods>,queryOrders);
+	
+			setFullResult(result);
+
+		} catch (DAOFactoryException e) {
+			throw new ValueListHandlerException("Nao foi possavel construir um DAO para :"+getModuleId(),e);
+		
+		} catch (DAOException e) {
+			throw new ValueListHandlerException(e);
+		
+		} catch (BaseTechnicalError e) {
+			throw new ValueListHandlerException("Erro tacnico nao esperado",e);
+		
+		}
+		
+		if(logger.isDebugEnabled()){
+			logger.debug("... pesquisa executada com sucesso!");
+		}
+	}
+</XDtWj2eeClass:ifIsSobrescreverMecanismoDePesquisa>	
+
+}

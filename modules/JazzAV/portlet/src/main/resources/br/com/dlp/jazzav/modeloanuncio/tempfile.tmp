@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1417.3228"
+   height="1062.9921"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="teste.svg">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="-34.285714 : 74.285714 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="165.71429 : 74.285714 : 1"
+       inkscape:persp3d-origin="65.714286 : 40.952381 : 1"
+       id="perspective2987" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.53740115"
+     inkscape:cx="603.11248"
+     inkscape:cy="430.84332"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     units="cm"
+     showborder="true"
+     borderlayer="false"
+     inkscape:showpageshadow="true" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,10.631753)">
+    <text
+       xml:space="preserve"
+       style="font-size:272.3081665px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black;-inkscape-font-specification:'Arial Black,'"
+       x="27.790955"
+       y="218.4109"
+       id="text3181"
+       sodipodi:linespacing="125%"
+       transform="scale(0.90151442,1.1092446)"><tspan
+         sodipodi:role="line"
+         x="27.790955"
+         y="218.4109"
+         id="tspan3183"
+         style="font-family:HelveticaStencil4;-inkscape-font-specification:HelveticaStencil4"><tspan
+           x="27.790955"
+           y="218.4109"
+           style="font-family:HelveticaStencil4;-inkscape-font-specification:HelveticaStencil4"
+           id="tspan3185">VENDO</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:62.21053696px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black;-inkscape-font-specification:'Arial Black,'"
+       x="685.82556"
+       y="354.87936"
+       id="text3175"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0326336,0.9683977)"><tspan
+         sodipodi:role="line"
+         x="685.82556"
+         y="354.87936"
+         id="tspan3177"
+         style="-inkscape-font-specification:HelveticaStencil4 Bold;font-family:HelveticaStencil4;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">${a.strOpcionais}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:142.1030426px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black;-inkscape-font-specification:'Arial Black,'"
+       x="821.51794"
+       y="698.52155"
+       id="text3169"
+       sodipodi:linespacing="125%"
+       transform="scale(0.86156926,1.1606728)"><tspan
+         sodipodi:role="line"
+         x="821.51801"
+         y="698.52155"
+         id="tspan3171"
+         style="-inkscape-font-specification:HelveticaStencil4 Bold;font-family:HelveticaStencil4;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">${w.p(&quot;pessoaVO.telefone1&quot;)!&quot;(XX)9999-9999&quot;}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:151.34825134px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black;-inkscape-font-specification:'Arial Black,'"
+       x="821.45245"
+       y="869.70819"
+       id="text3169-8"
+       sodipodi:linespacing="125%"
+       transform="scale(0.86156926,1.1606728)"><tspan
+         sodipodi:role="line"
+         x="821.45245"
+         y="869.70819"
+         id="tspan3171-2"
+         style="-inkscape-font-specification:HelveticaStencil4 Bold;font-family:HelveticaStencil4;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">${w.p(&quot;pessoaVO.telefone2&quot;)!&quot;&quot;}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:139.61277771px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black;-inkscape-font-specification:'Arial Black,'"
+       x="865.93433"
+       y="525.27112"
+       id="text3175-4"
+       sodipodi:linespacing="125%"
+       transform="scale(0.8176992,1.2229436)"><tspan
+         sodipodi:role="line"
+         x="865.93433"
+         y="525.27112"
+         id="tspan3177-0"
+         style="-inkscape-font-specification:HelveticaStencil4 Bold;font-family:HelveticaStencil4;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">${w.p(&quot;strModFab&quot;)} ${w.p(&quot;pessoaVO.nomeF&quot;)}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:126.45109558px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black;-inkscape-font-specification:'Arial Black,'"
+       x="866.19464"
+       y="395.57834"
+       id="text3175-4-1"
+       sodipodi:linespacing="125%"
+       transform="scale(0.8176992,1.2229436)"><tspan
+         sodipodi:role="line"
+         x="866.19464"
+         y="395.57834"
+         id="tspan3177-0-6"
+         style="-inkscape-font-specification:HelveticaStencil4 Bold;font-family:HelveticaStencil4;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal">${w.p(&quot;valorF&quot;)} ${w.p(&quot;cambio&quot;)} ${w.p(&quot;combustivel&quot;)}</tspan></text>
+  </g>
+</svg>

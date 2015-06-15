@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<faces-config>
+
+		<application>
+				<!-- VIEW HANDLER ORIGINAL DO PORTLET BRIDGE  
+				<view-handler>org.jboss.portletbridge.application.FaceletPortletViewHandler</view-handler>
+				<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+				<state-manager>org.jboss.portletbridge.application.PortletStateManager</state-manager>
+
+				-->
+			
+				<!--  CONFIGURACAO PARA APLICACAO NAO "PORTLETIZADA"
+				 -->
+				<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+				<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+
+		</application>
+
+		<managed-bean>
+				<description>Echo Bean</description>
+				<managed-bean-name>echo</managed-bean-name>
+				<managed-bean-class>br.com.dlp.jazzqa.EchoBean</managed-bean-class>
+				<managed-bean-scope>request</managed-bean-scope>
+				<managed-property>
+						<property-name>text</property-name>
+						<value />
+				</managed-property>
+		</managed-bean>
+
+
+</faces-config>

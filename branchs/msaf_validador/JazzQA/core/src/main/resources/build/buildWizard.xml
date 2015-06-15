@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="JazzQA - Wizard">
+
+	<property file="build.properties" />
+	<property file="buildWizard.properties" />
+	<property file="${dir.framework}/buildWizard.properties" />
+
+
+	<!--
+	<import file="../${name.framework}/abstractBuildWizard.xml"/>
+	-->
+	
+	<import file="${dir.framework}/src/main/resources/abstractBuildWizard.xml" />
+</project>

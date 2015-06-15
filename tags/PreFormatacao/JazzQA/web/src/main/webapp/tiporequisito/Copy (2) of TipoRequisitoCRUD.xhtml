@@ -1,0 +1,182 @@
+<rich:page xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:a4j="https://ajax4jsf.dev.java.net/ajax" xmlns:t="http://myfaces.apache.org/tomahawk" xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core" sidebarPosition="left" sidebarWidth="200">
+
+
+	<f:loadBundle var="msg" basename="br.com.dlp.jazzqa.ResourceBundle" />
+	<f:loadBundle var="lblTipoRequisito" basename="br.com.dlp.jazzqa.tiporequisito.TipoRequisito" />
+
+
+	<!-- 
+	<f:facet name="pageHeader">
+		<style type="text/css">
+img {
+	border: none;
+	border-style: none;
+}
+</style>
+	</f:facet>
+	<f:facet name="header">
+		<h:panelGroup>
+			<table width="100%">
+				<tbody>
+					<tr>
+						<td>
+						<h2>RichFaces Layouts</h2>
+						</td>
+						<td align="right"><h:outputLink value="http://labs.jboss.com/portal/jbossrichfaces/downloads">Download</h:outputLink>&#160; <h:outputLink value="http://jboss.com/index.html?module=bb&amp;op=viewforum&amp;f=261">Support</h:outputLink>&#160; <h:outputLink
+							value="http://labs.jboss.com/file-access/default/members/jbossrichfaces/freezone/docs/devguide/en/html/index.html">Developer Guide</h:outputLink></td>
+					</tr>
+				</tbody>
+			</table>
+		</h:panelGroup>
+	</f:facet>
+	 -->
+
+	<!-- 
+	<f:facet name="sidebar">
+		<rich:panel style="heigth:100%;" bodyClass="rich-laguna-panel-no-header">
+			<f:facet name="header">
+				Pesquisa
+			</f:facet>
+
+			<h:panelGrid columns="2">
+				<h:outputText value="Nome" />
+				<h:inputText value="#{tipoRequisitoJSFBean.nome}" size="16" />
+				<h:outputText value="Descricao" />
+				<h:inputText value="#{tipoRequisitoJSFBean.descricao}" size="16" />
+			</h:panelGrid>
+
+			<a4j:commandLink action="#{tipoRequisitoJSFBean.actionPesquisar}" title="#{msg.btnPesquisar}" reRender="resultadoDG">
+				<img src="../img/find.gif" />
+			</a4j:commandLink>
+		</rich:panel>
+	</f:facet>
+
+	<f:facet name="footer">
+		<rich:panel bodyClass="rich-laguna-panel-no-header">
+		</rich:panel>
+	</f:facet>
+	 -->
+
+	<h:form>
+		<rich:panel style="height: 460px;">
+
+			<f:facet name="header">
+				<a4j:status>Ajax
+					<f:facet name="start">
+						Ajax Running!...
+					</f:facet>
+					<f:facet name="stop">
+						Done!
+					</f:facet>
+				</a4j:status>
+			</f:facet>
+
+			<!--BARRA DE BOTOES -->
+			<rich:toolBar height="26" itemSeparator="grid">
+				<rich:toolBarGroup>
+
+					<a4j:commandLink action="#{tipoRequisitoJSFBean.actionNovo}" title="#{msg.btnNovo}" reRender="campos">
+						<h:graphicImage value="../img/create_doc.gif" id="idBtnNovo" />
+					</a4j:commandLink>
+
+					<a4j:commandLink action="#{tipoRequisitoJSFBean.actionSalvar}" title="#{msg.btnSalvar}" reRender="campos,resultadoDG">
+						<h:graphicImage value="../img/save.gif" />
+					</a4j:commandLink>
+
+					<a4j:commandLink action="#{tipoRequisitoJSFBean.actionPesquisar}" title="#{msg.btnPesquisar}" reRender="resultadoDG">
+						<img src="../img/find.gif" />
+					</a4j:commandLink>
+
+				</rich:toolBarGroup>
+			</rich:toolBar>
+
+			<rich:spacer height="8px" />
+
+			<!--TABELA DE RESULTADOS-->
+			<rich:dataTable value="#{tipoRequisitoJSFBean.resultados}" var="resultado" id="resultadoDG">
+				<f:facet name="header">Resultados Consulta</f:facet>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{lblTipoRequisito.nome}" />
+					</f:facet>
+					<h:outputText value="#{resultado.nome}" />
+				</rich:column>
+
+				<rich:column width="300">
+					<f:facet name="header">
+						<h:outputText value="#{lblTipoRequisito.descricao}" />
+					</f:facet>
+					<h:outputText value="#{resultado.descricao}" />
+				</rich:column>
+
+
+				<rich:column>
+					<f:facet name="header"></f:facet>
+					<a4j:commandButton action="#{tipoRequisitoJSFBean.actionUpdate(resultado)}" value="#{msg.btnAlterar}" reRender="campos" oncomplete="#{rich:component('panel')}.show()">
+						<!-- 
+						<rich:componentControl for="panel" operation="show" event="onclick" attachTiming="immediate"/>
+						 -->
+					</a4j:commandButton>
+				</rich:column>
+
+				<rich:column>
+					<f:facet name="header"></f:facet>
+					<a4j:commandButton action="#{tipoRequisitoJSFBean.actionDelete(resultado)}" value="#{msg.btnExcluir}" reRender="campos,resultadoDG" />
+				</rich:column>
+
+			</rich:dataTable>
+
+		</rich:panel>
+
+	</h:form>
+
+
+	<!-- ############### MODAL ############### -->
+
+
+
+	<rich:modalPanel id="panel" width="400" height="300" autosized="true" shadowDepth="10" rendered="true" domElementAttachment="parent">
+
+		<f:facet name="header">
+			<h:panelGroup>
+				<h:outputText value="Campos Alteração"></h:outputText>
+			</h:panelGroup>
+		</f:facet>
+		<f:facet name="controls">
+			<h:panelGroup>
+				<h:graphicImage value="../img/close.png" styleClass="hidelink" id="hidelink" />
+				<rich:componentControl for="panel" attachTo="hidelink" operation="hide" event="onclick" />
+			</h:panelGroup>
+		</f:facet>
+		<!--CAMPOS MANUTENCAO-->
+
+		<a4j:region>
+			<h:panelGrid columns="3" id="campos">
+
+				<h:outputText value="#{lblTipoRequisito.nome}" />
+				<h:inputText value="#{tipoRequisitoJSFBean.tmpVO.nome}" id="nome" />
+				<rich:message for="nome" />
+
+				<h:outputText value="#{lblTipoRequisito.descricao}" />
+				<h:inputText value="#{tipoRequisitoJSFBean.tmpVO.descricao}" id="descricao" />
+				<rich:message for="descricao" />
+
+			</h:panelGrid>
+
+			<a4j:commandButton id="btnSalvar" action="#{tipoRequisitoJSFBean.actionSalvar}" reRender="campos,resultadoDG" title="#{msg.btnSalvar}" value="Salvar">
+				<rich:componentControl for="panel" operation="hide" event="onclick" />
+			</a4j:commandButton>
+		</a4j:region>
+
+
+	</rich:modalPanel>
+
+	<rich:spacer height="6px" />
+
+
+</rich:page>
+
+
+
+

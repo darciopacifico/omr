@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Portlet Scripts" default="deploy">
+		<property environment="env" />
+	
+	
+	
+	
+    <target name="deploy" >
+    	
+    	
+    	<copy todir="${env.LIFERAY_JB_HOME}/server/default/deploy">
+    		<fileset dir="./target/" >
+    			<include name="**/*.*"/>
+    			<exclude  name="**/web.xml"/>
+    		</fileset>
+    	</copy>
+    	
+    	
+    	
+    </target>
+
+	
+	
+</project>

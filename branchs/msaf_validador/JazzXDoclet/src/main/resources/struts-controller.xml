@@ -1,0 +1,9 @@
+   <!-- ========== Controller Configuration ================================ -->       
+
+   <!--
+     Define your controller in a file called struts-controller.xml and place
+     it in your merge directory.
+    -->
+
+   <!-- TODO tire este coment�rio para ativar a checagem de autentica��o -->
+   <!-- controller processorClass="br.com.dlp.framework.security.SecurityTilesRequestProcessor"/ --> 

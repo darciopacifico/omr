@@ -1,0 +1,109 @@
+/* 
+*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+*
+*	APLICACAO @ modelos de css
+*	DESENVOLVIMENTO @ Marcos de Almeida Chilbly, Anselmo Parrechio Junior, Daniel Bertini Andriani
+*	COMENTARIOS @ css utilizado para customizacao do layout do portal v2
+*
+*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+*/
+.neutro	{ font-family:Verdana; font-size:10px; border:0px solid; padding:0px; }
+
+/* corpo da pagina */
+.corpo	{ text-align: center; background-color: #F1F1F1; scrollbar-face-color:#e4e4e4; scrollbar-shadow-color:#F6F6F5; scrollbar-highlight-color:#F6F6F5; scrollbar-3dlight-color:#d6d6d6; scrollbar-darkshadow-color: #d6d6d6; scrollbar-track-color: #F6F6F5; scrollbar-arrow-color: #CC0033; padding: 10px; }
+
+/* corpo da pagina */
+.mnu_0	{ background-color: #f4f4f4; color: #000000; font-family: Verdana; font-size: 10px; border-right:.1pt solid #8F8F8F; border-left:.1pt solid #E7E7E7; border-top:.1pt solid #E7E7E7; border-bottom:.0pt; filter: alpha(Opacity=80, FinishOpacity=15, Style=0); }
+.mnu_1	{ background-color: #f9f9f9; vertical-align: text-top; color: #000000; font-family: Verdana; font-size: 10px; border-right:.1pt solid #8F8F8F; border-left:.1pt solid #E7E7E7; border-top:.1pt solid #E7E7E7; border-bottom:.1pt solid #8F8F8F; filter: alpha(Opacity=80, FinishOpacity=15, Style=0); }
+
+/* tabelas para uso do sistema */
+.tt0L	{ background:url("../assets/sis/tit_bkg.gif") repeat-x; background-color:#C9C9C9; color:#000000; text-align:left; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#FFFFFF #B1B1B1 #B1B1B1 #FFFFFF;  padding:3px; }
+.tt0C	{ background:url("../assets/sis/tit_bkg.gif") repeat-x; background-color:#C9C9C9; color:#000000; text-align:center; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#FFFFFF #B1B1B1 #B1B1B1 #FFFFFF;  padding:3px; }
+.tt0R	{ background:url("../assets/sis/tit_bkg.gif") repeat-x; background-color:#C9C9C9; color:#000000; text-align:right; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#FFFFFF #B1B1B1 #B1B1B1 #FFFFFF;  padding:3px; }
+
+.tt1L	{ background-color:#DBDBDB; color:#000000;   text-align:left; font-family:Verdana; font-size:10px; border:1px solid; border-color:#f9f9f9 #b9b9b9 #b9b9b9 #f9f9f9;  padding:3px; }
+.tt1C	{ background-color:#DBDBDB; color:#000000;   text-align:center; font-family:Verdana; font-size:10px; border:1px solid; border-color:#f9f9f9 #b9b9b9 #b9b9b9 #f9f9f9;  padding:3px; }
+.tt1R	{ background-color:#DBDBDB; color:#000000;   text-align:right; font-family:Verdana; font-size:10px; border:1px solid; border-color:#f9f9f9 #b9b9b9 #b9b9b9 #f9f9f9;  padding:3px; }
+
+.tt2L	{ background-color:#E7E7E7; color:#000000;   text-align:left; font-family:Verdana; font-size:10px; border:1px solid; border-color:#f9f9f9 #d1d1d1 #d1d1d1 #f9f9f9;  padding:3px; }
+.tt2C	{ background-color:#E7E7E7; color:#000000;   text-align:center; font-family:Verdana; font-size:10px; border:1px solid; border-color:#f9f9f9 #d1d1d1 #d1d1d1 #f9f9f9;  padding:3px; }
+.tt2R	{ background-color:#E7E7E7; color:#000000;   text-align:right; font-family:Verdana; font-size:10px; border:1px solid; border-color:#f9f9f9 #d1d1d1 #d1d1d1 #f9f9f9;  padding:3px; }
+
+.tt3L	{ background-color:#F1F1F1; color:#000000;   text-align:left; font-family:Verdana; font-size:10px; border:1px solid; border-color:#f9f9f9 #d1d1d1 #d1d1d1 #f9f9f9;  padding:3px; }
+.tt3C	{ background-color:#F1F1F1; color:#000000;   text-align:center; font-family:Verdana; font-size:10px; border:1px solid; border-color:#f9f9f9 #d1d1d1 #d1d1d1 #f9f9f9;  padding:3px; }
+.tt3R	{ background-color:#F1F1F1; color:#000000;   text-align:right; font-family:Verdana; font-size:10px; border:1px solid; border-color:#f9f9f9 #d1d1d1 #d1d1d1 #f9f9f9;  padding:3px; }
+
+.tt4L	{ background-color:#E71970; color:#FFFFFF;   text-align:left; font-family:Verdana; font-size:10px; border:1px solid; border-color:#EF6DA4 #780E3B #780E3B #EF6DA4;  padding:3px; }
+.tt4C	{ background-color:#E71970; color:#FFFFFF;   text-align:center; font-family:Verdana; font-size:10px; border:1px solid; border-color:#EF6DA4 #780E3B #780E3B #EF6DA4;  padding:3px; }
+.tt4R	{ background-color:#E71970; color:#FFFFFF;   text-align:right; font-family:Verdana; font-size:10px; border:1px solid; border-color:#EF6DA4 #780E3B #780E3B #EF6DA4;  padding:3px; }
+
+.tt5L	{ color:#000000; text-align:left;   font-family:Verdana; font-size:10px; border:0px; padding:6px; }
+.tt5C	{ color:#000000; text-align:center;   font-family:Verdana; font-size:10px; border:0px; padding:6px; }
+.tt5R	{ color:#000000; text-align:right;   font-family:Verdana; font-size:10px; border:0px; padding:6px; }
+
+.tt6L	{ background:url("../assets/sis/tit_bkg2.gif") repeat-x; background-color:#FAFAFA; color:#000000; text-align:left; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#FFFFFF #B1B1B1 #B1B1B1 #FFFFFF;  padding:3px; }
+.tt6C	{ background:url("../assets/sis/tit_bkg2.gif") repeat-x; background-color:#FAFAFA; color:#000000; text-align:center; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#FFFFFF #B1B1B1 #B1B1B1 #FFFFFF;  padding:3px; }
+.tt6R	{ background:url("../assets/sis/tit_bkg2.gif") repeat-x; background-color:#FAFAFA; color:#000000; text-align:right; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#FFFFFF #B1B1B1 #B1B1B1 #FFFFFF;  padding:3px; }
+
+.tt7L	{ background-color:#264680; color:#D5E4F7; text-align:left; font-family:Verdana; font-size: 9px; border:1px solid; border-color:#5878B2 #082862 #082862 #5878B2;  padding:3px; }
+.tt7C	{ background-color:#264680; color:#D5E4F7; text-align:center; font-family:Verdana; font-size: 9px; border:1px solid; border-color:#5878B2 #082862 #082862 #5878B2;  padding:3px; }
+.tt7R	{ background-color:#264680; color:#D5E4F7; text-align:right; font-family:Verdana; font-size: 9px; border:1px solid; border-color:#5878B2 #082862 #082862 #5878B2;  padding:3px; }
+
+.tt8L	{ background-color:#FFCC66; color:#000000; text-align:left; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#FFEA84 #C29947 #C29947 #FFEA84;  padding:3px; }
+.tt8C	{ background-color:#FFCC66; color:#000000; text-align:center; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#FFEA84 #C29947 #C29947 #FFEA84;  padding:3px; }
+.tt8R	{ background-color:#FFCC66; color:#000000; text-align:right; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#FFEA84 #C29947 #C29947 #FFEA84;  padding:3px; }
+
+.tt9L	{ background-color:#95C82A; color:#000000; text-align:left; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#B5F038 #759D21 #759D21 #B5F038;  padding:3px; }
+.tt9C	{ background-color:#95C82A; color:#000000; text-align:center; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#B5F038 #759D21 #759D21 #B5F038;  padding:3px; }
+.tt9R	{ background-color:#95C82A; color:#000000; text-align:right; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#B5F038 #759D21 #759D21 #B5F038;  padding:3px; }
+
+.tt10L	{ background-color:#FFFFFF; color:#000000; text-align:left; font-family:Verdana; font-size: 10px; border:1px solid #f0f0f0; padding:3px; }
+.tt10C	{ background-color:#FFFFFF; color:#000000; text-align:center; font-family:Verdana; font-size: 10px; border:1px solid #f0f0f0; padding:3px; }
+.tt10R	{ background-color:#FFFFFF; color:#000000; text-align:right; font-family:Verdana; font-size: 10px; border:1px solid #f0f0f0; padding:3px; }
+
+.tt11L	{ background:url("../assets/alu.gif") repeat-x-y; background-color:#C1C1C2; color:#000000; text-align:left; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#f1f1f1 #B1B1B1 #B1B1B1 #f1f1f1; padding:3px; }
+.tt11C	{ background:url("../assets/alu.gif") repeat-x-y; background-color:#C1C1C2; color:#000000; text-align:center; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#f1f1f1 #B1B1B1 #B1B1B1 #f1f1f1; padding:3px; }
+.tt11R	{ background:url("../assets/alu.gif") repeat-x-y; background-color:#C1C1C2; color:#000000; text-align:right; font-family:Verdana; font-size: 10px; border:1px solid; border-color:#f1f1f1 #B1B1B1 #B1B1B1 #f1f1f1; padding:3px; }
+
+.tt12 { border:1px solid #cccccc #bbbbbb #bbbbbb #cccccc; }
+
+
+/* utilizado exclusivamente na geracao de relatorios */
+.tt13	{ font-family:Verdana; font-size: 10px; border:1px solid #000000; background-color:#99ccff; font:bold; padding:3px; }
+.tt14	{ font-family:Verdana; font-size: 10px; border:1px solid #000000; background-color:#ffffff; font:bold; padding:3px; }
+.tt15	{ font-family:Verdana; font-size: 10px; border:1px solid #000000; background-color:#f0f0f0; font:bold; padding:3px; }
+
+
+/* utilizado exclusivamente para a montagem das guias */
+.guiaOn { background:url("../assets/sis/tit_bkg.gif") repeat-x; background-color:#C9C9C9; color:#000000; text-align:center; font-family:Verdana; font-size: 11px; border:1px solid; border-color:#f1f1f1 #B1B1B1 #B1B1B1 #f1f1f1;  border-bottom: 0px; padding:6px; cursor: hand; }
+.guiaOff { background:url("../assets/sis/tit_bkg5.gif") repeat-x; background-position: top; background-color:#cccccc; color:#ABABAB; text-align:center; font-family:Verdana; font-size: 11px; border:1px solid; border-color:#f1f1f1 #B1B1B1 #f1f1f1 #f1f1f1;  border-bottom: 1px solid #f1f1f1; padding:6px; cursor: hand; }
+.guiaResto { background-color:#FFFFFF; color:#000000; text-align:center; font-family:Verdana; font-size: 10px; border-bottom: 1px solid #f9f9f9; padding:6px; }
+.conteudo { background:url("../assets/sis/tit_bkg4.gif") repeat-x;  background-position: bottom; background-color:#C9C9C9; color:#000000; text-align:center; border:1px solid; border-color:#f9f9f9 #B1B1B1 #B1B1B1 #f9f9f9; border-top:0px; padding: 15px}
+
+
+/* botoes para uso geral */
+.bb0	{ background:url("../assets/sis/tit_bkg.gif") repeat-x; background-color:#C9C9C9; cursor:hand; color:#000000; text-align:center; font-family:Verdana; font-size: 9px; border:1px solid; border-color:#E71970 #B1B1B1 #B1B1B1 #FFFFFF;  padding:1px; }
+.bb1	{ background:url("../assets/sis/tit_bkg.gif") repeat-x; background-color:#C9C9C9; cursor:hand; color:#000000; text-align:center; font-family:Verdana; font-size: 9px; border:1px solid; border-color:#666666 #B1B1B1 #B1B1B1 #FFFFFF;  padding:1px; }
+
+/* fontes para uso geral */
+.ff0	{ color:#000000; text-align:left; font-family:Verdana; font-size:12px; }
+.ff1	{ color:#000000; text-align:left; font-family:Verdana; font-size:10px; }
+.ff2	{ color:#000000; text-align:left; font-family:Verdana; font-size:9px; }
+.ff3    { FILTER: progid:DXImageTransform.Microsoft.dropShadow( Color=c0c0c0,offX=3,offY=3,positive=true); color:#000000; WIDTH:100%; font-family:Verdana; font-size:12px;}
+.ff4	{ color:#E71970; text-align:left; font-family:Verdana; font-size:10px; }
+.ff5	{ color:#666666; text-align:left; font-family:Verdana; font-size:9px; }
+.ff6	{ color:#f1f1f1; text-align:left; font-family:Verdana; font-size:10px; }
+
+/* links para uso geral */
+.ll0		{ color:#000000; text-align:left; font-family:Verdana; font-size:12px; }
+.ll0:hover	{ color:#E71970; text-align:left; font-family:Verdana; font-size:12px; }
+.ll1		{ color:#000000; text-align:left; font-family:Verdana; font-size:10px; }
+.ll1:hover	{ color:#E71970; text-align:left; font-family:Verdana; font-size:10px; }
+.ll2		{ color:#000000; text-align:left; font-family:Verdana; font-size:9px;  }
+.ll2:hover	{ color:#E71970; text-align:left; font-family:Verdana; font-size:9px;  }
+
+/* campos para uso geral */
+.cc0	{ background-color:#FFFFFF; color:#000000; text-align:left; font-family:Verdana; font-size: 9px; border:1px solid; border-color:#d1d1d1 #f9f9f9 #f9f9f9 #d1d1d1;  padding-left:3px; }
+.cc1	{ background-color:#FFFFFF; color:#000000; text-align:left; font-family:Verdana; font-size: 9px; border:1px solid; border-color:#979797 #FFFFFF #FFFFFF #979797;  padding-left:3px; filter: alpha(Opacity=50, FinishOpacity=15, Style=0) gray; }
+.cc2	{ background-color:#FFFFFF; color:#000000; text-align:left; font-family:Courier; font-size: 8px; border:1px solid; border-color:#979797 #FFFFFF #FFFFFF #979797;  padding-left:3px; }
+

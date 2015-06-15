@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+                              "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+<faces-config>
+
+	<application>
+		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+
+	
+	<!--AbstractBaseVO-->
+	<managed-bean>
+		<managed-bean-name>abstractBaseJSFBean</managed-bean-name>
+		<managed-bean-class>br.com.dlp.framework.vo.AbstractBaseJSFBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!--ProdutoVO-->
+	<managed-bean>
+		<managed-bean-name>produtoJSFBean</managed-bean-name>
+		<managed-bean-class>br.com.dlp.jazzqa.produto.ProdutoJSFBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!--IBaseVO-->
+	<managed-bean>
+		<managed-bean-name>iBaseJSFBean</managed-bean-name>
+		<managed-bean-class>br.com.dlp.framework.vo.IBaseJSFBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!--UsuarioJazzVO-->
+	<managed-bean>
+		<managed-bean-name>usuarioJazzJSFBean</managed-bean-name>
+		<managed-bean-class>br.com.dlp.jazzqa.usuariojazz.UsuarioJazzJSFBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<!--TipoRequisitoVO-->
+	<managed-bean>
+		<managed-bean-name>tipoRequisitoJSFBean</managed-bean-name>
+		<managed-bean-class>br.com.dlp.jazzqa.tiporequisito.TipoRequisitoJSFBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<navigation-rule>
+		<from-view-id>/pages/index.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>Pag2</from-outcome>
+			<to-view-id>/pages/Pag2.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/pages/Pag2.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>Pag3</from-outcome>
+			<to-view-id>/pages/Pag3.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+</faces-config>

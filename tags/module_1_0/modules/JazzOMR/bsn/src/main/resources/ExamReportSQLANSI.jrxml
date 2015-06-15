@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ExamReportSQLANSI" pageWidth="612" pageHeight="792" columnWidth="592" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10">
+	<property name="ireport.zoom" value="1.0000000000000022"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="imgLogoEscola" class="java.awt.Image" isForPrompting="false"/>
+	<parameter name="qrCodeGen" class="br.com.dlp.jazzomr.jr.util.IQRCodeGenerator" isForPrompting="false"/>
+	<parameter name="reportQuery" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[" select  "+
+" ev.pk ev_pk, "+
+" ea.pk ea_pk, "+
+" q.pk q_pk, "+
+" a.pk a_pk, "+
+" pa.pk pa_pk, "+
+" ea.description, "+
+" ev.question_enum_model, "+
+" ev.alternative_enum_model, "+
+" q.desc_wiki, "+
+" q.question_type, "+
+" q.verbosity, "+
+" a.desc_wiki, "+
+" a.resumo, "+
+" a.verbosity, "+
+" p.login, "+
+" p.nome "+
+" from tb_exam_variant ev "+
+" 	inner join tj_examvo_questionnaires eq 		on eq.fk_exam				= ev.fk_exam 			 "+
+" 	inner join tj_questionnairevo_questions qq 	on qq.fk_questionnaire 	= eq.fk_questionnaires_questionnaire "+
+" 	inner join tb_question q 					on q.pk 					= qq.fk_questions_question "+
+" 	inner join tb_alternative a				on a.fk_question			= q.pk "+
+" 	left join tb_exam_application ea			on ea.fk_examvariant 		= ev.pk "+
+" 	left join tb_participation pa				on pa.fk_exam_application	= ea.pk "+
+" 	left join jazzomr.tb_pessoa p				on p.pk 					= pa.fk_pessoa "+
+" where  ev.pk = 1 "]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+
+ev.pk ev_pk,
+e.pk e_pk,
+q.pk q_pk,
+a.pk a_pk,
+
+pa.pk pa_pk,
+e.description e_description,
+ev.question_enum_model,
+ev.alternative_enum_model,
+
+q.desc_wiki q_wiki,
+q.question_type,
+q.verbosity q_verbosity,
+qc.question_order,
+qc.pk qc_pk,
+
+qr.pk qr_pk,
+qr.description qr_description,
+
+a.desc_wiki a_wiki,
+a.resumo a_resumo,
+a.verbosity a_verbosity,
+ac.alternative_order,
+ac.pk ac_pk,
+
+pe.login avaliado_login,
+pe.nome avaliado_nome
+
+from tb_event e
+	inner join tb_participation pa				on pa.fk_event				= e.pk
+	inner join jazzomr.tb_pessoa pe			on pe.pk 						= pa.fk_pessoa
+
+	inner join tb_exam_variant ev				on ev.pk						= pa.fk_examvariant
+
+	inner join tb_question_coordinate qc		on qc.fk_exam_variant			= ev.pk
+	inner join tb_question q 					on q.pk 						= qc.fk_question
+	inner join tj_questionnairevo_questions	qq 	on qq.fk_questions_question	= q.pk
+	inner join tb_questionnaire qr				on qr.pk						= fk_questionnaire
+
+	inner join tb_alternative_coordinate ac		on ac.fk_question_coordinates 	= qc.pk
+	inner join tb_alternative a				on a.pk 						= ac.fk_alternative
+
+where e.pk=1
+
+order by e.pk, pa.pk, qc.question_order, ac.alternative_order]]>
+	</queryString>
+	<field name="ev_pk" class="java.lang.Long"/>
+	<field name="e_pk" class="java.lang.Long"/>
+	<field name="q_pk" class="java.lang.Long"/>
+	<field name="a_pk" class="java.lang.Long"/>
+	<field name="pa_pk" class="java.lang.Long"/>
+	<field name="e_description" class="java.lang.String"/>
+	<field name="question_enum_model" class="java.lang.Integer"/>
+	<field name="alternative_enum_model" class="java.lang.Integer"/>
+	<field name="q_wiki" class="java.lang.String"/>
+	<field name="question_type" class="java.lang.Integer"/>
+	<field name="q_verbosity" class="java.lang.Integer"/>
+	<field name="question_order" class="java.lang.Integer"/>
+	<field name="qc_pk" class="java.lang.Long"/>
+	<field name="qr_pk" class="java.lang.Long"/>
+	<field name="qr_description" class="java.lang.String"/>
+	<field name="a_wiki" class="java.lang.String"/>
+	<field name="a_resumo" class="java.lang.String"/>
+	<field name="a_verbosity" class="java.lang.Integer"/>
+	<field name="alternative_order" class="java.lang.Integer"/>
+	<field name="ac_pk" class="java.lang.Long"/>
+	<field name="avaliado_login" class="java.lang.String"/>
+	<field name="avaliado_nome" class="java.lang.String"/>
+	<group name="evento">
+		<groupExpression><![CDATA[$F{ev_pk}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<textField>
+					<reportElement x="181" y="20" width="100" height="20"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{e_description}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<group name="Exame" isStartNewPage="true" isResetPageNumber="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{pa_pk}]]></groupExpression>
+		<groupHeader>
+			<band height="124">
+				<image onErrorType="Icon">
+					<reportElement key="qrCodeExamKey" x="462" y="17" width="100" height="100" backcolor="#F71919"/>
+					<imageExpression class="java.awt.Image"><![CDATA[$P{qrCodeGen}.generateQRCode($F{pa_pk}+"-"+$V{PAGE_NUMBER})]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement x="450" y="103" width="125" height="14"/>
+					<textElement textAlignment="Center">
+						<font size="6"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["IdProva-Página / "+$F{pa_pk}+"-"+$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<image evaluationTime="Page">
+					<reportElement x="11" y="17" width="123" height="36"/>
+					<imageExpression class="java.awt.Image"><![CDATA[$P{imgLogoEscola}]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement positionType="FixRelativeToBottom" x="144" y="17" width="306" height="25"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Universidade Paulista UNIP - Unidade Belém]]></text>
+				</staticText>
+				<ellipse>
+					<reportElement key="topLeftMark" x="562" y="0" width="30" height="30" backcolor="#010101">
+						<printWhenExpression><![CDATA[!$V{PAGE_NUMBER}.equals(1)]]></printWhenExpression>
+					</reportElement>
+				</ellipse>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Questões" keepTogether="true">
+		<groupExpression><![CDATA[$F{qc_pk}]]></groupExpression>
+		<groupHeader>
+			<band height="58">
+				<textField isBlankWhenNull="true">
+					<reportElement x="82" y="36" width="470" height="20"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{q_wiki}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="45" y="36" width="26" height="20"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{question_order}.toString()+"."]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="166" splitType="Stretch">
+			<printWhenExpression><![CDATA[!$V{PAGE_NUMBER}.equals(1)]]></printWhenExpression>
+			<image onErrorType="Icon">
+				<reportElement key="qrCodeExamKey" x="462" y="4" width="100" height="100" backcolor="#F71919"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{qrCodeGen}.generateQRCode($F{pa_pk}+"-"+$V{PAGE_NUMBER})]]></imageExpression>
+			</image>
+			<ellipse>
+				<reportElement key="topLeftMark" x="562" y="4" width="30" height="30" backcolor="#010101">
+					<printWhenExpression><![CDATA[$V{PAGE_NUMBER}.equals(1)]]></printWhenExpression>
+				</reportElement>
+			</ellipse>
+			<textField>
+				<reportElement x="12" y="138" width="287" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{avaliado_nome}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="12" y="135" width="287" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="11" y="159" width="573" height="1"/>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="144" y="24" width="318" height="25"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Universidade Paulista UNIP - Unidade Belém]]></text>
+			</staticText>
+			<image onErrorType="Icon">
+				<reportElement x="11" y="13" width="123" height="36"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{imgLogoEscola}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="11" y="49" width="288" height="38"/>
+				<textElement verticalAlignment="Top" lineSpacing="1_1_2"/>
+				<text><![CDATA[Exame final para a disciplina de Geografia Elementar
+Turma 3 - Período Diurno]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="90" width="125" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["IdProva-Página / "+$F{pa_pk}+"-"+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="14">
+			<textField>
+				<reportElement x="89" y="0" width="15" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{alternative_order}.toString()+"."]]></textFieldExpression>
+			</textField>
+			<genericElement>
+				<reportElement x="81" y="2" width="5" height="5"/>
+				<genericElementType namespace="http://jazzomr.com.br/jazzomr" name="jazzomr"/>
+				<genericElementParameter name="eqaKey">
+					<valueExpression><![CDATA["eqaKey-"+$F{ev_pk}+"-"+$F{qc_pk}+"-"+$F{ac_pk}]]></valueExpression>
+				</genericElementParameter>
+			</genericElement>
+			<textField>
+				<reportElement x="111" y="0" width="412" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{a_resumo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="49">
+			<ellipse>
+				<reportElement key="bottomRightMark" mode="Opaque" x="0" y="18" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#010101"/>
+			</ellipse>
+			<textField>
+				<reportElement x="470" y="26" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="550" y="26" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="106" y="26" width="364" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Propriedade da Universidade Paulista UNIP - Proibida a cópia total ou parcial deste exame.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Prevent"/>
+	</summary>
+</jasperReport>

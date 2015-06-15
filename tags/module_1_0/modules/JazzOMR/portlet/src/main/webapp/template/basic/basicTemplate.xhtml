@@ -1,0 +1,561 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:p="http://primefaces.prime.com.tr/ui" 
+	xmlns:c="http://java.sun.com/jstl/core" >
+
+
+
+<f:view> 
+
+	<ui:insert name="repGlobal" >DEFINICOES GLOBAIS DO MODULO, NORMALMENTE RESOURCE BUNDLES</ui:insert>
+
+	<head>
+		<!-- COMPATIBILIDADE COM IE 8 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+	
+		<script type="text/javascript"> 
+			<ui:insert name="insideScriptElement"></ui:insert>
+			function timeoutLogoff(){
+				setTimeout("document.location='../j_spring_security_logout?timeout=true'",300000);
+			}
+			
+		</script>
+	
+	
+		<style>
+			<ui:insert name="insideStyleElement"></ui:insert>
+			
+			.pnlAccessDeniedStyle{
+				width: 788px;
+				height: 460px;
+				margin: auto;
+				vertical-align: center;
+			}
+
+			.pnlAccessDeniedStyle #spanMsg{
+				text-align: center;
+				vertical-align: center;
+				font-size: 50px;
+				color: #2e1313;
+				font-weight: bold;
+				text-shadow: black;
+			}
+
+			.gridCabecalho {
+				background:#91b1c7; 
+				width:990px; 
+				left:320px;
+				vertical-align: top;
+				border-width: 0px; 
+				padding: 0px; 
+				border-spacing: 0px; 				
+			}
+			
+			.gridCabecalho *{
+				vertical-align: top;
+			}
+			
+			a{
+				text-decoration: none;
+			}
+						
+			body{
+				
+			}
+
+			.gridPrincipal td{
+				vertical-align: top;
+			}
+			
+		  	img {
+				border-width: 0;
+			}
+			.ui-growl-title {
+				font-size: small;
+			}
+			.rich-inplace-select-font {
+				font-size: xx-small;
+				font-family: Arial, Verdana, sans-serif;
+			}
+			
+			.subgrid-jazz{
+				border: 0px; padding: 2px;
+			}
+			
+			.rich-stglpanel-header{
+				color: #0078D0;
+				text-decoration: underline;
+			}
+			
+		</style>
+		
+		<title><h:outputText value="#{tituloModulo}" /></title>
+		<p:resources />
+	</head>
+
+	<body style="background: #eeeeee url('/img/menu/examCenterGray.png'); background-repeat: repeat;" >
+
+	<a4j:queue 
+	requestDelay="20"
+	ignoreDupResponses="true"
+	onsubmit="Richfaces.hideModalPanel('waitModal');Richfaces.showModalPanel('waitModal')"
+	oncomplete="Richfaces.hideModalPanel('waitModal')"
+	onerror="alert('Erro ao tentar executar a operação solicitada!'); Richfaces.hideModalPanel('waitModal')"
+	 />
+
+	
+	
+	<h:panelGrid columns="1" id="gridLogo"  >
+		<h:panelGrid columns="2" styleClass="gridCabecalho" style="background: #91b1c7 url('../img/menu/repearVertical.png'); background-repeat: repeat-y; "  >
+			<h:panelGroup>
+				<h:graphicImage value="/img/menu/corretorLogo.png" />
+			</h:panelGroup>
+			
+			<ui:insert name="headerLoginLogoff">
+		
+				<a4j:form id="frmLogoff">
+					
+					<h:panelGrid style="text-align: right;" layout="block; " rendered="#{myMBean.pessoaVO!=null}" >
+					
+					
+						<span style="font-family: Arial;font-size:12px; color:white;" >Bem vindo(a) #{myMBean.pessoaVO.nome}</span>
+						<a href="../j_spring_security_logout" >(Logoff)</a>
+						<br/>
+						<span style="font-family: Arial;font-size:12px; color:white;" >#{myMBean.pessoaVO.empresaVO.nome}</span>
+						
+						<a href="#{menuUrlPrefix}configuracoes/configuracoes.jsf">(Configurações)</a>
+						
+						<rich:spacer height="22" width="300" ></rich:spacer>
+						
+						<!-- ☎ -->
+						<h:outputText value="LinkCompany Consultoria em TI - contato@linkcompany.com.br" 
+						style="font-family: Arial;font-size:12px; color:white;"/>
+					
+					</h:panelGrid>
+				</a4j:form>
+				
+			</ui:insert>
+			
+		</h:panelGrid>
+	</h:panelGrid>
+	
+	<ui:insert name="directBody" />
+	
+	
+	<a4j:form id="frmMainIdle" >	
+    	<p:idleMonitor timeout="600000" onidle="idleDialog.show();timeoutLogoff()" onactive="window.location.reload( false );"  id="idle2"  />  
+    </a4j:form>
+	
+	
+	<a4j:form id="frmMain" >
+		<p:dialog header="Tem alguém aí?" resizable="false" widgetVar="idleDialog" modal="true" width="400"  >
+		    <h:outputText value="Se o sistema ficar inativo por mais de 5 minutos sua sessão será finalizada!" />
+		</p:dialog>
+		  
+		<rich:modalPanel id="waitModal" >
+			Aguarde processando...
+		</rich:modalPanel>
+		
+
+		<h:panelGrid columns="3" style="vertical-align: top;" id="gridPrincipal" styleClass="gridPrincipal">
+			<ui:insert name="menuLateral" >
+			<h:panelGroup id="pnlSupEsq" style="width:200px; " >
+				
+				<rich:panel style="vertical-align: middle; top:100px; width:170px;background: #eeeeee ;">
+				
+				
+					<h:panelGrid columns="2">
+						<h:graphicImage value="#{iconeModulo}" style="background: #f6f8f8; padding: 4px; border-width: 1px; border-style: dotted; border-color: #dddddd;" width="48" height="48"/>
+						<h:outputText value="#{tituloModulo}" style="font-size: 12px; color:#444444;font-weight: bold;text-decoration: underline;"  />
+					</h:panelGrid>
+				</rich:panel>
+				
+				<rich:spacer height="2" ></rich:spacer>
+				
+				<rich:panel style="vertical-align: middle; font-weight: bold;text-decoration: underline; top:100px; width:170px; height:390px;background: #eeeeee;">
+					<h:panelGrid columns="1">
+
+						<h:outputLink value="#{menuUrlPrefix}inicio/index.jsf" id="lnkInicio">
+							<h:graphicImage value="/img/menu/home.png" width="32" height="32"/> Início
+							<rich:toolTip showDelay="400">Página inicial do sistema. <br/>Contém apresentação sobre seu funcionamento.</rich:toolTip>
+						</h:outputLink>
+						
+						<rich:spacer height="5" width="100"  />						
+						<h:outputText value="Adm. Pessoas" style="font-size: 12px; color:#444444;"  />
+						<rich:separator lineType="solid" height="1"  ></rich:separator>
+	
+						<h:outputLink value="#{menuUrlPrefix}person/PessoaCRUD.jsf"  id="lnkPessoa" >
+							<h:graphicImage value="/img/menu/people_128.png" width="32" height="32"/>Alunos e Usuários
+							<rich:toolTip showDelay="400">Cadastre alunos e candidatos que irão participar das provas e as pessoas que irão<br/> 
+							interagir com o sistema como professores, assitentes, administradores etc. <br/><br/>
+							Gerencie login e senhas dos usuários e as permissões de acesso por pessoa.
+							</rich:toolTip>
+						</h:outputLink>
+					
+						<h:outputLink value="#{menuUrlPrefix}person/GrupoCRUD.jsf" id="lnkGrupo">
+							<h:graphicImage value="/img/menu/groups_icon_128.png" width="32" height="32"/>Turmas e Grupos
+							<rich:toolTip showDelay="400">Organize as pessoas em grupos como turmas de alunos, assitentes de professor, inspetores de prova etc.<br/><br/>
+							As permissões de acesso poderão ser concedidas aos grupos, facilitando a administração de grandes volumes de pessoas.
+							</rich:toolTip>
+						</h:outputLink>
+						
+						<rich:spacer height="5" width="100"></rich:spacer>
+						<h:outputText value="Questionários/Evento" style="font-size: 12px; color:#444444;" />
+						<rich:separator lineType="solid" height="1" ></rich:separator>
+					
+						<h:outputLink value="#{menuUrlPrefix}exam/QuestionnaireCRUD.jsf"  id="lnkQuestoes" >
+							<h:graphicImage value="/img/menu/questionnaire_128.png" width="32" height="32"/>Criar Questões
+							<rich:toolTip showDelay="400">Crie suas questões alternativas ou dissertativas. Estas questões poderão ser utilizadas para compor exames (item abaixo). <br/>
+							As questões serão agrupadas em questionários com temas específicos. 
+							</rich:toolTip>
+						</h:outputLink>
+										
+						<h:outputLink value="#{menuUrlPrefix}exam/ExamCRUD.jsf" id="lnkExames"  >
+							<h:graphicImage value="/img/menu/foldingExans.png" width="32" height="32"/>Compor Exames
+							<rich:toolTip showDelay="400">Componha seus exames selecionando os questionários e o layout de prova desejado.</rich:toolTip>
+						</h:outputLink>
+										
+						<h:outputLink value="#{menuUrlPrefix}event/EventCRUD.jsf" id="lnkAgenda"  >
+							<h:graphicImage value="/img/menu/event_calendar_128.png" width="32" height="32"/>Agendar Provas
+							<rich:toolTip showDelay="400">Agende novas provas selecionando os participantes e os exames que serão aplicados.</rich:toolTip>
+						</h:outputLink>
+										
+						<h:outputLink value="#{menuUrlPrefix}event/EventImageProcessCRUD.jsf" id="lnkCorrecao"  >
+							<h:graphicImage value="/img/menu/uploadCorrection.png" width="32" height="32"/>Corrigir Provas
+							<rich:toolTip showDelay="400">Envie as imagens digitalizadas das provas para correção:<br/><br/>
+							- As alternativas serão corrigidas automaticamente<br/>
+							- As dissertativas deverão ser revisadas no próprio sistema (link "Corrigir Dissertações")<br/>
+							</rich:toolTip>
+						</h:outputLink>
+					
+					</h:panelGrid>				
+				</rich:panel>					
+			</h:panelGroup>
+			</ui:insert>
+			
+		
+			<h:panelGroup>
+			
+	
+			<!-- FORMULARIO AJAX PRINCIPAL -->
+			<ui:debug hotkey="k"/>
+			<a4j:log level="ALL" popup="true"  />
+			
+			<ui:insert name="accessDenied">
+				<h:panelGroup layout="block" id="pnlAccessDenied" rendered="#{!myMBean.isAutorized()}"  >
+					<rich:panel style="background: #eeeeee;" bodyClass="pnlAccessDeniedStyle" >
+				
+						<h:panelGrid columns="2">
+
+							<h:graphicImage value="/img/menu/padlock5.png" style="position: relative; top: 60px;" />
+							
+							<h:panelGroup >
+								<span id="spanMsg" >
+								Acesso Negado
+								</span>
+
+								<rich:spacer height="20" width="500" ></rich:spacer>
+								<rich:separator height="2" width="500" lineType="dotted"></rich:separator>
+								<rich:spacer height="10" width="500" ></rich:spacer>
+								<h:outputText value="Para acessar este recurso você deve possuir um dos perfis a seguir:" style="font-size: 15px; font-weight: bold; "  />
+								<rich:spacer height="10" width="500" ></rich:spacer>
+								<ul style="width: 350px; text-align: left;">
+								<ui:repeat value="#{myMBean.autorizeAnyOf()}" var="auth">
+									<li>
+										<h:outputText value="#{auth}" style="font-size: 15px;"  /> 
+									</li>
+								</ui:repeat>
+								</ul>
+
+								
+								<rich:spacer height="20" width="500" ></rich:spacer>
+								<rich:separator height="2" width="500" lineType="dotted"></rich:separator>
+								<rich:spacer height="10" width="500" ></rich:spacer>
+								<br />
+								<h:outputText value="No momento você possui os perfis a seguir:" style="font-size: 15px; font-weight: bold;"  />
+								<rich:spacer height="20" width="500" ></rich:spacer>
+								<ul style="width: 350px; text-align: left;">
+								<ui:repeat value="#{myMBean.security.authorities}" var="auth">
+									<li>
+										<h:outputText value="#{auth}" style="font-size: 15px;"  /> 
+									</li>
+								</ui:repeat>
+								</ul>
+
+								<rich:spacer height="20" width="500" ></rich:spacer>
+								<rich:separator height="2" width="500" lineType="dotted"></rich:separator>
+								<br />
+								<h:outputText value="Para concessão de acesso consulte o administrador de perfis de sua empresa." style="font-size: 15px; font-weight: bold;"  />
+
+							</h:panelGroup>							
+							
+						</h:panelGrid>	
+							
+					</rich:panel>
+				
+				</h:panelGroup>
+			</ui:insert>
+			
+	
+	
+			<!-- PAINEL COM CAMPOS PARA PESQUISA -->
+			<ui:insert name="mainToolbar" >
+			<rich:toolBar itemSeparator="line" rendered="#{myMBean.isAutorized()}" >
+				<!-- COMANDOS BASICOS -->
+				<rich:toolBarGroup >
+				
+				
+					<ui:insert name="botaoNovo">
+						<rich:menuItem value="Novo Registro" action="#{myMBean.actionNovo}" submitMode="ajax" 
+						reRender="campos" process="pnlPesquisa" ajaxSingle="true" oncomplete="Richfaces.showModalPanel('mdlManutencao')" immediate="true" >
+							<f:facet name="icon">
+								<h:graphicImage value="/img/New_32.png" />
+							</f:facet>
+							<rich:toolTip value="Criar um novo registro" showDelay="1000" />
+						</rich:menuItem>
+					</ui:insert>
+		
+					<ui:insert name="botoesPesquisar">
+						<rich:menuItem title="#{msg.btnPesquisar}" action="#{myMBean.invalidateRowCountCache}" submitMode="ajax" reRender="resultadoDG" process="pnlPesquisa" value="#{msg.btnPesquisar}">
+							<f:facet name="icon">
+								<h:graphicImage value="/img/binoculo_32.png" />
+							</f:facet>
+							<rich:toolTip value="Executar pesquisa de dados. Clique em 'Exibir Formulário de Pesquisa' para ver os critérios de busca." showDelay="1000" />
+						</rich:menuItem>
+						
+						<rich:menuItem value="Limpar" action="#{myMBean.actionLimparPesquisa()}" reRender="pnlPesquisa" ajaxSingle="true" submitMode="ajax" >
+							<f:facet name="icon">
+								<h:graphicImage value="/img/binoculo_32_limpar.png" />
+							</f:facet>
+							<rich:toolTip value="Limpa formulário de pesquisa." showDelay="1000" />
+						</rich:menuItem>
+					</ui:insert>
+					
+					<!-- DEFINICOES DE BOTOES DO MODULO -->
+					<ui:insert name="botoesModulo"></ui:insert>
+	
+				</rich:toolBarGroup>
+	
+			</rich:toolBar>
+			</ui:insert>
+	
+	
+			<ui:insert name="mainTogglePanel"  >
+			<rich:simpleTogglePanel switchType="client" label="Exibir Formulário de Pesquisa..."  opened="false"  id="pnlPesquisa" rendered="#{myMBean.isAutorized()}" >
+				<rich:effect event="onexpand" type="BlindDown" params="duration:0.3"/>
+				<h:panelGrid columns="1">
+					<ui:insert name="repPesquisa" />
+				</h:panelGrid>
+			</rich:simpleTogglePanel>
+			</ui:insert>
+	
+			
+	
+			<ui:insert name="mainResultTables">
+			<rich:panel id="resultadoDG" style="background: #eeeeee;"  rendered="#{myMBean.isAutorized()}"  >
+			
+			
+				<rich:dataTable value="#{myMBean.dataModel}" 
+				var="resultado" 
+				onRowMouseOver="this.style.backgroundColor='#F8F8F8'"
+				onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'" 
+				id="tbResultadoDG" rows="#{myMBean.linhasPorPagina}"  width="788" >
+					<!-- CABECALHO DA TABELA -->
+					<f:facet name="header">
+						<rich:toolBar>
+							<rich:toolBarGroup location="left">
+								<a4j:status id="commonstatus" startText="Processando..." stopText="Pronto" />
+							</rich:toolBarGroup>
+						</rich:toolBar>
+					</f:facet>
+	
+					<rich:column width="30">
+						<f:facet name="header">
+							<h:outputText value="ID" />
+						</f:facet> 
+						<h:outputText value="#{resultado.PK}" />
+					</rich:column>
+	
+					<!-- COLUNAS RESULTADO -->
+					<ui:insert name="repCamposResultado">
+						DEFINA OS CAMPOS A SEREM EXIBIDOS NA PESQUISA
+					</ui:insert>
+	
+	
+					<!-- COMANDOS BASICOS -->
+					<ui:insert name="repComandosAltDel">
+	
+						<!-- COMANDO ALTERAR -->
+						<rich:column style="text-align: center;" width="80">
+							<f:facet name="header"></f:facet>
+							<a4j:commandLink action="#{myMBean.actionUpdate(resultado)}" style="text-decoration: none;" reRender="campos,popupValue,mdlManutencao" ajaxSingle="true"
+								oncomplete="Richfaces.showModalPanel('mdlManutencao')">
+								<h:graphicImage value="/img/Edit_16.png" />
+								<h:outputText value="Editar" />
+								<rich:toolTip value="Clique aqui para editar este registro" showDelay="1000" />
+							</a4j:commandLink>
+						</rich:column>
+		
+						<!-- COMANDO DELETAR -->
+						<rich:column style="text-align: center;" width="80">
+							<f:facet name="header"></f:facet>
+							<a4j:commandLink action="#{myMBean.actionDelete(resultado)}" oncomplete="deleteConfirm.show()" style="text-decoration: none;" ajaxSingle="true">
+								<h:graphicImage value="/img/Delete_16.png" /> Excluir
+								<rich:toolTip value="Clique aqui para excluir este registro" showDelay="1000" />
+							</a4j:commandLink>
+						</rich:column>
+						
+					</ui:insert>
+	
+	
+					<!-- RODAPE DA TABELA DE RESULTADOS -->
+					<f:facet name="footer">
+						<rich:toolBar>
+	
+							<!-- LABEL DE RESULTADOS POR PAGINA + COMBO DE ALTERACAO DE RESULTADOS POR PAGINA -->
+							<rich:toolBarGroup location="left">
+								<h:outputLabel value="Registros por Página:" style="font-size: xx-small;" />
+								<!-- 
+								 -->
+								<h:selectOneMenu value="#{myMBean.linhasPorPagina}" style="font-size: xx-small;" id="linhasPorPagina"  >
+									<f:selectItems value="#{myMBean.opcoesQtdLinhas}" />
+									<a4j:support reRender="resultadoDG" event="onchange" action="#{myMBean.invalidateRowCountCache}"  ajaxSingle="true" />
+								</h:selectOneMenu>
+							</rich:toolBarGroup>
+	
+							<!-- DATA SCROLLER / PAGINADOR -->
+							<rich:toolBarGroup location="left">
+								<rich:datascroller action="#{myMBean.invalidateRowCountCache}" for="tbResultadoDG" id="dtScroller" ajaxSingle="true" fastControls="hidden" style="width: 300px;" maxPages="7" />
+							</rich:toolBarGroup>
+	
+							<!-- LABEL DE RESULTADOS ENCONTRADOS -->
+							<rich:toolBarGroup location="right">
+								<h:outputText value="Registros Encontrados: #{myMBean.linhasTotais}" style="font-size: xx-small;" />
+							</rich:toolBarGroup>
+	
+						</rich:toolBar>
+					</f:facet>
+				</rich:dataTable>
+	
+				<!-- Marca para regiao apos a tabela de resultados - uso geral -->
+				<ui:insert name="postTesultadoDG"></ui:insert>
+	
+			</rich:panel>
+			</ui:insert>
+			
+			
+	        <!-- CONFIRMACAO PARA EXCLUSAO DE REGISTROS -->
+	        <ui:insert name="mainConfirmDialog" >
+	        <p:confirmDialog header="Excluindo Registro..." modal="true" message="Confirma exclusão do registro?" severity="alert" widgetVar="deleteConfirm" id="mdlDelConfirm" hideEffect="explode">
+	                <a4j:commandButton value="Sim" oncomplete="deleteConfirm.hide()" action="#{myMBean.deleteConfirm}" reRender="campos,resultadoDG,popupValue" process="pnlPesquisa" ajaxSingle="true" />
+	                <a4j:commandButton value="Não" oncomplete="deleteConfirm.hide()" action="#{myMBean.deleteCancel}" reRender="campos" ajaxSingle="true" />
+	        </p:confirmDialog>			
+	        </ui:insert>
+	
+			<!-- DEFINICOES DE POPUPS DO MODULO -->
+			<ui:insert name="repPopups"></ui:insert>
+			</h:panelGroup>
+			
+			<!-- 
+			<h:panelGroup >
+				<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fplatform&amp;width=200&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=true&amp;header=true&amp;height=427" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:427px;" allowTransparency="true"></iframe>			
+			</h:panelGroup>
+			 -->
+			
+			
+			
+		</h:panelGrid>
+	</a4j:form>
+
+
+
+
+
+	<ui:insert name="faceletMdlManutencao">
+	
+		
+		
+		<!-- MODAL DE MANUTENCAO/INCLUSAO. VALIDACAO INTEGRADA COM HIBERNATE VALIDATOR -->
+		<rich:modalPanel id="mdlManutencao"  style="overflow: auto;" width="900" height="570"  rendered="#{myMBean.isAutorized()}"   >
+			<f:facet name="header">
+				Inclusão / Alteração do Registro  
+			</f:facet>
+		
+			<a4j:form id="frmManutencao" >
+				
+				<rich:modalPanel id="waitModal" >
+					Aguarde processando...
+				</rich:modalPanel>			
+			
+				<!-- Barra de ferramentas do modal mdlManutencao -->
+				<rich:toolBar> 
+					<rich:menuItem title="#{msg.btnSalvar}" value="Salvar" ajaxSingle="true" submitMode="ajax">
+						<rich:toolTip value="Salva alterações no registro" showDelay="2000" />
+						<a4j:support action="#{myMBean.actionSalvar}" reRender="resultadoDG,campos" process="campos" event="onclick" />
+						<f:facet name="icon">
+							<h:graphicImage value="/img/Save_32.png" />
+						</f:facet>
+					</rich:menuItem>
+					
+					<!-- DEFINICOES DE BOTOES ADICIONAIS DE EDICAO DO MODULO -->
+					<ui:insert name="botoesModuloEdicao"></ui:insert>
+					
+					<ui:insert name="botaoSairCancelar">
+						<rich:menuItem title="Cancelar Ação" submitMode="ajax" value="Sair/Cancelar" action="#{myMBean.setTmpVO(null)}" immediate="true"  
+						oncomplete="Richfaces.hideModalPanel('mdlManutencao')" ajaxSingle="true" id="fechamdlManutencao" reRender="tbResultadoDG,mdlManutencao" >
+							<rich:toolTip value="Cancela as alterações e fecha a tela de edição" showDelay="2000" />
+							<f:facet name="icon">
+								<h:graphicImage value="/img/Cancel_32.png" />
+							</f:facet>
+						</rich:menuItem>
+					</ui:insert>
+					
+				</rich:toolBar>
+				
+				
+				<rich:spacer height="20" />
+				
+
+				<ui:insert name="pnlCamposManutencao">
+
+					<rich:panel id="campos"   >
+						<!--CAMPOS MANUTENCAO-->
+						<rich:graphValidator profiles="#{myMBean.validationGroups}" >
+							<h:panelGrid columns="3" id="camposManutencao">
+								<ui:insert name="repCamposManutencao">campos para manutenção</ui:insert>
+							</h:panelGrid>
+						</rich:graphValidator>
+
+						<rich:spacer height="20" />
+
+						<a4j:region renderRegionOnly="true" >
+							<!-- COMPONENTE DE MENSAGENS DO PRIMEFACES ESTILO MAC -->
+							<rich:graphValidator profiles="#{myMBean.validationGroupsSubModules}">
+								<a4j:outputPanel id="pnlGrowl" >
+									<p:growl life="3000" id="growlGeral"  />
+								</a4j:outputPanel>
+								<ui:insert name="repSubModulos"/>
+							</rich:graphValidator>
+						</a4j:region>
+							
+					</rich:panel>
+				</ui:insert>
+
+			</a4j:form>
+		</rich:modalPanel>
+	</ui:insert>
+	
+	<!-- PERMITE DEFINIR MODAIS COM OS PROPRIOS FORMULARIOS -->
+	<ui:insert name="noFormModals"></ui:insert>
+
+	</body>
+
+</f:view>
+
+</html>

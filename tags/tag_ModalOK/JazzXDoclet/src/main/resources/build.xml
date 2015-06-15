@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="criarXdocletXML" name="Wizard - XDoclet Module" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+	<property environment="env" />
+	<property file="build.properties" />
+	<property name="nomeJa.rModulo" value="xdoclet-wizar.dj2ee-module-2.0.jar"/>
+	
+	
+	
+	<artifact:dependencies filesetid="FS_XDoclet_Dependencies" >
+		<dependency groupId="Jazz" 		artifactId="JazzFramework" 	version="1.0-SNAPSHOT" 	scope="compile"/>
+		<dependency groupId="Jazz" 		artifactId="JazzXDoclet" 	version="1.0-SNAPSHOT" 	scope="compile"/>
+		<dependency groupId="JazzQA" 	artifactId="JazzQA.core" 	version="1.0" 			scope="compile"/>
+		<dependency groupid="xjavadoc" 	artifactid="xjavadoc" 		version="1.1" 			scope="compile" />
+		<!--
+		<dependency groupid="mysql" a  />
+		-->
+	</artifact:dependencies>
+	
+	<path id="pathPadraoXDoclet">
+		
+		<!--
+		FIXME: COLOCAR EM ARQUIVO PROPERTIES
+		-->
+		<fileset dir="/usr/share/ant/lib">
+			<include name="**/*.jar"/>
+		</fileset>	
+		
+		<fileset refid="FS_XDoclet_Dependencies"/>
+	</path>
+
+	<taskdef name="xdoclet" classname="xdoclet.DocletTask" classpathref="pathPadraoXDoclet" />
+
+	<target name="criarXdocletXML" description="builds XML descriptor for module">
+		<!-- Define the xdoclet task -->
+		<property name="xdoclet-xml.dir" value="./META-INF" />
+		<mkdir dir="${xdoclet-xml.dir}" />
+		<xdoclet destdir="${xdoclet-xml.dir}">
+			<fileset dir="../java">
+				<include name="**/*SubTask.java" />
+        		<include name="**/*Handler.java" />
+			</fileset>
+			<template templateFile="xdoclet/jazzwizard/xdocletTemplates/xdoclet-xml.xdt" destinationFile="xdoclet.xml" />
+		</xdoclet>
+	</target>
+
+	<!--
+	<target name="packageModulo" depends="criarXdocletXML" >
+		<jar  destfile="${dir.Project.deploy}\${nomeJar.Modulo}">
+			<fileset dir="bin" >
+				<include name="**/*.*" />
+			</fileset>
+			<fileset dir="."  >
+				<include name="xdocletTemplates/**/*.*" />
+			</fileset>
+		</jar>
+		
+		<copy todir="${dir.xdocletLib}">
+			<fileset dir="${dir.Project.deploy}" >
+				<include name="${nomeJarM.odulo}"/>
+			</fileset>			
+		</copy>
+	</target>
+	-->
+	
+</project>

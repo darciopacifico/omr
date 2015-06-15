@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>JazzOMR</groupId>
+	<artifactId>JazzOMR.bsn</artifactId>
+	<packaging>jar</packaging>
+	<name>BSN - Componentes de Negocio</name>
+	<parent>
+		<groupId>JazzOMR</groupId>
+		<artifactId>JazzOMR</artifactId>
+		<version>1.0</version>
+	</parent>
+	<dependencies>
+
+		<dependency>
+		    <groupId>org.apache.pdfbox</groupId>
+		    <artifactId>pdfbox</artifactId>
+		    <version>1.5.0</version>
+		</dependency>
+
+		<!-- 
+		<dependency>
+    		<groupId>org.icepdf</groupId>
+    		<artifactId>icepdf-core</artifactId>
+    		<version>4.2.0</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.icepdf</groupId>
+    		<artifactId>icepdf-viewer</artifactId>
+    		<version>4.2.0</version>
+		</dependency>
+		 -->
+
+
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.6.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium.client-drivers</groupId>
+			<artifactId>selenium-java-testng-helper</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>Jazz</groupId>
+			<artifactId>JazzOMRJRElements</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>1.6-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>1.6-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>4.0.1</version>
+
+			<exclusions>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+			</exclusions>
+
+
+
+
+		</dependency>
+
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>imagej</groupId>
+			<artifactId>ij</artifactId>
+			<version>1.43</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-api</artifactId>
+			<version>2.2.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>JazzOMR</groupId>
+			<artifactId>JazzOMR.core</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<configuration>
+					<generateClient>true</generateClient>
+					<clientExcludes>
+						<clientExcludes>**/ejb-jar.xml</clientExcludes>
+						<clientExcludes>**/jboss.xml</clientExcludes>
+						<clientExcludes>**/*Ejb.class</clientExcludes> <!-- VERIFIQUE O SUFIXO DAS IMPLEMENTACOES DOS EJB -->
+						<clientExcludes>**/*Bean.class</clientExcludes> <!-- VERIFIQUE O SUFIXO DAS IMPLEMENTACOES DOS EJB -->
+					</clientExcludes>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+
+				<version>2.2</version>  <!-- DEPOIS TESTE SE É NECESSARIO MANTER ESTE VERSION. ACHO QUE NAO MAIS.... -->
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+						<manifestEntries>
+							<mode>development</mode>
+							<url>${pom.url}</url>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<excludeDefaultDirectories>true</excludeDefaultDirectories>
+					<filesets>
+						<fileset>
+							<directory>${project.build.directory}</directory>
+							<excludes>
+								<exclude>generated-resources/eclipse/**</exclude>
+							</excludes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

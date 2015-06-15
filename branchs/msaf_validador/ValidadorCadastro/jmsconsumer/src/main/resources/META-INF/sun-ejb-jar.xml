@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE sun-ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Application Server 8.1 EJB 2.1//EN' 'http://www.sun.com/software/appserver/dtds/sun-ejb-jar_2_1-1.dtd'>
+<sun-ejb-jar>
+	<enterprise-beans>
+		<ejb>
+			<ejb-name>ValidadorJMSListener</ejb-name>
+			<jndi-name>jndi/validadorOnlineRequest</jndi-name>
+			<mdb-connection-factory>
+				<jndi-name>jndi/validadorOnlineConnFactory</jndi-name>
+				<default-resource-principal>
+					<name>guest</name>
+					<password>guest</password>
+				</default-resource-principal>
+			</mdb-connection-factory>
+			<bean-pool>
+				<steady-pool-size>20</steady-pool-size>
+				<resize-quantity>1</resize-quantity>
+				<max-pool-size>20</max-pool-size>
+			</bean-pool>
+		</ejb>
+		<ejb>
+			<ejb-name>PersistenceJMSListener</ejb-name>
+			<jndi-name>jndi/validadorOnlinePersist</jndi-name>
+			<mdb-connection-factory>
+				<jndi-name>jndi/validadorOnlineConnFactory</jndi-name>
+				<default-resource-principal>
+					<name>guest</name>
+					<password>guest</password>
+				</default-resource-principal>
+			</mdb-connection-factory>
+			<bean-pool>
+				<steady-pool-size>1</steady-pool-size>
+				<resize-quantity>1</resize-quantity>
+				<max-pool-size>5</max-pool-size>
+			</bean-pool>
+		</ejb>
+	</enterprise-beans>
+</sun-ejb-jar>

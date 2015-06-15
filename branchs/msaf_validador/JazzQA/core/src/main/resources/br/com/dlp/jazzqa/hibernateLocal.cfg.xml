@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<!-- Arquivo gerado automaticamente - não edite!! -->
+
+<hibernate-configuration>
+
+	<!-- a SessionFactory instance listed as /jndi/name -->
+	<session-factory>
+
+		<!-- properties -->
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="show_sql">true</property>
+		<property name="use_outer_join">false</property>
+			<property name="connection.username">validador</property>
+			<property name="connection.password">admin</property>
+			<property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+			<property name="connection.url">jdbc:oracle:thin:validador/admin@localhost:1521/XE</property>
+
+		<!-- mapping files -->
+		<mapping resource="br/com/dlp/validador/cliente/ClienteVO.hbm.xml"/>
+		<mapping resource="br/com/dlp/validador/pedvalidacao/PedValidacaoVO.hbm.xml"/>
+	</session-factory>
+
+</hibernate-configuration>

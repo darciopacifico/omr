@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>JazzOMR</groupId>
+		<artifactId>JazzOMR</artifactId>
+		<version>1.0</version>
+	</parent>
+	
+	<artifactId>JazzOMR.bsn</artifactId>
+	<packaging>jar</packaging>
+	<name>BSN - Componentes de Negocio</name>
+	<dependencies>
+
+		
+		<dependency>
+		  <groupId>javax.transaction</groupId>
+		  <artifactId>javax.transaction-api</artifactId>
+		  <version>1.2-b03</version>
+		  <scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<!-- incluido para permitir que exceções de negócio sejam marcadas com @ApplicationException -->
+		    <groupId>javax.ejb</groupId>
+		    <artifactId>ejb-api</artifactId>
+		   	<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- 
+
+		teste alteracao
+
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>${jsf.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		 -->
+
+
+		<dependency>
+		    <groupId>org.apache.pdfbox</groupId>
+		    <artifactId>pdfbox</artifactId>
+		    <version>1.5.0</version>
+		</dependency>
+
+		<!-- 
+		<dependency>
+    		<groupId>org.icepdf</groupId>
+    		<artifactId>icepdf-core</artifactId>
+    		<version>4.2.0</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.icepdf</groupId>
+    		<artifactId>icepdf-viewer</artifactId>
+    		<version>4.2.0</version>
+		</dependency>
+		 -->
+
+
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.6.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium.client-drivers</groupId>
+			<artifactId>selenium-java-testng-helper</artifactId>
+			<version>1.0.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>Jazz</groupId>
+			<artifactId>JazzOMRJRElements</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- tentativa de utilizar barcode4j, gerando datamatrix ao inves de zxing gerando qrcode -->
+		<dependency>
+		  <groupId>net.sf.barcode4j</groupId>
+		  <artifactId>barcode4j</artifactId>
+		  <version>2.0</version>
+			<exclusions>
+
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+			</exclusions>		  
+		</dependency>
+
+		
+		
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-transcoder</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-bridge</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-util</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-svg-dom</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-svggen</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		  <!-- 
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-anim</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		   -->
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-awt-util</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  <!-- 
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-codec</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		   -->
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-css</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-dom</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-ext</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-extension</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-gui-util</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-gvt</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		<!-- 
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-js</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		 -->  
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-parser</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-script</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		<!-- 
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-slideshow</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		 -->
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-swing</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		<dependency>
+		  <groupId>batik</groupId>
+		  <artifactId>batik-xml</artifactId>
+		  <version>1.6</version>
+		</dependency>
+		
+		  
+		
+		
+
+
+
+
+
+
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+
+			<exclusions>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+			</exclusions>
+
+		</dependency>
+
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>imagej</groupId>
+			<artifactId>ij</artifactId>
+			<version>1.47</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-api</artifactId>
+			<version>2.2.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>JazzOMR</groupId>
+			<artifactId>JazzOMR.core</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<configuration>
+					<generateClient>true</generateClient>
+					<clientExcludes>
+						<clientExcludes>**/ejb-jar.xml</clientExcludes>
+						<clientExcludes>**/jboss.xml</clientExcludes>
+						<clientExcludes>**/*Ejb.class</clientExcludes> <!-- VERIFIQUE O SUFIXO DAS IMPLEMENTACOES DOS EJB -->
+						<clientExcludes>**/*Bean.class</clientExcludes> <!-- VERIFIQUE O SUFIXO DAS IMPLEMENTACOES DOS EJB -->
+					</clientExcludes>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+
+				<!-- <version>2.2</version>  DEPOIS TESTE SE É NECESSARIO MANTER ESTE VERSION. ACHO QUE NAO MAIS.... -->
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+						<manifestEntries>
+							<mode>development</mode>
+							<url>${pom.url}</url>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<excludeDefaultDirectories>true</excludeDefaultDirectories>
+					<filesets>
+						<fileset>
+							<directory>${project.build.directory}</directory>
+							<excludes>
+								<exclude>generated-resources/eclipse/**</exclude>
+							</excludes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

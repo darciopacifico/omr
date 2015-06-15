@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://struts.apache.org/dtds/tiles-config_1_1.dtd">
+ <tiles-definitions>
+  <definition name="layOutPadrao" path="/tilesTemplate/main.jsp">
+   <put name="title" 			value="Reescreva o titulo" />
+   <put name="header" 			value="/tilesTemplate/header.jsp" />
+   <put name="menu" 			value="/tilesTemplate/menu.jsp" />
+   <put name="body" 			value="" />
+   <put name="barraDeStatus" 	value="/tilesTemplate/barraDeStatus.jsp" />   
+   <put name="js" 				value="" />
+   <put name="footer" 			value="/tilesTemplate/footer.jsp" />
+   <put name="botoes" 			value="/tilesTemplate/base/baseCadastroFormBotoesPesquisa.jsp" />
+   <put name="erros" 			value="/tilesTemplate/inconsistenciasTela.jsp" />
+  </definition>
+ 
+  <definition name="layOutPopUP" path="/tilesTemplate/popUpGeral/popUpMain.jsp">
+   <put name="js" 				value="../js/popUp.js" />
+   <put name="header" 		value="/tilesTemplate/popUpGeral/popUpHeader.jsp" />
+   <put name="body" 			value="/tilesTemplate/popUpGeral/popUpBody.jsp" />
+   <put name="footer" 		value="/tilesTemplate/popUpGeral/popUpFooter.jsp" />
+   <put name="botoes" 		value="/tilesTemplate/popUpGeral/popUpBotoes.jsp" />
+   <put name="erros" 			value="/tilesTemplate/inconsistenciasTela.jsp" />
+  </definition>
+  
+  <definition name="layOutPadraoPesquisa" extends="layOutPadrao">
+   <put name="botoes" 			value="/tilesTemplate/base/baseCadastroFormBotoesPesquisa.jsp" />
+   <put name="footer" 			value="/tilesTemplate/footerVLH.jsp" />
+  </definition>
+
+  <definition name="layOutPadraoCadastro" extends="layOutPadrao">
+   <put name="botoes" 			value="/tilesTemplate/base/baseCadastroFormBotoesCadastro.jsp" />
+  </definition>
+  
+	<definition name="layOutPadraoConsulta" extends="layOutPadrao">
+   <put name="botoes" 			value="/tilesTemplate/base/baseCadastroFormBotoesConsulta.jsp" />
+  </definition>
+   
+  <definition name="layOutPadraoReportForm" path="/reportTile/reportMain.jsp">
+    <put name="title"			 value="Painel de seleção"/>
+    <put name="reportForm"		 value=""/>
+    <put name="reportButtons"	 value="/tilesTemplate/reportTile/reportButtons.jsp"/>
+    
+  </definition>
+
+ 
+  <!-- POPUP GERAL -->
+  <definition name="popUpGeral.tile" extends="layOutPopUP">
+  </definition>  
+  
+  
+  <!-- TRATAMENTO DE ERROS -->
+  <definition name="erro.tile" extends="layOutPadraoCadastro">
+	<put name="title" 	value="Erros" />
+   	<put name="body" 	value="/tilesTemplate/tratamentoErros.jsp" />
+   	<put name="js" 		value="tratamentoErros.js" />
+  </definition>  
+  

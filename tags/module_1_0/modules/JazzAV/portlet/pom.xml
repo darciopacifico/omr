@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>JazzAV</artifactId>
+		<groupId>JazzAV</groupId>
+		<version>1.0</version>
+	</parent>
+
+	<groupId>JazzAV</groupId>
+	<artifactId>JazzAV.portlet</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>portlet - Jazz Porlets</name>
+
+	<prerequisites>
+		<maven>2.0.9</maven>
+	</prerequisites>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <!-- Setting this property using archetype-metadata.xml requiredPorperty
+             so that generated project uses correct version of richfaces.
+         -->
+        <org.richfaces.bom.version>4.3.0-SNAPSHOT</org.richfaces.bom.version>
+    </properties>
+
+	<build>
+		<defaultGoal>package</defaultGoal>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<additionalProjectFacets>
+						<jst.jsf>2.0</jst.jsf>
+					</additionalProjectFacets>
+					<wtpmanifest>true</wtpmanifest>
+					<wtpapplicationxml>true</wtpapplicationxml>
+					<wtpversion>2.0</wtpversion>
+					<ajdtVersion>none</ajdtVersion>
+
+					<!--
+					<additionalBuildcommands>
+						<buildcommand>org.jboss.tools.jst.web.kb.kbbuilder</buildcommand>
+					</additionalBuildcommands>
+					-->
+
+					<additionalProjectnatures>
+						<projectnature>org.jboss.tools.jsf.jsfnature</projectnature>
+					</additionalProjectnatures>
+
+					<additionalProjectnatures>
+						<projectnature>org.jboss.tools.jst.web.kb.kbnature</projectnature>
+					</additionalProjectnatures>
+
+					<!-- <sourceIncludes> <sourceInclude>**/*.myExtension</sourceInclude> </sourceIncludes> -->
+
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<!-- <version>2.1-alpha-2</version> -->
+				<configuration>
+					<!-- <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes> -->
+					<warName>${project.artifactId}</warName>
+				</configuration>
+			</plugin>
+
+
+
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>repository.jboss.org</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<layout>default</layout>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+			<releases>
+			</releases>
+			<snapshots>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>codehaus.org</id>
+			<name>CodeHaus Plugin Snapshots</name>
+			<url>http://snapshots.repository.codehaus.org</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.richfaces</groupId>
+                <artifactId>richfaces-bom</artifactId>
+                <version>${org.richfaces.bom.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+	<dependencies>
+	<!-- 
+		<dependency>
+		  <groupId>mysql</groupId>
+		  <artifactId>mysql-connector-java</artifactId>
+		  <version>5.1.18</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>1.1</version>
+		</dependency>
+	 -->
+
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.18</version>
+		</dependency>
+
+
+
+			
+	    <dependency>
+	        <groupId>batik</groupId>
+	        <artifactId>batik-transcoder</artifactId>
+	        <version>1.6-1</version>
+	        <scope>compile</scope>
+	        <exclusions>
+	            <exclusion>
+	                <artifactId>fop</artifactId>
+	                <groupId>fop</groupId>
+	            </exclusion>
+	        </exclusions>
+	        <!-- 
+	         -->
+	    </dependency>		
+	    
+	    <dependency>
+		  <groupId>apache-xerces</groupId>
+		  <artifactId>xercesImpl</artifactId>
+		  <version>2.9.1</version>
+		</dependency>
+		
+				
+		
+		<!-- RICH FACES 4 DEPENDENCIES -->
+        <dependency>
+            <groupId>org.richfaces.ui</groupId>
+            <artifactId>richfaces-components-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.richfaces.core</groupId>
+            <artifactId>richfaces-core-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.faces</groupId>
+            <artifactId>javax.faces-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>el-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>jstl-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+		<!-- RICH FACES 4 DEPENDENCIES -->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+
+		<!-- UTILIZADO EM CONJUNTO COM FILEUPLOAD DO PRIMEFACES 
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>Jazz</groupId>
+			<artifactId>JazzWSI</artifactId>
+			<version>1.0</version>
+		</dependency>
+		-->
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>JazzAV</groupId>
+			<artifactId>JazzAV.core</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>JazzAV</groupId>
+			<artifactId>JazzAV.bsn</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+	</dependencies>
+
+
+
+	<profiles>
+		<profile>
+			<id>jbossportal</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<webResources>
+								<resource>
+									<filtering>false</filtering>
+									<directory>${project.basedir}/src/main/jbossportal</directory>
+									<targetPath>WEB-INF</targetPath>
+									<includes>
+										<include>jboss-*.xml</include>
+										<include>portlet-instances.xml</include>
+										<include>richfacesecho-object.xml</include>
+									</includes>
+								</resource>
+							</webResources>
+							<warName>ZubaLele</warName>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>
